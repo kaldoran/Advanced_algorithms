@@ -1,0 +1,14 @@
+
+DataConverter.pl 
+
+Fonction : crée des fichiers de donnée (dataX) dans le repertoire "donnee" à partir de tous les fichiers XML (bien écris) dans le repertoire "xml".
+
+structure des donnees dans un dataX :
+
+noeud_courant|noeud_voisin#cout,autre_noeud_voisin#cout,...
+noeud_courant+1|noeud_voisin#cout,autre_noeud_voisin#cout,...
+
+
+Commande : ./DataConverter.pl 
+
+Remarque : 	/!\ vérifier que les fichiers XML sont présent dans le repertoire xml.
