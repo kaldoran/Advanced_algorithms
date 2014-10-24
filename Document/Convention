@@ -1,16 +1,16 @@
 I - Convention d'indentation
 ---------------------------
 
-	L'endentation sera fait a l'aide d'espace
-	Le nombre d'espace sera de 4.
+	L'indentation sera faite à l'aide d'espaces
+	Le nombre d'espaces sera de 4.
 	
 II - Convention de variable
 ---------------------------
 
-	Les variables globale inclurons dans leurs nom en début : GL_Variable
+	Les variables globales auront comme préfixe : GL_ ex: GL_MaVariableGlobale
 	Les constantes seront définit comme lui : MA_VARIABLE
-	Les variables de base seront du type : type maVariable
-		Si plusieurs variable sont du même type alors elle seront présente sur la meme ligne : int maVariable, MonAutre, etc;
+	Les variables de base seront de la forme : type maVariable
+		Si plusieurs variables sont du même type alors elles seront présentes sur la même ligne : int maVariable, MonAutre, etc;
 	
 
 III - Convention de code & commentaire
@@ -19,18 +19,16 @@ III - Convention de code & commentaire
 	Le code sera ecrit en anglais
 	Les accolades seront placées en fin de ligne avec la forme suivante ( exemple du if ) 
 		if ( i == 20 ) {
-	Les tests des if auront ainsi la structure précedente et suivante :
-		if ( variable == valeur ) 
-	Les accolades seront OBLIGATOIRE même si le code ne comporte qu'une seule instruction
-	Les maccro comporterons toujours un : ( pour éviter les erreurs de compilation )
+	Les accolades seront OBLIGATOIRES même si le code ne comporte qu'une seule instruction
+	Les maccros comporteront toujours un : ( pour éviter les erreurs de compilation )
 		do { }while(0); 
 		Ex : 
-			#define QUIT_MSG(A, B) 		\
-				do {					\
-					exit(EXIT_FAILURE); \
+			#define QUIT_MSG(A, B) 			\
+				do {				\
+					exit(EXIT_FAILURE); 	\
 				}while(0);
-	Le do { }while(X); aura donc la structure présenté dessus
-	Les codes de débug seront inseré ainsi dans le code :
+	Le do { }while(X); aura donc la structure présentée dessus
+	Les codes de débug seront inserés ainsi dans le code :
 		#ifdef DEBUG 
 			Do something
 		#else
@@ -42,22 +40,22 @@ III - Convention de code & commentaire
 		#endif
 	
 	Les explications de fonction se feront UNIQUEMENT dans les .h
-	Toutes fonction declaré dans un .c devra etre présent, avec sa définition dans le .h correspondant.
+	Toute fonction declarée dans un .c devra être présente avec sa définition dans le .h correspondant.
 		
 	Les commentaires multi ligne seront de la forme : /* */
 	Les commentaires simple ligne seront de la forme //
-	Si ils sont placé sur une ligne accompagné de code
-	Sinon ils seront de la forme /* */
+		Si ils sont placés sur une ligne accompagné de code
+		Sinon ils seront de la forme /* */
 
-	Les commentaires présent avant les fonctions ( expliquant le prince des fonctions auront la forme suivante :
+	Les commentaires présents avant les fonctions ( expliquant le principe des fonctions ) auront la forme suivante :
 		/** Fait quelque chose
 		 *  %param line : Line number
-		 *	%return : -1 if false, 0 otherwise
+		 *  %return : -1 if false, 0 otherwise
 		 */
-		 Et la fonction associé a cette définition :
+		 Et la fonction associée a cette définition :
 		 int ma_fonction(int line);
 
-	Les fonctions seront nommé comme suit : 
+	Les fonctions seront nommées comme suit : 
 		type_de_retour nom_de_fonction(type variable);
 		type_de_retour nom_de_fonction_bis(type variable, type variable);
 	
@@ -67,25 +65,25 @@ III - Convention de code & commentaire
 		#include stdio.h
 		#include "fichier.h"
 
-	Les fichier personnels seront inclu apres les fichier systemes.
+	Les fichiers personnels seront inclus après les fichiers systemes.
 
-	Les fichiers .h contiendrons TOUJOURS les instructions suivante apres les entetes :
+	Les fichiers .h contiendront TOUJOURS les instructions suivantes après les entetes :
 	
 	#ifndef FICHIER_H
 	#define FICHIER_H
 
-	puis a la fin du fichier :
+	puis à la fin du fichier :
 	#endif /* FICHIER_H included */
 
 	le _H étant obligatoire pour chaque fichier
 
-	L'incrementation des variables se fera en post-incrementation pour un gain de vitesse.
+	L'incrémentation des variables se fera en post-incrémentation pour un gain de vitesse.
 	La plupart des int seront des char, pour un gain de place ( et de vitesse [ minime ] ).
 
-V - Convention d'entete de fichier
+V - Convention d'entête de fichier
 ----------------------------------
 
-	Exemple d'entete de fichier .c
+	Exemple d'entête de fichier .c
 
 	// --------------------------------------------------------
 	// AUTEUR : REYNAUD Nicolas                                |
@@ -96,7 +94,7 @@ V - Convention d'entete de fichier
 	// - pour plus de detaile C.F affichage.h                  |
 	// -------------------------------------------------------- 
 
-	Exemple d'entete de fichier .h 
+	Exemple d'entête de fichier .h 
 
 	//----------------------------------------------------------
 	// AUTEUR : REYNAUD Nicolas                                 |
@@ -111,4 +109,3 @@ V - Convention d'entete de fichier
 	// De l'IA                                                  |
 	//----------------------------------------------------------
 
-Kevin Bascol dansera nue sur une table 
