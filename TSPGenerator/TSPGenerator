@@ -10,9 +10,13 @@ use constant NUMBER_MIN_LINK => 1;
 use constant MAX_WEIGHT => 50;
 use constant TMP_FILE => "tmp_graph_dot";
 
+
 #############################################################
 #####					VARIABLE						#####
 #############################################################
+
+
+## Variable de configuration des options
 
 my $number_node = 0;
 my $number_link = 0;
@@ -21,6 +25,11 @@ my $visual = 0;
 my $all_random = 0;
 my $help = 0;
 my $check_dot = "";
+
+## Variable pour le programme
+
+my @All_link = qw();
+my @All_weight = qw();
 
 #############################################################
 #####					GET OPTIONS						#####
@@ -81,40 +90,53 @@ if ( $help ) {
                             ##### END VALIDATION #####
     
     print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
-    sleep(2);
+    #sleep(2);
                             ##### CREAT GRAPH #####
                             
     open(FILE, ">".TMP_FILE ) or die "[ FATAL ERROR ] : $!\n";
     print (FILE "graph G {\n");
     
     for ( my $i = 0; $i < $number_node ; $i++ ) {
-    
-        my @link_array = qw();
-        my @weight_link_array = qw();
-        
+        my @empty = qw();
+
+        push (@{$All_link[$i]}, @empty);
+        push (@{$All_weight[$i]}, @empty);
+
+        print "***** $i\n";
         for ( my $j = 0; $j < $number_link; $j++ ) {
-        
+            
+            last if ( scalar(@{$All_link[$i]}) == $number_link);
+
             my $weight;
             my $bridge;
             
             do {
-                $bridge = int(rand($number_node - 1));
-            }while( $bridge == $i || grep( /^$bridge$/, @link_array));
-            
-            push (@link_array, $bridge);
+                $bridge = int(rand($number_node));                  # $number_node n'étant pas inclu #
+            }while( $bridge == $i || grep (/^$i/, @{$All_link[$bridge]}) );
+
+
+            push (@{$All_link[$i]}, $bridge);
+            push (@{$All_link[$bridge]}, $i);
             $weight = int(rand(MAX_WEIGHT));
-            push (@weight_link_array, $weight);
-            
+
+            push (@{$All_weight[$i]}, $weight);
+            push (@{$All_weight[$bridge]}, $weight);
+
             print "[ INFO ] : $i -- $bridge [ $weight ]\n";
+
+            
+            #print join("\n",@{$All_link[$i]}),"\n";
             
             if ( $visual ) {
                 print (FILE "\"$i\" -- \"$bridge\" [label=\"$weight\"]\n");
             }
-        }    
+        }   
     }
     print (FILE "}\n");
     close(FILE);
     
+
+
     if ($visual) {
         print "[ INFO ] : Creating the graph with dot\n";
         system("$check_dot -Tpng ".TMP_FILE." -o output.png");
