@@ -59,6 +59,9 @@ sub convert_XML_to_Data
 	my $tree = $parser->parse_file($XML_file); #parse XML file
 	my $root = $tree->getDocumentElement;
 
+	my $node_number = $root->getElementsByTagName('name');
+	$node_number =~ s/[a-zA-Z]*//;
+
 	my @vertices = $root->getElementsByTagName('vertex'); #collect all vertex in XML file
 	my $current_vertex=0;
 	my $data_file =$DATA_Repository.$current_data_File;#name of data file
@@ -66,13 +69,15 @@ sub convert_XML_to_Data
 	print "Editing $XML_file-->data$current_data_File...";
 
 	open(FILE, ">$data_file") or die "ERROR $!\n"; #create data file
+	
+	print(FILE "\$$node_number\$\n"); #writing number of node at top of file
 	foreach my $vertex (@vertices)  #for all vertices
 	{
 		my @edges = $vertex->getElementsByTagName('edge'); #get all edges
 
 		print(FILE "$current_vertex|");
 		foreach my $edge (@edges)
-		{
+		{ 	
 			my $neighbor_vertex = $edge->getFirstChild->getData; #get vertex number
 			my $att = $edge->getAttribute("cost"); #get scientific writing cost
 			my @split_att = split(/e\+/,$att);
