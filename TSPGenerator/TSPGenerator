@@ -115,7 +115,7 @@ if ( $help ) {
             my $bridge;
             
             do {
-                $bridge = int(rand($number_node));                  # $number_node n'étant pas inclu #
+                $bridge = int(rand($number_node));                  # $number_node is not include in rand range #
             }while( $bridge == $i || grep (/^$i/, @{$All_link[$bridge]}) );
 
 
@@ -127,9 +127,6 @@ if ( $help ) {
             push (@{$All_weight[$bridge]}, $weight);
 
             print "\t[ INFO ] : $i -- $bridge [ $weight ]\n";
-
-            
-            #print join("\n",@{$All_link[$i]}),"\n";
             
             if ( $visual ) {
                 print (FILE "\"$i\" -- \"$bridge\" [label=\"$weight\"]\n");
@@ -148,17 +145,15 @@ if ( $help ) {
         unlink("tmp_graph_dot");
     }
 
+    ## Count number of link for check property on graph #
     for( my $i = 0; $i < $number_node ; $i++ ) {
         $link_size += scalar(@{$All_link[$i]});
     }
 
-
-    if ( ($link_size / 2) < ( $number_node - 1 )) {                # Chaque arrete étant compté 2 fois on divise par 2 #
+    if ( ($link_size / 2) < ( $number_node - 1 )) {                # Each edge is count 2 times so we divid by 2 #
         die "[ FATAL ERROR ] : Generated graph is not connexe\n\t Visual add been created ( if asked ) check it out for more information.\n\n";
     }
-    
-
-    
+        
 }
 
 
@@ -170,9 +165,11 @@ sub help {
     system("clear");
     print "\tTSPGenerator - By Reynaud Nicolas\n\t=================================\n\n";
     print "Usage : ./TSPGenerator --node 10 --link 5 [--visual]\n";
-    print "Or : ./TSPGenerator -r [--visual]\n";
-    print "\n--visual : Short -v\n";
-    print "--node : Short -n [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
-    print "--link : Short -l\n\n";
+    print "Or : ./TSPGenerator --random [--visual]\n";
+    print "\n--visual : Toggle or not the edition of Graph\n";
+    print "--node : Number of node [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
+    print "--link : Minimum number of edge\n\n";
+    print "--random : Toggle or not random graphs";
+
     print "NB : -h and -h got higher priority than others.\n\n";
 }
