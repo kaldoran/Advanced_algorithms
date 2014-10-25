@@ -1,0 +1,95 @@
+#! /usr/bin/perl
+
+use strict;
+use warnings;
+use File::Which;
+use Getopt::Long;
+use constant NUMBER_MAX_NODE => 1000;
+use constant NUMBER_MIN_NODE => 2;
+
+#############################################################
+#####					VARIABLE						#####
+#############################################################
+
+my $number_node = 0;
+my $number_link = 0;
+my $visual = 0;
+my $all_random = 0;
+my $help = 0;
+
+#############################################################
+#####					GET OPTIONS						#####
+#############################################################
+
+if ( @ARGV == 0 ) { help(); exit; }                                # Do if before GetOptions cause GetOptions Del options from ARGV #
+
+GetOptions(
+    'node=i'    => \$number_node,
+    'link=i'     => \$number_link,
+    'visual!' => \$visual,
+    'help!'     => \$help,
+    'random!' => \$all_random,
+) or die "Incorrect usage!\n";
+
+
+#############################################################
+#####						MAIN						#####
+#############################################################
+
+if ( $help ) {
+    help();
+} else {
+
+                                ##### VALIDATION PART #####
+                                
+    if ( $all_random ) { 
+        $number_node = int(rand(NUMBER_MAX_NODE - 2)) + 2;          # rand(X) : NUMBER_MAX_NODE - 2 Cause rand is between 0 and X - 1; #
+        $number_link = int(rand($number_node - 2 )) + 2;            # After we add to to get higher than 0 #
+    }
+
+    
+    if ( $visual ) { 
+        my $check_dot = which('dot');                               # Get value of which [ bash command ] #
+        if ( ! (-e $check_dot && -x $check_dot) ) {                 # Test if file exists and if we could use it #
+            print "\n[ ERROR ] : 'Dot' not found for visual\n\t Visual set to no. \n\n";  
+            $visual = 0; 
+        }
+    }
+    
+    if ( $number_node < NUMBER_MIN_NODE ) { 
+        print "\n[ FATAL ERROR ] : $number_node is lower than number min of node. \n\t Minimum value is ". NUMBER_MIN_NODE ."\n\n"; 
+        exit; 
+    }
+    
+    if ( $number_node > NUMBER_MAX_NODE ) {
+        print "\n[ ERROR ] : $number_node is higher than number max of node\n Number of node set to max [ ". NUMBER_MAX_NODE." ] \n\n";
+        $number_node = NUMBER_MAX_NODE;
+    }
+    
+    if ( $number_link > ($number_node - 1) ) { 
+        print "\n[ FATAL ERROR ] : Number of link is higher than number of node minus 1\n\n"; 
+        exit; 
+    }
+    
+                            ##### END VALIDATION #####
+    
+    print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
+    
+    
+}
+
+
+#############################################################
+#####			            HELP				        #####
+#############################################################
+
+sub help {
+    system("clear");
+    print "\tTSPGenerator - By Reynaud Nicolas\n\t=================================\n\n";
+    print "Usage : ./TSPGenerator --node 10 --link 5 [--visual]\n";
+    print "Or : ./TSPGenerator -r [--visual]\n";
+    print "\n--visual : Short -v\n";
+    print "--node : Short -n [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
+    print "--link : Short -l\n\n";
+    print "NB : -h and -h got higher priority than others.\n\n";
+}
