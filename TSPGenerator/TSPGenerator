@@ -105,7 +105,7 @@ if ( $help ) {
         print "***** $i\n";
         for ( my $j = 0; $j < $number_link; $j++ ) {
             
-            last if ( scalar(@{$All_link[$i]}) == $number_link);
+            last if ( scalar(@{$All_link[$i]}) >= $number_link);
 
             my $weight;
             my $bridge;
