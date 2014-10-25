@@ -7,6 +7,7 @@ use Getopt::Long;
 use constant NUMBER_MAX_NODE => 1000;
 use constant NUMBER_MIN_NODE => 2;
 use constant MAX_WEIGHT => 50;
+use constant TMP_FILE => "tmp_graph_dot";
 
 #############################################################
 #####					VARIABLE						#####
@@ -18,6 +19,7 @@ my $link_max_weight = 0;
 my $visual = 0;
 my $all_random = 0;
 my $help = 0;
+my $check_dot = "";
 
 #############################################################
 #####					GET OPTIONS						#####
@@ -51,7 +53,7 @@ if ( $help ) {
 
     
     if ( $visual ) { 
-        my $check_dot = which('dot');                               # Get value of which [ bash command ] #
+        $check_dot = which('dot');                                  # Get value of which [ bash command ] #
         if ( ! (-e $check_dot && -x $check_dot) ) {                 # Test if file exists and if we could use it #
             warn "\n[ ERROR ] : 'Dot' not found for visual\n\t Visual set to no. \n\n";  
             $visual = 0; 
@@ -76,6 +78,9 @@ if ( $help ) {
     print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
     
                             ##### CREAT GRAPH #####
+                            
+    open(FILE, ">".TMP_FILE ) or die "[ FATAL ERROR ] : $!\n";
+    print (FILE "graph G {\n");
     
     for ( my $i = 0; $i < $number_node ; $i++ ) {
     
@@ -89,16 +94,25 @@ if ( $help ) {
             
             do {
                 $bridge = int(rand($number_node - 1));
-                
-            }while( "$bridge" ~~ @link_array);
+            }while( $bridge == $i && !grep( /^$bridge$/, @link_array));
             
             push (@link_array, $bridge);
             $weight = int(rand(MAX_WEIGHT));
             push (@weight_link_array, $weight);
             
             print "[ INFO ] : $i -- $bridge [ $weight ]\n";
+            
+            if ( $visual ) {
+                print (FILE "\"$i\" -- \"$bridge\" [label=\"$weight\"]\n");
+            }
         }    
     }
+    print (FILE "}\n");
+    close(FILE);
+    
+    system("$check_dot -Tpng ".TMP_FILE." -o output.png") if ($visual);
+    
+    unlink("tmp_graph_dot");
     
 }
 
