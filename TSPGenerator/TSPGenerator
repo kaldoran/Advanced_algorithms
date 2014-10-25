@@ -54,6 +54,8 @@ if ( $help ) {
     help();
 } else {
 
+    my $link_size = 0;
+
                                 ##### VALIDATION PART #####
                                 
     if ( $all_random ) { 
@@ -92,9 +94,11 @@ if ( $help ) {
     print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
     #sleep(2);
                             ##### CREAT GRAPH #####
-                            
-    open(FILE, ">".TMP_FILE ) or die "[ FATAL ERROR ] : $!\n";
-    print (FILE "graph G {\n");
+          
+    if ( $visual )  {            
+        open(FILE, ">".TMP_FILE ) or die "[ FATAL ERROR ] : $!\n";
+        print (FILE "graph G {\n");
+    }
     
     for ( my $i = 0; $i < $number_node ; $i++ ) {
         my @empty = qw();
@@ -102,7 +106,7 @@ if ( $help ) {
         push (@{$All_link[$i]}, @empty);
         push (@{$All_weight[$i]}, @empty);
 
-        print "***** $i\n";
+        print "***** Node : $i\n";
         for ( my $j = 0; $j < $number_link; $j++ ) {
             
             last if ( scalar(@{$All_link[$i]}) >= $number_link);
@@ -122,7 +126,7 @@ if ( $help ) {
             push (@{$All_weight[$i]}, $weight);
             push (@{$All_weight[$bridge]}, $weight);
 
-            print "[ INFO ] : $i -- $bridge [ $weight ]\n";
+            print "\t[ INFO ] : $i -- $bridge [ $weight ]\n";
 
             
             #print join("\n",@{$All_link[$i]}),"\n";
@@ -131,18 +135,29 @@ if ( $help ) {
                 print (FILE "\"$i\" -- \"$bridge\" [label=\"$weight\"]\n");
             }
         }   
+        print "*****\n\n";
     }
-    print (FILE "}\n");
-    close(FILE);
-    
 
+    if ( $visual ) {
+        print (FILE "}\n");
+        close(FILE);
 
-    if ($visual) {
         print "[ INFO ] : Creating the graph with dot\n";
         system("$check_dot -Tpng ".TMP_FILE." -o output.png");
+
+        unlink("tmp_graph_dot");
+    }
+
+    for( my $i = 0; $i < $number_node ; $i++ ) {
+        $link_size += scalar(@{$All_link[$i]});
+    }
+
+
+    if ( ($link_size / 2) < ( $number_node - 1 )) {                # Chaque arrete étant compté 2 fois on divise par 2 #
+        die "[ FATAL ERROR ] : Generated graph is not connexe\n\t Visual add been created ( if asked ) check it out for more information.\n\n";
     }
     
-    unlink("tmp_graph_dot");
+
     
 }
 
