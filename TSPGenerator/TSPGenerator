@@ -6,6 +6,7 @@ use File::Which;
 use Getopt::Long;
 use constant NUMBER_MAX_NODE => 1000;
 use constant NUMBER_MIN_NODE => 2;
+use constant MAX_WEIGHT => 50;
 
 #############################################################
 #####					VARIABLE						#####
@@ -13,6 +14,7 @@ use constant NUMBER_MIN_NODE => 2;
 
 my $number_node = 0;
 my $number_link = 0;
+my $link_max_weight = 0;
 my $visual = 0;
 my $all_random = 0;
 my $help = 0;
@@ -29,7 +31,7 @@ GetOptions(
     'visual!' => \$visual,
     'help!'     => \$help,
     'random!' => \$all_random,
-) or die "Incorrect usage!\n";
+) or die help();
 
 
 #############################################################
@@ -51,30 +53,52 @@ if ( $help ) {
     if ( $visual ) { 
         my $check_dot = which('dot');                               # Get value of which [ bash command ] #
         if ( ! (-e $check_dot && -x $check_dot) ) {                 # Test if file exists and if we could use it #
-            print "\n[ ERROR ] : 'Dot' not found for visual\n\t Visual set to no. \n\n";  
+            warn "\n[ ERROR ] : 'Dot' not found for visual\n\t Visual set to no. \n\n";  
             $visual = 0; 
         }
     }
     
     if ( $number_node < NUMBER_MIN_NODE ) { 
-        print "\n[ FATAL ERROR ] : $number_node is lower than number min of node. \n\t Minimum value is ". NUMBER_MIN_NODE ."\n\n"; 
-        exit; 
+        die "\n[ FATAL ERROR ] : $number_node is lower than number min of node. \n\t Minimum value is ". NUMBER_MIN_NODE ."\n\n"; 
     }
     
     if ( $number_node > NUMBER_MAX_NODE ) {
-        print "\n[ ERROR ] : $number_node is higher than number max of node\n Number of node set to max [ ". NUMBER_MAX_NODE." ] \n\n";
+        warn "\n[ ERROR ] : $number_node is higher than number max of node\n Number of node set to max [ ". NUMBER_MAX_NODE." ] \n\n";
         $number_node = NUMBER_MAX_NODE;
     }
     
     if ( $number_link > ($number_node - 1) ) { 
-        print "\n[ FATAL ERROR ] : Number of link is higher than number of node minus 1\n\n"; 
-        exit; 
+        die "\n[ FATAL ERROR ] : Number of link is higher than number of node minus 1\n\n"; 
     }
     
                             ##### END VALIDATION #####
     
     print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
     
+                            ##### CREAT GRAPH #####
+    
+    for ( my $i = 0; $i < $number_node ; $i++ ) {
+    
+        my @link_array = qw();
+        my @weight_link_array = qw();
+        
+        for ( my $j = 0; $j < $number_link; $j++ ) {
+        
+            my $weight;
+            my $bridge;
+            
+            do {
+                $bridge = int(rand($number_node - 1));
+                
+            }while( "$bridge" ~~ @link_array);
+            
+            push (@link_array, $bridge);
+            $weight = int(rand(MAX_WEIGHT));
+            push (@weight_link_array, $weight);
+            
+            print "[ INFO ] : $i -- $bridge [ $weight ]\n";
+        }    
+    }
     
 }
 
