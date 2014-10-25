@@ -6,6 +6,7 @@ use File::Which;
 use Getopt::Long;
 use constant NUMBER_MAX_NODE => 1000;
 use constant NUMBER_MIN_NODE => 2;
+use constant  => 1;
 use constant MAX_WEIGHT => 50;
 use constant TMP_FILE => "tmp_graph_dot";
 
@@ -61,7 +62,7 @@ if ( $help ) {
     }
     
     if ( $number_node < NUMBER_MIN_NODE ) { 
-        die "\n[ FATAL ERROR ] : $number_node is lower than number min of node. \n\t Minimum value is ". NUMBER_MIN_NODE ."\n\n"; 
+        die "\n[ FATAL ERROR ] : $number_node is lower than number minimum of node. \n\t Minimum value is ". NUMBER_MIN_NODE ."\n\n"; 
     }
     
     if ( $number_node > NUMBER_MAX_NODE ) {
@@ -73,10 +74,14 @@ if ( $help ) {
         die "\n[ FATAL ERROR ] : Number of link is higher than number of node minus 1\n\n"; 
     }
     
+    if ( $number_link < NUMBER_MINI_LINK ) {
+        die "\n[ FATAL ERROR ] : Number of link is lower than minimum. \n\t Minimum value is ". NUMBER_MINI_LINK ."\n\n";
+    }
+    
                             ##### END VALIDATION #####
     
     print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
-    
+    sleep(2);
                             ##### CREAT GRAPH #####
                             
     open(FILE, ">".TMP_FILE ) or die "[ FATAL ERROR ] : $!\n";
@@ -94,7 +99,7 @@ if ( $help ) {
             
             do {
                 $bridge = int(rand($number_node - 1));
-            }while( $bridge == $i && !grep( /^$bridge$/, @link_array));
+            }while( $bridge == $i || grep( /^$bridge$/, @link_array));
             
             push (@link_array, $bridge);
             $weight = int(rand(MAX_WEIGHT));
@@ -110,7 +115,10 @@ if ( $help ) {
     print (FILE "}\n");
     close(FILE);
     
-    system("$check_dot -Tpng ".TMP_FILE." -o output.png") if ($visual);
+    if ($visual) {
+        print "[ INFO ] : Creating the graph with dot\n";
+        system("$check_dot -Tpng ".TMP_FILE." -o output.png");
+    }
     
     unlink("tmp_graph_dot");
     
