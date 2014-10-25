@@ -6,7 +6,7 @@ use File::Which;
 use Getopt::Long;
 use constant NUMBER_MAX_NODE => 1000;
 use constant NUMBER_MIN_NODE => 2;
-use constant  => 1;
+use constant NUMBER_MINI_LINK => 1;
 use constant MAX_WEIGHT => 50;
 use constant TMP_FILE => "tmp_graph_dot";
 
@@ -74,7 +74,7 @@ if ( $help ) {
         die "\n[ FATAL ERROR ] : Number of link is higher than number of node minus 1\n\n"; 
     }
     
-    if ( $number_link < NUMBER_MINI_LINK ) {
+    if ( $number_link < 1 ) {
         die "\n[ FATAL ERROR ] : Number of link is lower than minimum. \n\t Minimum value is ". NUMBER_MINI_LINK ."\n\n";
     }
     
@@ -85,7 +85,7 @@ if ( $help ) {
                             ##### CREAT GRAPH #####
                             
     open(FILE, ">".TMP_FILE ) or die "[ FATAL ERROR ] : $!\n";
-    print (FILE "graph G {\n");
+    print (FILE "digraph G {\n");
     
     for ( my $i = 0; $i < $number_node ; $i++ ) {
     
@@ -105,10 +105,10 @@ if ( $help ) {
             $weight = int(rand(MAX_WEIGHT));
             push (@weight_link_array, $weight);
             
-            print "[ INFO ] : $i -- $bridge [ $weight ]\n";
+            print "[ INFO ] : $i -> $bridge [ $weight ]\n";
             
             if ( $visual ) {
-                print (FILE "\"$i\" -- \"$bridge\" [label=\"$weight\"]\n");
+                print (FILE "\"$i\" -> \"$bridge\" [label=\"$weight\"]\n");
             }
         }    
     }
