@@ -42,25 +42,25 @@ int main(int argc, char const *argv[]) {
 
           Node n = (Node) calloc(1, sizeof(*n));
           n->subnodes = (Node*) calloc(10, sizeof(*n->subnodes));
-          n->cost = (char *) calloc(10, sizeof(char));
+          n->cost = (int *)  calloc(10, sizeof(int));
           
           n->count_subnodes = 0;
           tsp_graph->nodes[i] = n;	
-		  tsp_graph->nodes[i]->name = (char) i;
+		  tsp_graph->nodes[i]->name = i;
 		
           for( j = 0; j<10; j++) {
-                tsp_graph->nodes[i]->cost[j] = (char) (100 + j);
+                tsp_graph->nodes[i]->cost[j] = 100 + j;
                 tsp_graph->nodes[i]->subnodes[j] = n;
           }
 	}
 
      for( i = 0; i<10; i++) {
-          printf("***** Node name : %d \n", (int) tsp_graph->nodes[i]->name);
+          printf("***** Node name : %d \n", tsp_graph->nodes[i]->name);
           
           for( j = 0; j<10; j++) {
-                printf("\tNode Name : %d [ %d ] (%d) ", (int) tsp_graph->nodes[i]->subnodes[j]->name, (int)tsp_graph->nodes[i]->cost[j], (int)tsp_graph->nodes[i]->colored);
+                printf("\tNode Name : %d [ %d ] (%d) ", tsp_graph->nodes[i]->subnodes[j]->name, tsp_graph->nodes[i]->cost[j], tsp_graph->nodes[i]->colored);
                 tsp_graph->nodes[i]->colored = (char) 1;
-                printf(" [[Fun : %d]] (%d)\n", (int) tsp_graph->nodes[i]->subnodes[j]->subnodes[i]->name, (int)tsp_graph->nodes[i]->subnodes[i]->colored);
+                printf(" [[Fun : %d]] (%d)\n", tsp_graph->nodes[i]->subnodes[j]->subnodes[i]->name, tsp_graph->nodes[i]->subnodes[i]->colored);
           }
      }
      
