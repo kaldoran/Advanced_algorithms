@@ -74,8 +74,8 @@ sub convert_XML_to_Data
 	foreach my $vertex (@vertices)  #for all vertices
 	{
 		my @edges = $vertex->getElementsByTagName('edge'); #get all edges
-
-		print(FILE "$current_vertex|");
+		my $number_adj_edges=@edges;
+		print(FILE "$number_adj_edges\@$current_vertex|");
 		foreach my $edge (@edges)
 		{ 	
 			my $neighbor_vertex = $edge->getFirstChild->getData; #get vertex number
