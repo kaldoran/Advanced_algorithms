@@ -7,8 +7,14 @@
 // - Function to read a file                                |
 //----------------------------------------------------------
 
+#ifndef READFILE_H
+#define READFILE_H
+
+#include "struct_graph.h"
 
 /** Load a file and print the content
  * %param filename : name of the file to load 
  */
-void load(const char *filename);
+Graph load(const char *filename);
+
+#endif /* READFILE_H included */

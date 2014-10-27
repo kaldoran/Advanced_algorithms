@@ -36,4 +36,4 @@
         exit(EXIT_FAILURE);                                                                                                 \
     }while(0);
 
-#endif
+#endif /* ERROR_H included */
