@@ -8,14 +8,14 @@ OBJ_DIR = OBJ
 BIN_DIR = BIN
 
 CC = gcc
-CFLAGS = -W -Wall -Wextra -O3
+CFLAGS = -W -Wall -Wextra -O2
 BIN = main
 
 SRC = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.c))
 OBJ = $(addsuffix .o, $(basename $(subst ${SRC_DIR}, ${OBJ_DIR}, ${SRC})))
 
 
-.PHONY: clean mrproper clear dir
+.PHONY: clear dir
 .SUFFIXES:
 
 all: clear dir $(BIN_DIR)/$(BIN)
@@ -45,7 +45,7 @@ clean:
 	rm -rf ./$(BIN_DIR);
 
 
-rebuild: mrproper clear all
+rebuild: clean all
 
 #
 # Screen cleaning.

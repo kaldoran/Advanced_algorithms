@@ -3,8 +3,8 @@
 // FICHIER : struct_graph.h                                 |
 // DATE : 27/10/14                                          |
 //                                                          |
-// - Définition de la structure du graphe                   |
-// - Définition de la structure des noeuds du grahe         |
+// - Define structure of graph                              |
+// - Define structure of node of the graph                  |
 //----------------------------------------------------------
 
 #ifndef STRUCT_GRAPH_H

@@ -1,20 +1,15 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin, REYNAUD Nicolas                |
-// FICHIER : graph.h                                        |
+// FICHIER : main.h                                         |
 // DATE : 25/10/14                                          |
 //                                                          |
-// - Prototypes des fonctions de graph.c                    |
-// - Fonction d'affichage du titre d'accueil                |
-// - Fonction d'affichage du menu                           |
-// - Fonction d'affichage du sous menu humain               |
-// - Fonction d'affichage du sous menu pour la difficulté   |
-// De l'IA                                                  |
 //----------------------------------------------------------
 
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "readfile.h"
 #include "struct_graph.h"
 
 /** Temporary maccro */
@@ -23,6 +18,12 @@
 int main(int argc, char const *argv[]) {
 	UNUSED(argc);
     UNUSED(argv);
+
+	if ( argc == 2 ) {
+		load(argv[1]);
+		exit(EXIT_SUCCESS);
+	}
+
 	int i = -1, j;
 
 	Graph tsp_graph = (Graph) malloc(sizeof(*tsp_graph));
@@ -30,6 +31,7 @@ int main(int argc, char const *argv[]) {
 	tsp_graph->nodes = (Node*) calloc(10, sizeof(*tsp_graph->nodes));
     
 	printf("fin creation de TSP\n");
+	
 	
 	for( i = 0; i<10; i++) {
 
@@ -67,6 +69,5 @@ int main(int argc, char const *argv[]) {
 	
 	free(tsp_graph);
 
-
-	return 0;
+	exit(EXIT_SUCCESS);
 }
