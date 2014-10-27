@@ -60,7 +60,7 @@ if ( $help ) {
                                 
     if ( $all_random ) { 
         $number_node = int(rand(NUMBER_MAX_NODE - 2)) + 2;          # rand(X) : NUMBER_MAX_NODE - 2 Cause rand is between 0 and X - 1; #
-        $number_link = int(rand($number_node - 2 )) + 2;            # After we add to to get higher than 0 #
+        $number_link = int(rand($number_node - 1)) + 1;            # After we add to to get higher than 0 #
     }
 
     
@@ -92,7 +92,7 @@ if ( $help ) {
                             ##### END VALIDATION #####
     
     print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
-    #sleep(2);
+    sleep(1);
                             ##### CREAT GRAPH #####
           
     if ( $visual )  {            

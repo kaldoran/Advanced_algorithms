@@ -7,45 +7,42 @@ INC_DIR = INC
 OBJ_DIR = OBJ
 BIN_DIR = BIN
 
-
+CC = gcc
+CFLAGS = -W -Wall -Wextra -O3
 BIN = main
 
-SRC = $(foreach dir, $(SRC_REP), $(wildcard $(dir)/*.c))
-OBJ = $(addsuffix .o, $(basename $(subst ${SRC_REP}, ${OBJ_REP}, ${SRC})))
+SRC = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.c))
+OBJ = $(addsuffix .o, $(basename $(subst ${SRC_DIR}, ${OBJ_DIR}, ${SRC})))
 
 
 .PHONY: clean mrproper clear dir
 .SUFFIXES:
 
-
-
-all: clear dir $(BIN_REP)/$(BIN)
-
+all: clear dir $(BIN_DIR)/$(BIN)
 
 #
 # BIN creation.
 #
 
-
-$(BIN_REP)/$(BIN): $(OBJ)
-    $(CC) $(OBJ) -o $@ -I $(INC_REP) $(CFLAGS)
-    @echo "./bin/"$(BIN)" well created !"
-    
-    
+$(BIN_DIR)/$(BIN): $(OBJ)
+	$(CC) $(OBJ) -o $@ -I $(INC_DIR) $(CFLAGS)
+	@echo "./bin/"$(BIN)" well created !"
+        
 #
 # Object files creation.
 #
 
-$(OBJ_REP)/%.o: $(SRC_REP)/%.c
-    $(CC) -c $^ -o $@ -I $(INC_REP) $(CFLAGS)
-    
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) -c $^ -o $@ -I $(INC_DIR) $(CFLAGS)
+
 #
 # Other usefull targets.
 #
 
 clean:
-    rm -f ./$(OBJ_REP)/*.o;
-    rm -f output
+	rm -f ./$(OBJ_DIR)/*.o ./$(BIN_DIR)/$(BIN);
+	rm -rf ./$(OBJ_DIR);
+	rm -rf ./$(BIN_DIR);
 
 
 rebuild: mrproper clear all
@@ -55,11 +52,11 @@ rebuild: mrproper clear all
 #
 
 clear:
-    clear
+	clear
 #
 # Repository creation.
 #
 
 dir:
-    @mkdir -p $(OBJ_REP)
-    @mkdir -p $(BIN_REP)
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(BIN_DIR)
