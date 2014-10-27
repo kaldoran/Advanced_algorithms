@@ -75,7 +75,7 @@ sub convert_XML_to_Data
 	{
 		my @edges = $vertex->getElementsByTagName('edge'); #get all edges
 		my $number_adj_edges=@edges;
-		print(FILE "$number_adj_edges\@$current_vertex|");
+		print(FILE "- $number_adj_edges\@$current_vertex");
 		foreach my $edge (@edges)
 		{ 	
 			my $neighbor_vertex = $edge->getFirstChild->getData; #get vertex number
@@ -83,7 +83,7 @@ sub convert_XML_to_Data
 			my @split_att = split(/e\+/,$att);
 			my $cost=$split_att[0]*10**$split_att[1]; #converte scientific writing cost to integer cost
 
-			print (FILE "$neighbor_vertex#$cost,"); #edit
+			print (FILE "$neighbor_vertex#$cost\n"); #edit
 		}
 
 		print (FILE "\n");
