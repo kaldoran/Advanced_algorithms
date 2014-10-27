@@ -40,7 +40,7 @@ Graph load(const char *filename) {
 			printf("Node : %u - Number of Subnode : %u\n", node, number_of_subnode);
 			(void)set_node(tsp_graph->nodes[node], node, number_of_subnode);
 		}
-		else {
+		else if (*buffer != '\n' && *buffer != '_') {
 			(void)sscanf(buffer, "%u#%u", &i, &j);
 			printf("\tSubnode : %u - Weight: %u\n", i, j);
 
