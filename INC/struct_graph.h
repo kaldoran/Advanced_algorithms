@@ -15,10 +15,10 @@
 
 typedef struct Struct_Node
 {
-    char name;
-    char* cost;
+    int name;
+    int* cost;
 	char colored;
-	char count_subnodes;
+	int count_subnodes;
 	struct Struct_Node** subnodes;
 }Struct_Node;
 
@@ -26,7 +26,7 @@ typedef Struct_Node* Node;
 
 typedef struct Struct_Graph
 {
-	char count_nodes;
+	int count_nodes;
     Node* nodes;
 }Struct_Graph;
 

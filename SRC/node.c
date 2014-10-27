@@ -24,10 +24,10 @@ Node new_node() {
 
 void set_node(Node node, const int node_number, const int number_of_subnode) {
    
-    node->name = (char) node_number;
+    node->name = node_number;
     node->count_subnodes = number_of_subnode;
     node->subnodes = (Node*) calloc(number_of_subnode, sizeof(*node->subnodes));
-    node->cost = (char *) calloc(number_of_subnode, sizeof(char));
+    node->cost = (int *)calloc(number_of_subnode, sizeof(int));
 	
 	return;
 }

@@ -45,7 +45,7 @@ Graph load(const char *filename) {
 			printf("\tSubnode : %u - Weight: %u\n", i, j);
 
 			tsp_graph->nodes[node]->subnodes[--number_of_subnode] = tsp_graph->nodes[i];
-			tsp_graph->nodes[node]->cost[number_of_subnode] = (char) j;
+			tsp_graph->nodes[node]->cost[number_of_subnode] = j;
 		}
 	}
 		
