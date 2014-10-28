@@ -34,6 +34,11 @@ int main(int argc, char const *argv[]) {
 		exit(EXIT_SUCCESS);
 	}
 	
+	Solution s = new_solution();
+
+	s->list_node = "salut";
+
+	print_solution(s);
 	/*int i = -1, j;
 
 	tsp_graph = (Graph) malloc(sizeof(*tsp_graph));
