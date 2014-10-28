@@ -32,10 +32,11 @@ void add_node(Solution s, Node n, int cost) {
 
 	char tmp[20];
 	sprintf(tmp, "%d", n->name);
-	int size_string = strlen(s->list_node) + strlen(tmp) + 1;
+	int size_string = strlen(s->list_node) + strlen(tmp) + 2;
 	char buffer[size_string];
 
 	strcpy(buffer, s->list_node);
+	strcat(buffer, "\n");
 	strcat(buffer, tmp);
 
 	s->list_node = NULL;
