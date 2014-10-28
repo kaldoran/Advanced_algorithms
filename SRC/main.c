@@ -9,6 +9,8 @@
 #include <stdlib.h>
 
 #include "graph.h"
+#include "node.h"
+#include "solution.h"
 #include "readfile.h"
 #include "struct_graph.h"
 
@@ -28,8 +30,7 @@ int main(int argc, char const *argv[]) {
 		exit(EXIT_SUCCESS);
 	}
 	
-
-	int i = -1, j;
+	/*int i = -1, j;
 
 	tsp_graph = (Graph) malloc(sizeof(*tsp_graph));
 	tsp_graph->count_nodes = 0;
@@ -72,7 +73,7 @@ int main(int argc, char const *argv[]) {
 	
 	free(tsp_graph->nodes);
 	
-	free(tsp_graph);
+	free(tsp_graph);*/
 
 	exit(EXIT_SUCCESS);
 }
