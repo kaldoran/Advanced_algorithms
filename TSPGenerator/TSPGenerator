@@ -39,12 +39,12 @@ my @All_weight = qw();
 if ( @ARGV == 0 ) { help(); exit; }                                # Do if before GetOptions cause GetOptions Del options from ARGV #
 
 GetOptions(
-    'node=i'    => \$number_node,
-    'link=i'     => \$number_link,
-    'visual!' => \$visual,
+    'n|node=i'    => \$number_node,
+    'l|link=i'     => \$number_link,
+    'v|visual!' => \$visual,
 	'c|complet!' => \$complet,
-    'help!'     => \$help,
-    'random!' => \$all_random,
+    'h|help!'     => \$help,
+    'r|random!' => \$all_random,
 ) or die help();
 
 
@@ -181,10 +181,10 @@ sub help {
     print "\tTSPGenerator - By Reynaud Nicolas\n\t=================================\n\n";
     print "Usage : ./TSPGenerator --node 10 --link 5 [--visual]\n";
     print "Or : ./TSPGenerator --random [--visual]\n";
-    print "\n--visual : Toggle or not the edition of Graph\n";
-    print "--node : Number of node [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
-    print "--link : Minimum number of edge\n";
-    print "--random : Toggle or not random graphs\n";
-	print "--Complet : toggle or not if the graph is complete\n\n";
+    print "\n--visual or -v : Toggle or not the edition of Graph\n";
+    print "--node or -n : Number of node [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
+    print "--link or -l : Minimum number of edge\n";
+    print "--random or -r : Toggle or not random graphs\n";
+	print "--Complet or -c : toggle or not if the graph is complete\n\n";
     print "NB : -h and -r and -c  got higher priority than others.\n\n";
 }
