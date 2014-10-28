@@ -60,6 +60,8 @@ void free_graph(Graph g) {
 	free(g->nodes);
 	
 	free(g);
+
+	return;
 }
 
 
@@ -75,4 +77,16 @@ void print_graph(const Graph g) {
             printf("\tNode Name : %d [ %d ] (%d)\n", g->nodes[i]->subnodes[j]->name, g->nodes[i]->cost[j], g->nodes[i]->colored);
         }
     }
+
+	return;
+}
+
+
+void reset_coloration(Graph g) {
+	int i;
+	for ( i = 0; i < g->count_nodes; i++ ) {
+		g->nodes[i]->colored = UNVISITED;
+	}
+
+	return;
 }

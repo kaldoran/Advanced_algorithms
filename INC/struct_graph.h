@@ -13,6 +13,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define UNVISITED (char)0
+#define VISITED (char)1
+#define END (char)7
+
 typedef struct Struct_Node
 {
     int name;

@@ -18,7 +18,7 @@ void greedy_approch(Graph g) {
 	} while( choix < 0 || choix > (g->count_nodes - 1) );
 
 	current = g->nodes[choix];
-	current->colored = 7;
+	current->colored = END;
 
 	fprintf(stderr,"[%d] ", current->name);
 
@@ -28,10 +28,10 @@ void greedy_approch(Graph g) {
 		current_mini = INT_MAX;
 
 		for ( i = 0; i < current->count_subnodes; i++) {
-			if ( (current->subnodes[i]->colored != (char)1
-				&& current->subnodes[i]->colored != (char) 7
+			if ( (current->subnodes[i]->colored != VISITED
+				&& current->subnodes[i]->colored != END
 				&& current->cost[i] < current_mini) 
-				|| (  current->subnodes[i]->colored == (char) 7 
+				|| (  current->subnodes[i]->colored == END
 				&& total_node == g->count_nodes - 1 ) ) {
 				
 					choix = i;
@@ -41,14 +41,14 @@ void greedy_approch(Graph g) {
 		
 		if ( choix != -1 ) {
 			total_node++; 
-			if ( current->colored != (char)7 ) {
-				current->colored = (char)1;
+			if ( current->colored != END ) {
+				current->colored = VISITED;
 			}
 			current = current->subnodes[choix];
 			fprintf(stderr,"[%d] ", current->name);
 		}
 		
-	}while(current->colored != (char)7 && choix != -1);
+	}while(current->colored != END && choix != -1);
 
 	if ( total_node == g->count_nodes ) {
 		printf(": Le chemin indiqué est correct\n");
