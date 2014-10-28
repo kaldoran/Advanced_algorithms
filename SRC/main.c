@@ -47,7 +47,7 @@ int main(int argc, char const *argv[]) {
           Node n = (Node) calloc(1, sizeof(*n));
           n->subnodes = (Node*) calloc(10, sizeof(*n->subnodes));
           n->cost = (int *)  calloc(10, sizeof(int));
-          
+          n->colored = UNVISITED;
           n->count_subnodes = 0;
           tsp_graph->nodes[i] = n;	
 		  tsp_graph->nodes[i]->name = i;
@@ -63,7 +63,7 @@ int main(int argc, char const *argv[]) {
           
           for( j = 0; j<10; j++) {
                 printf("\tNode Name : %d [ %d ] (%d) ", tsp_graph->nodes[i]->subnodes[j]->name, tsp_graph->nodes[i]->cost[j], tsp_graph->nodes[i]->colored);
-                tsp_graph->nodes[i]->colored = (char) 1;
+                tsp_graph->nodes[i]->colored = VISITED;
                 printf(" [[Fun : %d]] (%d)\n", tsp_graph->nodes[i]->subnodes[j]->subnodes[i]->name, tsp_graph->nodes[i]->subnodes[i]->colored);
           }
      }
