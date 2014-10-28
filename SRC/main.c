@@ -7,10 +7,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "graph.h"
 #include "readfile.h"
 #include "struct_graph.h"
+#include "greedy_approch.h"
 
 /** Temporary maccro */
 #define UNUSED(x) (void)(x)
@@ -24,6 +26,8 @@ int main(int argc, char const *argv[]) {
 	if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
+
+		greedy_approch(tsp_graph);
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}

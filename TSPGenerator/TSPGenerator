@@ -25,6 +25,7 @@ my $visual = 0;
 my $all_random = 0;
 my $help = 0;
 my $check_dot = "";
+my $complet = 0;
 
 ## Variable pour le programme
 
@@ -41,6 +42,7 @@ GetOptions(
     'node=i'    => \$number_node,
     'link=i'     => \$number_link,
     'visual!' => \$visual,
+	'c|complet!' => \$complet,
     'help!'     => \$help,
     'random!' => \$all_random,
 ) or die help();
@@ -59,9 +61,13 @@ if ( $help ) {
                                 ##### VALIDATION PART #####
                                 
     if ( $all_random ) { 
-        $number_node = int(rand(NUMBER_MAX_NODE - 2)) + 2;          # rand(X) : NUMBER_MAX_NODE - 2 Cause rand is between 0 and X - 1; #
-        $number_link = int(rand($number_node - 1)) + 1;            # After we add to to get higher than 0 #
-    }
+        $number_node = int(rand(NUMBER_MAX_NODE - 2)) + 2;     # rand(X) : NUMBER_MAX_NODE - 2 Cause rand is between 0 and X - 1; #
+   		$number_link = int(rand($number_node - 1)) + 1;        # After we add to to get higher than 0 #
+   }
+
+   if ( $complet ) {
+		$number_link = $number_node;						   # due to line 116 condition #
+   }
 
     
     if ( $visual ) { 
@@ -80,14 +86,16 @@ if ( $help ) {
         warn "\n[ ERROR ] : $number_node is higher than number max of node\n Number of node set to max [ ". NUMBER_MAX_NODE." ] \n\n";
         $number_node = NUMBER_MAX_NODE;
     }
+   
+   	if ( !$complet ) {
+    	if ( $number_link > ($number_node - 1) ) { 
+        	die "\n[ FATAL ERROR ] : Number of link is higher than number of node minus 1\n\n"; 
+    	}
     
-    if ( $number_link > ($number_node - 1) ) { 
-        die "\n[ FATAL ERROR ] : Number of link is higher than number of node minus 1\n\n"; 
-    }
-    
-    if ( $number_link < NUMBER_MIN_LINK ) {
-        die "\n[ FATAL ERROR ] : Number of link is lower than minimum. \n\t Minimum value is ". NUMBER_MIN_LINK ."\n\n";
-    }
+    	if ( $number_link < NUMBER_MIN_LINK ) {
+        	die "\n[ FATAL ERROR ] : Number of link is lower than minimum. \n\t Minimum value is ". NUMBER_MIN_LINK ."\n\n";
+   		}
+	}
     
                             ##### END VALIDATION #####
     
@@ -108,16 +116,22 @@ if ( $help ) {
 
         print "***** Node : $i\n";
         for ( my $j = 0; $j < $number_link; $j++ ) {
-            
-            last if ( scalar(@{$All_link[$i]}) >= $number_link);
-
-            my $weight;
+            next if ( $i == $j );										# Cant link a node to himself #
+            last if ( scalar(@{$All_link[$i]}) >= $number_link);		# All add been generated #
+			
+			my $weight;
             my $bridge;
-            
-            do {
-                $bridge = int(rand($number_node));                  # $number_node is not include in rand range #
-            }while( $bridge == $i || grep (/^$i/, @{$All_link[$bridge]}) );
-
+            if ( !$complet ) {
+            	do {
+                	$bridge = int(rand($number_node));                  # value of $number_node is not include in rand range #
+           	 	}while( grep (/^$i/, @{$All_link[$bridge]}) );
+			} else {
+				$bridge = $j;
+				if ( grep( /^$i/, @{$All_link[$bridge]}) ) {
+					print "\t[ INFO ] : $i -- $bridge already exist\n";
+					next;
+				}
+			}
 
             push (@{$All_link[$i]}, $bridge);
             push (@{$All_link[$bridge]}, $i);
@@ -145,15 +159,16 @@ if ( $help ) {
         unlink("tmp_graph_dot");
     }
 
-    ## Count number of link for check property on graph #
-    for( my $i = 0; $i < $number_node ; $i++ ) {
-        $link_size += scalar(@{$All_link[$i]});
-    }
+    # Count number of link for check property on graph #
+	if ( !$complet ) {
+    	for( my $i = 0; $i < $number_node ; $i++ ) {
+       		$link_size += scalar(@{$All_link[$i]});
+    	}
 
-    if ( ($link_size / 2) < ( $number_node - 1 )) {                # Each edge is count 2 times so we divid by 2 #
-        die "[ FATAL ERROR ] : Generated graph is not connexe\n\t Visual add been created ( if asked ) check it out for more information.\n\n";
-    }
-        
+    	if ( ($link_size / 2) < ( $number_node - 1 )) {                # Each edge is count 2 times so we divid by 2 #
+        	die "[ FATAL ERROR ] : Generated graph is not connexe\n\t Visual add been created ( if asked ) check it out for more information.\n\n";
+    	}   
+	}
 }
 
 
@@ -168,8 +183,8 @@ sub help {
     print "Or : ./TSPGenerator --random [--visual]\n";
     print "\n--visual : Toggle or not the edition of Graph\n";
     print "--node : Number of node [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
-    print "--link : Minimum number of edge\n\n";
-    print "--random : Toggle or not random graphs";
-
-    print "NB : -h and -h got higher priority than others.\n\n";
+    print "--link : Minimum number of edge\n";
+    print "--random : Toggle or not random graphs\n";
+	print "--Complet : toggle or not if the graph is complete\n\n";
+    print "NB : -h and -r and -c  got higher priority than others.\n\n";
 }
