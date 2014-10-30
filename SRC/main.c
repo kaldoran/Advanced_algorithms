@@ -54,8 +54,10 @@ int main(int argc, char const *argv[]) {
 	free(n1->subnodes);
 	free(n1);
 	free(n2->cost);
+	free(n2->subnodes);
 	free(n2);
 	free(n3->cost);
+	free(n3->subnodes);
 	free(n3);
 
 	/*int i = -1, j;

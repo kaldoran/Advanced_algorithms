@@ -40,12 +40,19 @@ void add_node(Solution s, Node n, int cost)
 	char* buff = malloc(5 * sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
 	sprintf(buff, "%d", n->name);
 
-	while(buff[len_buff]!='\0') {
+	len_buff=strlen(buff);
+	/*while(buff[len_buff]!='\0') {
 		len_buff++;
-	}
+	}*/
 
 	s->list_node = (char*)realloc(s->list_node,len_buff*sizeof(char));
-		
+	
+	if(s->list_node == NULL) {
+		fprintf(stderr, "ERROR can't allocate more memory !\n");
+		free_solution(s);
+		exit(EXIT_FAILURE);
+	}
+
 	strncat(s->list_node,buff,len_buff);
 	strcat(s->list_node," ");
 
