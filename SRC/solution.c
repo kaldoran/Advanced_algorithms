@@ -12,7 +12,7 @@
 #include "error.h"
 #include "string.h"
 
-Solution new_solution(int number_of_node) {
+Solution new_solution() {
 
 	Solution tsp_solution = NULL;
 
@@ -23,7 +23,7 @@ Solution new_solution(int number_of_node) {
         QUIT_MSG("Can't allocate memory for a solution");
     }
 
-    tsp_solution->list_node = (char*) calloc(2*number_of_node+1,sizeof(char));
+    tsp_solution->list_node = (char*) calloc(1,sizeof(char));
     
     if ( tsp_solution->list_node == NULL ) {
         free(tsp_solution);
@@ -36,19 +36,20 @@ Solution new_solution(int number_of_node) {
 
 void add_node(Solution s, Node n, int cost)
 {
-	int i = 0;
+	int len_buff = 0;
 	char* buff = malloc(5 * sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
 	sprintf(buff, "%d", n->name);
 
-	while(buff[i]!='\0') {
-		i++;
+	while(buff[len_buff]!='\0') {
+		len_buff++;
 	}
-	
-	strncat(s->list_node,buff,i);
-	strcat(s->list_node,"\n");
 
-	s->cost =+ cost;
-	printf("%s\n",s->list_node );
+	s->list_node = (char*)realloc(s->list_node,len_buff*sizeof(char));
+		
+	strncat(s->list_node,buff,len_buff);
+	strcat(s->list_node," ");
+
+	s->cost += cost;
 	free(buff);
 }
 

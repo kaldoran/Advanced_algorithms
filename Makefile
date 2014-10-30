@@ -8,7 +8,7 @@ OBJ_DIR = OBJ
 BIN_DIR = BIN
 
 CC = gcc
-CFLAGS = -W -Wall -Wextra -O2
+CFLAGS = -W -Wall -Wextra -O2 -lm
 BIN = main
 
 SRC = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.c))

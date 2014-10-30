@@ -35,18 +35,28 @@ int main(int argc, char const *argv[]) {
 		exit(EXIT_SUCCESS);
 	}
 	
-	char* mot = "salut";
+	//char* mot = "salut";
 	Solution s = new_solution(30);
-	strcpy(s->list_node,mot);
+	//strcpy(s->list_node,mot);
 	s->cost = 0;
 	Node n1 = new_node();
+	Node n2 = new_node();
+	Node n3 = new_node();
 	set_node(n1, 2, 1);
+	set_node(n2, 56, 5);
+	set_node(n3, 107, 2);
 	add_node(s,n1,20);
-	print_solution(s);puts("pout");
+	add_node(s,n2,30);
+	add_node(s,n3,15);
+	print_solution(s);
 	free_solution(s);
-	free(n1->cost);puts("caca1");
-	free(n1->subnodes);puts("caca2");
-	free(n1);puts("caca3");
+	free(n1->cost);
+	free(n1->subnodes);
+	free(n1);
+	free(n2->cost);
+	free(n2);
+	free(n3->cost);
+	free(n3);
 
 	/*int i = -1, j;
 
