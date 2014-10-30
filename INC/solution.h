@@ -11,7 +11,7 @@
 #include "struct_solution.h"
 #include "struct_graph.h"
 
-Solution new_solution();
+Solution new_solution(int number_of_node);
 
 void add_node(Solution s, Node n, int cost);
 

@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "string.h"
 #include "graph.h"
 #include "node.h"
 #include "solution.h"
@@ -34,11 +35,19 @@ int main(int argc, char const *argv[]) {
 		exit(EXIT_SUCCESS);
 	}
 	
-	Solution s = new_solution();
+	char* mot = "salut";
+	Solution s = new_solution(30);
+	strcpy(s->list_node,mot);
+	s->cost = 0;
+	Node n1 = new_node();
+	set_node(n1, 2, 1);
+	add_node(s,n1,20);
+	print_solution(s);puts("pout");
+	free_solution(s);
+	free(n1->cost);puts("caca1");
+	free(n1->subnodes);puts("caca2");
+	free(n1);puts("caca3");
 
-	s->list_node = "salut";
-
-	print_solution(s);
 	/*int i = -1, j;
 
 	tsp_graph = (Graph) malloc(sizeof(*tsp_graph));

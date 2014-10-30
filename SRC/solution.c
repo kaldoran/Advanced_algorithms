@@ -12,7 +12,7 @@
 #include "error.h"
 #include "string.h"
 
-Solution new_solution() {
+Solution new_solution(int number_of_node) {
 
 	Solution tsp_solution = NULL;
 
@@ -23,38 +23,34 @@ Solution new_solution() {
         QUIT_MSG("Can't allocate memory for a solution");
     }
 
-    tsp_solution->list_node= NULL;
+    tsp_solution->list_node = (char*) calloc(2*number_of_node+1,sizeof(char));
+    
+    if ( tsp_solution->list_node == NULL ) {
+        free(tsp_solution);
+        DEBUG_PRINTF("Empty array of node");
+        QUIT_MSG("Can't allocate memory for array of node");
+    }
 
 	return tsp_solution;
 }
 
 void add_node(Solution s, Node n, int cost)
 {
-  int len1 = strlen(n->name), len2 = strlen(s->list_node);
-  char *buf;
- 
-   /* Bon alors comment dire, quand on fait buffer[size_string],
-      on fait un tableau statique => Il n'existera plus à la fin de la fonction.
-      Alors oui ça peut avoir l'air de marcher à première vu, car il peut rester
-      dans la ram des restes de ce que vous avez écrit dedans, mais en réalité
-      vous lisez de la mauvaise mémoire. Pour que la mémoire persiste en déhors de la fonction,
-      utilisez un beau malloc ! */
- 
-	if((buf = malloc((len1 + len2 + 2) * sizeof *buf)) == NULL)
-	{
-		fprintf(stderr, "Oh lala !\n");
-		exit(EXIT_FAILURE);
+	int i = 0;
+	char* buff = malloc(5 * sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
+	sprintf(buff, "%d", n->name);
+
+	while(buff[i]!='\0') {
+		i++;
 	}
- 
-	sprintf(buf, "%d", n->name);
-	strcpy(buf + len1, s->list_node);
-	strcpy(buf + len1 + len2, "\n");
- 
-	/* On vire les lignes inutiles. Puis on utilise le +=. */
-	/* s->list_node = NULL; */
-	s->list_node = buf;
-	s->cost += cost;
- }
+	
+	strncat(s->list_node,buff,i);
+	strcat(s->list_node,"\n");
+
+	s->cost =+ cost;
+	printf("%s\n",s->list_node );
+	free(buff);
+}
 
 void free_solution(Solution s) {
 	
