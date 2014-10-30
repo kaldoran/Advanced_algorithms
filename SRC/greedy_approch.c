@@ -4,23 +4,24 @@
 #include <unistd.h>
 
 #include "struct_graph.h"
-
+#include "solution.h"
 
 void greedy_approch(Graph g) {
 
 	Node current = NULL;
+
 	int i = 0, choix = 0, total_node = 0, current_mini = INT_MAX;
 
-	printf("Ou voulez vous commencer ? Random = -1 Or [0 .. %d] ", g->count_nodes - 1);
-	do {
-		scanf("%d", &choix);
-		if ( choix == -1 ) { choix = (char) 2; }	// Faire rand 
-	} while( choix < 0 || choix > (g->count_nodes - 1) );
-
+	/** IN DEV :*/
+		printf("Ou voulez vous commencer ? Random = -1 Or [0 .. %d] ", g->count_nodes - 1);
+		do {
+			scanf("%d", &choix);
+			if ( choix == -1 ) { choix = (char) 2; }	// Faire rand 
+		} while( choix < 0 || choix > (g->count_nodes - 1) );
+	
 	current = g->nodes[choix];
 	current->colored = END;
-
-	fprintf(stderr,"[%d] ", current->name);
+	printf("[%d] ", current->name);
 
 	do {
 
@@ -44,8 +45,9 @@ void greedy_approch(Graph g) {
 			if ( current->colored != END ) {
 				current->colored = VISITED;
 			}
+			
+			printf("[%d] ", current->name);
 			current = current->subnodes[choix];
-			fprintf(stderr,"[%d] ", current->name);
 		}
 		
 	}while(current->colored != END && choix != -1);
