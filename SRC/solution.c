@@ -22,15 +22,8 @@ Solution new_solution() {
         DEBUG_PRINTF("Empty Solution");
         QUIT_MSG("Can't allocate memory for a solution");
     }
-
-    tsp_solution->list_node = (char*) calloc(1,sizeof(char));
+    tsp_solution->list_node = NULL;
     
-    if ( tsp_solution->list_node == NULL ) {
-        free(tsp_solution);
-        DEBUG_PRINTF("Empty array of node");
-        QUIT_MSG("Can't allocate memory for array of node");
-    }
-
 	return tsp_solution;
 }
 
