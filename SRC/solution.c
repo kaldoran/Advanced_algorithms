@@ -28,21 +28,33 @@ Solution new_solution() {
 	return tsp_solution;
 }
 
-void add_node(Solution s, Node n, int cost) {
-
-	char tmp[20];
-	sprintf(tmp, "%d", n->name);
-	int size_string = strlen(s->list_node) + strlen(tmp) + 2;
-	char buffer[size_string];
-
-	strcpy(buffer, s->list_node);
-	strcat(buffer, "\n");
-	strcat(buffer, tmp);
-
-	s->list_node = NULL;
-	s->list_node = buffer;
-	s->cost = s->cost + cost;
-}
+void add_node(Solution s, Node n, int cost)
+{
+  int len1 = strlen(n->name), len2 = strlen(s->list_node);
+  char *buf;
+ 
+   /* Bon alors comment dire, quand on fait buffer[size_string],
+      on fait un tableau statique => Il n'existera plus à la fin de la fonction.
+      Alors oui ça peut avoir l'air de marcher à première vu, car il peut rester
+      dans la ram des restes de ce que vous avez écrit dedans, mais en réalité
+      vous lisez de la mauvaise mémoire. Pour que la mémoire persiste en déhors de la fonction,
+      utilisez un beau malloc ! */
+ 
+	if((buf = malloc((len1 + len2 + 2) * sizeof *buf)) == NULL)
+	{
+		fprintf(stderr, "Oh lala !\n");
+		exit(EXIT_FAILURE);
+	}
+ 
+	sprintf(buf, "%d", n->name);
+	strcpy(buf + len1, s->list_node);
+	strcpy(buf + len1 + len2, "\n");
+ 
+	/* On vire les lignes inutiles. Puis on utilise le +=. */
+	/* s->list_node = NULL; */
+	s->list_node = buf;
+	s->cost += cost;
+ }
 
 void free_solution(Solution s) {
 	
