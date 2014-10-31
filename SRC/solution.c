@@ -1,6 +1,6 @@
 //----------------------------------------------------------
-// AUTEUR : LAOUSSING Kévin                                 |
-// FICHIER : solution.c                                        |
+// AUTEUR : LAOUSSING Kévin, REYNAUD Nicolas                |
+// FICHIER : solution.c                                     |
 // DATE : 27/10/14                                          |
 //                                                          |
 //----------------------------------------------------------
@@ -19,26 +19,40 @@ Solution new_solution() {
 	tsp_solution = (Solution) calloc(1, sizeof(*tsp_solution));
 
 	if ( tsp_solution == NULL ) {
-        DEBUG_PRINTF("Empty Solution");
+        DEBUG_PRINTF("Empty solution");
         QUIT_MSG("Can't allocate memory for a solution");
     }
-    tsp_solution->list_node = NULL;
+
+	/*  We allocate 2 size, first because we need to allocate for avoid error with the realloc
+	 *  And 2 because there is always the starting node followed by \0
+	 */
+    tsp_solution->list_node = calloc(2, sizeof(char));
+	if ( tsp_solution->list_node == NULL ) {
+		DEBUG_PRINTF("Empty list_node");
+		QUIT_MSG("Can't allocate memory for list_node");
+	}
     
 	return tsp_solution;
 }
 
-void add_node(Solution s, Node n, int cost)
+void add_node(Solution s, const Node n, int cost)
 {
-	int len_buff = 0;
-	char* buff = malloc(5 * sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
+	int len_buff = 0, len_list_node = 0;
+	if ( cost < 0 ) { cost = 0;	}
+	char* buff = calloc(5, sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
+
+	if ( buff == NULL ) {
+		DEBUG_PRINTF("Empty new buff");
+		QUIT_MSG("Can't allocate memory for buff");
+	}
+
 	sprintf(buff, "%d", n->name);
-
-	len_buff=strlen(buff);
-	/*while(buff[len_buff]!='\0') {
-		len_buff++;
-	}*/
-
-	s->list_node = (char*)realloc(s->list_node,len_buff*sizeof(char));
+	
+	len_list_node = strlen(s->list_node);
+	len_buff = strlen(buff) + 2; // +1 for the space caracter & +1 for \0
+	
+	/* Kevin : We to first allocate a pointer before try to realloc */
+	s->list_node = (char*)realloc(s->list_node,(len_list_node + len_buff)*sizeof(char));
 	
 	if(s->list_node == NULL) {
 		fprintf(stderr, "ERROR can't allocate more memory !\n");
