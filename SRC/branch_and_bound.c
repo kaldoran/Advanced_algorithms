@@ -18,35 +18,35 @@ char isInTab(int n, int* tab, int l) {
 
 bnb branch_and_bound_rec(bnb part, bnb best, Graph tspGraph) {
 	int cost = 0, k;
-	if(part->n == best->n -1){
+	if(part->nbNodes == best->nbNodes -1){
 		k=0;
-		while(tspGraph->nodes[part->p[0]]->subnodes[k]->name != tspGraph->nodes[part->p[part->n-1]]->name) {
+		while(tspGraph->nodes[part->path[0]]->subnodes[k]->name != tspGraph->nodes[part->path[part->nbNodes-1]]->name) {
 			++k;
 		}
-		cost = part->w + tspGraph->nodes[part->p[0]]->cost[k];
-		if(cost < best->w) {
-			for(k = 0; k < part->n; ++k) {
-				best->p[k] = part->p[k];
+		cost = part->weight + tspGraph->nodes[part->path[0]]->cost[k];
+		if(cost < best->weight) {
+			for(k = 0; k < part->nbNodes; ++k) {
+				best->path[k] = part->path[k];
 			}
-			best->p[part->n] = part->p[0];
-			best->w = cost;	
+			best->path[part->nbNodes] = part->path[0];
+			best->weight = cost;	
 		}
 	}
 	else{
 		int j;
 		for(j=0; j < tspGraph->count_nodes; ++j) {
-			if(!isInTab(j, part->p, part->n)) {
+			if(!isInTab(j, part->path, part->nbNodes)) {
 				k=0;
-				while(tspGraph->nodes[part->p[part->n-1]]->subnodes[k]->name != j) {
+				while(tspGraph->nodes[part->path[part->nbNodes-1]]->subnodes[k]->name != j) {
 					++k;
 				}
-				cost = part->w + tspGraph->nodes[part->p[part->n-1]]->cost[k];
-				if(cost < best->w) {
+				cost = part->weight + tspGraph->nodes[part->path[part->nbNodes-1]]->cost[k];
+				if(cost < best->weight) {
 					bnb newPart = (bnb)malloc(sizeof(*newPart));
-					newPart->n = part->n +1;
-					newPart->w = cost;
-					newPart->p = part->p;
-					newPart->p[part->n] = j;
+					newPart->nbNodes = part->nbNodes +1;
+					newPart->weight = cost;
+					newPart->path = part->path;
+					newPart->path[part->nbNodes] = j;
 					best = branch_and_bound_rec(newPart, best, tspGraph);
 				}
 			}
@@ -61,49 +61,49 @@ int branch_and_bound(Graph tspGraph) {
 	Node current = NULL;
 
 	bnb part = (bnb)malloc(sizeof(*part));
-	part->n = 1;
-	part->w = 0;
-	part->p = (int*)calloc(tspGraph->count_nodes, sizeof(int));
-	part->p[0] = start;
+	part->nbNodes = 1;
+	part->weight = 0;
+	part->path = (int*)calloc(tspGraph->count_nodes, sizeof(int));
+	part->path[0] = start;
 
 	bnb best = (bnb)malloc(sizeof(*best));
-	best->n = tspGraph->count_nodes;
-	best->w = 0;
-	best->p = (int*)calloc(tspGraph->count_nodes, sizeof(int));
-	best->p[0] = start;
+	best->nbNodes = tspGraph->count_nodes;
+	best->weight = 0;
+	best->path = (int*)calloc(tspGraph->count_nodes, sizeof(int));
+	best->path[0] = start;
 	tspGraph->nodes[start]->colored = END;
 	current = tspGraph->nodes[start];
 
 	while(j < tspGraph->count_nodes) {
 		for(i = 0; i < current->count_subnodes; ++i) {
 			if(current->subnodes[i]->colored == UNVISITED) {
-				best->p[j] = current->subnodes[i]->name;
+				best->path[j] = current->subnodes[i]->name;
 				current->subnodes[i]->colored = VISITED;
-				best->w += current->cost[i];
+				best->weight += current->cost[i];
 				current = current->subnodes[i];
 				++j;
 			}		
 		}
 	}
-	best-> p[j] = tspGraph->nodes[start]->name;
-	++best->n;
+	best->path[j] = tspGraph->nodes[start]->name;
+	++best->nbNodes;
 	i=0;
 	while(current->subnodes[i]->name != start){
 		++i;
 	}
-	best->w += current->cost[i];
+	best->weight += current->cost[i];
 
-	for(i = 0; i < best->n -1; ++i) {
-		printf("%d - ", best->p[i]);
+	for(i = 0; i < best->nbNodes -1; ++i) {
+		printf("%d - ", best->path[i]);
 	}
-	printf("%d weight: %d\n", best->p[i], best->w);
+	printf("%d weight: %d\n", best->path[i], best->weight);
 
 	bnb bst = branch_and_bound_rec(part, best, tspGraph);
 
-	for(i = 0; i < bst->n -1; ++i) {
-		printf("%d - ", bst->p[i]);
+	for(i = 0; i < bst->nbNodes -1; ++i) {
+		printf("%d - ", bst->path[i]);
 	}
-	printf("%d weight: %d\n", bst->p[i], bst->w);
-	
+	printf("%d weight: %d\n", bst->path[i], bst->weight);
+
 	return EXIT_SUCCESS;
 }
