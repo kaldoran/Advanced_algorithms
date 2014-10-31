@@ -16,6 +16,7 @@
 #include "readfile.h"
 #include "struct_graph.h"
 #include "greedy_approch.h"
+#include "branch_and_bound.h"
 
 /** Temporary maccro */
 #define UNUSED(x) (void)(x)
@@ -30,7 +31,9 @@ int main(int argc, char const *argv[]) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 
+		branch_and_bound(tsp_graph);
 		greedy_approch(tsp_graph);
+
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}
