@@ -23,15 +23,7 @@ Solution new_solution() {
         QUIT_MSG("Can't allocate memory for a solution");
     }
 
-	/*  We allocate 2 size, first because we need to allocate for avoid error with the realloc
-	 *  And 2 because there is always the starting node followed by \0
-	 */
-    tsp_solution->list_node = calloc(2, sizeof(char));
-	if ( tsp_solution->list_node == NULL ) {
-		DEBUG_PRINTF("Empty list_node");
-		QUIT_MSG("Can't allocate memory for list_node");
-	}
-    
+	tsp_solution->list_node = NULL;
 	return tsp_solution;
 }
 
@@ -47,11 +39,12 @@ void add_node(Solution s, const Node n, int cost)
 	}
 
 	sprintf(buff, "%d", n->name);
-	
-	len_list_node = strlen(s->list_node);
-	len_buff = strlen(buff) + 2; // +1 for the space caracter & +1 for \0
-	
-	/* Kevin : We to first allocate a pointer before try to realloc */
+	if ( s->list_node != NULL ) {
+		len_list_node = strlen(s->list_node);
+	}
+
+	len_buff = strlen(buff) + 2; // +1 for the space caracter & +1 for \0	
+
 	s->list_node = (char*)realloc(s->list_node,(len_list_node + len_buff)*sizeof(char));
 	
 	if(s->list_node == NULL) {
