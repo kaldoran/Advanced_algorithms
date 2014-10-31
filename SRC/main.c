@@ -15,6 +15,7 @@
 #include "solution.h"
 #include "readfile.h"
 #include "struct_graph.h"
+#include "random_approch.h"
 #include "greedy_approch.h"
 #include "branch_and_bound.h"
 
@@ -30,8 +31,13 @@ int main(int argc, char const *argv[]) {
 	if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
+		
+		//random_approch(tsp_graph);
 
+		//reset_coloration(tsp_graph);
 		branch_and_bound(tsp_graph);
+		
+		reset_coloration(tsp_graph);
 		greedy_approch(tsp_graph);
 
 		free_graph(tsp_graph);

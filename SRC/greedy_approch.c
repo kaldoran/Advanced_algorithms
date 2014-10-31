@@ -54,7 +54,7 @@ void greedy_approch(Graph g) {
 		}while(current->colored != END && choix != -1);
 
 		DEBUG_PRINTF("[%d]", current->name);
-		add_node(s, current, current_mini);
+		add_node(s, current, 0);
 
 		if ( total_node == g->count_nodes ) {
 			print_solution(s);
