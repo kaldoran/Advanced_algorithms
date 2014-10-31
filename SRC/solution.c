@@ -55,9 +55,8 @@ void add_node(Solution s, const Node n, int cost)
 	s->list_node = (char*)realloc(s->list_node,(len_list_node + len_buff)*sizeof(char));
 	
 	if(s->list_node == NULL) {
-		fprintf(stderr, "ERROR can't allocate more memory !\n");
 		free_solution(s);
-		exit(EXIT_FAILURE);
+		QUIT_MSG("ERROR can't allocate more memory !");
 	}
 
 	strncat(s->list_node,buff,len_buff);
