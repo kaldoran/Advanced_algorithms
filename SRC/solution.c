@@ -46,18 +46,28 @@ void add_node(Solution s, const Node n, int cost) {
 
 	len_buff = strlen(buff) + 2; // +1 for the space caracter & +1 for \0	
 
-	s->list_node = (char*)realloc(s->list_node,(len_list_node + len_buff)*sizeof(char));
-	
-	if(s->list_node == NULL) {
-		free_solution(s);
-		QUIT_MSG("ERROR can't allocate more memory !");
-	}
+	if (s->list_node == NULL)
+	{
+		s->list_node = (char*)calloc(len_buff,sizeof(char));
+		strcpy(s->list_node,buff);
+		strcat(s->list_node," ");
+		++s->number_node_in_solution;
+		s->cost += cost;
+		free(buff);
+	} else {
+		s->list_node = (char*)realloc(s->list_node,(len_list_node + len_buff)*sizeof(char));
+		
+		if(s->list_node == NULL) {
+			free_solution(s);
+			QUIT_MSG("ERROR can't allocate more memory !");
+		}
 
-	strncat(s->list_node,buff,len_buff);
-	strcat(s->list_node," ");
-	++s->number_node_in_solution;
-	s->cost += cost;
-	free(buff);
+		strncat(s->list_node,buff,len_buff);
+		strcat(s->list_node," ");
+		++s->number_node_in_solution;
+		s->cost += cost;
+		free(buff);
+	}
 }
 
 void copy_solution( Solution dest_s, Solution src_s) {

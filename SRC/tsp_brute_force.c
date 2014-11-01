@@ -42,7 +42,7 @@ Solution tsp_brute_force(Graph g) {
 	g->nodes[1]->colored = END;
 	add_node(tsp_final_solution,g->nodes[1],0);
 	tsp_final_solution2 = brute_force(tsp_final_solution, g->nodes[1], g->count_nodes, 0);
-	puts("coucou10");print_solution(tsp_final_solution);
+	puts("coucou10");print_solution(tsp_final_solution2);
 	return tsp_final_solution2;
 }
 
