@@ -17,7 +17,7 @@
 #include "struct_graph.h"
 #include "random_approch.h"
 #include "greedy_approch.h"
-#include "tsp_brute_force.h"
+//#include "tsp_brute_force.h"
 #include "branch_and_bound.h"
 
 
@@ -35,9 +35,9 @@ int main(int argc, char const *argv[]) {
 		print_graph(tsp_graph);
 		
 		
-		tsp_brute_force(tsp_graph);
+		//tsp_brute_force(tsp_graph);
 		
-		reset_coloration(tsp_graph);
+		//reset_coloration(tsp_graph);
 		random_approch(tsp_graph);
 
 		reset_coloration(tsp_graph);

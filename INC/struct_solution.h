@@ -17,7 +17,6 @@ typedef struct Struct_Solution
 	char* list_node;
     int cost;
     int number_node_in_solution;
-    long time;
 }Struct_Solution;
 
 typedef Struct_Solution* Solution;

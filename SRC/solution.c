@@ -65,15 +65,13 @@ void copy_solution( Solution dest_s, Solution src_s) {
 	dest_s->list_node = (char*)realloc(dest_s->list_node, (strlen(src_s->list_node)+1) * sizeof(char));
 	
 	if ( dest_s->list_node == NULL) {
-		fprintf(stderr, "ERROR can't allocate more memory !\n");
 		free_solution(dest_s);
-		exit(EXIT_FAILURE);
+		QUIT_MSG("Can't allocate more memory !\n");
 	}
 
 	strcpy(dest_s->list_node, src_s->list_node);
 	dest_s->cost = src_s->cost;
 	dest_s->number_node_in_solution = src_s->number_node_in_solution;
-	dest_s->time = src_s->time;
 
 }
 
