@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
+
 
 #include "string.h"
 #include "graph.h"
@@ -27,6 +29,8 @@
 int main(int argc, char const *argv[]) {
 	UNUSED(argc);
     UNUSED(argv);
+	
+	clock_t start;
 
     Graph tsp_graph = NULL;
     
@@ -34,11 +38,14 @@ int main(int argc, char const *argv[]) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		
-		
 		//tsp_brute_force(tsp_graph);
 		
 		//reset_coloration(tsp_graph);
+		//
+		start = clock();
 		random_approch(tsp_graph);
+		sleep(1);
+		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) / CLOCKS_PER_SEC );
 
 		reset_coloration(tsp_graph);
 		greedy_approch(tsp_graph);
