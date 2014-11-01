@@ -71,7 +71,7 @@ void add_node(Solution s, const Node n, int cost) {
 }
 
 void copy_solution( Solution dest_s, Solution src_s) {
-	
+
 	dest_s->list_node = (char*)realloc(dest_s->list_node, (strlen(src_s->list_node)+1) * sizeof(char));
 	
 	if ( dest_s->list_node == NULL) {
@@ -87,6 +87,7 @@ void copy_solution( Solution dest_s, Solution src_s) {
 
 Solution best_solution( Solution* list_solution, int nb_solution) {
 	int i = 0;
+	int ref = 0;
 	Solution best_solution = NULL;
 	printf("|In best solution: Nb sol| %d\n", nb_solution );
 
@@ -96,20 +97,38 @@ Solution best_solution( Solution* list_solution, int nb_solution) {
 
 	if ( nb_solution == 1) { 
 		puts("Only one solution");
-		print_solution(list_solution[0]);
-		return list_solution[0];
+		best_solution = new_solution();
+		copy_solution(best_solution, list_solution[0]);
+		print_solution(best_solution);
+
+		free_solution(list_solution[0]);
+		free(list_solution);
+
+		return best_solution;
 	}
 
 	for ( i=0; (i+1)<nb_solution; i++) {
 
 		print_solution(list_solution[i]);
 		if (list_solution[i]->cost <= list_solution[i+1]->cost) {
-			best_solution = list_solution[i];
+			//best_solution = list_solution[i];
+			ref = i;
+
 		} else {
-			best_solution = list_solution[i+1];
+			//best_solution = list_solution[i+1];
+			ref = i+1;
 		}
-	
 	}
+	best_solution = new_solution();
+	copy_solution(best_solution,list_solution[ref]);
+
+	/**free fake solution*/
+	for ( i=0; i<nb_solution; i++) {
+
+		free_solution(list_solution[i]);
+	}
+	free(list_solution);
+
 	return best_solution;
 }
 

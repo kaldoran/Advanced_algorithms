@@ -33,13 +33,15 @@ int main(int argc, char const *argv[]) {
 	clock_t start;
 
     Graph tsp_graph = NULL;
+    Solution tsp_solution = NULL;
     
 	if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		
-		tsp_brute_force(tsp_graph);
+		tsp_solution=tsp_brute_force(tsp_graph);
 		
+		free_solution(tsp_solution);
 		//reset_coloration(tsp_graph);
 		
 		/*start = clock();
