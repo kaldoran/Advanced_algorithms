@@ -21,7 +21,7 @@ void random_approch(Graph g) {
 		total_node = 0;
 		poids = 0;
 		
-		choix = rand() % (g->count_nodes - 1);
+		choix = rand() % g->count_nodes;
 
 		current = g->nodes[choix];
 		current->colored = END;
@@ -35,13 +35,12 @@ void random_approch(Graph g) {
 			/* Check if one is available */
 			for ( j = 0; j < current->count_subnodes && current->subnodes[j]->colored == VISITED; j++ ) ;
 
-			if ( j == current->count_subnodes && current->subnodes[j]->colored == VISITED ) { 
+			if ( j == current->count_subnodes && current->subnodes[--j]->colored == VISITED ) { 
 				break;
 			}
 
 			do {
-				choix = rand() % (current->count_subnodes - 1);
-				printf("-- %d -- \n", choix);
+				choix = rand() % current->count_subnodes;
 			}while(current->subnodes[choix]->colored == VISITED);
 
 			if ( choix != -1 ) {

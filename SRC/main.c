@@ -32,10 +32,10 @@ int main(int argc, char const *argv[]) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		
-		//random_approch(tsp_graph);
+		random_approch(tsp_graph);
 
 		//reset_coloration(tsp_graph);
-		branch_and_bound(tsp_graph);
+		//branch_and_bound(tsp_graph);
 		
 		reset_coloration(tsp_graph);
 		greedy_approch(tsp_graph);
