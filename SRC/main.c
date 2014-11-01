@@ -15,8 +15,13 @@
 #include "solution.h"
 #include "readfile.h"
 #include "struct_graph.h"
+#include "random_approch.h"
 #include "greedy_approch.h"
+<<<<<<< HEAD
 #include "tsp_brute_force.h"
+=======
+#include "branch_and_bound.h"
+>>>>>>> be07f93967a161ce2334982ea064b8b5668638c5
 
 /** Temporary maccro */
 #define UNUSED(x) (void)(x)
@@ -30,9 +35,20 @@ int main(int argc, char const *argv[]) {
 	if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
+		
+		//random_approch(tsp_graph);
 
+<<<<<<< HEAD
 		tsp_brute_force(tsp_graph);
 		//greedy_approch(tsp_graph);
+=======
+		//reset_coloration(tsp_graph);
+		branch_and_bound(tsp_graph);
+		
+		reset_coloration(tsp_graph);
+		greedy_approch(tsp_graph);
+
+>>>>>>> be07f93967a161ce2334982ea064b8b5668638c5
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}

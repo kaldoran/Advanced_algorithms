@@ -1,5 +1,5 @@
 # Release/Debug
-DEBUG=no
+DEBUG=yes
 
 # Directories
 SRC_DIR = SRC
@@ -10,6 +10,10 @@ BIN_DIR = BIN
 CC = gcc
 CFLAGS = -W -Wall -Wextra -O2 -lm
 BIN = main
+
+ifeq ($(DEBUG), yes) 
+	CFLAGS += -g -DDEBUG
+endif
 
 SRC = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.c))
 OBJ = $(addsuffix .o, $(basename $(subst ${SRC_DIR}, ${OBJ_DIR}, ${SRC})))

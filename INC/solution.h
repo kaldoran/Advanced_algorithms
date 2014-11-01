@@ -13,7 +13,7 @@
 
 Solution new_solution();
 
-void add_node(Solution s, Node n, int cost);
+void add_node(Solution s,const Node n, int cost);
 
 void copy_solution( Solution dest_s, Solution src_s);
 

@@ -1,6 +1,6 @@
 //----------------------------------------------------------
-// AUTEUR : LAOUSSING Kévin                                 |
-// FICHIER : solution.c                                        |
+// AUTEUR : LAOUSSING Kévin, REYNAUD Nicolas                |
+// FICHIER : solution.c                                     |
 // DATE : 27/10/14                                          |
 //                                                          |
 //----------------------------------------------------------
@@ -19,9 +19,10 @@ Solution new_solution() {
 	tsp_solution = (Solution) calloc(1, sizeof(*tsp_solution));
 
 	if ( tsp_solution == NULL ) {
-        DEBUG_PRINTF("Empty Solution");
+        DEBUG_PRINTF("Empty solution");
         QUIT_MSG("Can't allocate memory for a solution");
     }
+<<<<<<< HEAD
     //tsp_solution->list_node = NULL;
    
 
@@ -84,6 +85,36 @@ void copy_solution( Solution dest_s, Solution src_s) {
 		fprintf(stderr, "ERROR can't allocate more memory !\n");
 		free_solution(dest_s);
 		exit(EXIT_FAILURE);
+=======
+
+	tsp_solution->list_node = NULL;
+	return tsp_solution;
+}
+
+void add_node(Solution s, const Node n, int cost)
+{
+	int len_buff = 0, len_list_node = 0;
+	if ( cost < 0 ) { cost = 0;	}
+	char* buff = calloc(5, sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
+
+	if ( buff == NULL ) {
+		DEBUG_PRINTF("Empty new buff");
+		QUIT_MSG("Can't allocate memory for buff");
+	}
+
+	sprintf(buff, "%d", n->name);
+	if ( s->list_node != NULL ) {
+		len_list_node = strlen(s->list_node);
+	}
+
+	len_buff = strlen(buff) + 2; // +1 for the space caracter & +1 for \0	
+
+	s->list_node = (char*)realloc(s->list_node,(len_list_node + len_buff)*sizeof(char));
+	
+	if(s->list_node == NULL) {
+		free_solution(s);
+		QUIT_MSG("ERROR can't allocate more memory !");
+>>>>>>> be07f93967a161ce2334982ea064b8b5668638c5
 	}
 
 	strcpy(dest_s->list_node, src_s->list_node);
