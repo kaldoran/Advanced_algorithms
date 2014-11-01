@@ -15,6 +15,10 @@ Solution new_solution();
 
 void add_node(Solution s, Node n, int cost);
 
+void copy_solution( Solution dest_s, Solution src_s);
+
+Solution best_solution( Solution* list_solution, int nb_solution);
+
 void free_solution(Solution s);
 
 void print_solution(const Solution s);
