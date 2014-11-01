@@ -22,77 +22,14 @@ Solution new_solution() {
         DEBUG_PRINTF("Empty solution");
         QUIT_MSG("Can't allocate memory for a solution");
     }
-<<<<<<< HEAD
-    //tsp_solution->list_node = NULL;
+
+    tsp_solution->list_node = NULL;
    
 
 	return tsp_solution;
 }
 
-void add_node(Solution s, Node n, int cost)
-{	
-	int len_buff = 0;
-	char* buff = malloc(5 * sizeof(char));// buff peut stocker un nombre de l'ordre 10⁴;
-
-	if (buff == NULL){
-		fprintf(stderr, "ERROR can't allocate more memory !\n");
-		free_solution(s);
-		exit(EXIT_FAILURE);
-	}
-	sprintf(buff, "%d", n->name);
-	strcat(buff,"\0");
-	len_buff=strlen(buff) +1;
-
-
-	if(s->list_node != NULL) {
-		len_buff += strlen(s->list_node);
-
-		s->list_node = (char*)realloc(s->list_node,len_buff*sizeof(char));
-		if(s->list_node == NULL) {
-			fprintf(stderr, "ERROR can't allocate more memory !\n");
-			free_solution(s);
-			exit(EXIT_FAILURE);
-		}
-		strncat(s->list_node,buff,len_buff);
-	} else {
-		s->list_node = (char*)calloc(len_buff,sizeof(char));
-		if(s->list_node == NULL) {
-			fprintf(stderr, "ERROR can't allocate more memory !\n");
-			free_solution(s);
-			exit(EXIT_FAILURE);
-		}
-
-		strcpy(s->list_node,buff);
-	}
-	/*while(buff[len_buff]!='\0') {
-		len_buff++;
-	}*/
-
-	
-	
-
-	strcat(s->list_node," ");
-	s->cost += cost;
-	s->number_node_in_solution++;
-	free(buff);
-}
-
-void copy_solution( Solution dest_s, Solution src_s) {
-	
-	dest_s->list_node = (char*)realloc(dest_s->list_node, (strlen(src_s->list_node)+1) * sizeof(char));
-	
-	if ( dest_s->list_node == NULL) {
-		fprintf(stderr, "ERROR can't allocate more memory !\n");
-		free_solution(dest_s);
-		exit(EXIT_FAILURE);
-=======
-
-	tsp_solution->list_node = NULL;
-	return tsp_solution;
-}
-
-void add_node(Solution s, const Node n, int cost)
-{
+void add_node(Solution s, const Node n, int cost) {
 	int len_buff = 0, len_list_node = 0;
 	if ( cost < 0 ) { cost = 0;	}
 	char* buff = calloc(5, sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
@@ -114,7 +51,23 @@ void add_node(Solution s, const Node n, int cost)
 	if(s->list_node == NULL) {
 		free_solution(s);
 		QUIT_MSG("ERROR can't allocate more memory !");
->>>>>>> be07f93967a161ce2334982ea064b8b5668638c5
+	}
+
+	strncat(s->list_node,buff,len_buff);
+	strcat(s->list_node," ");
+
+	s->cost += cost;
+	free(buff);
+}
+
+void copy_solution( Solution dest_s, Solution src_s) {
+	
+	dest_s->list_node = (char*)realloc(dest_s->list_node, (strlen(src_s->list_node)+1) * sizeof(char));
+	
+	if ( dest_s->list_node == NULL) {
+		fprintf(stderr, "ERROR can't allocate more memory !\n");
+		free_solution(dest_s);
+		exit(EXIT_FAILURE);
 	}
 
 	strcpy(dest_s->list_node, src_s->list_node);
@@ -156,7 +109,6 @@ void free_solution(Solution s) {
 	
 	free(s->list_node);
 	free(s);
-	s=NULL;
 }
 
 void print_solution(const Solution s) {
