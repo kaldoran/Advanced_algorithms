@@ -19,7 +19,7 @@
 #include "struct_graph.h"
 #include "random_approch.h"
 #include "greedy_approch.h"
-//#include "tsp_brute_force.h"
+#include "tsp_brute_force.h"
 #include "branch_and_bound.h"
 
 
@@ -38,11 +38,11 @@ int main(int argc, char const *argv[]) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		
-		//tsp_brute_force(tsp_graph);
+		tsp_brute_force(tsp_graph);
 		
 		//reset_coloration(tsp_graph);
-		//
-		start = clock();
+		
+		/*start = clock();
 		random_approch(tsp_graph);
 		sleep(1);
 		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) / CLOCKS_PER_SEC );
@@ -52,7 +52,7 @@ int main(int argc, char const *argv[]) {
 
 		reset_coloration(tsp_graph);
 		branch_and_bound(tsp_graph);
-		
+		*/
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}

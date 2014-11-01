@@ -55,7 +55,7 @@ void add_node(Solution s, const Node n, int cost) {
 
 	strncat(s->list_node,buff,len_buff);
 	strcat(s->list_node," ");
-
+	++s->number_node_in_solution;
 	s->cost += cost;
 	free(buff);
 }
@@ -78,13 +78,15 @@ void copy_solution( Solution dest_s, Solution src_s) {
 Solution best_solution( Solution* list_solution, int nb_solution) {
 	int i = 0;
 	Solution best_solution = NULL;
-	printf("|solution| %d\n", nb_solution );
+	printf("|In best solution: Nb sol| %d\n", nb_solution );
 
 	if (nb_solution == 0) {
 		return NULL;
 	}
 
-	if ( nb_solution == 1) { puts("0000000000000");print_solution(list_solution[0]);
+	if ( nb_solution == 1) { 
+		puts("Only one solution");
+		print_solution(list_solution[0]);
 		return list_solution[0];
 	}
 
@@ -92,11 +94,9 @@ Solution best_solution( Solution* list_solution, int nb_solution) {
 
 		print_solution(list_solution[i]);
 		if (list_solution[i]->cost <= list_solution[i+1]->cost) {
-			best_solution = list_solution[i];//print_solution(list_solution[i]);
-			//free_solution(list_solution[i+1]);
+			best_solution = list_solution[i];
 		} else {
 			best_solution = list_solution[i+1];
-			//free_solution(list_solution[i]);
 		}
 	
 	}
