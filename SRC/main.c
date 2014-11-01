@@ -17,11 +17,9 @@
 #include "struct_graph.h"
 #include "random_approch.h"
 #include "greedy_approch.h"
-<<<<<<< HEAD
 #include "tsp_brute_force.h"
-=======
 #include "branch_and_bound.h"
->>>>>>> be07f93967a161ce2334982ea064b8b5668638c5
+
 
 /** Temporary maccro */
 #define UNUSED(x) (void)(x)
@@ -36,48 +34,22 @@ int main(int argc, char const *argv[]) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		
+		
+		tsp_brute_force(tsp_graph);
+		
+		reset_coloration(tsp_graph);
 		random_approch(tsp_graph);
 
-<<<<<<< HEAD
-		tsp_brute_force(tsp_graph);
-		//greedy_approch(tsp_graph);
-=======
-		//reset_coloration(tsp_graph);
-		//branch_and_bound(tsp_graph);
-		
 		reset_coloration(tsp_graph);
 		greedy_approch(tsp_graph);
 
->>>>>>> be07f93967a161ce2334982ea064b8b5668638c5
+		reset_coloration(tsp_graph);
+		branch_and_bound(tsp_graph);
+		
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}
 	
-	//char* mot = "salut";
-	Solution s = new_solution(30);
-	//strcpy(s->list_node,mot);
-	s->cost = 0;
-	Node n1 = new_node();
-	Node n2 = new_node();
-	Node n3 = new_node();
-	set_node(n1, 2, 1);
-	set_node(n2, 56, 5);
-	set_node(n3, 107, 2);
-	add_node(s,n1,20);
-	add_node(s,n2,30);
-	add_node(s,n3,15);
-	print_solution(s);
-	free_solution(s);
-	free(n1->cost);
-	free(n1->subnodes);
-	free(n1);
-	free(n2->cost);
-	free(n2->subnodes);
-	free(n2);
-	free(n3->cost);
-	free(n3->subnodes);
-	free(n3);
-
 	/*int i = -1, j;
 
 	tsp_graph = (Graph) malloc(sizeof(*tsp_graph));
