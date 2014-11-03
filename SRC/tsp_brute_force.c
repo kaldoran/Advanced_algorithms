@@ -42,7 +42,7 @@ Solution tsp_brute_force(Graph g) {
 	g->nodes[1]->colored = END;
 	add_node(tsp_final_solution,g->nodes[1],0);
 	tsp_final_solution2 = brute_force(tsp_final_solution, g->nodes[1], g->count_nodes, 0);
-	puts("coucou10");print_solution(tsp_final_solution2);
+	print_solution(tsp_final_solution2);
 	return tsp_final_solution2;
 }
 
@@ -87,6 +87,7 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 		sub_solution = brute_force(sub_solution, n->subnodes[i], total_node, n->cost[i]);
 
 		if(sub_solution != NULL) {
+			
 			printf("sub_solution not null\n");
 			tab_solution = (Solution*)realloc(tab_solution, (dim_tab + 1)*sizeof(Solution));
 			if ( tab_solution == NULL) {
