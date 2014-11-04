@@ -84,14 +84,12 @@ Solution best_solution( Solution* list_solution, int nb_solution) {
 	int i = 0;
 	int ref = 0;
 	Solution best_solution = NULL;
-	printf("|In best solution: Nb sol| %d\n", nb_solution );
 
 	if (nb_solution == 0) {
 		return NULL;
 	}
 
 	if ( nb_solution == 1) { 
-		puts("Only one solution");
 		best_solution = new_solution();
 		copy_solution(best_solution, list_solution[0]);
 		print_solution(best_solution);
@@ -106,18 +104,15 @@ Solution best_solution( Solution* list_solution, int nb_solution) {
 
 		print_solution(list_solution[i]);
 		if (list_solution[i]->cost <= list_solution[i+1]->cost) {
-			//best_solution = list_solution[i];
 			ref = i;
-
 		} else {
-			//best_solution = list_solution[i+1];
 			ref = i+1;
 		}
 	}
 	best_solution = new_solution();
 	copy_solution(best_solution,list_solution[ref]);
 
-	/**free fake solution*/
+	/**free fake solutions*/
 	for ( i=0; i<nb_solution; i++) {
 
 		free_solution(list_solution[i]);

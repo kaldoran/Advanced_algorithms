@@ -2,7 +2,15 @@
 // AUTEUR : LAOUSSING Kévin                                 |
 // FICHIER : solution.h                                     |
 // DATE : 27/10/14                                          |
-//                                                          |
+//															| 
+//Define prototype function of solution.c 		            |
+//-function to create a empty solution    					|
+//-function to add a node in solution 						|
+//-function to copy(to duplicate) a solution 				|
+//-function to return the best solution into list of 		|
+// solutions												|
+//-function to free solution allocation 					|
+//-funtion to print Solution 								|
 //----------------------------------------------------------
 
 #ifndef SOLUTION_H
@@ -11,10 +19,26 @@
 #include "struct_solution.h"
 #include "struct_graph.h"
 
+
+/** Creating a empty solution and doing all necessary allocation
+ *  %param : none
+ *  %return : none
+ */
 Solution new_solution();
 
+/** Adding a node and this cost in solution and calculate automatically
+ ** the new cost of solution
+ *  %param s : the solution which the function adding node n
+ *	%param n : node which the function adding in solution s
+ *	%param cost : the cost of edge between last node and the current node
+ *  %return : none
+ */
 void add_node(Solution s,const Node n, int cost);
 
+/**
+ *
+ *
+ */
 void copy_solution( Solution dest_s, Solution src_s);
 
 Solution best_solution( Solution* list_solution, int nb_solution);
