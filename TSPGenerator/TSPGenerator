@@ -2,7 +2,6 @@
 
 use strict;
 use warnings;
-use File::Which;
 use Getopt::Long;
 use constant NUMBER_MAX_NODE => 1000;
 use constant NUMBER_MIN_NODE => 2;
@@ -71,7 +70,7 @@ if ( $help ) {
 
     
     if ( $visual ) { 
-        $check_dot = which('dot');                                  # Get value of which [ bash command ] #
+        $check_dot = `which dot`;                                  # Get value of which [ bash command ] #
         if ( ! (-e $check_dot && -x $check_dot) ) {                 # Test if file exists and if we could use it #
             warn "\n[ ERROR ] : 'Dot' not found for visual\n\t Visual set to no. \n\n";  
             $visual = 0; 
