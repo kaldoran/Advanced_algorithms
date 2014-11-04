@@ -12,9 +12,9 @@
 #include "struct_graph.h"
 
 typedef struct structBnb {
-	int n;
-	int w;
-	int* p;
+	int nbNodes;
+	int weight;
+	int* path;
 } bnbStruct;
 
 typedef bnbStruct* bnb;
