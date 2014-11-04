@@ -8,6 +8,7 @@ use constant NUMBER_MIN_NODE => 2;
 use constant NUMBER_MIN_LINK => 1;
 use constant MAX_WEIGHT => 50;
 use constant TMP_FILE => "tmp_graph_dot";
+use constant OUTPUT_FILE => "output.graph";
 
 
 #############################################################
@@ -25,6 +26,7 @@ my $all_random = 0;
 my $help = 0;
 my $check_dot = "";
 my $complet = 0;
+my $quiet = 0;
 
 ## Variable pour le programme
 
@@ -38,12 +40,13 @@ my @All_weight = qw();
 if ( @ARGV == 0 ) { help(); exit; }                                # Do if before GetOptions cause GetOptions Del options from ARGV #
 
 GetOptions(
-    'n|node=i'    => \$number_node,
-    'l|link=i'     => \$number_link,
-    'v|visual!' => \$visual,
+    'n|node=i'   => \$number_node,
+    'l|link=i'   => \$number_link,
+    'v|visual!'  => \$visual,
 	'c|complet!' => \$complet,
-    'h|help!'     => \$help,
-    'r|random!' => \$all_random,
+	'q|quiet!'   => \$quiet,
+    'h|help!'    => \$help,
+    'r|random!'  => \$all_random,
 ) or die help();
 
 
@@ -70,8 +73,9 @@ if ( $help ) {
 
     
     if ( $visual ) { 
-        $check_dot = `which dot`;                                  # Get value of which [ bash command ] #
-        if ( ! (-e $check_dot && -x $check_dot) ) {                 # Test if file exists and if we could use it #
+        $check_dot = `which dot`;                             # Get value of which [ bash command ] #
+		chomp($check_dot);
+		if ( ! ( -e $check_dot && -x $check_dot) ) {             # Test if file exists and if we could use it #
             warn "\n[ ERROR ] : 'Dot' not found for visual\n\t Visual set to no. \n\n";  
             $visual = 0; 
         }
@@ -107,13 +111,16 @@ if ( $help ) {
         print (FILE "graph G {\n");
     }
     
+	open(OUTPUT, ">".OUTPUT_FILE ) or die "[ FATAL ERROR ] : $!\n";
+	print (OUTPUT "\$$number_node\$\n");
+
     for ( my $i = 0; $i < $number_node ; $i++ ) {
         my @empty = qw();
 
         push (@{$All_link[$i]}, @empty);
         push (@{$All_weight[$i]}, @empty);
 
-        print "***** Node : $i\n";
+        print "***** Node : $i\n" if ( !$quiet ) ;
         for ( my $j = 0; $j < $number_link; $j++ ) {
             next if ( $i == $j );										# Cant link a node to himself #
             last if ( scalar(@{$All_link[$i]}) >= $number_link);		# All add been generated #
@@ -127,7 +134,7 @@ if ( $help ) {
 			} else {
 				$bridge = $j;
 				if ( grep( /^$i/, @{$All_link[$bridge]}) ) {
-					print "\t[ INFO ] : $i -- $bridge already exist\n";
+					print "\t[ INFO ] : $i -- $bridge already exist\n" if (! $quiet);
 					next;
 				}
 			}
@@ -139,14 +146,27 @@ if ( $help ) {
             push (@{$All_weight[$i]}, $weight);
             push (@{$All_weight[$bridge]}, $weight);
 
-            print "\t[ INFO ] : $i -- $bridge [ $weight ]\n";
-            
+            print "\t[ INFO ] : $i -- $bridge [ $weight ]\n" if (!$quiet);
             if ( $visual ) {
                 print (FILE "\"$i\" -- \"$bridge\" [label=\"$weight\"]\n");
             }
         }   
         print "*****\n\n";
     }
+
+	#Print solution into a file
+
+	for ( my $i = 0; $i < $number_node; $i++) {
+		my $len_link = scalar(@{$All_link[$i]});
+		print (OUTPUT "-$i\@$len_link\n");
+
+		for ( my $j = 0; $j < $len_link; $j++ ) {
+			print (OUTPUT "$All_link[$i][$j]#$All_weight[$i][$j]\n");
+		}
+	}
+	#end print
+
+	close(OUTPUT);
 
     if ( $visual ) {
         print (FILE "}\n");
@@ -178,12 +198,13 @@ if ( $help ) {
 sub help {
     system("clear");
     print "\tTSPGenerator - By Reynaud Nicolas\n\t=================================\n\n";
-    print "Usage : ./TSPGenerator --node 10 --link 5 [--visual]\n";
+    print "Usage : ./TSPGenerator --node 10 --link 5 [--visual] [--quiet]\n";
     print "Or : ./TSPGenerator --random [--visual]\n";
     print "\n--visual or -v : Toggle or not the edition of Graph\n";
     print "--node or -n : Number of node [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
     print "--link or -l : Minimum number of edge\n";
     print "--random or -r : Toggle or not random graphs\n";
 	print "--Complet or -c : toggle or not if the graph is complete\n\n";
+	print "--quit or -q : Toggle if the programme is quiet or not (i.e. if he is in verbose mode or not)";
     print "NB : -h and -r and -c  got higher priority than others.\n\n";
 }
