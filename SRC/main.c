@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
+
 
 #include "string.h"
 #include "graph.h"
@@ -15,8 +17,11 @@
 #include "solution.h"
 #include "readfile.h"
 #include "struct_graph.h"
+#include "random_approch.h"
 #include "greedy_approch.h"
+#include "tsp_brute_force.h"
 #include "branch_and_bound.h"
+
 
 /** Temporary maccro */
 #define UNUSED(x) (void)(x)
@@ -24,45 +29,36 @@
 int main(int argc, char const *argv[]) {
 	UNUSED(argc);
     UNUSED(argv);
+	
+	clock_t start;
 
     Graph tsp_graph = NULL;
+    Solution tsp_solution = NULL;
     
 	if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
+		
+		tsp_solution=tsp_brute_force(tsp_graph);
+		
+		free_solution(tsp_solution);
+		//reset_coloration(tsp_graph);
+		
+		/*start = clock();
+		random_approch(tsp_graph);
+		sleep(1);
+		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) / CLOCKS_PER_SEC );
 
-		branch_and_bound(tsp_graph);
+		reset_coloration(tsp_graph);
 		greedy_approch(tsp_graph);
 
+		reset_coloration(tsp_graph);
+		branch_and_bound(tsp_graph);
+		*/
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}
 	
-	//char* mot = "salut";
-	Solution s = new_solution(30);
-	//strcpy(s->list_node,mot);
-	s->cost = 0;
-	Node n1 = new_node();
-	Node n2 = new_node();
-	Node n3 = new_node();
-	set_node(n1, 2, 1);
-	set_node(n2, 56, 5);
-	set_node(n3, 107, 2);
-	add_node(s,n1,20);
-	add_node(s,n2,30);
-	add_node(s,n3,15);
-	print_solution(s);
-	free_solution(s);
-	free(n1->cost);
-	free(n1->subnodes);
-	free(n1);
-	free(n2->cost);
-	free(n2->subnodes);
-	free(n2);
-	free(n3->cost);
-	free(n3->subnodes);
-	free(n3);
-
 	/*int i = -1, j;
 
 	tsp_graph = (Graph) malloc(sizeof(*tsp_graph));

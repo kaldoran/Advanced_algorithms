@@ -124,7 +124,7 @@ if ( $help ) {
             if ( !$complet ) {
             	do {
                 	$bridge = int(rand($number_node));                  # value of $number_node is not include in rand range #
-           	 	}while( grep (/^$i/, @{$All_link[$bridge]}) );
+           	 	}while( grep (/^$i/, @{$All_link[$bridge]}) || $bridge == $i );
 			} else {
 				$bridge = $j;
 				if ( grep( /^$i/, @{$All_link[$bridge]}) ) {

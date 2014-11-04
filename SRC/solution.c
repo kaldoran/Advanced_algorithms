@@ -23,12 +23,13 @@ Solution new_solution() {
         QUIT_MSG("Can't allocate memory for a solution");
     }
 
-	tsp_solution->list_node = NULL;
+    tsp_solution->list_node = NULL;
+   
+
 	return tsp_solution;
 }
 
-void add_node(Solution s, const Node n, int cost)
-{
+void add_node(Solution s, const Node n, int cost) {
 	int len_buff = 0, len_list_node = 0;
 	if ( cost < 0 ) { cost = 0;	}
 	char* buff = calloc(5, sizeof(char)); // buff peut stocker un nombre de l'ordre 10⁴;
@@ -46,7 +47,11 @@ void add_node(Solution s, const Node n, int cost)
 	len_buff = strlen(buff) + 2; // +1 for the space caracter & +1 for \0	
 
 	s->list_node = (char*)realloc(s->list_node,(len_list_node + len_buff)*sizeof(char));
-	
+
+	if ( len_list_node == 0 ) {
+		memset(s->list_node, 0, len_buff);
+	}
+
 	if(s->list_node == NULL) {
 		free_solution(s);
 		QUIT_MSG("ERROR can't allocate more memory !");
@@ -54,9 +59,72 @@ void add_node(Solution s, const Node n, int cost)
 
 	strncat(s->list_node,buff,len_buff);
 	strcat(s->list_node," ");
-
+	++s->number_node_in_solution;
 	s->cost += cost;
 	free(buff);
+	
+}
+
+void copy_solution( Solution dest_s, Solution src_s) {
+
+	dest_s->list_node = (char*)realloc(dest_s->list_node, (strlen(src_s->list_node)+1) * sizeof(char));
+	
+	if ( dest_s->list_node == NULL) {
+		free_solution(dest_s);
+		QUIT_MSG("Can't allocate more memory !\n");
+	}
+
+	strcpy(dest_s->list_node, src_s->list_node);
+	dest_s->cost = src_s->cost;
+	dest_s->number_node_in_solution = src_s->number_node_in_solution;
+
+}
+
+Solution best_solution( Solution* list_solution, int nb_solution) {
+	int i = 0;
+	int ref = 0;
+	Solution best_solution = NULL;
+	printf("|In best solution: Nb sol| %d\n", nb_solution );
+
+	if (nb_solution == 0) {
+		return NULL;
+	}
+
+	if ( nb_solution == 1) { 
+		puts("Only one solution");
+		best_solution = new_solution();
+		copy_solution(best_solution, list_solution[0]);
+		print_solution(best_solution);
+
+		free_solution(list_solution[0]);
+		free(list_solution);
+
+		return best_solution;
+	}
+
+	for ( i=0; (i+1)<nb_solution; i++) {
+
+		print_solution(list_solution[i]);
+		if (list_solution[i]->cost <= list_solution[i+1]->cost) {
+			//best_solution = list_solution[i];
+			ref = i;
+
+		} else {
+			//best_solution = list_solution[i+1];
+			ref = i+1;
+		}
+	}
+	best_solution = new_solution();
+	copy_solution(best_solution,list_solution[ref]);
+
+	/**free fake solution*/
+	for ( i=0; i<nb_solution; i++) {
+
+		free_solution(list_solution[i]);
+	}
+	free(list_solution);
+
+	return best_solution;
 }
 
 void free_solution(Solution s) {
@@ -67,5 +135,5 @@ void free_solution(Solution s) {
 
 void print_solution(const Solution s) {
 
-	printf(	"Solution :\n\tlist_vertex : %s\n\tcost : %d\n", s->list_node, s->cost);
+	printf(	"Solution :\n\tlist_vertex : %s\n\tcost : %d\n\tNoNiS : %d\n", s->list_node, s->cost, s->number_node_in_solution);
 }
