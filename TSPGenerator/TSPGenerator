@@ -10,6 +10,7 @@ use constant MAX_WEIGHT => 50;
 use constant TMP_FILE => "tmp_graph_dot";
 use constant OUTPUT_FILE => "output.graph";
 
+use Time::HiRes;
 
 #############################################################
 #####					VARIABLE						#####
@@ -54,6 +55,7 @@ GetOptions(
 #####						MAIN						#####
 #############################################################
 
+$| = 1;
 if ( $help ) {
     help();
 } else {
@@ -103,7 +105,7 @@ if ( $help ) {
                             ##### END VALIDATION #####
     
     print "[ INFO ] : $number_node Nodes -- Minimum $number_link Link between nodes \n\n";
-    sleep(1);
+    
                             ##### CREAT GRAPH #####
           
     if ( $visual )  {            
@@ -116,6 +118,8 @@ if ( $help ) {
 
     for ( my $i = 0; $i < $number_node ; $i++ ) {
         my @empty = qw();
+
+		if ( $quiet ) { print STDOUT "*"; }
 
         push (@{$All_link[$i]}, @empty);
         push (@{$All_weight[$i]}, @empty);
@@ -151,11 +155,12 @@ if ( $help ) {
                 print (FILE "\"$i\" -- \"$bridge\" [label=\"$weight\"]\n");
             }
         }   
-        print "*****\n\n";
+		
+		print "*****\n" if ( !$quiet);
     }
 
 	#Print solution into a file
-
+	print "\n[ INFO ] : Create output file\n";
 	for ( my $i = 0; $i < $number_node; $i++) {
 		my $len_link = scalar(@{$All_link[$i]});
 		print (OUTPUT "-$i\@$len_link\n");
@@ -165,7 +170,7 @@ if ( $help ) {
 		}
 	}
 	#end print
-
+	
 	close(OUTPUT);
 
     if ( $visual ) {
