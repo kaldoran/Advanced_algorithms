@@ -38,8 +38,9 @@ int main(int argc, char const *argv[]) {
 	if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
-		
+		start = clock();
 		tsp_solution=tsp_brute_force(tsp_graph);
+		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) / CLOCKS_PER_SEC );
 		
 		free_solution(tsp_solution);
 		//reset_coloration(tsp_graph);
