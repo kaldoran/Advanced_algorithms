@@ -1,0 +1,6 @@
+#define MUTATION_RATE 0.5
+#define CLONE_RATE 0.01
+#define EPSILON 0.02
+
+#define EVOLUTION_ITERATIONS 100
+
