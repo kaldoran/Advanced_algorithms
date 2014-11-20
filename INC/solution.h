@@ -24,7 +24,7 @@
  *  %param : none
  *  %return : none
  */
-Solution new_solution();
+Solution new_solution(const int count_nodes_s);
 
 /** Adding a node and this cost in solution and calculate automatically
  ** the new cost of solution.
@@ -35,14 +35,13 @@ Solution new_solution();
  */
 void add_node(Solution s,const Node n, int cost);
 
-/**Duplicating a solution
- * %param dest_s : the copied solution
- * %param src_s : original solution
- * %return : none
+/** Allocate a solution and copie src_s into it
+ *  %param src_s : original solution
+ *  %return : copy of the src_s solution
  */
-void copy_solution( Solution dest_s, Solution src_s);
+Solution copy_solution( Solution src_s);
 
-/**Calculating the best solution from a list of solution
+/** Calculating the best solution from a list of solution
  * %param list_solution :  a list of solution
  * %param nb_solution : number of solution in the list of solution
  * %return : the best Solution

@@ -12,7 +12,7 @@ void greedy_approch(Graph g) {
 	int i, j, choix, total_node, current_mini, poids;
 
 	for ( j = 0; j < g->count_nodes; j++) {
-		s = new_solution();
+		s = new_solution(g->count_nodes);
 		choix = 0;
 		total_node = 0;
 		current_mini = INT_MAX; 

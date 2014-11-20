@@ -16,7 +16,7 @@ void random_approch(Graph g) {
 	
 	j = 0;
 	do {
-		s = new_solution();
+		s = new_solution(g->count_nodes);
 
 		total_node = 0;
 		poids = 0;

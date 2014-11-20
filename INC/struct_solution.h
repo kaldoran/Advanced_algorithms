@@ -11,12 +11,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "struct_graph.h"
 
 typedef struct Struct_Solution
 {
-	char* list_node;
+	Node* list_node;
     int cost;
-    int number_node_in_solution;
+    int count_nodes_s;
 }Struct_Solution;
 
 typedef Struct_Solution* Solution;

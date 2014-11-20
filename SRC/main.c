@@ -10,7 +10,6 @@
 #include <unistd.h>
 #include <time.h>
 
-
 #include "string.h"
 #include "graph.h"
 #include "node.h"
@@ -33,16 +32,16 @@ int main(int argc, char const *argv[]) {
 	clock_t start;
 
     Graph tsp_graph = NULL;
-    Solution tsp_solution = NULL;
-    
-	if ( argc == 2 ) {
+
+if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		
 		start = clock();
-		tsp_brute_force(tsp_graph);
-		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
+		free_solution(tsp_brute_force(tsp_graph));
 
+		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
+/*
 		reset_coloration(tsp_graph);
 		
 		start = clock();
@@ -61,7 +60,7 @@ int main(int argc, char const *argv[]) {
 		branch_and_bound(tsp_graph);
 		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
 
-		
+		*/
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}
