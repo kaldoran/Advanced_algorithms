@@ -41,7 +41,7 @@ if ( argc == 2 ) {
 		free_solution(tsp_brute_force(tsp_graph));
 
 		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
-
+		/*
 		reset_coloration(tsp_graph);
 		
 		start = clock();
@@ -59,7 +59,7 @@ if ( argc == 2 ) {
 		start = clock();
 		branch_and_bound(tsp_graph);
 		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
-
+		*/
 		
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);

@@ -86,7 +86,7 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 			}
 
 			tab_solution[dim_tab] = sub_solution;
-			printf("Print solution in while Line 89\n");
+			printf("\nPrint solution in while Line 89\n");
 			print_solution(sub_solution);
 			++dim_tab;
 		}

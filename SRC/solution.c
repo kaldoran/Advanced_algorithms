@@ -33,7 +33,6 @@ Solution new_solution(const int count_nodes) {
 }
 
 void add_node(Solution s, const Node n, const int cost) {
-
 	s->list_node[s->count_nodes_s] = n;
 	++s->count_nodes_s;
 	s->cost += cost;
@@ -43,7 +42,8 @@ void add_node(Solution s, const Node n, const int cost) {
 Solution copy_solution( Solution src_s) {
 
 	int i = 0;
-	Solution dest_s = new_solution(src_s->count_nodes_s);
+	/* On copie le chemin précédent et on ajoute une place pour le noeud suivant */
+	Solution dest_s = new_solution(src_s->count_nodes_s + 1 );
 
 	for ( i = 0; i < src_s->count_nodes_s; i++) {
 		dest_s->list_node[i] = src_s->list_node[i];

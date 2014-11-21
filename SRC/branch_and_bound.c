@@ -43,6 +43,7 @@ bnb branch_and_bound_rec(bnb part, bnb best, Graph tspGraph) {
 				cost = part->weight + tspGraph->nodes[part->path[part->nbNodes-1]]->cost[k];
 				if(cost < best->weight) {
 					bnb newPart = (bnb)malloc(sizeof(*newPart));
+					/* Tu as pas testé le retour ^^ */
 					newPart->nbNodes = part->nbNodes +1;
 					newPart->weight = cost;
 					newPart->path = part->path;
@@ -61,15 +62,18 @@ int branch_and_bound(Graph tspGraph) {
 	Node current = NULL;
 
 	bnb part = (bnb)malloc(sizeof(*part));
+	/* La non plus le retour est pas testé */
 	part->nbNodes = 1;
 	part->weight = 0;
 	part->path = (int*)calloc(tspGraph->count_nodes, sizeof(int));
+	/* Pas testé */
 	part->path[0] = start;
 
 	bnb best = (bnb)malloc(sizeof(*best));
 	best->nbNodes = tspGraph->count_nodes;
 	best->weight = 0;
 	best->path = (int*)calloc(tspGraph->count_nodes, sizeof(int));
+	/* Pas testé */
 	best->path[0] = start;
 	tspGraph->nodes[start]->colored = END;
 	current = tspGraph->nodes[start];
