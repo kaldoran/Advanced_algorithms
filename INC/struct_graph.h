@@ -13,9 +13,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define UNVISITED 	(char) 0
-#define VISITED 	(char)1
-#define END 		(char)-1
+#define UNVISITED 			(char) 0
+#define VISITED 			(char) 1
+#define VISITED_BNB 		(char) 2
+#define VISITED_BRUTE_FORCE (char) 3
+#define VISITED_GREEDY 		(char) 4
+#define VISITED_RAND 		(char) 5
+/** ATTENTION : La Plage VISITED_RAND + 1 à MAX_INT peut être prise par : 
+ * 		- Genetic approch lors de la génération des Adn random 
+ * 		- Random approch si le chemin n'est pas trouvé du premier coup
+ */
+#define END 				(char)-1
 
 typedef struct Struct_Node
 {

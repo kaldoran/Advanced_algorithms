@@ -8,10 +8,10 @@
 #include "solution.h"
 #include "graph.h"
 
-void random_approch(Graph g) {
+Solution random_approch(Graph g, int visiteColor) {
 	Solution s;
 	Node current;
-	int j, choix, total_node, poids;
+	int start, j, choix, total_node, poids;
 	srand (time(NULL));
 	
 	j = 0;
@@ -21,9 +21,9 @@ void random_approch(Graph g) {
 		total_node = 0;
 		poids = 0;
 		
-		choix = rand() % g->count_nodes;
+		start = rand() % g->count_nodes;
 
-		current = g->nodes[choix];
+		current = g->nodes[start];
 		current->colored = END;
 
 
@@ -33,20 +33,20 @@ void random_approch(Graph g) {
 
 			choix = -1;
 			/* Check if one is available */
-			for ( j = 0; j < current->count_subnodes && current->subnodes[j]->colored == VISITED; j++ ) ;
+			for ( j = 0; j < current->count_subnodes && current->subnodes[j]->colored == Visite_Color; j++ ) ;
 
-			if ( j == current->count_subnodes && current->subnodes[--j]->colored == VISITED ) { 
+			if ( j == current->count_subnodes && current->subnodes[--j]->colored == Visite_Color ) { 
 				break;
 			}
 
 			do {
 				choix = rand() % current->count_subnodes;
-			}while(current->subnodes[choix]->colored == VISITED);
+			}while(current->subnodes[choix]->colored == Visite_Color);
 
 			if ( choix != -1 ) {
 				total_node++; 
 				if ( current->colored != END ) {
-					current->colored = VISITED;
+					current->colored = Visite_Color;
 				}
 
 				DEBUG_PRINTF("[%d] ", current->name);
@@ -60,18 +60,21 @@ void random_approch(Graph g) {
 		if ( choix != - 1 ) {
 			DEBUG_PRINTF("[%d]", current->name);
 			add_node(s, current, 0);
-
+			
 			if ( total_node == g->count_nodes ) {
+				g->nodes[start] = UNVISITED;
 				print_solution(s);
-				return;
+				return s;
 			} else { 
 				printf("No solution available from this node\n");
+				++Visite_Color;
 			}
 		}
-
-		free_solution(s);
-		reset_coloration(g);		
+		
+		g->nodes[start] = UNVISITED;
+		free_solution(s);	
 	}while(1);
-	return;
+
+	return NULL; /* Never append */
 }
 

@@ -6,6 +6,6 @@
 /** Execute and give the solution of random approch on a graph
  *  %param g : graph where you need to execute the random approch
  */
-void random_approch(Graph g);
+void random_approch(Graph g, int visiteColor);
 
 #endif /* GREEDY_APPROCH_H included */

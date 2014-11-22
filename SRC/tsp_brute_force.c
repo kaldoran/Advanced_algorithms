@@ -63,7 +63,7 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 		return s;
 	}
 
-	if ( n->colored == VISITED) {
+	if ( n->colored == VISITED_BRUTE_FORCE) {
 		free_solution(s);
 		return NULL;
 	}
@@ -93,7 +93,7 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 		++i;
 	}
 
-	if(n->colored == VISITED) {
+	if(n->colored == VISITED_BRUTE_FORCE) {
 		n->colored = UNVISITED;	
 	}
 	free_solution(s);

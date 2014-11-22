@@ -28,7 +28,7 @@ void greedy_approch(Graph g) {
 			current_mini = INT_MAX;
 
 			for ( i = 0; i < current->count_subnodes; i++) {
-				if ( (current->subnodes[i]->colored != VISITED
+				if ( (current->subnodes[i]->colored != VISITED_GREEDY
 					&& current->subnodes[i]->colored != END
 					&& current->cost[i] < current_mini) 
 					|| (  current->subnodes[i]->colored == END
@@ -42,7 +42,7 @@ void greedy_approch(Graph g) {
 			if ( choix != -1 ) {
 				total_node++; 
 				if ( current->colored != END ) {
-					current->colored = VISITED;
+					current->colored = VISITED_GREEDY;
 				}
 
 				DEBUG_PRINTF("[%d] ", current->name);
