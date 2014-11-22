@@ -51,6 +51,12 @@ Solution crossover(const Solution s1, const Solution s2) {
 	return child;
 }
 
+int contains(Solution s, Node n ) {
+	print_solution(s);
+	printf("Name : %d", n->name);	
+	return 1;
+}
+
 void evolution() {
 	return;
 }
@@ -59,10 +65,10 @@ void genetic_approch(Graph g) {
 	int i;
 	Solution best = NULL;
 	Solution *genetic = NULL;
-	genetic = (Solution) calloc( NUMBER_SOLUTION, sizeof(Solution) );
+	genetic = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
 
 	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
-		genetic_approch[i] = random_approch(g, VISITED_RAND + (i + 1));
+		genetic[i] = random_approch(g, VISITED_RAND + (i + 1));
 	}
 	
 	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {

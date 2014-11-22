@@ -5,6 +5,7 @@ void mutate(Solution s);
 
 Solution crossover(const Solution s1, const Solution s2);
 
+int contains(Solution s, Node n); 
 void evolution();
 
 void genetic_approch(Graph g);

@@ -33,20 +33,20 @@ Solution random_approch(Graph g, int visiteColor) {
 
 			choix = -1;
 			/* Check if one is available */
-			for ( j = 0; j < current->count_subnodes && current->subnodes[j]->colored == Visite_Color; j++ ) ;
+			for ( j = 0; j < current->count_subnodes && current->subnodes[j]->colored == visiteColor; j++ ) ;
 
-			if ( j == current->count_subnodes && current->subnodes[--j]->colored == Visite_Color ) { 
+			if ( j == current->count_subnodes && current->subnodes[--j]->colored == visiteColor ) { 
 				break;
 			}
 
 			do {
 				choix = rand() % current->count_subnodes;
-			}while(current->subnodes[choix]->colored == Visite_Color);
+			}while(current->subnodes[choix]->colored == visiteColor);
 
 			if ( choix != -1 ) {
 				total_node++; 
 				if ( current->colored != END ) {
-					current->colored = Visite_Color;
+					current->colored = visiteColor;
 				}
 
 				DEBUG_PRINTF("[%d] ", current->name);
@@ -67,7 +67,7 @@ Solution random_approch(Graph g, int visiteColor) {
 				return s;
 			} else { 
 				printf("No solution available from this node\n");
-				++Visite_Color;
+				++visiteColor;
 			}
 		}
 		
