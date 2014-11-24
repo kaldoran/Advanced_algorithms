@@ -11,70 +11,44 @@
 Solution random_approch(Graph g, int visiteColor) {
 	Solution s;
 	Node current;
-	int start, j, choix, total_node, poids;
+	int start, choix, total_node;
 	srand (time(NULL));
 	
-	j = 0;
+	s = new_solution(g->count_nodes);
+	choix = 0;
+	total_node = 0;
+	
+	start = rand() % g->count_nodes;
+
+	current = g->nodes[start];
+	current->colored = END;
+
+	printf("Noeud départ [%d]\n", current->name);
+
 	do {
-		s = new_solution(g->count_nodes);
+		if ( g->count_nodes == total_node - 1 ) {
+			current = g->nodes[start];
+			current->colored = UNVISITED;
 
-		total_node = 0;
-		poids = 0;
-		
-		start = rand() % g->count_nodes;
-
-		current = g->nodes[start];
-		current->colored = END;
-
-
-		printf("Noeud départ [%d]\n", current->name);
-
-		do {
-
-			choix = -1;
-			/* Check if one is available */
-			for ( j = 0; j < current->count_subnodes && current->subnodes[j]->colored == visiteColor; j++ ) ;
-
-			if ( j == current->count_subnodes && current->subnodes[--j]->colored == visiteColor ) { 
-				break;
-			}
-
-			do {
-				choix = rand() % current->count_subnodes;
-			}while(current->subnodes[choix]->colored == visiteColor);
-
-			if ( choix != -1 ) {
-				total_node++; 
-				if ( current->colored != END ) {
-					current->colored = visiteColor;
-				}
-
-				DEBUG_PRINTF("[%d] ", current->name);
-				add_node(s, current, current->cost[choix]);
-				poids += current->cost[choix];
-				current = current->subnodes[choix];
-			}
-
-		}while(current->colored != END && choix != -1);
-
-		if ( choix != - 1 ) {
-			DEBUG_PRINTF("[%d]", current->name);
-			add_node(s, current, 0);
-			
-			if ( total_node == g->count_nodes ) {
-				g->nodes[start] = UNVISITED;
-				print_solution(s);
-				return s;
-			} else { 
-				printf("No solution available from this node\n");
-				++visiteColor;
-			}
+			add_node(s, g->nodes[start], g->nodes[start]->cost[choix]); /* Weight from A to B is same a from B to A */
+			return s;
 		}
 		
-		g->nodes[start] = UNVISITED;
-		free_solution(s);	
-	}while(1);
+		do {
+			choix = rand() % current->count_subnodes;
+		}while(current->subnodes[choix]->colored == visiteColor);
+	
+		total_node++; 
+		current->colored = visiteColor;
+		
+		DEBUG_PRINTF("[%d] ", current->name);
+		add_node(s, current, current->cost[choix]);
+		s->cost += current->cost[choix];
+		current = current->subnodes[choix];
+	
+		
+	}while(1); /* As all graphs are complet, there is always a path from Start to End */
 
-	return NULL; /* Never append */
+	return NULL; /* Never append, complet graph */
 }
 

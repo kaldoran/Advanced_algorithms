@@ -7,8 +7,14 @@
 #define NUMBER_SOLUTION 	 100
 #define EVOLUTION_ITERATIONS 100
 
+#define UNUSED(X) (void)(X)
+
+#include <limits.h>
+
 #include "struct_graph.h"
 #include "solution.h"
+#include "error.h"
+#include "random_approch.h"
 
 void mutate(Solution s) {
 	int swap = rand() % s->count_nodes_s;
@@ -18,6 +24,18 @@ void mutate(Solution s) {
 	save = s->list_node[toswap]; 
 	s->list_node[swap] = s->list_node[toswap];
 	s->list_node[toswap] = save;	
+}
+
+int contains(Solution s, Node n ) {
+	int i;
+	
+	for ( i = 0; i < s->count_nodes_s; i++ ) {
+		if ( s->list_node[i] == n ) {
+			return 1;
+		}
+	}
+
+	return 0;
 }
 
 Solution crossover(const Solution s1, const Solution s2) {
@@ -49,24 +67,16 @@ Solution crossover(const Solution s1, const Solution s2) {
 			return s2;
 		}
 	}
-	cost_solution(child);
-	return child;
+
+	return child; /* Cost on return child */
 }
 
-int contains(Solution s, Node n ) {
-	int i;
-	
-	for ( i = 0; ; i < s->count_nodes_s; i++ ) {
-		if ( s->list_node[i] = n ) {
-			return 1;
-		}
-	}
-
-	return 0;
+Solution tournment(Solution *sorted) {
+	return sorted[0]; 
 }
 
 void evolution(Solution *genetic) {
-	int i = 0, j = 0, index = 0, bestIndex, bestCost;
+	int i = 0, j = 0, bestCost;
 	Solution *sorted = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
 	
 	if ( sorted == NULL ) {
@@ -75,8 +85,8 @@ void evolution(Solution *genetic) {
 
 	/* Tri */
 	for( i = 0; i < NUMBER_SOLUTION; i++ ) {
-		bestCost = MAX_INT;
-		bestIndex = 0;
+		bestCost = INT_MAX;
+
 		for( j = 0; j < NUMBER_SOLUTION; j++ ) {
 			if (genetic[i] != NULL ) {
 				if ( genetic[i]->cost < bestCost ) {
@@ -92,23 +102,25 @@ void evolution(Solution *genetic) {
 	free(genetic);
 	for ( i = 0; i < ELITE; i++ ) {
 		if ( rand() % 100 < MUTATION_RATE ) {
-			sorted[i] = mutate(sorted[i]);
+			mutate(sorted[i]);
 			cost_solution(sorted[i]);
 		}	
 	}
 
-	while( ) {
+	while( 1 ) {
 		Solution p1 = tournment(sorted);
 		Solution p2 = tournment(sorted);
 		
+		UNUSED(p1);
+		UNUSED(p2);
 		Solution child = new_solution(p1->count_nodes_s);
-
+		UNUSED(child);
 	}
 	
-	return sorted;
+	return;
 }
 
-void genetic_approch(Graph g) {
+Solution genetic_approch(Graph g) {
 	int i;
 	Solution best = NULL;
 	Solution *genetic = NULL;
@@ -130,5 +142,6 @@ void genetic_approch(Graph g) {
 	print_solution(best);
 
 	free_solution(best);
-
+	
+	return best;
 }
