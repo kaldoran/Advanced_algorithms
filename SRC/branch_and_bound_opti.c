@@ -8,34 +8,49 @@
 
 
 Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph) {
-	int cost = 0, k, j;
+	int cost = 0,i, j;
 	if(part->count_nodes_s == best->count_nodes_s -1){
-		printf("np = nb\n");
-		k=0;
-		while(part->list_node[0]->subnodes[k]->name != part->list_node[part->count_nodes_s-1]->name) {
-			++k;
-		}
-		cost = part->cost + part->list_node[0]->cost[k];
+	
+		cost = part->cost + part->list_node[part->count_nodes_s-1]->cost[0];
+		printf("cost nb = np : %d\n",cost);
 		if(cost < best->cost) {
 			best = copy_solution(part);
-			add_node(best, part->list_node[0],part->list_node[0]->cost[k]);
+			add_node(best, part->list_node[0],part->list_node[part->count_nodes_s-1]->cost[0]);
 		}
+		
 		printf("best:");print_solution(best);
 	}
 	else{
 		for(j=0; j < tspGraph->count_nodes; ++j) {
-			printf("1-j: %d, count_nodes_s %d, tsp[j]: %d, color %d\n",j,tspGraph->count_nodes,tspGraph->nodes[j]->name,tspGraph->nodes[j]->colored);
+			printf("	-j = %d",j);
+		
 			int last = part->count_nodes_s-1;
+			
 			if( part->list_node[last]->subnodes[j] != NULL
 			 && part->list_node[last]->subnodes[j]->colored == UNVISITED) {
 
 				cost = part->cost + part->list_node[last]->cost[j];
+				
 				if(cost < best->cost) {
+				
 					add_node(part,part->list_node[last]->subnodes[j],part->list_node[last]->cost[j]);
-					printf("2-j: %d, count_nodes_s %d, tsp[j]: %d\n",j,part->count_nodes_s,tspGraph->nodes[j]->name);
+					
 					printf("part:");print_solution(part);
+					
 					part->list_node[last]->subnodes[j]->colored = VISITED_BNB;
-					best = branch_and_bound_rec_opti(part, best, tspGraph);
+					
+					i = 0;
+					Solution newPart = new_solution(tspGraph->count_nodes + 1 );
+
+					for ( i = 0; i < part->count_nodes_s; i++) {
+						newPart->list_node[i] = part->list_node[i];
+					}
+
+					newPart->cost = part->cost;
+					newPart->count_nodes_s = part->count_nodes_s;
+					
+					best = branch_and_bound_rec_opti(newPart, best, tspGraph);
+					free_solution(newPart);
 					part->list_node[last]->subnodes[j]->colored = UNVISITED;
 				}
 			}
@@ -44,7 +59,7 @@ Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph)
 	return best;
 }
 
-int branch_and_bound_opti(Graph tspGraph) {
+Solution branch_and_bound_opti(Graph tspGraph) {
 	//Indice du noeud de départ.
 	int start = 0; 
 
@@ -63,24 +78,19 @@ int branch_and_bound_opti(Graph tspGraph) {
 
 	tspGraph->nodes[start]->colored = END;
 	current = tspGraph->nodes[start];
-
+	
 	while(j < tspGraph->count_nodes) {
-		while( current->subnodes[i] == NULL
-			|| current->subnodes[i]->colored ==	UNVISITED) {
+		while(i == current->name || (current->subnodes[i]->colored != UNVISITED &&current->subnodes[i]->colored != END)) {
 			++i;
 		}
 		add_node(best,current->subnodes[i],current->cost[i]);
 		current->subnodes[i]->colored = VISITED_BNB;
 		current = current->subnodes[i];
 		++j;
-	}
-	i=0;
-	while(current->subnodes[i]->name != start) {
-		++i;
-	}
-	best->cost += current->cost[i];
-	add_node(best,tspGraph->nodes[start],current->cost[i]);
+	}	
+	add_node(best,tspGraph->nodes[start],current->cost[start]);
 	
+	// Remise à VISITED_BNB des noeuds, sauf le premier.
 	reset_coloration(tspGraph);
 	tspGraph->nodes[start]->colored = END;
 
@@ -88,11 +98,10 @@ int branch_and_bound_opti(Graph tspGraph) {
 	print_solution(best);
 
 	//Lancement de l'algo.
-	Solution bst = branch_and_bound_rec_opti(part, best, tspGraph);
-
-
-	//Affichage du meilleur chemin (à changer vers struct solution)
-	print_solution(bst);
-
-	return EXIT_SUCCESS;
+	
+	Solution result = branch_and_bound_rec_opti(part, best, tspGraph);
+	free_solution(part);
+	free_solution(best);
+	
+	return result;
 }

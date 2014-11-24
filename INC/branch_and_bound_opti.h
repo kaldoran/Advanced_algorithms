@@ -14,4 +14,4 @@
 
 
 Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph);
-int branch_and_bound_opti(Graph tspGraph);
+Solution branch_and_bound_opti(Graph tspGraph);
