@@ -22,7 +22,7 @@ Graph load(const char *filename) {
 	FILE *file;
     Graph tsp_graph = NULL;
      
-	unsigned int i = 0, j = 0, node = 0, number_of_subnode = 0;
+	unsigned int i = 0, j = 0, node = 0;
 	char buffer[BUFFER_SIZE];
 
 	if ((file = fopen(filename, "r")) == NULL ) {
@@ -36,16 +36,16 @@ Graph load(const char *filename) {
 			tsp_graph = new_graph(i);
 		}
 		else if ( *buffer == '-' ) {
-			(void)sscanf(buffer, "- %u@%u", &node, &number_of_subnode);
-			printf("Node : %u - Number of Subnode : %u\n", node, number_of_subnode);
-			(void)set_node(tsp_graph->nodes[node], node, number_of_subnode);
+			(void)sscanf(buffer, "- %u@%u", &i, &j);
+			printf("Node : %u - Number of Subnode : %u\n", node, j);
+			(void)set_node(tsp_graph->nodes[i], i, j);
 		}
 		else if (*buffer != '\n' && *buffer != '_') {
 			(void)sscanf(buffer, "%u#%u", &i, &j);
 			printf("\tSubnode : %u - Weight: %u\n", i, j);
 
-			tsp_graph->nodes[node]->subnodes[--number_of_subnode] = tsp_graph->nodes[i];
-			tsp_graph->nodes[node]->cost[number_of_subnode] = j;
+			tsp_graph->nodes[node]->subnodes[i] = tsp_graph->nodes[i];
+			tsp_graph->nodes[node]->cost[i] = j;
 		}
 	}
 		

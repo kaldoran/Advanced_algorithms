@@ -105,3 +105,10 @@ void print_solution(const Solution s) {
 
 	printf("\n\tCost : %d\n\tNode Count : %d\n", s->cost, s->count_nodes_s);
 }
+
+void cost_solution(const Solution s) {
+	int i = 0;
+	for ( i = 0; ( i + 1 ) < s->count_nodes_s; i++) {
+		s->cost += s->list_node[i]->cost[s->list_node[i+1]->name];
+	}
+}
