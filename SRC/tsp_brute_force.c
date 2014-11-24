@@ -41,7 +41,7 @@ Solution tsp_brute_force(Graph g) {
 	g->nodes[1]->colored = END;
 	add_node(tsp_final_solution, g->nodes[1], 0);
 	tsp_final_solution = brute_force(tsp_final_solution, g->nodes[1], g->count_nodes, 0);
-
+	g->nodes[1]->colored = VISITED_BRUTE_FORCE;
 	print_solution(tsp_final_solution);
 	return tsp_final_solution;
 }

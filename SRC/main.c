@@ -19,7 +19,7 @@
 #include "random_approch.h"
 #include "greedy_approch.h"
 #include "tsp_brute_force.h"
-#include "branch_and_bound.h"
+#include "branch_and_bound_opti.h"
 #include "genetic_approch.h"
 
 /** Temporary maccro */
@@ -60,7 +60,7 @@ if ( argc == 2 ) {
 		
 		printf("Start Branch and Bound approch : \n");
 		start = clock();
-		branch_and_bound(tsp_graph);
+		branch_and_bound_opti(tsp_graph);
 		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
 	
 		printf("Start Genetic approch : \n");

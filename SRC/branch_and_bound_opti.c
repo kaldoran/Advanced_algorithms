@@ -26,14 +26,15 @@ Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph)
 		for(j=0; j < tspGraph->count_nodes; ++j) {
 			printf("1-j: %d, count_nodes_s %d, tsp[j]: %d, color %d\n",j,tspGraph->count_nodes,tspGraph->nodes[j]->name,tspGraph->nodes[j]->colored);
 			int last = part->count_nodes_s-1;
-			if(part->list_node[last]->subnodes[j]->colored == UNVISITED) {
+			if( part->list_node[last]->subnodes[j] != NULL
+			 && part->list_node[last]->subnodes[j]->colored == UNVISITED) {
 
 				cost = part->cost + part->list_node[last]->cost[j];
 				if(cost < best->cost) {
 					add_node(part,part->list_node[last]->subnodes[j],part->list_node[last]->cost[j]);
 					printf("2-j: %d, count_nodes_s %d, tsp[j]: %d\n",j,part->count_nodes_s,tspGraph->nodes[j]->name);
 					printf("part:");print_solution(part);
-					part->list_node[last]->subnodes[j]->colored = VISITED;
+					part->list_node[last]->subnodes[j]->colored = VISITED_BNB;
 					best = branch_and_bound_rec_opti(part, best, tspGraph);
 					part->list_node[last]->subnodes[j]->colored = UNVISITED;
 				}
@@ -45,31 +46,31 @@ Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph)
 
 int branch_and_bound_opti(Graph tspGraph) {
 	//Indice du noeud de départ.
-	int start = 2; 
+	int start = 0; 
 
-	int i, j = 1;
+	int i = 0, j = 1;
 
 	//Noeud pour parcourir le graphe et creer un premier chemin dans best.
 	Node current = NULL; 
 
 	//Chemin de la solution partielle.
-	Solution part = new_solution(tspGraph->count_nodes);
+	Solution part = new_solution(tspGraph->count_nodes + 1);
 	add_node(part,tspGraph->nodes[start],0);
 
 	//Chemin de la meilleure solution.
-	Solution best = new_solution(tspGraph->count_nodes);
+	Solution best = new_solution(tspGraph->count_nodes + 1);
 	add_node(best,tspGraph->nodes[start],0);
 
 	tspGraph->nodes[start]->colored = END;
 	current = tspGraph->nodes[start];
 
 	while(j < tspGraph->count_nodes) {
-		i=0;
-		while(current->subnodes[i]->colored != UNVISITED) {
+		while( current->subnodes[i] == NULL
+			|| current->subnodes[i]->colored ==	UNVISITED) {
 			++i;
 		}
 		add_node(best,current->subnodes[i],current->cost[i]);
-		current->subnodes[i]->colored = VISITED;
+		current->subnodes[i]->colored = VISITED_BNB;
 		current = current->subnodes[i];
 		++j;
 	}
