@@ -37,30 +37,32 @@ if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		
+		printf("Start Brute Force : \n");
 		start = clock();
-	//	free_solution(tsp_brute_force(tsp_graph));
-
+		free_solution(tsp_brute_force(tsp_graph));
 		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) );
 				
+		printf("Start Random Approch : \n");
 		start = clock();
 		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
 		s = random_approch(tsp_graph, VISITED_RAND);
 		print_solution(s);
 		free_solution(s);
-
 		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) );
 		
+		printf("Start Greedy approch : \n");
 		start = clock();
 		s = greedy_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) );
 		
+		printf("Start Branch and Bound approch \n");
 		start = clock();
-		//branch_and_bound(tsp_graph);
+		branch_and_bound(tsp_graph);
 		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
 		
-		reset_coloration(tsp_graph);
+	//	reset_coloration(tsp_graph);
 		start = clock();
 		genetic_approch(tsp_graph);
 		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );

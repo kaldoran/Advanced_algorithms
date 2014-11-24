@@ -104,13 +104,13 @@ void evolution(Solution *genetic) {
 	
 	//free(genetic);
 	for ( i = 0; i < ELITE; i++ ) {
-		print_solution(sorted[i]);
+		//print_solution(sorted[i]);
 		if ( rand() % 100 < MUTATION_RATE ) {
 			mutate(sorted[i]);
 			cost_solution(sorted[i]);
 		}	
 	}
-
+	DEBUG_PRINTF("END MUTATION");
 	while( 1 ) {
 		Solution p1 = tournment(sorted);
 		Solution p2 = tournment(sorted);
