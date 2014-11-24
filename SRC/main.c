@@ -58,11 +58,12 @@ if ( argc == 2 ) {
 		free_solution(s);
 		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) );
 		
-		printf("Start Branch and Bound approch \n");
+		printf("Start Branch and Bound approch : \n");
 		start = clock();
 		branch_and_bound(tsp_graph);
 		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
-		
+	
+		printf("Start Genetic approch : \n");
 	//	reset_coloration(tsp_graph);
 		start = clock();
 		genetic_approch(tsp_graph);
