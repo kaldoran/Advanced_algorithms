@@ -26,7 +26,7 @@ my $visual = 0;
 my $all_random = 0;
 my $help = 0;
 my $check_dot = "";
-my $complet = 0;
+my $complet = 1;
 my $quiet = 0;
 
 ## Variable pour le programme
@@ -203,13 +203,13 @@ if ( $help ) {
 sub help {
     system("clear");
     print "\tTSPGenerator - By Reynaud Nicolas\n\t=================================\n\n";
-    print "Usage : ./TSPGenerator --node 10 --link 5 [--visual] [--quiet]\n";
+    print "Usage : ./TSPGenerator -c --node 10 [--visual] [--quiet]\n";
     print "Or : ./TSPGenerator --random [--visual]\n";
     print "\n--visual or -v : Toggle or not the edition of Graph\n";
     print "--node or -n : Number of node [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
     print "--link or -l : Minimum number of edge\n";
     print "--random or -r : Toggle or not random graphs\n";
-	print "--Complet or -c : toggle or not if the graph is complete\n\n";
+	print "--NoComplet or -c : disable complet graph\n\n";
 	print "--quit or -q : Toggle if the programme is quiet or not (i.e. if he is in verbose mode or not)";
     print "NB : -h and -r and -c  got higher priority than others.\n\n";
 }

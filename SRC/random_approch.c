@@ -12,43 +12,37 @@ Solution random_approch(Graph g, int visiteColor) {
 	Solution s;
 	Node current;
 	int start, choix, total_node;
-	srand (time(NULL));
 	
-	s = new_solution(g->count_nodes);
+	s = new_solution(g->count_nodes + 1); /* 2 Time the first node */
 	choix = 0;
-	total_node = 0;
-	
-	start = rand() % g->count_nodes;
-
+	total_node = 1;
+	do {
+		start = rand() % g->count_nodes;
+	} while(g->nodes[start] == NULL);
 	current = g->nodes[start];
 	current->colored = END;
+	add_node(s, current, 0); /** Add starting node */
 
 	printf("Noeud départ [%d]\n", current->name);
 
 	do {
-		if ( g->count_nodes == total_node - 1 ) {
-			current = g->nodes[start];
-			current->colored = UNVISITED;
 
-			add_node(s, g->nodes[start], g->nodes[start]->cost[choix]); /* Weight from A to B is same a from B to A */
-			return s;
-		}
-		
 		do {
 			choix = rand() % current->count_subnodes;
-		}while(current->subnodes[choix]->colored == visiteColor);
+		}while( current->subnodes[choix] == NULL 
+			    || current->subnodes[choix]->colored == visiteColor
+				|| current->subnodes[choix]->colored == END);
 	
-		total_node++; 
-		current->colored = visiteColor;
-		
-		DEBUG_PRINTF("[%d] ", current->name);
-		add_node(s, current, current->cost[choix]);
-		s->cost += current->cost[choix];
+		++total_node; 
+		add_node(s, current->subnodes[choix], current->cost[choix]);
+	
 		current = current->subnodes[choix];
-	
-		
-	}while(1); /* As all graphs are complet, there is always a path from Start to End */
+		current->colored = visiteColor;
 
-	return NULL; /* Never append, complet graph */
+	}while(g->count_nodes != total_node ); /* As all graphs are complet, there is always a path from Start to End */
+	g->nodes[start]->colored = visiteColor;	
+	add_node(s, g->nodes[start], current->cost[start]); 		/* Weight 0 cause already add on last loop */
+
+	return s;
 }
 

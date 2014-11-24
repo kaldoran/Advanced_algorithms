@@ -53,6 +53,9 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 	Solution sub_solution=NULL;
 
 	Solution* tab_solution = NULL;
+	if ( n == NULL ) {
+		return NULL;
+	}
 
 	if ( (n->colored == END) && (s->count_nodes_s > 1)) {
 		if((s->count_nodes_s < total_node)) {

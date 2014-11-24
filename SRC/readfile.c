@@ -22,7 +22,7 @@ Graph load(const char *filename) {
 	FILE *file;
     Graph tsp_graph = NULL;
      
-	unsigned int i = 0, j = 0, node = 0;
+	unsigned int i = 0, j = 0, node = 0, total_node = 0;
 	char buffer[BUFFER_SIZE];
 
 	if ((file = fopen(filename, "r")) == NULL ) {
@@ -31,14 +31,19 @@ Graph load(const char *filename) {
 
 	while(fgets(buffer, BUFFER_SIZE, file) != NULL ) {
 		if ( *buffer == '$' ) {
-			(void)sscanf(buffer, "$%u$", &i);
-			printf("Number of Node : %u\n", i);
-			tsp_graph = new_graph(i);
+			(void)sscanf(buffer, "$%u$", &total_node);
+			printf("Number of Node : %u\n", total_node);
+			tsp_graph = new_graph(total_node);
 		}
 		else if ( *buffer == '-' ) {
-			(void)sscanf(buffer, "- %u@%u", &i, &j);
-			printf("Node : %u - Number of Subnode : %u\n", node, j);
-			(void)set_node(tsp_graph->nodes[i], i, j);
+			(void)sscanf(buffer, "- %u@%u", &node, &j);
+			printf("Node : %u - Number of Node : %u\n", node, j);
+			if ( total_node != (j + 1) ) {
+				free_graph(tsp_graph);
+				QUIT_MSG("Sorry, the graph is not complet\n");
+			}
+			(void)set_node(tsp_graph->nodes[node], node, j + 1);
+
 		}
 		else if (*buffer != '\n' && *buffer != '_') {
 			(void)sscanf(buffer, "%u#%u", &i, &j);

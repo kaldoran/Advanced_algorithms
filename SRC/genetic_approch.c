@@ -17,10 +17,12 @@
 #include "random_approch.h"
 
 void mutate(Solution s) {
-	int swap = rand() % s->count_nodes_s;
-	int toswap = rand() % s->count_nodes_s;
-
+	print_solution(s);
+	int swap = rand() % (s->count_nodes_s - 1) + 1; /* 2 Time starting node*/
+	int toswap = rand() % (s->count_nodes_s - 1);
+	DEBUG_PRINTF("%d - %d\n", swap, toswap);
 	Node save = NULL;
+
 	save = s->list_node[toswap]; 
 	s->list_node[swap] = s->list_node[toswap];
 	s->list_node[toswap] = save;	
@@ -89,18 +91,20 @@ void evolution(Solution *genetic) {
 
 		for( j = 0; j < NUMBER_SOLUTION; j++ ) {
 			if (genetic[i] != NULL ) {
-				if ( genetic[i]->cost < bestCost ) {
+				if ( genetic[i]->cost <= bestCost ) {
 					bestCost = genetic[i]->cost;
 					sorted[j] = genetic[i]; /* Deplacement du pointeur */
 					genetic[i] = NULL;
-					++j;
 				}	
 			}	
 		}
+		++j;
+		fprintf(stderr,"Pointeur de sorted : %p", sorted[j]);
 	}
 	
-	free(genetic);
+	//free(genetic);
 	for ( i = 0; i < ELITE; i++ ) {
+		print_solution(sorted[i]);
 		if ( rand() % 100 < MUTATION_RATE ) {
 			mutate(sorted[i]);
 			cost_solution(sorted[i]);
@@ -131,8 +135,9 @@ Solution genetic_approch(Graph g) {
 
 	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
 		genetic[i] = random_approch(g, VISITED_RAND + (i + 1));
+		print_solution(genetic[i]);
 	}
-	
+	DEBUG_PRINTF("END GENERATE");	
 	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
 		evolution(genetic);
 	}

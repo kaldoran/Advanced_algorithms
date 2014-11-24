@@ -80,7 +80,8 @@ int branch_and_bound(Graph tspGraph) {
 
 	while(j < tspGraph->count_nodes) {
 		for(i = 0; i < current->count_subnodes; ++i) {
-			if(current->subnodes[i]->colored == UNVISITED) {
+			if( current->subnodes[i] != NULL
+			 && current->subnodes[i]->colored == UNVISITED) {
 				best->path[j] = current->subnodes[i]->name;
 				current->subnodes[i]->colored = VISITED_BNB;
 				best->weight += current->cost[i];
