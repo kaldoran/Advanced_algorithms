@@ -33,6 +33,7 @@ int main(int argc, char const *argv[]) {
 	Solution s;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
+
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
