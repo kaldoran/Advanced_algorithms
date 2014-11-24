@@ -1,7 +1,9 @@
-#define MUTATION_RATE 0.5
+#define MUTATION_RATE 50
 #define CLONE_RATE 10
 #define EPSILON 0.02
 
+#define ELITE_PARENT 		 10 
+#define ELITE 				 10
 #define NUMBER_SOLUTION 	 100
 #define EVOLUTION_ITERATIONS 100
 
@@ -47,18 +49,63 @@ Solution crossover(const Solution s1, const Solution s2) {
 			return s2;
 		}
 	}
-
+	cost_solution(child);
 	return child;
 }
 
 int contains(Solution s, Node n ) {
-	print_solution(s);
-	printf("Name : %d", n->name);	
-	return 1;
+	int i;
+	
+	for ( i = 0; ; i < s->count_nodes_s; i++ ) {
+		if ( s->list_node[i] = n ) {
+			return 1;
+		}
+	}
+
+	return 0;
 }
 
-void evolution() {
-	return;
+void evolution(Solution *genetic) {
+	int i = 0, j = 0, index = 0, bestIndex, bestCost;
+	Solution *sorted = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
+	
+	if ( sorted == NULL ) {
+		QUIT_MSG("Can't allocate sorted");
+	}
+
+	/* Tri */
+	for( i = 0; i < NUMBER_SOLUTION; i++ ) {
+		bestCost = MAX_INT;
+		bestIndex = 0;
+		for( j = 0; j < NUMBER_SOLUTION; j++ ) {
+			if (genetic[i] != NULL ) {
+				if ( genetic[i]->cost < bestCost ) {
+					bestCost = genetic[i]->cost;
+					sorted[j] = genetic[i]; /* Deplacement du pointeur */
+					genetic[i] = NULL;
+					++j;
+				}	
+			}	
+		}
+	}
+	
+	free(genetic);
+	for ( i = 0; i < ELITE; i++ ) {
+		if ( rand() % 100 < MUTATION_RATE ) {
+			sorted[i] = mutate(sorted[i]);
+			cost_solution(sorted[i]);
+		}	
+	}
+
+	while( ) {
+		Solution p1 = tournment(sorted);
+		Solution p2 = tournment(sorted);
+		
+		Solution child = new_solution(p1->count_nodes_s);
+
+	}
+	
+	return sorted;
 }
 
 void genetic_approch(Graph g) {
@@ -66,6 +113,9 @@ void genetic_approch(Graph g) {
 	Solution best = NULL;
 	Solution *genetic = NULL;
 	genetic = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
+	if ( genetic == NULL ) {
+		QUIT_MSG("Can't allocated Solution");
+	}
 
 	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
 		genetic[i] = random_approch(g, VISITED_RAND + (i + 1));

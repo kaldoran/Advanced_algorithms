@@ -60,5 +60,6 @@ void free_solution(Solution s);
  */
 void print_solution(const Solution s);
 
+void cost_solution(const Graph g, const Solution s);
 
 #endif /* SOLUTION_H included */
