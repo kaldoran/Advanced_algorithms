@@ -8,8 +8,6 @@ use constant NUMBER_MIN_NODE => 2;
 use constant NUMBER_MIN_LINK => 1;
 use constant MAX_WEIGHT => 50;
 use constant TMP_FILE => "tmp_graph_dot";
-use constant OUTPUT_FILE => "output.graph";
-
 use Time::HiRes;
 
 #############################################################
@@ -113,7 +111,7 @@ if ( $help ) {
         print (FILE "graph G {\n");
     }
     
-	open(OUTPUT, ">".OUTPUT_FILE ) or die "[ FATAL ERROR ] : $!\n";
+	open(OUTPUT, ">graph$number_node.graph" ) or die "[ FATAL ERROR ] : $!\n";
 	print (OUTPUT "\$$number_node\$\n");
 
     for ( my $i = 0; $i < $number_node ; $i++ ) {
