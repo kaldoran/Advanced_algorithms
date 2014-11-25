@@ -1,6 +1,6 @@
 //----------------------------------------------------------
 // AUTEUR : BASCOL Kevin                                    |
-// FICHIER : branch_and_bound_opti.h                             |
+// FICHIER : branch_and_bound.h                             |
 // DATE : 31/10/14                                          |
 //----------------------------------------------------------
 
@@ -13,5 +13,5 @@
 #include "solution.h"
 
 
-Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph);
-Solution branch_and_bound_opti(Graph tspGraph);
+Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph);
+Solution branch_and_bound(Graph tspGraph);
