@@ -10,6 +10,7 @@
 #define TOURNAMENT_SIZE     (( NUMBER_SOLUTION * TOURNAMENT_POURCENT) / 100)
 #define TOTAL_ELITE 		(( NUMBER_SOLUTION * ELITE_POURCENT) / 100)
 
+#define RANDOM(MIN, MAX)	((rand() % ( MAX - MIN )) + MIN )
 #define UNUSED(X) (void)(X)
 
 #include <limits.h>
@@ -21,18 +22,21 @@
 
 Solution mutate(Solution s) {
 	
-	int swap = rand() % (s->count_nodes_s - 2) + 1; /* Can't swap start and end node */
-	int toswap = rand() % (s->count_nodes_s - 2) + 1;
+	int swap =   RANDOM(1, s->count_nodes_s - 2); /* Can't swap start and end node */
+	int toswap = RANDOM(1, s->count_nodes_s - 2);
 	if ( swap == toswap ) {
 		return s;
 	}
 	DEBUG_PRINTF("%d - %d", swap, toswap);
+	printf("Solution before mutate\n");
+	print_solution(s);
 	Node save = NULL;
 
-	save = s->list_node[toswap]; 
+	save = s->list_node[swap]; 
 	s->list_node[swap] = s->list_node[toswap];
 	s->list_node[toswap] = save;	
 
+	cost_solution(s);
 	return s;
 }
 
@@ -59,11 +63,11 @@ Solution crossover(const Solution s1, const Solution s2) {
 		}
 	}
 	
-	Solution child = new_solution(s2->count_nodes_s + 1);
+	Solution child = new_solution(s1->count_nodes_s);
 	int i, start, end, rdm_index1, rdm_index2;
 
 	rdm_index1 = rand() % (s1->count_nodes_s - 1);
-	rdm_index2 = rand() % (s2->count_nodes_s - 1);
+	rdm_index2 = rand() % (s1->count_nodes_s - 1);
 	
 	if ( rdm_index1 == rdm_index2 ) {
 		return s2;
@@ -76,13 +80,12 @@ Solution crossover(const Solution s1, const Solution s2) {
 		add_node(child, s1->list_node[i], 0);
 	}
 		
-	for ( i = 0; i < s2->count_nodes_s; i++ ) {
+	for ( i = 0; i < s2->count_nodes_s - 1; i++ ) {
 		if( !contains(child, s2->list_node[i]) ) {
 			add_node(child, s2->list_node[i], 0);
 		}
 	}
 	add_node(child, child->list_node[0], 0);
-
 	return child; /* Cost on return child */
 }
 
@@ -125,7 +128,6 @@ void evolution(Solution *genetic) {
 		}
 		
 		sorted[k] = genetic[bestNode]; /* Deplacement du pointeur */
-		//fprintf(stderr, "Sorted : %p - Genetic %p\n", sorted[k], genetic[bestNode]);
 		genetic[i] = NULL;
 
 		++k;
@@ -145,7 +147,6 @@ void evolution(Solution *genetic) {
 		Solution p1 = tournment(sorted);
 		Solution p2 = tournment(sorted);
 
-		fprintf(stderr, "%p - %p - node left : %d i : %d\n", p1, p2, node_left, i);
 		Solution child = crossover(p1, p2);
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = mutate(child);
@@ -173,7 +174,7 @@ Solution genetic_approch(Graph g) {
 
 	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
 		genetic[i] = random_approch(g, VISITED_RAND + (i + 1));
-		print_solution(genetic[i]);
+
 	}
 
 	DEBUG_PRINTF("------------- END GENERATE");	

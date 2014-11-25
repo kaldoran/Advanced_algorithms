@@ -60,17 +60,17 @@ if ( argc == 2 ) {
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-*/	
+
 		printf("Start Branch and Bound approch Opti : \n");
 		start = clock();
 		s = branch_and_bound_opti(tsp_graph);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-	
+*/	
 		printf("Start Genetic approch : \n");
 		start = clock();
-	//	genetic_approch(tsp_graph);
+		genetic_approch(tsp_graph);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
 		
 	
