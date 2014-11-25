@@ -4,7 +4,7 @@
 #define ELITE_PARENT 		 10 
 #define ELITE_POURCENT		 10
 #define TOURNAMENT_POURCENT  10
-#define NUMBER_SOLUTION 	 50
+#define NUMBER_SOLUTION 	 10
 #define EVOLUTION_ITERATIONS 1
 
 #define TOURNAMENT_SIZE     (( NUMBER_SOLUTION * TOURNAMENT_POURCENT) / 100)
@@ -20,10 +20,13 @@
 #include "random_approch.h"
 
 Solution mutate(Solution s) {
-
-	int swap = rand() % (s->count_nodes_s - 1) + 1; /* 2 Time starting node*/
-	int toswap = rand() % (s->count_nodes_s - 1) + 1;
-	//DEBUG_PRINTF("%d - %d", swap, toswap);
+	
+	int swap = rand() % (s->count_nodes_s - 2) + 1; /* Can't swap start and end node */
+	int toswap = rand() % (s->count_nodes_s - 2) + 1;
+	if ( swap == toswap ) {
+		return s;
+	}
+	DEBUG_PRINTF("%d - %d", swap, toswap);
 	Node save = NULL;
 
 	save = s->list_node[toswap]; 
@@ -56,24 +59,29 @@ Solution crossover(const Solution s1, const Solution s2) {
 		}
 	}
 	
-	Solution child = new_solution(s1->count_nodes_s);
+	Solution child = new_solution(s2->count_nodes_s + 1);
 	int i, start, end, rdm_index1, rdm_index2;
 
-	rdm_index1 = rand() % s1->count_nodes_s;
-	rdm_index2 = rand() % s2->count_nodes_s;
+	rdm_index1 = rand() % (s1->count_nodes_s - 1);
+	rdm_index2 = rand() % (s2->count_nodes_s - 1);
 	
+	if ( rdm_index1 == rdm_index2 ) {
+		return s2;
+	}
+
 	start = (rdm_index1 <= rdm_index2 ) ? rdm_index1 : rdm_index2;
-	end   = (rdm_index1 > rdm_index2 ) ? rdm_index2 : rdm_index1;
+	end   = (rdm_index1 > rdm_index2 ) ? rdm_index1 : rdm_index2;
 
 	for ( i = start; i < end; i++ ) {
 		add_node(child, s1->list_node[i], 0);
 	}
-
+		
 	for ( i = 0; i < s2->count_nodes_s; i++ ) {
 		if( !contains(child, s2->list_node[i]) ) {
 			add_node(child, s2->list_node[i], 0);
 		}
 	}
+	add_node(child, child->list_node[0], 0);
 
 	return child; /* Cost on return child */
 }
@@ -81,8 +89,7 @@ Solution crossover(const Solution s1, const Solution s2) {
 Solution tournment(Solution *sorted) {
 
 	if ( rand() % 100 < ELITE_PARENT) {
-		return sorted[0];
-		//return sorted[rand() % TOTAL_ELITE];
+		return sorted[rand() % TOTAL_ELITE];
 	}
 
 	int i;
@@ -91,9 +98,8 @@ Solution tournment(Solution *sorted) {
 	for ( i = 0; i < TOURNAMENT_SIZE; i++ ) {
 		tournment[i] = sorted[rand() % (NUMBER_SOLUTION - 1) ];
 	}
-	free(tournment);
-	return sorted[0];
-	//return best_solution(tournment, TOURNAMENT_SIZE);
+
+	return best_solution(tournment, TOURNAMENT_SIZE);
 }
 
 void evolution(Solution *genetic) {
@@ -131,7 +137,7 @@ void evolution(Solution *genetic) {
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = mutate(sorted[i]);
 			cost_solution(genetic[i]);
-		}	
+		}
 	}
 
 	DEBUG_PRINTF("END MUTATION - %d ",  node_left);
@@ -143,15 +149,16 @@ void evolution(Solution *genetic) {
 		Solution child = crossover(p1, p2);
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = mutate(child);
-			cost_solution(child);
 		} else { 
 			genetic[i] = child;
 		}
+
+		cost_solution(genetic[i]);
 		++i;
 		--node_left;
 	}
 
-	free(sorted);
+	//free(sorted);
 	return;
 }
 
@@ -169,17 +176,18 @@ Solution genetic_approch(Graph g) {
 		print_solution(genetic[i]);
 	}
 
-	DEBUG_PRINTF("END GENERATE");	
-/*	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
+	DEBUG_PRINTF("------------- END GENERATE");	
+	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
 		evolution(genetic);
 	}
-
+	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
+		print_solution(genetic[i]);
+	}
 
 	DEBUG_PRINTF("END EVOL");
 	best = best_solution(genetic, NUMBER_SOLUTION);
 	print_solution(best);
 
-	*/
 	free_solution(best);
 	
 	return best;
