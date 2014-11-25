@@ -110,3 +110,17 @@ void cost_solution(const Solution s) {
 		s->cost += s->list_node[i]->cost[s->list_node[i+1]->name];
 	}
 }
+
+
+int contains(Solution s, Node n ) {
+	int i;
+	
+	for ( i = 0; i < s->count_nodes_s; i++ ) {
+		if ( s->list_node[i] == n ) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+

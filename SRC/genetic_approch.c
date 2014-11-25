@@ -36,18 +36,6 @@ Solution mutate(Solution s) {
 	return s;
 }
 
-int contains(Solution s, Node n ) {
-	int i;
-	
-	for ( i = 0; i < s->count_nodes_s; i++ ) {
-		if ( s->list_node[i] == n ) {
-			return 1;
-		}
-	}
-
-	return 0;
-}
-
 Solution crossover(const Solution s1, const Solution s2) {
 
 	Solution child = NULL;

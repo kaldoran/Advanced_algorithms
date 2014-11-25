@@ -62,4 +62,6 @@ void print_solution(const Solution s);
 
 void cost_solution(const Solution s);
 
+int contains(Solution s, Node n); 
+
 #endif /* SOLUTION_H included */
