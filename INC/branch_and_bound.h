@@ -1,6 +1,6 @@
 //----------------------------------------------------------
 // AUTEUR : BASCOL Kevin                                    |
-// FICHIER : branch_and_bound.h                             |
+// FICHIER : branch_and_bound_opti.h                             |
 // DATE : 31/10/14                                          |
 //----------------------------------------------------------
 
@@ -10,15 +10,8 @@
 #include "graph.h"
 #include "readfile.h"
 #include "struct_graph.h"
+#include "solution.h"
 
-typedef struct structBnb {
-	int nbNodes;
-	int weight;
-	int* path;
-} bnbStruct;
 
-typedef bnbStruct* bnb;
-
-char isInTab(int n, int* tab, int l);
-bnb branch_and_bound_rec(bnb part, bnb best, Graph tspGraph);
-int branch_and_bound(Graph tspGraph);
+Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph);
+Solution branch_and_bound_opti(Graph tspGraph);

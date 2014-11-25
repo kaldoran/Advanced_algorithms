@@ -1,54 +1,55 @@
 //----------------------------------------------------------
 // AUTEUR : BASCOL Kevin                                    |
-// FICHIER : branch_and_bound.c                             |
+// FICHIER : branch_and_bound_opti.c                        |
 // DATE : 28/10/14                                          |
 //----------------------------------------------------------
 
-#include "branch_and_bound.h"
+#include "branch_and_bound_opti.h"
 
-char isInTab(int n, int* tab, int l) {
-	int i;
-	for(i =0; i < l; ++i){
-		if(n == tab[i]){
-			return 1;
-		}
-	}
-	return 0;
-}
 
-bnb branch_and_bound_rec(bnb part, bnb best, Graph tspGraph) {
-	int cost = 0, k;
-	if(part->nbNodes == best->nbNodes -1){
-		k=0;
-		while(tspGraph->nodes[part->path[0]]->subnodes[k]->name != tspGraph->nodes[part->path[part->nbNodes-1]]->name) {
-			++k;
-		}
-		cost = part->weight + tspGraph->nodes[part->path[0]]->cost[k];
-		if(cost < best->weight) {
-			for(k = 0; k < part->nbNodes; ++k) {
-				best->path[k] = part->path[k];
-			}
-			best->path[part->nbNodes] = part->path[0];
-			best->weight = cost;	
+Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph) {
+	int cost = 0,i, j;
+	if(part->count_nodes_s == best->count_nodes_s -1){
+	
+		cost = part->cost + part->list_node[part->count_nodes_s-1]->cost[0];
+		if(cost < best->cost) {
+			best = copy_solution(part);
+			add_node(best, part->list_node[0],part->list_node[part->count_nodes_s-1]->cost[0]);
 		}
 	}
 	else{
-		int j;
 		for(j=0; j < tspGraph->count_nodes; ++j) {
-			if(!isInTab(j, part->path, part->nbNodes)) {
-				k=0;
-				while(tspGraph->nodes[part->path[part->nbNodes-1]]->subnodes[k]->name != j) {
-					++k;
-				}
-				cost = part->weight + tspGraph->nodes[part->path[part->nbNodes-1]]->cost[k];
-				if(cost < best->weight) {
-					bnb newPart = (bnb)malloc(sizeof(*newPart));
-					/* Tu as pas testé le retour ^^ */
-					newPart->nbNodes = part->nbNodes +1;
-					newPart->weight = cost;
-					newPart->path = part->path;
-					newPart->path[part->nbNodes] = j;
-					best = branch_and_bound_rec(newPart, best, tspGraph);
+			int last = part->count_nodes_s-1;
+			
+			if( part->list_node[last]->subnodes[j] != NULL
+			 && part->list_node[last]->subnodes[j]->colored == UNVISITED) {
+
+				cost = part->cost + part->list_node[last]->cost[j];
+				
+				if(cost < best->cost) {
+				
+					add_node(part,part->list_node[last]->subnodes[j],part->list_node[last]->cost[j]);
+					
+					part->list_node[last]->subnodes[j]->colored = VISITED_BNB;
+					
+					i = 0;
+					Solution newPart = new_solution(tspGraph->count_nodes + 1 );
+
+					for ( i = 0; i < part->count_nodes_s; i++) {
+						newPart->list_node[i] = part->list_node[i];
+					}
+
+					newPart->cost = part->cost;
+					newPart->count_nodes_s = part->count_nodes_s;
+					
+					best = branch_and_bound_rec_opti(newPart, best, tspGraph);
+					
+					free_solution(newPart);
+					
+					part->list_node[last]->subnodes[j]->colored = UNVISITED;
+					--part->count_nodes_s;
+					part->cost -= part->list_node[last]->cost[j];
+					part->list_node[last+1]=NULL;
 				}
 			}
 		}
@@ -56,59 +57,40 @@ bnb branch_and_bound_rec(bnb part, bnb best, Graph tspGraph) {
 	return best;
 }
 
-int branch_and_bound(Graph tspGraph) {
-	int start = 0;
-	int i, j = 1;
-	Node current = NULL;
+Solution branch_and_bound_opti(Graph tspGraph) {
+	int start = 0; 
+	int i = 0, j = 1;
+	Node current = NULL; 
 
-	bnb part = (bnb)malloc(sizeof(*part));
-	/* La non plus le retour est pas testé */
-	part->nbNodes = 1;
-	part->weight = 0;
-	part->path = (int*)calloc(tspGraph->count_nodes, sizeof(int));
-	/* Pas testé */
-	part->path[0] = start;
+	Solution part = new_solution(tspGraph->count_nodes + 1);
+	add_node(part,tspGraph->nodes[start],0);
 
-	bnb best = (bnb)malloc(sizeof(*best));
-	best->nbNodes = tspGraph->count_nodes;
-	best->weight = 0;
-	best->path = (int*)calloc(tspGraph->count_nodes, sizeof(int));
-	/* Pas testé */
-	best->path[0] = start;
+	Solution best = new_solution(tspGraph->count_nodes + 1);
+	add_node(best,tspGraph->nodes[start],0);
+
 	tspGraph->nodes[start]->colored = END;
 	current = tspGraph->nodes[start];
-
+	
+	// Find the first path that come to use as "best" solution.
 	while(j < tspGraph->count_nodes) {
-		for(i = 0; i < current->count_subnodes; ++i) {
-			if( current->subnodes[i] != NULL
-			 && current->subnodes[i]->colored == UNVISITED) {
-				best->path[j] = current->subnodes[i]->name;
-				current->subnodes[i]->colored = VISITED_BNB;
-				best->weight += current->cost[i];
-				current = current->subnodes[i];
-				++j;
-			}		
+		while(i == current->name || (current->subnodes[i]->colored == VISITED_BNB &&current->subnodes[i]->colored != END)) {
+			++i;
 		}
-	}
-	best->path[j] = tspGraph->nodes[start]->name;
-	++best->nbNodes;
-	i=0;
-	while(current->subnodes[i]->name != start){
-		++i;
-	}
-	best->weight += current->cost[i];
+		add_node(best,current->subnodes[i],current->cost[i]);
+		current->subnodes[i]->colored = VISITED_BNB;
+		current = current->subnodes[i];
+		++j;
+	}	
+	add_node(best,tspGraph->nodes[start],current->cost[start]);
+	
+	reset_coloration(tspGraph);
+	tspGraph->nodes[start]->colored = END;
 
-	for(i = 0; i < best->nbNodes -1; ++i) {
-		printf("%d - ", best->path[i]);
-	}
-	printf("%d weight: %d\n", best->path[i], best->weight);
+	// Launch of the recursive algorithm.	
+	Solution result = branch_and_bound_rec_opti(part, best, tspGraph);
 
-	bnb bst = branch_and_bound_rec(part, best, tspGraph);
-
-	for(i = 0; i < bst->nbNodes -1; ++i) {
-		printf("%d - ", bst->path[i]);
-	}
-	printf("%d weight: %d\n", bst->path[i], bst->weight);
-
-	return EXIT_SUCCESS;
+	free_solution(part);
+	free_solution(best);
+	
+	return result;
 }
