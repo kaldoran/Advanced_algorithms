@@ -1,13 +1,13 @@
 //----------------------------------------------------------
 // AUTEUR : BASCOL Kevin                                    |
-// FICHIER : branch_and_bound_opti.c                        |
+// FICHIER : branch_and_bound.c                        |
 // DATE : 28/10/14                                          |
 //----------------------------------------------------------
 
-#include "branch_and_bound_opti.h"
+#include "branch_and_bound.h"
 
 
-Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph) {
+Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 	int cost = 0,i, j;
 	if(part->count_nodes_s == best->count_nodes_s -1){
 	
@@ -42,7 +42,7 @@ Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph)
 					newPart->cost = part->cost;
 					newPart->count_nodes_s = part->count_nodes_s;
 					
-					best = branch_and_bound_rec_opti(newPart, best, tspGraph);
+					best = branch_and_bound_rec(newPart, best, tspGraph);
 					
 					free_solution(newPart);
 					
@@ -57,7 +57,7 @@ Solution branch_and_bound_rec_opti(Solution part, Solution best, Graph tspGraph)
 	return best;
 }
 
-Solution branch_and_bound_opti(Graph tspGraph) {
+Solution branch_and_bound(Graph tspGraph) {
 	int start = 0; 
 	int i = 0, j = 1;
 	Node current = NULL; 
@@ -87,7 +87,7 @@ Solution branch_and_bound_opti(Graph tspGraph) {
 	tspGraph->nodes[start]->colored = END;
 
 	// Launch of the recursive algorithm.	
-	Solution result = branch_and_bound_rec_opti(part, best, tspGraph);
+	Solution result = branch_and_bound_rec(part, best, tspGraph);
 
 	free_solution(part);
 	free_solution(best);
