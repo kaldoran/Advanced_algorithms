@@ -41,7 +41,7 @@ if ( argc == 2 ) {
 		printf("Start Brute Force : \n");
 		start = clock();
 		free_solution(tsp_brute_force(tsp_graph));
-		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) );
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
 				
 		printf("Start Random Approch : \n");
 		start = clock();
@@ -49,25 +49,27 @@ if ( argc == 2 ) {
 		s = random_approch(tsp_graph, VISITED_RAND);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) );
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
 		
 		printf("Start Greedy approch : \n");
 		start = clock();
 		s = greedy_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f seconds", (double) (clock() - start) );
-		
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
+
+		//reset_coloration(tsp_graph);
 		printf("Start Branch and Bound approch : \n");
 		start = clock();
-		branch_and_bound_opti(tsp_graph);
-		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
+		s = branch_and_bound_opti(tsp_graph);
+		print_solution(s);
+		free_solution(s);
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) ((clock() - start) / CLOCKS_PER_SEC) );
 	
 		printf("Start Genetic approch : \n");
-	//	reset_coloration(tsp_graph);
 		start = clock();
 		genetic_approch(tsp_graph);
-		printf("\n\t\t Time taken %f seconds", (double) ((clock() - start) / CLOCKS_PER_SEC) );
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) ((clock() - start) / CLOCKS_PER_SEC) );
 		
 	
 		free_graph(tsp_graph);

@@ -73,7 +73,7 @@ Solution branch_and_bound_opti(Graph tspGraph) {
 	
 	// Find the first path that come to use as "best" solution.
 	while(j < tspGraph->count_nodes) {
-		while(i == current->name || (current->subnodes[i]->colored != UNVISITED &&current->subnodes[i]->colored != END)) {
+		while(i == current->name || (current->subnodes[i]->colored == VISITED_BNB &&current->subnodes[i]->colored != END)) {
 			++i;
 		}
 		add_node(best,current->subnodes[i],current->cost[i]);
