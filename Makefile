@@ -30,7 +30,7 @@ all: clear dir $(BIN_DIR)/$(BIN)
 
 $(BIN_DIR)/$(BIN): $(OBJ)
 	$(CC) $(OBJ) -o $@ -I $(INC_DIR) $(CFLAGS)
-	@echo "./bin/"$(BIN)" well created !"
+	@echo "./"$(BIN_DIR)"/"$(BIN)" well created !"
         
 #
 # Object files creation.
