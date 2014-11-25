@@ -17,9 +17,8 @@ typedef struct Stack_node {
 int stack_empty(Stack_node* stack);
 
 void stack_free(Stack_node* stack);
+void stack_push(Stack_node* stack, Node n);
 
-int stack_push(Stack_node* stack, Node n, int nbNode);
-
-int stack_pop(Stack_node* stack, Node n, int nbNode);
+Node stack_pop(Stack_node* stack);
 
 #endif /* _STACK_ INCLUDED */

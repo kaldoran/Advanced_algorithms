@@ -6,6 +6,7 @@
 
 #include <stdlib.h>
 #include "stack.h"
+#include "error.h"
 
 int stack_empty(Stack_node* stack) {
 	if(stack == NULL){
@@ -22,8 +23,7 @@ void stack_free(Stack_node* stack) {
 		free(node);
 	}
 }
-
-int stack_push(Stack_node* stack, Node n, int nbNode) {
+void stack_push(Stack_node* stack, Node n) {
 	Stack_node *newNode = malloc(sizeof *newNode);
 
 	if(newNode == NULL) {
@@ -35,17 +35,17 @@ int stack_push(Stack_node* stack, Node n, int nbNode) {
 	newNode->node = n;
 	stack = newNode;
 	
-	return ++nbNode;
+	return;
 }
 
-int stack_pop(Stack_node* stack, Node n, int nbNode) {	
+Node stack_pop(Stack_node* stack) {
+	Node n = NULL;
 	if(!stack_empty(stack)){
 		Stack_node *rest = stack->next;
 		n = stack->node;
 		free(stack);
 		stack = rest;
-		--nbNode;
 	}
   
-	return nbNode;
+	return n;
 }
