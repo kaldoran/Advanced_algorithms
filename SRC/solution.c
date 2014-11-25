@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #include "solution.h"
 #include "error.h"
@@ -58,24 +59,21 @@ Solution copy_solution( Solution src_s) {
 Solution best_solution( Solution* list_solution, int nb_solution) {
 	int i = 0;
 	int ref = 0;
+	int minCost = INT_MAX;
 
 	if (nb_solution == 0) {
 		return NULL;
 	}
 
 	if ( nb_solution == 1) { 
-		//print_solution(list_solution[0]);
-
 		return list_solution[0];
 	}
 
-	for ( i=0; (i+1) < nb_solution; i++) {
+	for ( i=0; i < nb_solution; i++) {
 
-		//print_solution(list_solution[i]);
-		if (list_solution[i]->cost <= list_solution[i+1]->cost) {
+		if (list_solution[i]->cost <= minCost) {
 			ref = i;
-		} else {
-			ref = i+1;
+			minCost = list_solution[i]->cost;
 		}
 	}
 
