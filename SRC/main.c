@@ -36,8 +36,8 @@ int main(int argc, char const *argv[]) {
 	Solution s;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
-system("aplay -c 1 -q -t wav sound.wav");
-while ( 1 ) ;
+system("aplay -D sysdefault -c 1 -q -t wav sound.wav &");
+
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
