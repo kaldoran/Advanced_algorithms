@@ -23,6 +23,8 @@
 #include "branch_and_bound_opti.h"
 #include "genetic_approch.h"
 
+#include "tsp_mst.h"
+
 /** Temporary maccro */
 #define UNUSED(x) (void)(x)
 
@@ -38,7 +40,8 @@ int main(int argc, char const *argv[]) {
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
-		
+	
+		sol(tsp_graph);	
 		printf("Start Brute Force : \n");
 /*		start = clock();
 		s = tsp_brute_force(tsp_graph);

@@ -116,7 +116,8 @@ int contains(Solution s, Node n ) {
 	int i;
 	
 	for ( i = 0; i < s->count_nodes_s; i++ ) {
-		if ( s->list_node[i] == n ) {
+		if ( s->list_node[i] != NULL 
+		  && s->list_node[i]->name == n->name ) {
 			return 1;
 		}
 	}
