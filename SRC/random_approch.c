@@ -24,7 +24,7 @@ Solution random_approch(Graph g, int visiteColor) {
 	current->colored = END;
 	add_node(s, current, 0); /** Add starting node */
 
-	printf("Noeud départ [%d]\n", current->name);
+	DEBUG_PRINTF("Noeud départ [%d]\n", current->name);
 
 	do {
 
