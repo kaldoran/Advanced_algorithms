@@ -1,6 +1,6 @@
 //----------------------------------------------------------
 // AUTEUR : BASCOL Kevin                                    |
-// FICHIER : branch_and_bound.c                        |
+// FICHIER : branch_and_bound.c                             |
 // DATE : 28/10/14                                          |
 //----------------------------------------------------------
 
@@ -13,7 +13,13 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 	
 		cost = part->cost + part->list_node[part->count_nodes_s-1]->cost[0];
 		if(cost < best->cost) {
-			best = copy_solution(part);
+			for ( i = 0; i < part->count_nodes_s; i++) {
+				best->list_node[i] = part->list_node[i];
+			}
+
+			best->cost = part->cost;
+			best->count_nodes_s = part->count_nodes_s;
+			
 			add_node(best, part->list_node[0],part->list_node[part->count_nodes_s-1]->cost[0]);
 		}
 	}
@@ -90,7 +96,6 @@ Solution branch_and_bound(Graph tspGraph) {
 	Solution result = branch_and_bound_rec(part, best, tspGraph);
 
 	free_solution(part);
-	free_solution(best);
 	
 	return result;
 }
