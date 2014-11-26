@@ -19,6 +19,7 @@ Solution random_approch(Graph g, int visiteColor) {
 	do {
 		start = rand() % g->count_nodes;
 	} while(g->nodes[start] == NULL);
+
 	current = g->nodes[start];
 	current->colored = END;
 	add_node(s, current, 0); /** Add starting node */
