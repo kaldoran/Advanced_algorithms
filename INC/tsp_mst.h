@@ -13,6 +13,6 @@
 #include "solution.h"
 #include "graph.h"
 
-void sol(Graph g);
+void MST(Graph g);
 
 #endif

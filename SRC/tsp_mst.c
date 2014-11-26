@@ -15,9 +15,7 @@
 #include "tsp_mst.h"
 
 
-
-
-void sol(Graph g) {
+void MST(Graph g) {
 	int total_node = 1, i , j, min = 0, index = -1, index2 = -1;
 	Solution s = new_solution(g->count_nodes );
 
