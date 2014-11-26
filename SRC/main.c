@@ -62,8 +62,17 @@ if ( argc == 2 ) {
 		s = greedy_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );		
 /*
+		printf("Start Branch and Bound approch: \n");
+		start = clock();
+		s = branch_and_bound(tsp_graph);
+		print_solution(s);
+		free_solution(s);
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
+*/			
+/*
+		ATTENTION NE MARCHE PAS (c'est pas la peine de venir critiquer si décommenté !)
 		printf("Start Branch and Bound approch Opti : \n");
 		start = clock();
 		s = branch_and_bound_opti(tsp_graph);
