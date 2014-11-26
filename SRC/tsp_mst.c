@@ -41,6 +41,4 @@ void MST(Graph g) {
 		add_node(s, g->nodes[index], 0);
 		++total_node;
 	}
-	print_solution(s);
-
 }

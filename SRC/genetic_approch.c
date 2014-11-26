@@ -1,11 +1,11 @@
-#define MUTATION_RATE 30
-#define CLONE_RATE 10
+#define MUTATION_RATE 20
+#define CLONE_RATE 1
 
 #define ELITE_PARENT 		 10 
 #define ELITE_POURCENT		 10
 #define TOURNAMENT_POURCENT  10
 #define NUMBER_SOLUTION 	 100
-#define EVOLUTION_ITERATIONS 100
+#define EVOLUTION_ITERATIONS 10000
 
 #define TOURNAMENT_SIZE     (( NUMBER_SOLUTION * TOURNAMENT_POURCENT) / 100)
 #define TOTAL_ELITE 		(( NUMBER_SOLUTION * ELITE_POURCENT) / 100)
@@ -21,12 +21,11 @@
 #include "random_approch.h"
 
 Solution mutate(Solution s) {
-	
-	int swap =   RANDOM(1, s->count_nodes_s - 2); /* Can't swap start and end node */
-	int toswap = RANDOM(1, s->count_nodes_s - 2);
-	if ( swap == toswap ) {
-		return s;
-	}
+	int max_value = s->count_nodes_s - 1;
+	int swap =   rand() % max_value; /* Can't swap start and end node */
+	int toswap = rand() % max_value;
+	if ( swap == max_value || toswap == max_value )  { s->list_node[0] = s->list_node[((swap == max_value) ? toswap : swap) ]; }
+	if ( swap == 0 || toswap == 0 )  				 { s->list_node[max_value] = s->list_node[((swap == 0) ? toswap : swap) ]; }
 
 	Node save = NULL;
 
@@ -95,6 +94,7 @@ Solution tournment(Solution *sorted) {
 Solution *evolution(Solution *genetic) {
 
 	int i = 0, j = 0, k = 0, bestCost, node_left, bestNode = 0;
+	Solution tmp = NULL;
 	Solution *sorted = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
 	node_left = NUMBER_SOLUTION;	
 	if ( sorted == NULL ) {
@@ -113,7 +113,6 @@ Solution *evolution(Solution *genetic) {
 				}	
 			}	
 		}
-		
 		sorted[k] = genetic[bestNode]; /* Deplacement du pointeur */
 		genetic[i] = NULL;
 
