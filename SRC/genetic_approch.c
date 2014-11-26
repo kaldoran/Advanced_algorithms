@@ -1,11 +1,11 @@
-#define MUTATION_RATE 50
+#define MUTATION_RATE 30
 #define CLONE_RATE 10
 
 #define ELITE_PARENT 		 10 
 #define ELITE_POURCENT		 10
 #define TOURNAMENT_POURCENT  10
-#define NUMBER_SOLUTION 	 10
-#define EVOLUTION_ITERATIONS 3
+#define NUMBER_SOLUTION 	 100
+#define EVOLUTION_ITERATIONS 100
 
 #define TOURNAMENT_SIZE     (( NUMBER_SOLUTION * TOURNAMENT_POURCENT) / 100)
 #define TOTAL_ELITE 		(( NUMBER_SOLUTION * ELITE_POURCENT) / 100)
@@ -92,7 +92,7 @@ Solution tournment(Solution *sorted) {
 	return best;
 }
 
-void evolution(Solution *genetic) {
+Solution *evolution(Solution *genetic) {
 
 	int i = 0, j = 0, k = 0, bestCost, node_left, bestNode = 0;
 	Solution *sorted = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
@@ -132,7 +132,6 @@ void evolution(Solution *genetic) {
 		}
 	}
 
-	DEBUG_PRINTF("END MUTATION - %d ",  node_left);
 	while( node_left > 0 ) {
 		Solution p1 = tournment(sorted);
 		Solution p2 = tournment(sorted);
@@ -152,7 +151,7 @@ void evolution(Solution *genetic) {
 	}
 
 	free(sorted);
-	return;
+	return genetic;
 }
 
 Solution genetic_approch(Graph g) {
@@ -166,14 +165,13 @@ Solution genetic_approch(Graph g) {
 	printf("Starting generate population");
 	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
 		genetic[i] = random_approch(g, VISITED_RAND + (i + 1));
-
 	}
 	
 	printf("Starting Evolution");
 	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
-		evolution(genetic);
+		genetic = evolution(genetic);
 	}
-
+	
 	best = best_solution(genetic, NUMBER_SOLUTION);
 	free(genetic);
 

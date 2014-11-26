@@ -40,9 +40,9 @@ int main(int argc, char const *argv[]) {
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
-	
+		printf("Most sapnning tree : \n");
 		MST(tsp_graph);	
-		printf("Start Brute Force : \n");
+/*		printf("Start Brute Force : \n");
 		start = clock();
 		s = tsp_brute_force(tsp_graph);
 		print_solution(s);
@@ -51,26 +51,27 @@ if ( argc == 2 ) {
 				
 		printf("Start Random Approch : \n");
 		start = clock();
-		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
-		s = random_approch(tsp_graph, VISITED_RAND);
+*/		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
+/*		s = random_approch(tsp_graph, VISITED_RAND);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
 		
-		printf("Start Greedy approch : \n");
+*/		printf("Start Greedy approch : \n");
 		start = clock();
 		s = greedy_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-
+/*
 		printf("Start Branch and Bound approch Opti : \n");
 		start = clock();
 		s = branch_and_bound_opti(tsp_graph);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-	
+*/	
+		reset_coloration(tsp_graph);
 		printf("Start Genetic approch : \n");
 		start = clock();
 		s = genetic_approch(tsp_graph);

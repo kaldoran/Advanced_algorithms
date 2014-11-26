@@ -78,12 +78,12 @@ Solution best_solution( Solution* list_solution, int nb_solution) {
 	}
 
 	/**free fake solutions */
-	for ( i=0; i< nb_solution; i++) {
+/*	for ( i=0; i< nb_solution; i++) {
 		if ( i != ref ) {
 			free_solution(list_solution[i]);
 		}
 	}
-
+*/
 	return list_solution[ref];
 }
 
@@ -106,6 +106,7 @@ void print_solution(const Solution s) {
 
 void cost_solution(const Solution s) {
 	int i = 0;
+	s->cost = 0;
 	for ( i = 0; ( i + 1 ) < s->count_nodes_s; i++) {
 		s->cost += s->list_node[i]->cost[s->list_node[i+1]->name];
 	}
