@@ -57,6 +57,9 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 					part->cost -= part->list_node[last]->cost[j];
 					part->list_node[last+1]=NULL;
 				}
+				else{
+					return best;
+				}
 			}
 		}
 	}
