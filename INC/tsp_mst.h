@@ -15,4 +15,6 @@
 
 void MST(Graph g);
 
+void prefix_course(Node tree);
+
 #endif
