@@ -38,7 +38,7 @@ void MST(Graph g) {
 
 		}
 		
-		printf("De : %d [%d] - %d [%d]\n", s->list_node[index2]->name, index2, s->list_node[index]->name, index);
+		printf("De : %d [%d] - %d [%d]\n", s->list_node[index2]->name, index2, g->nodes[index]->name, index);
 		set_node(minimal_spanning_tree->nodes[index2], index2,g->count_nodes);	
 		set_node(minimal_spanning_tree->nodes[index], index,g->count_nodes);	
 
