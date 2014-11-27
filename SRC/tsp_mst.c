@@ -31,8 +31,8 @@ void MST(Graph g) {
 				  && s->list_node[i]->cost[j] < min 
 				  && !contains(s, s->list_node[i]->subnodes[j]) ){
 					min = s->list_node[i]->cost[j];
-					index = j;
-					index2 = i;
+					index =  s->list_node[j]->name;
+					index2 = s->list_node[i]->name;
 				}
 			}
 
