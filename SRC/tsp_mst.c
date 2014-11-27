@@ -22,7 +22,7 @@ void MST(Graph g) {
 	set_node(minimal_spanning_tree->nodes[0], 0, g->count_nodes);
 
 	add_node(s, g->nodes[0], 0);
-	
+	printf("De : Nom [Indice tableau dans S] - Nom [indice tableau dans g]");
 	while( total_node != g->count_nodes) {
 		min = INT_MAX;
 		for ( i = 0; i < total_node;i++ ) {
@@ -31,14 +31,14 @@ void MST(Graph g) {
 				  && s->list_node[i]->cost[j] < min 
 				  && !contains(s, s->list_node[i]->subnodes[j]) ){
 					min = s->list_node[i]->cost[j];
-					index =  g->nodes[j]->name;
-					index2 = s->list_node[i]->name;
+					index = j;
+					index2 = i;
 				}
 			}
 
 		}
 		
-		printf("De : %d - %d\n", index2, index);
+		printf("De : %d [%d] - %d [%d]\n", s->list_node[index2]->name, index2, s->list_node[index]->name, index);
 		set_node(minimal_spanning_tree->nodes[index2], index2,g->count_nodes);	
 		set_node(minimal_spanning_tree->nodes[index], index,g->count_nodes);	
 
