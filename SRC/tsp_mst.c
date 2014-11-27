@@ -24,8 +24,8 @@ void MST(Graph g) {
 	add_node(s, g->nodes[0], 0);
 	
 	while( total_node != g->count_nodes) {
+		min = INT_MAX;
 		for ( i = 0; i < total_node;i++ ) {
-			min = INT_MAX;
 			for ( j = 0; j < s->list_node[i]->count_subnodes; j++) {
 				if (  s->list_node[i]->subnodes[j] != NULL 
 				  && s->list_node[i]->cost[j] < min 
