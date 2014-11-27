@@ -51,7 +51,7 @@ void MST(Graph g) {
 		++total_node;
 	}
 
-	for (i = 0; i < g->count_nodes; i++) {
+	/*for (i = 0; i < g->count_nodes; i++) {
 		if(minimal_spanning_tree->nodes[i] != NULL) {
 			printf("	");
 			for (j = 0; j < g->count_nodes; j++) {
@@ -63,16 +63,22 @@ void MST(Graph g) {
 		}
 	}
 
-	//prefix_course(minimal_spanning_tree->nodes[0]);
+	prefix_course(minimal_spanning_tree->nodes[0]);*/
 }
 
 
 void prefix_course(Node tree) {
 	int i = 0;
 	if(tree != NULL) {
-		printf("Name : %d\n",tree->name);
+		tree->colored = VISITED;
+		printf("Name : %d\n",tree->name);getchar();
 		for( i = 0; i < tree->count_subnodes; i++) {
-			prefix_course(tree->subnodes[i]);
+			if(tree->subnodes[i] != NULL) {
+				if(tree->subnodes[i]->colored != VISITED) {
+					printf("Entrer dans l'itération [%d] du sommet %d: \n",i, tree->name);
+					prefix_course(tree->subnodes[i]);
+				}
+			}
 		}
 		//printf("feuille : %d\n",tree->subnodes[i] );
 	}
