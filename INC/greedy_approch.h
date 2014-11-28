@@ -1,3 +1,12 @@
+//----------------------------------------------------------
+// AUTEUR : REYNAUD Nicolas                                 |
+// FICHIER : error.h                                        |
+// DATE : 27/10/14                                          |
+//                                                          |
+// - Debug Maccro [C99 Convention]                          |
+// - Quit maccro                                            |
+//----------------------------------------------------------
+
 #ifndef GREEDY_APPROCH_H
 #define GREEDY_APPROCH_G
 
