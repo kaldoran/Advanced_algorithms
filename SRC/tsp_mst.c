@@ -19,10 +19,9 @@ void MST(Graph g) {
 	int i , j, min = 0, index = -1, index2 = -1;
 	Solution s = new_solution(g->count_nodes );
 	Graph minimal_spanning_tree = new_graph(g->count_nodes);
-	minimal_spanning_tree->nodes[0] = g->nodes[0];
-
+	minimal_spanning_tree->nodes[0] = copy_node(g->nodes[0]);
+	set_node(minimal_spanning_tree->nodes[0], 0, g->count_nodes);	
 	add_node(s, g->nodes[0], 0);
-	print_graph(minimal_spanning_tree);
 
 	printf("De : Nom [Indice tableau dans S] - Nom [indice tableau dans g]\n");
 	while( s->count_nodes_s != g->count_nodes) {
@@ -33,22 +32,19 @@ void MST(Graph g) {
 				  && s->list_node[i]->cost[j] < min 
 				  && !contains(s, s->list_node[i]->subnodes[j]) ){
 					min = s->list_node[i]->cost[j];
-					index = j;
-					index2 = i;
+					index = g->nodes[j]->name;
+					index2 = s->list_node[i]->name;
 				}
 			}
 		}
 
-
-//		minimal_spanning_tree->nodes[index] = g->nodes[index];
-		DEBUG_PRINTF("Error %d", contains(s, s->list_node[index2]->subnodes[index]) );
-		printf("De : %d [%d] - %d [%d]\n", s->list_node[index2]->name, index2, g->nodes[index]->name, index);
-//		set_node(minimal_spanning_tree->nodes[index], g->nodes[index]->name,g->count_nodes);
+		minimal_spanning_tree->nodes[index] = copy_node(g->nodes[index]);
+		set_node(minimal_spanning_tree->nodes[index], index, g->count_nodes);
 
 		/**building*/
-//		minimal_spanning_tree->nodes[index]->subnodes[index2] = g->nodes[index];
-
-
+		minimal_spanning_tree->nodes[index2]->subnodes[index] = minimal_spanning_tree->nodes[index];
+		// Bi directionnelle
+		//minimal_spanning_tree->nodes[index]->subnodes[index2] = minimal_spanning_tree->nodes[index2];
 		add_node(s, g->nodes[index], 0);
 	}
 
@@ -70,18 +66,22 @@ void MST(Graph g) {
 
 
 void prefix_course(Node tree) {
-	int i = 0;
+	int i = 0, leaf = 1;
 	if(tree != NULL) {
 		tree->colored = VISITED;
 		printf("Name : %d\n",tree->name);getchar();
 		for( i = 0; i < tree->count_subnodes; i++) {
 			if(tree->subnodes[i] != NULL) {
+				leaf = 0;
+				DEBUG_PRINTF("Numéro %d", i);
 				if(tree->subnodes[i]->colored != VISITED) {
 					printf("Entrer dans l'itération [%d] du sommet %d: \n",i, tree->name);
 					prefix_course(tree->subnodes[i]);
 				}
 			}
 		}
-		//printf("feuille : %d\n",tree->subnodes[i] );
+		if ( leaf == 1 ) {
+			printf("feuille : %d\n",tree->name );
+		}
 	}
 }
