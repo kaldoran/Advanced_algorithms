@@ -21,6 +21,7 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 			best->count_nodes_s = part->count_nodes_s;
 			
 			add_node(best, part->list_node[0],part->list_node[part->count_nodes_s-1]->cost[0]);
+			print_solution(best);
 		}
 	}
 	else{
@@ -68,8 +69,8 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 
 Solution branch_and_bound(Graph tspGraph) {
 	int start = 0; 
-	int i = 0, j = 1;
-	Node current = NULL; 
+	//int i = 0, j = 1;
+	//Node current = NULL; 
 
 	Solution part = new_solution(tspGraph->count_nodes + 1);
 	add_node(part,tspGraph->nodes[start],0);
@@ -78,7 +79,7 @@ Solution branch_and_bound(Graph tspGraph) {
 	add_node(best,tspGraph->nodes[start],0);
 
 	tspGraph->nodes[start]->colored = END;
-	current = tspGraph->nodes[start];
+	/*current = tspGraph->nodes[start];
 	
 	// Find the first path that come to use as "best" solution.
 	while(j < tspGraph->count_nodes) {
@@ -90,7 +91,9 @@ Solution branch_and_bound(Graph tspGraph) {
 		current = current->subnodes[i];
 		++j;
 	}	
-	add_node(best,tspGraph->nodes[start],current->cost[start]);
+	add_node(best,tspGraph->nodes[start],current->cost[start]);*/
+	
+	best = greedy_approch(tspGraph);
 	
 	reset_coloration(tspGraph);
 	tspGraph->nodes[start]->colored = END;
