@@ -31,7 +31,6 @@ Solution new_solution(const int count_nodes_s);
  *  %param s : the solution which the function adding node n
  *	%param n : node which the function adding in solution s
  *	%param cost : the cost of edge between last node and the current node
- *  %return : none
  */
 void add_node(Solution s,const Node n, int cost);
 
@@ -42,26 +41,33 @@ void add_node(Solution s,const Node n, int cost);
 Solution copy_solution( Solution src_s);
 
 /** Calculating the best solution from a list of solution
- * %param list_solution :  a list of solution
- * %param nb_solution : number of solution in the list of solution
- * %return : the best Solution
+ *  %param list_solution :  a list of solution
+ *  %param nb_solution : number of solution in the list of solution
+ *  %return : the best Solution of all the array
  */
 Solution best_solution( Solution* list_solution, int nb_solution);
 
 /** free all solution allocations
  * %param s : the solution which you will free
- * %return : none
  */
 void free_solution(Solution s);
 
-/**Printing all contains of solution
- * %param s : the solution which you will print
- * %return : none
+/** Printing all contains of solution
+ *  %param s : the solution which you will print
  */
 void print_solution(const Solution s);
 
+/** Calculate the cost of the solution s
+ *  %param s : Solution which on you need to calculate the cost
+ */
 void cost_solution(const Solution s);
 
+/** Test is the solution S containe the node N
+ *  %param s : Solution to test
+ *  %param n : Node to test
+ *  %return  : 1 If S contains n
+ *  		   else 0
+ */
 int contains(Solution s, Node n); 
 
 #endif /* SOLUTION_H included */

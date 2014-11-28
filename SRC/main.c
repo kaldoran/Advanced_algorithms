@@ -36,13 +36,13 @@ int main(int argc, char const *argv[]) {
 	Solution s;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
-system("aplay -D sysdefault -c 1 -q -t wav sound.wav &");
+//system("aplay -D sysdefault -c 1 -q -t wav ../sound.wav &");
 
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		print_graph(tsp_graph);
 		printf("Most sapnning tree : \n");
-/*		MST(tsp_graph);	
+		MST(tsp_graph);	
 		printf("Start Brute Force : \n");
 		start = clock();
 		s = tsp_brute_force(tsp_graph);
@@ -50,10 +50,10 @@ if ( argc == 2 ) {
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
 				
-*/		printf("Start Random Approch : \n");
+		printf("Start Random Approch : \n");
 		start = clock();
 		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
-		s = random_approch(tsp_graph, VISITED_RAND);
+		s = random_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
@@ -65,13 +65,13 @@ if ( argc == 2 ) {
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );		
 
+
 /*²		printf("Start Branch and Bound approch: \n");
 		start = clock();
 		s = branch_and_bound(tsp_graph);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-			
 
 		ATTENTION NE MARCHE PAS (c'est pas la peine de venir critiquer si décommenté !)
 		printf("Start Branch and Bound approch Opti : \n");

@@ -5,6 +5,7 @@
 
 /** Execute and give the solution of greedy approch on a graph
  *  %param g : graph where you need to execute the greedy approch
+ *  %return : The solution with the greedy approch algorithm
  */
 Solution greedy_approch(Graph g);
 
