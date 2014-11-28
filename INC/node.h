@@ -21,4 +21,6 @@ Node new_node();
  */
 void set_node(Node node, const int node_number, const int number_of_subnode);
 
+Node copy_node(const Node n);
 #endif /* NODE_H included */
+
