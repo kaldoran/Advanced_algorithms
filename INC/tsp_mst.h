@@ -13,8 +13,8 @@
 #include "solution.h"
 #include "graph.h"
 
-void MST(Graph g);
+Solution MST(Graph g);
 
-void prefix_course(Node tree);
+int prefix_course(Node tree, Solution s, int cost, int state);
 
 #endif

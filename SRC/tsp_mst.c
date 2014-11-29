@@ -15,9 +15,10 @@
 #include "tsp_mst.h"
 
 
-void MST(Graph g) {
+Solution MST(Graph g) {
 	int total_node = 1, i , j, min = 0, index = -1, index2 = -1;
-	Solution s = new_solution(g->count_nodes );						//Create solution
+	Solution s = new_solution(g->count_nodes );	
+	Solution optimal_solution = new_solution(g->count_nodes);					//Create solution
 	Graph minimal_spanning_tree = new_graph(g->count_nodes); 		//create minimal spanning tree
 	set_node(minimal_spanning_tree->nodes[0], 0, g->count_nodes);	//add root node in mst
 
@@ -44,55 +45,54 @@ void MST(Graph g) {
 		
 		printf("De : %d [%d] - %d [%d]\n", s->list_node[index2]->name, index2, g->nodes[index]->name, index);
 
-		/*minimal_spanning_tree->nodes[index2] = s->list_node[index2];
-		minimal_spanning_tree->nodes[index] = g->nodes[index];
-		set_node(minimal_spanning_tree->nodes[index2], s->list_node[index2]->name,g->count_nodes);
-		set_node(minimal_spanning_tree->nodes[index], g->nodes[index]->name,g->count_nodes);*/
 
 		minimal_spanning_tree->nodes[index] = new_node();
 		set_node(minimal_spanning_tree->nodes[index], g->nodes[index]->name,g->count_nodes);
 
 		/**building*/
-		print_graph(minimal_spanning_tree);
-		
 		minimal_spanning_tree->nodes[s->list_node[index2]->name]->subnodes[g->nodes[index]->name] = minimal_spanning_tree->nodes[g->nodes[index]->name];
+		minimal_spanning_tree->nodes[s->list_node[index2]->name]->cost[g->nodes[index]->name] = g->nodes[s->list_node[index2]->name]->cost[index];
 		minimal_spanning_tree->nodes[g->nodes[index]->name]->subnodes[s->list_node[index2]->name] = minimal_spanning_tree->nodes[s->list_node[index2]->name];
-	
+		minimal_spanning_tree->nodes[g->nodes[index]->name]->cost[s->list_node[index2]->name] = g->nodes[s->list_node[index2]->name]->cost[index];
 
 		add_node(s, g->nodes[index], 0);
 		++total_node;
 	}
 
 	print_graph(minimal_spanning_tree);
-	/*for (i = 0; i < g->count_nodes; i++) {
-		if(minimal_spanning_tree->nodes[i] != NULL) {
-			printf("	");
-			for (j = 0; j < g->count_nodes; j++) {
-				if(minimal_spanning_tree->nodes[i]->subnodes[j] != NULL ) {
-					printf("De : %d - %d\n", minimal_spanning_tree->nodes[i]->name, minimal_spanning_tree->nodes[i]->subnodes[j]->name);	
-				}
-				
-			}	
-		}
-	}*/
 
-	prefix_course(minimal_spanning_tree->nodes[0]);
+	prefix_course(minimal_spanning_tree->nodes[0], optimal_solution,0,1);
+	add_node(optimal_solution,minimal_spanning_tree->nodes[0],0 );
+	for(i = 0; i < optimal_solution->count_nodes_s-1 ; i++) {
+		optimal_solution->cost += g->nodes[optimal_solution->list_node[i]->name]->cost[optimal_solution->list_node[i+1]->name];
+	}
+
+	free_graph(minimal_spanning_tree);
+	free_solution(s);
+	return optimal_solution;
 }
 
 
-void prefix_course(Node tree) {
+int prefix_course(Node tree, Solution s, int cost, int state) {
+
 	int i = 0;
 	if(tree != NULL) {
 		tree->colored = VISITED;
-		printf("Name : %d\n",tree->name);getchar();
+		if(state == 1) {
+			add_node(s,tree, cost);
+		}
+		state = 1;
 		for( i = 0; i < tree->count_subnodes; i++) {
 			if(tree->subnodes[i] != NULL) {
 				if(tree->subnodes[i]->colored != VISITED) {
 					printf("Entrer dans l'itération [%d] du sommet %d: \n",i, tree->name);
-					prefix_course(tree->subnodes[i]);
+					state = prefix_course(tree->subnodes[i],s,tree->cost[i], state);
 				}
 			}
 		}
-		//printf("feuille : %d\n",tree->subnodes[i] );
+	} else {
+		state = 0;
 	}
+	return state;
 }
+
