@@ -78,12 +78,12 @@ Solution best_solution( Solution* list_solution, int nb_solution) {
 	}
 
 	/**free fake solutions */
-/*	for ( i=0; i< nb_solution; i++) {
+	for ( i=0; i< nb_solution; i++) {
 		if ( i != ref ) {
 			free_solution(list_solution[i]);
 		}
 	}
-*/
+
 	return list_solution[ref];
 }
 
