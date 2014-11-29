@@ -16,7 +16,7 @@
 
 Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 	int cost = 0,i, j;
-	if(part->count_nodes_s == best->count_nodes_s -1){
+	if(part->count_nodes_s == best->count_nodes_s -1) {
 	
 		cost = part->cost + part->list_node[part->count_nodes_s-1]->cost[0];
 		if(cost < best->cost) {
@@ -28,7 +28,6 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 			best->count_nodes_s = part->count_nodes_s;
 			
 			add_node(best, part->list_node[0],part->list_node[part->count_nodes_s-1]->cost[0]);
-			print_solution(best);
 		}
 	}
 	else{

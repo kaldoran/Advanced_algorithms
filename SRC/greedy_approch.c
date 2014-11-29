@@ -25,7 +25,7 @@ Solution greedy_approch(Graph g) {
 	total_node = 1; /* Starting node */
 	current_mini = INT_MAX; 
 
-	start = rand() % g->count_nodes;
+	start = 0;
 	current = g->nodes[start];
 	current->colored = END;
 	add_node(s, current, 0); /** Add starting node */

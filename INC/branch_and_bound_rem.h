@@ -7,10 +7,5 @@
 #include "graph.h"
 
 
-
-int** graph_to_edges_matrix(Graph tspGraph);
-void print_edges_matrix(int** matrix, int length);
-
-
-//Solution branch_and_bound_rec_rem(Solution part, Solution best, Graph tspGraph, Stack_node* stack);
+int** branch_and_bound_rem_rec(int index, int** part, int part_bound, int part_length,int** best, int best_bound, int best_length);
 Solution branch_and_bound_rem(Graph tspGraph);
