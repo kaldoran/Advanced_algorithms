@@ -1,3 +1,12 @@
+//----------------------------------------------------------
+// AUTEUR : REYNAUD Nicolas                                 |
+// FICHIER : random.c                                       |
+// DATE : 27/10/14                                          |
+//                                                          |
+// - Debug Maccro [C99 Convention]                          |
+// - Quit maccro                                            |
+//----------------------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
