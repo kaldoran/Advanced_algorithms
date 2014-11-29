@@ -13,7 +13,8 @@
 #include "struct_graph.h"
 
 /** Load a file and print the content
- * %param filename : name of the file to load 
+ *  %param filename : name of the file to load
+ *  %return : the loaded graph in the struct_graph struture
  */
 Graph load(const char *filename);
 

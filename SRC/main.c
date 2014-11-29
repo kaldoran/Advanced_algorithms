@@ -20,7 +20,6 @@
 #include "greedy_approch.h"
 #include "tsp_brute_force.h"
 #include "branch_and_bound.h"
-#include "branch_and_bound_opti.h"
 #include "genetic_approch.h"
 
 #include "tsp_mst.h"
@@ -53,7 +52,7 @@ if ( argc == 2 ) {
 		printf("Start Random Approch : \n");
 		start = clock();
 		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
-		s = random_approch(tsp_graph, VISITED_RAND);
+/*		s = random_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
@@ -64,7 +63,7 @@ if ( argc == 2 ) {
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );		
-
+*/
 
 /*²		printf("Start Branch and Bound approch: \n");
 		start = clock();

@@ -1,5 +1,5 @@
 //----------------------------------------------------------
-// AUTEUR : LAOUSSING Kévin                                 |
+// AUTEUR : LAOUSSING Kévin, REYNAUD Nicolas                |
 // FICHIER : struct_solution.h                              |
 // DATE : 27/10/14                                          |
 //                                                          |

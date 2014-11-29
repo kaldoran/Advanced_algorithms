@@ -32,3 +32,16 @@ void set_node(Node node, const int node_number, const int number_of_subnode) {
 	
 	return;
 }
+
+Node copy_node(const Node n) {
+	Node cp = new_node();
+
+	cp->name = n->name;
+	cp->colored = n->colored;
+	cp->count_subnodes = n->count_subnodes;
+    cp->subnodes = (Node*) calloc(n->count_subnodes, sizeof(*n->subnodes));
+    cp->cost = (int *)calloc(n->count_subnodes, sizeof(int));
+
+	return cp;
+
+}

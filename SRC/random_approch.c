@@ -1,14 +1,43 @@
+//----------------------------------------------------------
+// AUTEUR : REYNAUD Nicolas                                 |
+// FICHIER : random.c                                       |
+// DATE : 27/10/14                                          |
+//                                                          |
+// - Debug Maccro [C99 Convention]                          |
+// - Quit maccro                                            |
+//----------------------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <time.h>
 
-#include "global.h"
 #include "error.h"
 #include "solution.h"
 #include "graph.h"
+#include "random_approch.h"
 
-Solution random_approch(Graph g, int visiteColor) {
+#define ITERATION 100
+
+Solution random_approch(Graph g) {
+	int i;
+	Solution tmp = NULL, best = NULL;
+	
+	best = random_approch_compute(g, VISITED_RAND);
+
+	for ( i = 1; i < ITERATION; i++ ) {
+		tmp = random_approch_compute(g, VISITED_RAND + i);
+		if ( best->cost > tmp->cost ) {
+			free(best);
+			best = tmp;
+		} else {
+			free(tmp);
+		}
+	}
+	return best;
+}
+
+Solution random_approch_compute(Graph g, int visiteColor) {
 	Solution s;
 	Node current;
 	int start, choix, total_node;

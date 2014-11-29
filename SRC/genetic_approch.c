@@ -1,3 +1,12 @@
+//----------------------------------------------------------
+// AUTEUR : REYNAUD Nicolas                                 |
+// FICHIER : error.h                                        |
+// DATE : 27/10/14                                          |
+//                                                          |
+// - Debug Maccro [C99 Convention]                          |
+// - Quit maccro                                            |
+//----------------------------------------------------------
+
 #define MUTATION_RATE 20
 #define CLONE_RATE 1
 
@@ -94,7 +103,7 @@ Solution tournment(Solution *sorted) {
 Solution *evolution(Solution *genetic) {
 
 	int i = 0, j = 0, k = 0, bestCost, node_left, bestNode = 0;
-	Solution tmp = NULL;
+	
 	Solution *sorted = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
 	node_left = NUMBER_SOLUTION;	
 	if ( sorted == NULL ) {
@@ -163,7 +172,7 @@ Solution genetic_approch(Graph g) {
 
 	printf("Starting generate population");
 	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
-		genetic[i] = random_approch(g, VISITED_RAND + (i + 1));
+		genetic[i] = random_approch_compute(g, VISITED_RAND + (i + 1));
 	}
 	
 	printf("Starting Evolution");

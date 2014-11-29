@@ -12,6 +12,7 @@
 
 /** Allote a graph and the space for all node [ and all node without complete them ]
  *  %param number_of_node : Number of node in the graph
+ *  %return : Return an allocated pointer of graph with struct_graph
  */
 Graph new_graph(const int number_of_node);
 

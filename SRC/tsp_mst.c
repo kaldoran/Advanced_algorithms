@@ -53,14 +53,28 @@ void MST(Graph g) {
 		set_node(minimal_spanning_tree->nodes[index], g->nodes[index]->name,g->count_nodes);
 
 		/**building*/
+		print_graph(minimal_spanning_tree);
+		
 		minimal_spanning_tree->nodes[s->list_node[index2]->name]->subnodes[g->nodes[index]->name] = minimal_spanning_tree->nodes[g->nodes[index]->name];
 		minimal_spanning_tree->nodes[g->nodes[index]->name]->subnodes[s->list_node[index2]->name] = minimal_spanning_tree->nodes[s->list_node[index2]->name];
+	
 
 		add_node(s, g->nodes[index], 0);
 		++total_node;
 	}
 
 	print_graph(minimal_spanning_tree);
+	/*for (i = 0; i < g->count_nodes; i++) {
+		if(minimal_spanning_tree->nodes[i] != NULL) {
+			printf("	");
+			for (j = 0; j < g->count_nodes; j++) {
+				if(minimal_spanning_tree->nodes[i]->subnodes[j] != NULL ) {
+					printf("De : %d - %d\n", minimal_spanning_tree->nodes[i]->name, minimal_spanning_tree->nodes[i]->subnodes[j]->name);	
+				}
+				
+			}	
+		}
+	}*/
 
 	prefix_course(minimal_spanning_tree->nodes[0]);
 }
@@ -79,6 +93,6 @@ void prefix_course(Node tree) {
 				}
 			}
 		}
-		printf("feuille : %d\n",tree->subnodes[i]->name );
+		//printf("feuille : %d\n",tree->subnodes[i] );
 	}
 }
