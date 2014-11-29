@@ -3,7 +3,6 @@
 #include <limits.h>
 #include <time.h>
 
-#include "global.h"
 #include "error.h"
 #include "solution.h"
 #include "graph.h"
