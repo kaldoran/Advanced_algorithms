@@ -43,7 +43,7 @@ if ( argc == 2 ) {
 		printf("Most sapnning tree : \n");
 		s=MST(tsp_graph);
 		print_solution(s);
-		free_solution(s);
+		free_solution_bis(s);
 /*		printf("Start Brute Force : \n");
 		start = clock();
 		s = tsp_brute_force(tsp_graph);

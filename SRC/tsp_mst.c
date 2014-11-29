@@ -57,10 +57,11 @@ Solution MST(Graph g) {
 	}
 
 	prefix_course(minimal_spanning_tree->nodes[0], optimal_solution,1);
-	add_node(optimal_solution,minimal_spanning_tree->nodes[0],0 );
+	add_node(optimal_solution,copy_node(minimal_spanning_tree->nodes[0]),0 );
 	for(i = 0; i < optimal_solution->count_nodes_s-1 ; i++) {
 		optimal_solution->cost += g->nodes[optimal_solution->list_node[i]->name]->cost[optimal_solution->list_node[i+1]->name];
 	}
+	/** free all alloc */
 	free_solution(s);
 	free_graph(minimal_spanning_tree);
 	return optimal_solution;
@@ -73,7 +74,7 @@ int prefix_course(Node tree, Solution s, int state) {
 	if(tree != NULL) {
 		tree->colored = VISITED;
 		if(state == 1) {
-			add_node(s,tree,0);
+			add_node(s,copy_node(tree),0);
 		}
 		state = 1;
 		for( i = 0; i < tree->count_subnodes; i++) {

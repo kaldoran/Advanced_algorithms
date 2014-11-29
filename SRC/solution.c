@@ -94,6 +94,17 @@ void free_solution(Solution s) {
 	free(s);
 }
 
+void free_solution_bis(Solution s) {
+	int i = 0;
+	for(i = 0; i < s->count_nodes_s; i++) {
+		free(s->list_node[i]->subnodes);
+		free(s->list_node[i]->cost);
+		free(s->list_node[i]);
+	}
+	free(s->list_node);
+	free(s);
+}
+
 void print_solution(const Solution s) {
 	int i = 0; 
 	printf("Solution:\n\tList Vertex : ");
