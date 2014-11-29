@@ -18,7 +18,7 @@
 Solution MST(Graph g) {
 	int total_node = 1, i , j, min = 0, index = -1, index2 = -1;
 	Solution s = new_solution(g->count_nodes );	
-	Solution optimal_solution = new_solution(g->count_nodes);					//Create solution
+	Solution optimal_solution = new_solution(g->count_nodes+1);					//Create solution
 	Graph minimal_spanning_tree = new_graph(g->count_nodes); 		//create minimal spanning tree
 	set_node(minimal_spanning_tree->nodes[0], 0, g->count_nodes);	//add root node in mst
 
@@ -59,8 +59,6 @@ Solution MST(Graph g) {
 		++total_node;
 	}
 
-	print_graph(minimal_spanning_tree);
-
 	prefix_course(minimal_spanning_tree->nodes[0], optimal_solution,0,1);
 	add_node(optimal_solution,minimal_spanning_tree->nodes[0],0 );
 	for(i = 0; i < optimal_solution->count_nodes_s-1 ; i++) {
@@ -85,7 +83,7 @@ int prefix_course(Node tree, Solution s, int cost, int state) {
 		for( i = 0; i < tree->count_subnodes; i++) {
 			if(tree->subnodes[i] != NULL) {
 				if(tree->subnodes[i]->colored != VISITED) {
-					printf("Entrer dans l'itération [%d] du sommet %d: \n",i, tree->name);
+					//printf("Entrer dans l'itération [%d] du sommet %d: \n",i, tree->name);
 					state = prefix_course(tree->subnodes[i],s,tree->cost[i], state);
 				}
 			}

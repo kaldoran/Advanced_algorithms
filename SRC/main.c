@@ -32,7 +32,7 @@ int main(int argc, char const *argv[]) {
     UNUSED(argv);
 	
 	clock_t start;
-	Solution s;
+	Solution s=NULL;;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
 //system("aplay -D sysdefault -c 1 -q -t wav ../sound.wav &");
