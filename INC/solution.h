@@ -2,15 +2,15 @@
 // AUTEUR : LAOUSSING Kévin                                 |
 // FICHIER : solution.h                                     |
 // DATE : 27/10/14                                          |
-//															| 
-//Define prototype function of solution.c 		            |
-//-function to create a empty solution    					|
-//-function to add a node in solution 						|
-//-function to copy(to duplicate) a solution 				|
-//-function to return the best solution into list of 		|
-// solutions												|
-//-function to free solution allocation 					|
-//-funtion to print Solution 								|
+//                                                          | 
+// Define prototype function of solution.c                  |
+// - function to create a empty solution                    |
+// - function to add a node in solution                     |
+// - function to copy(to duplicate) a solution              |
+// - function to return the best solution into list of      |
+//  solutions                                               |
+// - function to free solution allocation                   |
+// - funtion to print Solution                              |
 //----------------------------------------------------------
 
 #ifndef SOLUTION_H
@@ -29,8 +29,8 @@ Solution new_solution(const int count_nodes_s);
 /** Adding a node and this cost in solution and calculate automatically
  ** the new cost of solution.
  *  %param s : the solution which the function adding node n
- *	%param n : node which the function adding in solution s
- *	%param cost : the cost of edge between last node and the current node
+ *  %param n : node which the function adding in solution s
+ *  %param cost : the cost of edge between last node and the current node
  */
 void add_node(Solution s,const Node n, int cost);
 
@@ -62,13 +62,13 @@ void print_solution(const Solution s);
 /** Calculate the cost of the solution s
  *  %param s : Solution which on you need to calculate the cost
  */
-void cost_solution(const Solution s);
+void cost_solution(const Graph g, const Solution s);
 
 /** Test is the solution S containe the node N
  *  %param s : Solution to test
  *  %param n : Node to test
  *  %return  : 1 If S contains n
- *  		   else 0
+ *             else 0
  */
 int contains(Solution s, Node n); 
 

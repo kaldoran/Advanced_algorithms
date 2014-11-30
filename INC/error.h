@@ -13,7 +13,7 @@
 
 /** If Debug Flag is on, create a maccro to print debug information
  *  %param MSG : String to print 
- *  %param ... : List of param [ for example if want to print variable value
+ *  %param ... : List of param [ for example if want to print variable value ]
  */
 #ifdef DEBUG
     #define DEBUG_PRINTF(MSG, ...)                                                                                          \
@@ -27,12 +27,13 @@
 
 /** Create a maccro for quit the program 
  *  %param MSG : String to print 
- *  %param ... : List of param [ for example if want to print variable value
+ *  %param ... : List of param [ for example if want to print variable value ]
  */
 #define QUIT_MSG(MSG, ...)                                                                                                  \
-    do {       																												\
-		fprintf(stderr, "[FATAL ERROR] : ");																				\
-        fprintf(stderr, MSG, ## __VA_ARGS__);                                                						        \
+    do {                                                                                                                    \
+        DEBUG_PRINTF(MSG, ##__VA_ARGS__)                                                                                    \
+        fprintf(stderr, "[FATAL ERROR] : ");                                                                                \
+        fprintf(stderr, MSG, ## __VA_ARGS__);                                                                               \
         exit(EXIT_FAILURE);                                                                                                 \
     }while(0);
 

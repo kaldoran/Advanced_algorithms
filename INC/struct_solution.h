@@ -13,9 +13,8 @@
 #include <stdlib.h>
 #include "struct_graph.h"
 
-typedef struct Struct_Solution
-{
-	Node* list_node;
+typedef struct Struct_Solution {
+    Node* list_node;
     int cost;
     int count_nodes_s;
 }Struct_Solution;
