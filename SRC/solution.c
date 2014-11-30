@@ -60,15 +60,11 @@ int best_solution_id( Solution* list_solution, int nb_solution) {
 	int i = 0;
 	int ref = 0;
 	int minCost = INT_MAX;
-
-	if (nb_solution == 0) {
-		return -1;
+	
+	if (nb_solution == 0 || nb_solution == 1) {
+		return  nb_solution - 1;
 	}
-
-	if ( nb_solution == 1) { 
-		return 0;
-	}
-
+	
 	for ( i=0; i < nb_solution; i++) {
 		if (list_solution[i]->cost <= minCost) {
 			ref = i;

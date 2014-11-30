@@ -51,17 +51,17 @@ Solution crossover(const Solution s1, const Solution s2) {
 
 	if ( rand() % 100 < CLONE_RATE ) {
 		if ( s1->cost < s2->cost) {
-			return s1;
+			return copy_solution(s1);
 		}
 		
-		return s2;
+		return copy_solution(s2);
 	}
 	
 	rdm_index1 = rand() % (s1->count_nodes_s - 1);
 	rdm_index2 = rand() % (s1->count_nodes_s - 1);
 		
 	if ( rdm_index1 == rdm_index2 ) {
-		return s2;
+		return copy_solution(s2);
 	}
 
 	child = new_solution(s1->count_nodes_s);
@@ -98,13 +98,14 @@ Solution tournment(Solution *sorted) {
 
 	for ( i = 0; i < TOURNAMENT_SIZE; i++ ) {
 		tournment[i] = sorted[rand() % (NUMBER_SOLUTION - 1) ];
+		print_solution(tournment[i]);
 	}
-	i = best_solution_id(tournment, TOURNAMENT_SIZE);
+	i = best_solution_id(tournment, TOURNAMENT_SIZE );
 
 	best = tournment[i];
 	free(tournment);
 
-	return sorted[0];
+	return best;
 }
 
 Solution *evolution(Solution *genetic) {
@@ -142,11 +143,11 @@ Solution *evolution(Solution *genetic) {
 		
 	for ( i = 0; i < TOTAL_ELITE; i++ ) {
 		if ( rand() % 100 < MUTATION_RATE ) {
-			genetic[i] = mutate(sorted[i]);
+			genetic[i] = copy_solution(mutate(sorted[i]));
 			cost_solution(genetic[i]);
 		}
 		else {
-			genetic[i] = sorted[i];
+			genetic[i] = copy_solution(sorted[i]);
 		}
 	}
 
@@ -156,6 +157,7 @@ Solution *evolution(Solution *genetic) {
 
 		Solution child = crossover(p1, p2);
 		free_solution(genetic[i]);
+		
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = mutate(child);
 			cost_solution(genetic[i]);
@@ -168,6 +170,7 @@ Solution *evolution(Solution *genetic) {
 		++i;
 		--node_left;
 	}
+
 	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
 		free_solution(sorted[i]);
 	}

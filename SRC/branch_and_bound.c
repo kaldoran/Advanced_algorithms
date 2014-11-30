@@ -78,9 +78,9 @@ Solution branch_and_bound(Graph tspGraph) {
 
 	Solution part = new_solution(tspGraph->count_nodes + 1);
 	add_node(part,tspGraph->nodes[start],0);
-
-	Solution best = new_solution(tspGraph->count_nodes + 1);
-	add_node(best,tspGraph->nodes[start],0);
+	Solution best;
+//	Solution best = new_solution(tspGraph->count_nodes + 1);
+//	add_node(best,tspGraph->nodes[start],0);
 
 	tspGraph->nodes[start]->colored = END;
 	
