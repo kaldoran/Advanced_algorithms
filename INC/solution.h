@@ -52,6 +52,8 @@ Solution best_solution( Solution* list_solution, int nb_solution);
  */
 void free_solution(Solution s);
 
+void free_solution_bis(Solution s);
+
 /** Printing all contains of solution
  *  %param s : the solution which you will print
  */

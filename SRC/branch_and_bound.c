@@ -2,14 +2,21 @@
 // AUTEUR : BASCOL Kevin                                    |
 // FICHIER : branch_and_bound.c                             |
 // DATE : 28/10/14                                          |
+//                                                          |
+// - Implementation of the prototypes in branch_and_bound.h |
 //----------------------------------------------------------
 
+
+#include "graph.h"
+#include "readfile.h"
+#include "struct_graph.h"
+#include "greedy_approch.h"
 #include "branch_and_bound.h"
 
 
 Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 	int cost = 0,i, j;
-	if(part->count_nodes_s == best->count_nodes_s -1){
+	if(part->count_nodes_s == best->count_nodes_s -1) {
 	
 		cost = part->cost + part->list_node[part->count_nodes_s-1]->cost[0];
 		if(cost < best->cost) {
@@ -21,7 +28,6 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 			best->count_nodes_s = part->count_nodes_s;
 			
 			add_node(best, part->list_node[0],part->list_node[part->count_nodes_s-1]->cost[0]);
-			print_solution(best);
 		}
 	}
 	else{
@@ -68,9 +74,7 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 }
 
 Solution branch_and_bound(Graph tspGraph) {
-	int start = 0; 
-	//int i = 0, j = 1;
-	//Node current = NULL; 
+	int start = 0;
 
 	Solution part = new_solution(tspGraph->count_nodes + 1);
 	add_node(part,tspGraph->nodes[start],0);
@@ -79,19 +83,6 @@ Solution branch_and_bound(Graph tspGraph) {
 	add_node(best,tspGraph->nodes[start],0);
 
 	tspGraph->nodes[start]->colored = END;
-	/*current = tspGraph->nodes[start];
-	
-	// Find the first path that come to use as "best" solution.
-	while(j < tspGraph->count_nodes) {
-		while(i == current->name || (current->subnodes[i]->colored == VISITED_BNB &&current->subnodes[i]->colored != END)) {
-			++i;
-		}
-		add_node(best,current->subnodes[i],current->cost[i]);
-		current->subnodes[i]->colored = VISITED_BNB;
-		current = current->subnodes[i];
-		++j;
-	}	
-	add_node(best,tspGraph->nodes[start],current->cost[start]);*/
 	
 	best = greedy_approch(tspGraph);
 	

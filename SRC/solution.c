@@ -78,18 +78,29 @@ Solution best_solution( Solution* list_solution, int nb_solution) {
 	}
 
 	/**free fake solutions */
-/*	for ( i=0; i< nb_solution; i++) {
+	for ( i=0; i< nb_solution; i++) {
 		if ( i != ref ) {
 			free_solution(list_solution[i]);
 		}
 	}
-*/
+
 	return list_solution[ref];
 }
 
 void free_solution(Solution s) {
 
 	/* On free pas les nodes car ils s'agit des pointeurs sur les nodes présent dans la structure graph*/
+	free(s->list_node);
+	free(s);
+}
+
+void free_solution_bis(Solution s) {
+	int i = 0;
+	for(i = 0; i < s->count_nodes_s; i++) {
+		free(s->list_node[i]->subnodes);
+		free(s->list_node[i]->cost);
+		free(s->list_node[i]);
+	}
 	free(s->list_node);
 	free(s);
 }

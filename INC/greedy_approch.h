@@ -11,6 +11,7 @@
 #define GREEDY_APPROCH_G
 
 #include "struct_graph.h"
+#include "solution.h"
 
 /** Execute and give the solution of greedy approch on a graph
  *  %param g : graph where you need to execute the greedy approch
