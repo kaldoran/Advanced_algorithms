@@ -1,8 +1,10 @@
-//----------------------------------------------------------
-// AUTEUR : BASCOL Kevin                                    |
-// FICHIER : branch_and_bound_rem.c                         |
-// DATE : 25/11/14                                          |
-//----------------------------------------------------------
+//--------------------------------------------------------------
+// AUTEUR : BASCOL Kevin                                        |
+// FICHIER : branch_and_bound_rem.c                             |
+// DATE : 25/11/14                                              |
+//                                                              |
+// - Implementation of the prototypes in branch_and_bound_rem.h |
+//--------------------------------------------------------------
 
 #include <stdio.h>
 #include <stdlib.h>
