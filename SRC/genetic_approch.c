@@ -8,10 +8,10 @@
 //----------------------------------------------------------
 
 #define MUTATION_RATE 20
-#define CLONE_RATE 1
+#define CLONE_RATE    1
 
-#define ELITE_PARENT          10 
-#define ELITE_POURCENT         10
+#define ELITE_PARENT         10 
+#define ELITE_POURCENT       10
 #define TOURNAMENT_POURCENT  10
 #define NUMBER_SOLUTION      50
 #define EVOLUTION_ITERATIONS 100
