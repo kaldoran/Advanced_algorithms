@@ -64,7 +64,7 @@ if ( argc == 2 ) {
 				
 		printf("Start Random Approch : \n");
 		start = clock();
-		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
+		// Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle
 		s = random_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
@@ -75,7 +75,7 @@ if ( argc == 2 ) {
 		s = greedy_approch(tsp_graph);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );		
+		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
 
 		reset_coloration(tsp_graph);
 		printf("Start Branch and Bound approch: \n");
@@ -85,7 +85,7 @@ if ( argc == 2 ) {
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
 
-/*		!!!! ATTENTION PAS TESTE !!!! (c'est pas la peine de venir critiquer si décommenté !)
+/*		!!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 		printf("Start Branch and Bound approch (removing edges version) : \n");
 		start = clock();
 		s = branch_and_bound_rem(tsp_graph);

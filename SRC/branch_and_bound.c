@@ -78,21 +78,16 @@ Solution branch_and_bound(Graph tspGraph) {
 
 	Solution part = new_solution(tspGraph->count_nodes + 1);
 	add_node(part,tspGraph->nodes[start],0);
-
-	Solution best = new_solution(tspGraph->count_nodes + 1);
-	add_node(best,tspGraph->nodes[start],0);
-
-	tspGraph->nodes[start]->colored = END;
 	
-	best = greedy_approch(tspGraph);
+	Solution best = greedy_approch(tspGraph);
 	
 	reset_coloration(tspGraph);
 	tspGraph->nodes[start]->colored = END;
 
 	// Launch of the recursive algorithm.	
-	Solution result = branch_and_bound_rec(part, best, tspGraph);
+	best= branch_and_bound_rec(part, best, tspGraph);
 
 	free_solution(part);
 	
-	return result;
+	return best;
 }
