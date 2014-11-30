@@ -1,10 +1,8 @@
 //----------------------------------------------------------
 // AUTEUR : REYNAUD Nicolas                                 |
-// FICHIER : error.h                                        |
+// FICHIER : genetic_approch.h                              |
 // DATE : 27/10/14                                          |
 //                                                          |
-// - Debug Maccro [C99 Convention]                          |
-// - Quit maccro                                            |
 //----------------------------------------------------------
 
 #ifndef GENETIC_APPROCH

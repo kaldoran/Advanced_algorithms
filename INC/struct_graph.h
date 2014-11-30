@@ -26,8 +26,7 @@
  */
 #define END                 (char)-1
 
-typedef struct Struct_Node
-{
+typedef struct Struct_Node {
     int name;
     int* cost;
     char colored;
@@ -37,8 +36,7 @@ typedef struct Struct_Node
 
 typedef Struct_Node* Node;
 
-typedef struct Struct_Graph
-{
+typedef struct Struct_Graph {
     int count_nodes;
     Node* nodes;
 }Struct_Graph;

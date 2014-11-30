@@ -168,7 +168,6 @@ Solution *evolution(const Graph g, Solution *genetic) {
         free_solution(sorted[i]);
     }
 
-//    free(genetic);
     free(sorted);
     return genetic;
 }

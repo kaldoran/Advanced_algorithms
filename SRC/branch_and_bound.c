@@ -16,9 +16,9 @@
 
 Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
     int cost = 0,i, j;
-    if(part->count_nodes_s == best->count_nodes_s -1) {
+    if(part->count_nodes_s == best->count_nodes_s - 1) {
     
-        cost = part->cost + part->list_node[part->count_nodes_s-1]->cost[0];
+        cost = part->cost + part->list_node[part->count_nodes_s - 1]->cost[0];
         if(cost < best->cost) {
             for ( i = 0; i < part->count_nodes_s; i++) {
                 best->list_node[i] = part->list_node[i];
@@ -27,12 +27,12 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
             best->cost = part->cost;
             best->count_nodes_s = part->count_nodes_s;
             
-            add_node(best, part->list_node[0],part->list_node[part->count_nodes_s-1]->cost[0]);
+            add_node(best, part->list_node[0],part->list_node[part->count_nodes_s - 1]->cost[0]);
         }
     }
     else{
         for(j=0; j < tspGraph->count_nodes; ++j) {
-            int last = part->count_nodes_s-1;
+            int last = part->count_nodes_s - 1;
             
             if( part->list_node[last]->subnodes[j] != NULL
              && part->list_node[last]->subnodes[j]->colored == UNVISITED) {
@@ -77,7 +77,7 @@ Solution branch_and_bound(Graph tspGraph) {
     int start = 0;
 
     Solution part = new_solution(tspGraph->count_nodes);
-    add_node(part,tspGraph->nodes[start],0);
+    add_node(part,tspGraph->nodes[start], 0);
 
     Solution best;
     tspGraph->nodes[start]->colored = END;

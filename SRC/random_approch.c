@@ -67,7 +67,7 @@ Solution random_approch_compute(Graph g, int visiteColor) {
         current = current->subnodes[choix];
         current->colored = visiteColor;
 
-    }while(g->count_nodes != total_node ); /* As all graphs are complet, there is always a path from Start to End */
+    }while(g->count_nodes != total_node );                      /* As all graphs are complet, there is always a path from Start to End */
     g->nodes[start]->colored = visiteColor;    
     add_node(s, g->nodes[start], current->cost[start]);         /* Weight 0 cause already add on last loop */
 

@@ -48,10 +48,8 @@ Solution tsp_brute_force(Graph g) {
 
 Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 
-    int i = 0, ref = 0;
-    int dim_tab = 0;
-    Solution sub_solution=NULL;
-
+    int i = 0, ref = 0, dim_tab = 0;
+    Solution sub_solution = NULL;
     Solution* tab_solution = NULL;
 
     if ( (n->colored == END) && (s->count_nodes_s > 1)) {
@@ -80,7 +78,7 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 
             if(sub_solution != NULL) {
 
-                tab_solution = (Solution*)realloc(tab_solution, (dim_tab + 1)*sizeof(Solution));
+                tab_solution = (Solution*) realloc(tab_solution, (dim_tab + 1) * sizeof(Solution));
                 if ( tab_solution == NULL) {
                     free(tab_solution); /** Penser a free toutes les solution de tabsolution */
                     QUIT_MSG("Can't allocate more memory for tab_solution\n");
@@ -109,7 +107,7 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
         }
     }
     s = tab_solution[ref];
-    /* Content of each cell had been delete in best_solution [ugly but usefull] */
+
     free(tab_solution);
 
     return s;
