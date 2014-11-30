@@ -33,10 +33,9 @@ Edges_matrix branch_and_bound_rem_rec(int index, Edges_matrix part, int part_bou
             
         for(j = 0; j < best_length; ++j) {
             left_part[index][j] = -1;
-        }
-        for(j = 0; j < best_length; ++j) {
             left_part[j][next] = -1;
         }
+
         left_part[next][index] = -1;
         left_part[index][next] = -2;
         
