@@ -63,8 +63,10 @@ if ( argc == 2 ) {
 		printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 */			
 		printf("Start Random Approch : \n");
+
 		gettimeofday(&tv1,NULL);
 		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
+
 		s = random_approch(tsp_graph);
 		gettimeofday(&tv2,NULL);
 		print_solution(s);
@@ -78,7 +80,7 @@ if ( argc == 2 ) {
 		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution(s);
-   		
+
 		printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
 		reset_coloration(tsp_graph);
@@ -91,7 +93,7 @@ if ( argc == 2 ) {
    		
 		printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
-/*		!!!! ATTENTION PAS TESTE !!!! (c'est pas la peine de venir critiquer si décommenté !)
+/*		!!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 		printf("Start Branch and Bound approch (removing edges version) : \n");
 		gettimeofday(&tv1,NULL);
 		s = branch_and_bound_rem(tsp_graph);

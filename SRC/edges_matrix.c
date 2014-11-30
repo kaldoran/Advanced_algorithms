@@ -12,8 +12,8 @@
 #include "edges_matrix.h"
 
 
-int** new_matrix(int length) {
-	int** matrix = (int**)calloc(length,sizeof(int*));
+Edges_matrix new_matrix(int length) {
+	Edges_matrix matrix = (Edges_matrix)calloc(length,sizeof(int*));
 	int i;
 	
 	if(matrix == NULL) {
@@ -31,8 +31,8 @@ int** new_matrix(int length) {
 	return matrix;
 }
 
-int** copy_matrix(int** matrix, int length) {
-	int** matrix_cpy = new_matrix(length);
+Edges_matrix copy_matrix(Edges_matrix matrix, int length) {
+	Edges_matrix matrix_cpy = new_matrix(length);
 	int i,j;
 	
 	for(i = 0; i < length; ++i){
@@ -44,7 +44,7 @@ int** copy_matrix(int** matrix, int length) {
 	return matrix_cpy;
 }
 
-void free_matrix(int** matrix, int length) {
+void free_matrix(Edges_matrix matrix, int length) {
 	int i;
 	for(i = 0; i < length; ++i) {
 		free(matrix[i]);
@@ -52,8 +52,8 @@ void free_matrix(int** matrix, int length) {
 	free(matrix);
 }
 
-int** graph_to_edges_matrix(Graph tspGraph) {
-	int** matrix = new_matrix(tspGraph->count_nodes);
+Edges_matrix graph_to_edges_matrix(Graph tspGraph) {
+	Edges_matrix matrix = new_matrix(tspGraph->count_nodes);
 	int i,j;
 	
 	for(i = 0; i < tspGraph->count_nodes; ++i) {
@@ -66,22 +66,31 @@ int** graph_to_edges_matrix(Graph tspGraph) {
 			}
 		}
 	}
-	return matrix;	
+	return matrix;
 }
 
-int** solution_to_edges_matrix(Solution sol) {
-	int** matrix = new_matrix(sol->count_nodes_s);
-
-	return matrix;	
-}
-
-Solution edges_matrix_to_solution(int** matrix, int length){
-	Solution sol = new_solution(length);
-	matrix = matrix;
+Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start) {
+	Solution sol = new_solution(tspGraph->count_nodes+1);
+	add_node(sol, tspGraph->nodes[start],0);
+	
+	int i = 0, j, node = start;
+	
+	while(i < tspGraph->count_nodes+1) {
+		j = 0;
+		
+		while(matrix[node][j] != -2){
+			j++;
+		}
+	
+		add_node(sol, tspGraph->nodes[j],tspGraph->nodes[node]->cost[j]);
+		node = j;
+		++i;
+	}
+	
 	return sol;
 }
 
-int bound_solution(Solution sol, int** matrix, int** matrix_end, int length) {
+int bound_solution(Solution sol, Edges_matrix matrix, Edges_matrix matrix_end, int length) {
 	matrix_end = copy_matrix(matrix, length);
 	int i,j, bound = 0;
 	
@@ -105,7 +114,7 @@ int bound_solution(Solution sol, int** matrix, int** matrix_end, int length) {
 	return bound;	
 }
 
-void print_edges_matrix(int** matrix, int length) {
+void print_edges_matrix(Edges_matrix matrix, int length) {
 	int i,j;
 	printf("Edges matrix:\n");
 	
@@ -136,7 +145,7 @@ void print_edges_matrix(int** matrix, int length) {
 	}	
 }
 
-int index_min_line(int** matrix, int length, int index) {
+int index_min_line(Edges_matrix matrix, int length, int index) {
 	int min = INT_MAX, j, next = -1;
 	
 	for(j = 0; j < length; ++j) {
@@ -149,7 +158,7 @@ int index_min_line(int** matrix, int length, int index) {
 	return next;
 }
 
-int index_min_col(int** matrix, int length, int index) {
+int index_min_col(Edges_matrix matrix, int length, int index) {
 	int min = INT_MAX, j, next = -1;
 	
 	for(j = 0; j < length; ++j) {
@@ -162,7 +171,7 @@ int index_min_col(int** matrix, int length, int index) {
 	return next;
 }
 
-int min_line(int** matrix, int length, int index) {
+int min_line(Edges_matrix matrix, int length, int index) {
 	int next = index_min_line(matrix, length, index);
 	int min = 0;
 	
@@ -173,7 +182,7 @@ int min_line(int** matrix, int length, int index) {
 	return min;
 }
 
-int min_col(int** matrix, int length, int index) {
+int min_col(Edges_matrix matrix, int length, int index) {
 	int next = index_min_col(matrix, length, index);
 	int min = 0;
 	
@@ -184,7 +193,7 @@ int min_col(int** matrix, int length, int index) {
 	return min;
 }
 
-int red_line(int** matrix, int** matrix_red, int length) {
+int red_line(Edges_matrix matrix, Edges_matrix matrix_red, int length) {
 	int i, j, min, bound=0;
 	for(i = 0; i < length; ++i) {
 		min = min_line(matrix, length, i);
@@ -201,7 +210,7 @@ int red_line(int** matrix, int** matrix_red, int length) {
 	return bound;
 }
 
-int red_col(int** matrix, int** matrix_red, int length) {
+int red_col(Edges_matrix matrix, Edges_matrix matrix_red, int length) {
 	int i, j, min, bound=0;
 	for(j = 0; j < length; ++j) {
 		min = min_col(matrix, length, j);
@@ -218,7 +227,7 @@ int red_col(int** matrix, int** matrix_red, int length) {
 	return bound;
 }
 
-int red_all(int** matrix, int** matrix_red, int length) {
+int red_all(Edges_matrix matrix, Edges_matrix matrix_red, int length) {
 	int bound_line = red_line(matrix, matrix_red, length);
 	int bound_col = red_col(matrix_red, matrix_red, length);
 	
