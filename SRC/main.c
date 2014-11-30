@@ -44,7 +44,7 @@ if ( argc == 2 ) {
         tsp_graph = load(argv[1]);
         
         print_graph(tsp_graph);
-        printf("Start Minimal Spanning Tree : \n");
+/*        printf("Start Minimal Spanning Tree : \n");
         gettimeofday(&tv1,NULL);
         s = MST(tsp_graph);
         gettimeofday(&tv2,NULL);
@@ -53,7 +53,7 @@ if ( argc == 2 ) {
            
         printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
-/*        printf("Start Brute Force : \n");
+        printf("Start Brute Force : \n");
         gettimeofday(&tv1,NULL);
         s = tsp_brute_force(tsp_graph);
         gettimeofday(&tv2,NULL);
@@ -61,12 +61,12 @@ if ( argc == 2 ) {
         free_solution(s);
            
         printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
-*/            
+          
         printf("Start Random Approch : \n");
 
         gettimeofday(&tv1,NULL);
-        /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
-
+*/        /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
+/*
         s = random_approch(tsp_graph);
         gettimeofday(&tv2,NULL);
         print_solution(s);
@@ -92,8 +92,8 @@ if ( argc == 2 ) {
         free_solution(s);
            
         printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
-
-/*        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
+*/
+//        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
         printf("Start Branch and Bound approch (removing edges version) : \n");
         gettimeofday(&tv1,NULL);
         s = branch_and_bound_rem(tsp_graph);
@@ -102,15 +102,15 @@ if ( argc == 2 ) {
         free_solution(s);
         
         printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
-        
-*/        reset_coloration(tsp_graph);
+/*        
+        reset_coloration(tsp_graph);
         printf("Start Genetic approch : \n");
         gettimeofday(&tv1,NULL);
         s = genetic_approch(tsp_graph);
         gettimeofday(&tv2,NULL);
         print_solution(s);
         free_solution(s);
-    
+*/
         printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
         free_graph(tsp_graph);
         exit(EXIT_SUCCESS);

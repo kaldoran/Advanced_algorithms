@@ -68,14 +68,14 @@ Edges_matrix graph_to_edges_matrix(Graph tspGraph) {
 }
 
 Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start) {
-    Solution sol = new_solution(tspGraph->count_nodes+1);
+    Solution sol = new_solution(tspGraph->count_nodes);
     add_node(sol, tspGraph->nodes[start],0);
     
     int i = 0, j, node = start;
-    
-    while(i < tspGraph->count_nodes+1) {
+
+    while(i < tspGraph->count_nodes ) {
         j = 0;
-        
+       	 
         while(matrix[node][j] != -2){
             j++;
         }
@@ -91,7 +91,6 @@ Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start
 int bound_solution(Solution sol, Edges_matrix matrix, Edges_matrix matrix_end, int length) {
     matrix_end = copy_matrix(matrix, length);
     int i,j, bound = 0;
-    
     
     for(i = 0; i < sol->count_nodes_s-1; ++i) {
         bound += red_all(matrix_end, matrix_end, length);
@@ -132,7 +131,7 @@ void print_edges_matrix(Edges_matrix matrix, int length) {
                 printf("|\t%d\t",matrix[i][j]);        
             }
             else{
-                printf("|\tN\t");        
+                printf("|\t%d\t", matrix[i][j]);        
             }
         }
         printf("|\n\t\t");    
