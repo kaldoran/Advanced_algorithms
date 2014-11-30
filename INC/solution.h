@@ -40,12 +40,12 @@ void add_node(Solution s,const Node n, int cost);
  */
 Solution copy_solution( Solution src_s);
 
-/** Calculating the best solution from a list of solution
+/** Calculating the best solution from a list of solution and return the id of the best solution
  *  %param list_solution :  a list of solution
  *  %param nb_solution : number of solution in the list of solution
- *  %return : the best Solution of all the array
+ *  %return : the id of the best solution
  */
-Solution best_solution( Solution* list_solution, int nb_solution);
+int best_solution_id( Solution* list_solution, int nb_solution);
 
 /** free all solution allocations
  * %param s : the solution which you will free

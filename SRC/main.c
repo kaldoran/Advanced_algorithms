@@ -36,13 +36,13 @@ int main(int argc, char const *argv[]) {
 	Solution s=NULL;;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
-    system("aplay -D sysdefault -c 1 -q -t wav ../sound.wav &");
+    system("aplay -D sysdefault -c 1 -q -t wav sound.wav &");
 
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		
 		print_graph(tsp_graph);
-		printf("Most sapnning tree : \n");
+/*		printf("Most sapnning tree : \n");
 		start = clock();
 		s = MST(tsp_graph);
 		print_solution(s);
@@ -55,7 +55,7 @@ if ( argc == 2 ) {
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
-				
+*/				
 		printf("Start Random Approch : \n");
 		start = clock();
 		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
@@ -63,7 +63,7 @@ if ( argc == 2 ) {
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-		
+/*		
 		printf("Start Greedy approch : \n");
 		start = clock();
 		s = greedy_approch(tsp_graph);
@@ -78,7 +78,7 @@ if ( argc == 2 ) {
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
 
-/*		!!!! ATTENTION PAS TESTE !!!! (c'est pas la peine de venir critiquer si décommenté !)
+		!!!! ATTENTION PAS TESTE !!!! (c'est pas la peine de venir critiquer si décommenté !)
 		printf("Start Branch and Bound approch (removing edges version) : \n");
 		start = clock();
 		s = branch_and_bound_rem(tsp_graph);

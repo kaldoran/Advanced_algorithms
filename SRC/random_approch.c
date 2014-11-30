@@ -28,10 +28,10 @@ Solution random_approch(Graph g) {
 	for ( i = 1; i < ITERATION; i++ ) {
 		tmp = random_approch_compute(g, VISITED_RAND + i);
 		if ( best->cost > tmp->cost ) {
-			free(best);
+			free_solution(best);
 			best = tmp;
 		} else {
-			free(tmp);
+			free_solution(tmp);
 		}
 	}
 	return best;

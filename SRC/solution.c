@@ -56,42 +56,35 @@ Solution copy_solution( Solution src_s) {
 	return dest_s;
 }
 
-Solution best_solution( Solution* list_solution, int nb_solution) {
+int best_solution_id( Solution* list_solution, int nb_solution) {
 	int i = 0;
 	int ref = 0;
 	int minCost = INT_MAX;
 
 	if (nb_solution == 0) {
-		return NULL;
+		return -1;
 	}
 
 	if ( nb_solution == 1) { 
-		return list_solution[0];
+		return 0;
 	}
 
 	for ( i=0; i < nb_solution; i++) {
-
 		if (list_solution[i]->cost <= minCost) {
 			ref = i;
 			minCost = list_solution[i]->cost;
 		}
 	}
 
-	/**free fake solutions */
-	for ( i=0; i< nb_solution; i++) {
-		if ( i != ref ) {
-			free_solution(list_solution[i]);
-		}
-	}
-
-	return list_solution[ref];
+	return ref;
 }
 
 void free_solution(Solution s) {
-
-	/* On free pas les nodes car ils s'agit des pointeurs sur les nodes présent dans la structure graph*/
-	free(s->list_node);
-	free(s);
+	if ( s != NULL ) {
+		/* On free pas les nodes car ils s'agit des pointeurs sur les nodes présent dans la structure graph*/
+		free(s->list_node);
+		free(s);
+	}
 }
 
 void free_solution_bis(Solution s) {

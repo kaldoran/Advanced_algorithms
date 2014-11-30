@@ -13,8 +13,8 @@
 #define ELITE_PARENT 		 10 
 #define ELITE_POURCENT		 10
 #define TOURNAMENT_POURCENT  10
-#define NUMBER_SOLUTION 	 100
-#define EVOLUTION_ITERATIONS 10000
+#define NUMBER_SOLUTION 	 10
+#define EVOLUTION_ITERATIONS 1
 
 #define TOURNAMENT_SIZE     (( NUMBER_SOLUTION * TOURNAMENT_POURCENT) / 100)
 #define TOTAL_ELITE 		(( NUMBER_SOLUTION * ELITE_POURCENT) / 100)
@@ -92,28 +92,39 @@ Solution tournment(Solution *sorted) {
 	Solution best = NULL;
 	Solution *tournment = (Solution*) calloc( TOURNAMENT_SIZE, sizeof(Solution));
 	
+	if ( tournment == NULL ) {
+		QUIT_MSG("Can't allocate memory for tournement");
+	}
+
 	for ( i = 0; i < TOURNAMENT_SIZE; i++ ) {
 		tournment[i] = sorted[rand() % (NUMBER_SOLUTION - 1) ];
 	}
-	best = best_solution(tournment, TOURNAMENT_SIZE);
+	i = best_solution_id(tournment, TOURNAMENT_SIZE);
+
+	best = tournment[i];
 	free(tournment);
+
 	return best;
 }
 
 Solution *evolution(Solution *genetic) {
 
-	int i = 0, j = 0, k = 0, bestCost, node_left, bestNode = 0;
+	int i = 0, j = 0, k = 0, bestCost = INT_MAX, node_left, bestNode = 0;
 	
 	Solution *sorted = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
+//	Solution *nextGeneration = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
 	node_left = NUMBER_SOLUTION;	
+
 	if ( sorted == NULL ) {
-		QUIT_MSG("Can't allocate sorted");
+		QUIT_MSG("Can't allocate memory for sorted");
 	}
+
+//	if ( nextGeneration == NULL ) {
+//		QUIT_MSG("Can't allocate memory for nextGeneration");
+//	}
 
 	/* Tri */
 	for( i = 0; i < NUMBER_SOLUTION; i++ ) {
-		bestCost = INT_MAX;
-
 		for( j = 0; j < NUMBER_SOLUTION; j++ ) {
 			if (genetic[i] != NULL ) {
 				if ( genetic[i]->cost <= bestCost ) {
@@ -123,13 +134,12 @@ Solution *evolution(Solution *genetic) {
 			}	
 		}
 		sorted[k] = genetic[bestNode]; /* Deplacement du pointeur */
-		genetic[i] = NULL;
 
 		++k;
 	}
 
 	node_left -= TOTAL_ELITE;
-	
+		
 	for ( i = 0; i < TOTAL_ELITE; i++ ) {
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = mutate(sorted[i]);
@@ -140,30 +150,37 @@ Solution *evolution(Solution *genetic) {
 		}
 	}
 
-	while( node_left > 0 ) {
+	while( node_left >= 0 ) {
 		Solution p1 = tournment(sorted);
 		Solution p2 = tournment(sorted);
 
 		Solution child = crossover(p1, p2);
+		free_solution(genetic[i]);
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = mutate(child);
+			cost_solution(genetic[i]);
 		} else { 
 			genetic[i] = child;
 		}
 
 		cost_solution(genetic[i]);
 		
-		genetic[i] = sorted[i];
 		++i;
 		--node_left;
 	}
+	for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
+		free_solution(sorted[i]);
+	}
 
+//	free(genetic);
 	free(sorted);
 	return genetic;
 }
 
 Solution genetic_approch(Graph g) {
-	int i;
+	int i = 0;
+	int ref = 0;
+
 	Solution best = NULL;
 	Solution *genetic = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
 	if ( genetic == NULL ) {
@@ -179,8 +196,15 @@ Solution genetic_approch(Graph g) {
 	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
 		genetic = evolution(genetic);
 	}
-	
-	best = best_solution(genetic, NUMBER_SOLUTION);
+
+	ref = best_solution_id(genetic, NUMBER_SOLUTION);
+	for ( i = 0; i < NUMBER_SOLUTION; i++) {
+		if ( i != ref ) {
+			free_solution(genetic[i]);
+		}
+	}
+
+	best = genetic[ref];
 	free(genetic);
 
 	

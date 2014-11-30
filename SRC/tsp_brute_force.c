@@ -48,7 +48,7 @@ Solution tsp_brute_force(Graph g) {
 
 Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 
-	int i = 0;
+	int i = 0, ref = 0;
 	int dim_tab = 0;
 	Solution sub_solution=NULL;
 
@@ -98,8 +98,17 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 		n->colored = UNVISITED;	
 	}
 	free_solution(s);
-	s = best_solution(tab_solution,dim_tab);
-		
+	ref = best_solution_id(tab_solution,dim_tab);
+	if ( ref == -1 ) {
+		return NULL;
+	}
+
+	for ( i = 0; i < dim_tab; i++ ) {
+		if ( ref != i ) {
+			free_solution(tab_solution[i]);
+		}
+	}
+	s = tab_solution[ref];
 	/* Content of each cell had been delete in best_solution [ugly but usefull] */
 	free(tab_solution);
 
