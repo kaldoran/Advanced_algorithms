@@ -89,7 +89,6 @@ Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start
 }
 
 int bound_solution(Solution sol, Edges_matrix matrix_end, int length) {
-    printf("matroux %p\n",matrix_end);
     int i,j, bound = 0;
     
     for(i = 0; i < sol->count_nodes_s-1; ++i) {
@@ -109,7 +108,6 @@ int bound_solution(Solution sol, Edges_matrix matrix_end, int length) {
         matrix_end[sol->list_node[i]->name][sol->list_node[i+1]->name] = -2;
     }
     bound += red_all(matrix_end, matrix_end, length);
-    printf("matroux %p\n",matrix_end);
     
     return bound;    
 }
@@ -205,9 +203,6 @@ int red_line(Edges_matrix matrix, Edges_matrix matrix_red, int length) {
             if(matrix[i][j] > -1) {
                 matrix_red[i][j] = matrix[i][j] - min;
             }
-            else{
-                matrix_red[i][j] = -1;
-            }
         }        
     }
     return bound;
@@ -221,9 +216,6 @@ int red_col(Edges_matrix matrix, Edges_matrix matrix_red, int length) {
         for(i = 0; i < length; ++i) {
             if(matrix[i][j] > -1) {
                 matrix_red[i][j] = matrix[i][j] - min;
-            }
-            else{
-                matrix_red[i][j] = -1;
             }
         }        
     }
