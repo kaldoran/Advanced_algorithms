@@ -51,7 +51,7 @@ Solution MST(Graph g) {
 
 		/**building*/
 		minimal_spanning_tree->nodes[s->list_node[index2]->name]->subnodes[g->nodes[index]->name] = minimal_spanning_tree->nodes[g->nodes[index]->name];
-		minimal_spanning_tree->nodes[g->nodes[index]->name]->subnodes[s->list_node[index2]->name] = minimal_spanning_tree->nodes[s->list_node[index2]->name];
+		//minimal_spanning_tree->nodes[g->nodes[index]->name]->subnodes[s->list_node[index2]->name] = minimal_spanning_tree->nodes[s->list_node[index2]->name];
 		add_node(s, g->nodes[index], 0);
 		++total_node;
 	}
@@ -69,24 +69,15 @@ Solution MST(Graph g) {
 
 
 int prefix_course(Node tree, Solution s, int state) {
-
 	int i = 0;
-	if(tree != NULL) {
-		tree->colored = VISITED;
-		if(state == 1) {
-			add_node(s,copy_node(tree),0);
+	tree->colored = VISITED;
+	add_node(s,copy_node(tree),0);
+	for( i = 0; i < tree->count_subnodes; i++) {
+		if(tree->subnodes[i] != NULL) {
+			state = prefix_course(tree->subnodes[i],s,state);
 		}
-		state = 1;
-		for( i = 0; i < tree->count_subnodes; i++) {
-			if(tree->subnodes[i] != NULL) {
-				if(tree->subnodes[i]->colored != VISITED) {
-					state = prefix_course(tree->subnodes[i],s,state);
-				}
-			}
-		}
-	} else {
-		state = 0;
 	}
-	return state;
+
+	return 1;
 }
 

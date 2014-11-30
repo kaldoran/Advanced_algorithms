@@ -36,20 +36,20 @@ int main(int argc, char const *argv[]) {
 	Solution s=NULL;;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
-    system("aplay -D sysdefault -c 1 -q -t wav sound.wav &");
+ //   system("aplay -D sysdefault -c 1 -q -t wav sound.wav &");
 
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		
 		print_graph(tsp_graph);
-/*		printf("Most sapnning tree : \n");
+		printf("Most sapnning tree : \n");
 		start = clock();
 		s = MST(tsp_graph);
 		print_solution(s);
 		free_solution_bis(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
 		
-		printf("Start Brute Force : \n");
+/*		printf("Start Brute Force : \n");
 		start = clock();
 		s = tsp_brute_force(tsp_graph);
 		print_solution(s);
@@ -85,7 +85,7 @@ if ( argc == 2 ) {
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-*/
+
 		reset_coloration(tsp_graph);
 		printf("Start Genetic approch : \n");
 		start = clock();
@@ -93,7 +93,7 @@ if ( argc == 2 ) {
 		print_solution(s);
 		free_solution(s);
 		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-		
+*/		
 	
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);

@@ -84,7 +84,7 @@ Solution crossover(const Solution s1, const Solution s2) {
 
 Solution tournment(Solution *sorted) {
 
-/*	if ( rand() % 100 < ELITE_PARENT) {
+	if ( rand() % 100 < ELITE_PARENT) {
 		return sorted[rand() % TOTAL_ELITE];
 	}
 
@@ -103,7 +103,7 @@ Solution tournment(Solution *sorted) {
 
 	best = tournment[i];
 	free(tournment);
-*/
+
 	return sorted[0];
 }
 
