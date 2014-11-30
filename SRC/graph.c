@@ -20,7 +20,6 @@ Graph new_graph(const int number_of_node) {
     tsp_graph = (Graph) calloc(1, sizeof(*tsp_graph));
     
     if ( tsp_graph == NULL ) {
-        DEBUG_PRINTF("Empty Graph");
         QUIT_MSG("Can't allocate memory for a graph");
     }
     
@@ -30,7 +29,6 @@ Graph new_graph(const int number_of_node) {
     
     if ( tsp_graph->nodes == NULL ) {
         free(tsp_graph);
-        DEBUG_PRINTF("Empty array of node");
         QUIT_MSG("Can't allocate memory for array of node");
     }
     

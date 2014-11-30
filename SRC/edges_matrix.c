@@ -17,14 +17,12 @@ Edges_matrix new_matrix(int length) {
     int i;
     
     if(matrix == NULL) {
-        DEBUG_PRINTF("Can't allocate edges matrix");
         QUIT_MSG("Can't allocate edges matrix");
     }
     
     for(i = 0; i < length; ++i) {
         matrix[i] = (int*)calloc(length,sizeof(int));
         if(matrix[i] == NULL) {
-            DEBUG_PRINTF("Can't allocate edges matrix");
             QUIT_MSG("Can't allocate edges matrix");
         }
     }

@@ -15,7 +15,7 @@ Node new_node() {
 
     Node n = (Node) calloc(1, sizeof(*n));
     if ( n == NULL ) {
-        DEBUG_PRINTF("Empty Node");
+        QUIT_MSG("Can't allocate memory for a new node\n");
     }
     
     return n;

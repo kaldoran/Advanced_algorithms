@@ -182,13 +182,13 @@ Solution genetic_approch(Graph g) {
         QUIT_MSG("Can't allocated Solution");
     }
 
-    printf("Starting generate population");
+	DEBUG_PRINTF("Start generate random solution");
     for ( i = 0; i < NUMBER_SOLUTION; i++ ) {
         genetic[i] = random_approch_compute(g, VISITED_RAND + (i + 1));
     }
-    
-    printf("Starting Evolution");
-    for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
+
+	DEBUG_PRINTF("Start evolution");
+	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
         genetic = evolution(g, genetic);
     }
 
