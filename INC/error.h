@@ -30,9 +30,9 @@
  *  %param ... : List of param [ for example if want to print variable value
  */
 #define QUIT_MSG(MSG, ...)                                                                                                  \
-    do {       																												\
-		fprintf(stderr, "[FATAL ERROR] : ");																				\
-        fprintf(stderr, MSG, ## __VA_ARGS__);                                                						        \
+    do {                                                                                                                       \
+        fprintf(stderr, "[FATAL ERROR] : ");                                                                                \
+        fprintf(stderr, MSG, ## __VA_ARGS__);                                                                                \
         exit(EXIT_FAILURE);                                                                                                 \
     }while(0);
 

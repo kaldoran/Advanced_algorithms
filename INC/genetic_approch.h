@@ -20,7 +20,7 @@ Solution mutate(Solution s);
  *  %param s1 : Solution 1 ( parent 1 )
  *  %param s2 : Solution 2 ( parent 2 )
  *  %return : The crossover off 2 solution
- *  		  Or with a small probability one off the 2 parents.
+ *            Or with a small probability one off the 2 parents.
  */
 Solution crossover(const Solution s1, const Solution s2);
 
