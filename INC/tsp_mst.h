@@ -15,6 +15,6 @@
 
 Solution MST(Graph g);
 
-int prefix_course(Node tree, Solution s, int state);
+int prefix_course(Node tree, Solution s);
 
 #endif

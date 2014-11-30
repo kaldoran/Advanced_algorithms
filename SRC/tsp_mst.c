@@ -56,7 +56,7 @@ Solution MST(Graph g) {
 		++total_node;
 	}
 
-	prefix_course(minimal_spanning_tree->nodes[0], optimal_solution,1);
+	prefix_course(minimal_spanning_tree->nodes[0], optimal_solution);
 	add_node(optimal_solution,copy_node(minimal_spanning_tree->nodes[0]),0 );
 	for(i = 0; i < optimal_solution->count_nodes_s-1 ; i++) {
 		optimal_solution->cost += g->nodes[optimal_solution->list_node[i]->name]->cost[optimal_solution->list_node[i+1]->name];
@@ -68,13 +68,13 @@ Solution MST(Graph g) {
 }
 
 
-int prefix_course(Node tree, Solution s, int state) {
+int prefix_course(Node tree, Solution s) {
 	int i = 0;
 	tree->colored = VISITED;
 	add_node(s,copy_node(tree),0);
 	for( i = 0; i < tree->count_subnodes; i++) {
 		if(tree->subnodes[i] != NULL) {
-			state = prefix_course(tree->subnodes[i],s,state);
+			prefix_course(tree->subnodes[i],s);
 		}
 	}
 
