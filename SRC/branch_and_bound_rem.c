@@ -11,7 +11,6 @@
 #include <limits.h>
 
 #include "error.h"
-#include "stack.h"
 #include "solution.h"
 #include "readfile.h"
 #include "struct_graph.h"
@@ -21,7 +20,9 @@
 Edges_matrix branch_and_bound_rem_rec(int index, Edges_matrix part, int part_bound, int part_length,Edges_matrix best, int best_bound, int best_length){
 	if(part_length == best_length){
 		if(part_bound < best_bound){
-			return part;
+			Edges_matrix new_part = copy_matrix(part, part_length);
+			
+			return new_part;
 		}
 	}
 	else{
