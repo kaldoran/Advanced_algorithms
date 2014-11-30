@@ -83,7 +83,7 @@ Solution branch_and_bound(Graph tspGraph) {
     tspGraph->nodes[start]->colored = END;
 
     
-    Solution best = greedy_approch(tspGraph);
+    best = greedy_approch(tspGraph);
     
     reset_coloration(tspGraph);
     tspGraph->nodes[start]->colored = END;

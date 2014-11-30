@@ -11,7 +11,6 @@
 #include <limits.h>
 
 #include "error.h"
-#include "stack.h"
 #include "solution.h"
 #include "readfile.h"
 #include "struct_graph.h"

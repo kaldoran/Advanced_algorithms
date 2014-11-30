@@ -51,7 +51,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution_bis(s);
            
-        printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
 /*        printf("Start Brute Force : \n");
         gettimeofday(&tv1,NULL);
@@ -60,7 +60,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
            
-        printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 */            
         printf("Start Random Approch : \n");
 
@@ -72,7 +72,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
            
-        printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
         printf("Start Greedy approch : \n");
         gettimeofday(&tv1,NULL);
@@ -81,7 +81,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
 
-        printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
         reset_coloration(tsp_graph);
         printf("Start Branch and Bound approch: \n");
@@ -91,7 +91,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
            
-        printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
 /*        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
         printf("Start Branch and Bound approch (removing edges version) : \n");
@@ -101,7 +101,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
         
-        printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
         
 */        reset_coloration(tsp_graph);
         printf("Start Genetic approch : \n");
@@ -111,7 +111,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
     
-        printf("temps = %lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
         free_graph(tsp_graph);
         exit(EXIT_SUCCESS);
     }
