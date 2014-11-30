@@ -13,7 +13,6 @@
 
 
 /** Recursive function of the algorithm.
- *  %param index : Index of the last node in the path.
  *  %param part : Partial matrix which is compute.
  *  %param part_bound : Bound of the partial matrix.
  *  %param part_length : Number of edges used in the partial matrix.
@@ -22,7 +21,7 @@
  *  %param best_length : Number of edges used in the best matrix.
  *  %return : matrix of the best solution found.
  */
-Edges_matrix branch_and_bound_rem_rec(int index, Edges_matrix part, int part_bound, int part_length,Edges_matrix best, int best_bound, int best_length);
+Edges_matrix branch_and_bound_rem_rec(Edges_matrix part, int part_bound, int part_length,Edges_matrix best, int best_bound, int best_length);
 
 /** Function initialising variables and calling the algorithm.
  *  %param tspGraph : graph needed to execute.

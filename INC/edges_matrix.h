@@ -76,6 +76,9 @@ int index_min_line(Edges_matrix matrix, int length, int index);
  */
 int index_min_col(Edges_matrix matrix, int length, int index);
 
+
+int* first_zero(Edges_matrix matrix, int length);
+
 /** Function to find the minimal value on a line of an edges matrix.
  *  %param matrix : Edges matrix where find the value.
  *  %param length : Number of lines/columns in the matrix.

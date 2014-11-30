@@ -172,6 +172,29 @@ int index_min_col(Edges_matrix matrix, int length, int index) {
     return next;
 }
 
+int* first_zero(Edges_matrix matrix, int length){
+	int i,j;
+	int* indexes = (int*)calloc(2,sizeof(int));
+	
+	if(indexes == NULL) {
+        QUIT_MSG("Can't allocate edges matrix");
+    }
+
+	for(i = 0; i < length; ++i){
+		for(j = 0; j < length; ++j){
+			if(matrix[i][j] == 0){
+				indexes[0] = i;
+				indexes[1] = j;
+				return indexes;
+			}
+		}
+	}
+	
+	indexes[0] = -1;
+	indexes[1] = -1;
+	return indexes;
+}
+
 int min_line(Edges_matrix matrix, int length, int index) {
     int next = index_min_line(matrix, length, index);
     int min = 0;
