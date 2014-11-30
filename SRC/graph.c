@@ -51,17 +51,17 @@ Graph new_graph(const int number_of_node) {
 void free_graph(Graph g) {
     int i = 0;
 
-	for( i = 0; i < g->count_nodes; i++) {
+    for( i = 0; i < g->count_nodes; i++) {
          free(g->nodes[i]->cost);
-	     free(g->nodes[i]->subnodes);
-	     free(g->nodes[i]);
-	}
-	
-	free(g->nodes);
-	
-	free(g);
+         free(g->nodes[i]->subnodes);
+         free(g->nodes[i]);
+    }
+    
+    free(g->nodes);
+    
+    free(g);
 
-	return;
+    return;
 }
 
 
@@ -74,21 +74,21 @@ void print_graph(const Graph g) {
         printf("***** Node name : %d \n", g->nodes[i]->name);
           
         for( j = 0; j < g->nodes[i]->count_subnodes; j++) {
-			if (g->nodes[i]->subnodes[j] != NULL) {
-           		printf("\tNode Name : %d [ %d ] (%d)\n", g->nodes[i]->subnodes[j]->name, g->nodes[i]->cost[j], g->nodes[i]->colored);
-			}
+            if (g->nodes[i]->subnodes[j] != NULL) {
+                   printf("\tNode Name : %d [ %d ] (%d)\n", g->nodes[i]->subnodes[j]->name, g->nodes[i]->cost[j], g->nodes[i]->colored);
+            }
         }
     }
 
-	return;
+    return;
 }
 
 
 void reset_coloration(Graph g) {
-	int i;
-	for ( i = 0; i < g->count_nodes; i++ ) {
-		g->nodes[i]->colored = UNVISITED;
-	}
+    int i;
+    for ( i = 0; i < g->count_nodes; i++ ) {
+        g->nodes[i]->colored = UNVISITED;
+    }
 
-	return;
+    return;
 }
