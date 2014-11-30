@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include <sys/time.h>
 
 #include "string.h"
 #include "graph.h"
@@ -32,6 +33,8 @@ int main(int argc, char const *argv[]) {
 	UNUSED(argc);
     UNUSED(argv);
 	
+	struct timeval tv1,tv2;
+   	long long temps;
 	clock_t start;
 	Solution s=NULL;;
     Graph tsp_graph = NULL;
@@ -42,13 +45,16 @@ if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
 		
 		print_graph(tsp_graph);
-		printf("Most sapnning tree : \n");
-		start = clock();
+		printf("Start Minimal Spanning Tree : \n");
+		gettimeofday(&tv1,NULL);
 		s = MST(tsp_graph);
+		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution_bis(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
-		
+		//printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
+		temps=(tv2.tv_usec-tv1.tv_usec);
+   		printf("temps=%lld microsecondes\n",temps);
+
 		printf("Start Brute Force : \n");
 		start = clock();
 		s = tsp_brute_force(tsp_graph);

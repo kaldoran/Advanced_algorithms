@@ -23,7 +23,7 @@ Solution MST(Graph g) {
 	set_node(minimal_spanning_tree->nodes[0], 0, g->count_nodes);	//add root node in mst
 
 	add_node(s, g->nodes[0], 0);									//add root node in solution;
-	printf("De : Nom [Indice tableau dans S] - Nom [indice tableau dans g]\n");
+	//printf("De : Nom [Indice tableau dans S] - Nom [indice tableau dans g]\n");
 	/** while we don't see all node in graph g */
 	while( total_node != g->count_nodes) {
 		min = INT_MAX;						//initiate min
@@ -43,7 +43,7 @@ Solution MST(Graph g) {
 
 		}
 		
-		printf("De : %d [%d] - %d [%d]\n", s->list_node[index2]->name, index2, g->nodes[index]->name, index);
+		//printf("De : %d [%d] - %d [%d]\n", s->list_node[index2]->name, index2, g->nodes[index]->name, index);
 
 	
 	/*	minimal_spanning_tree->nodes[index] = new_node();*/
