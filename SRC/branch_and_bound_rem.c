@@ -68,9 +68,11 @@ Solution branch_and_bound_rem(Graph tspGraph) {
     
     Solution best = greedy_approch(tspGraph);
     
-    Edges_matrix matrix_best = NULL;
+    Edges_matrix matrix_best = copy_matrix(matrix, tspGraph->count_nodes);
     
     int best_bound =  bound_solution(best, matrix, matrix_best, tspGraph->count_nodes);
+    printf("matrix %p\n",matrix_best);
+    print_edges_matrix(matrix_best,tspGraph->count_nodes);
     
     matrix_best = branch_and_bound_rem_rec(start, matrix, 0, 0, matrix_best, best_bound, tspGraph->count_nodes);
     

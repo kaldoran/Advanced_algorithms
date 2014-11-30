@@ -88,25 +88,28 @@ Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start
     return sol;
 }
 
-int bound_solution(Solution sol, Edges_matrix matrix, Edges_matrix matrix_end, int length) {
-    matrix_end = copy_matrix(matrix, length);
+int bound_solution(Solution sol, Edges_matrix matrix_end, int length) {
+    printf("matroux %p\n",matrix_end);
     int i,j, bound = 0;
     
     for(i = 0; i < sol->count_nodes_s-1; ++i) {
         bound += red_all(matrix_end, matrix_end, length);
         
         for(j = 0; j < sol->count_nodes_s-1; ++j) {
-            matrix_end[sol->list_node[i]->name][j] = -1;
+			if(matrix_end[sol->list_node[i]->name][j] != -2){
+				matrix_end[sol->list_node[i]->name][j] = -1;
+			}
+			if(matrix_end[j][sol->list_node[i+1]->name] != -2){
+				matrix_end[j][sol->list_node[i+1]->name] = -1;
+			}
         }
-        for(j = 0; j < sol->count_nodes_s-1; ++j) {
-            matrix_end[j][sol->list_node[i+1]->name] = -1;
-        }
-        matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] = -1;
+        if(matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] != -2){
+			matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] = -1;
+		}
         matrix_end[sol->list_node[i]->name][sol->list_node[i+1]->name] = -2;
     }
     bound += red_all(matrix_end, matrix_end, length);
-    
-    free_matrix(matrix_end, length);
+    printf("matroux %p\n",matrix_end);
     
     return bound;    
 }
@@ -127,9 +130,12 @@ void print_edges_matrix(Edges_matrix matrix, int length) {
     for(i = 0; i < length; ++i) {
         printf("\t%d\t",i);
         for(j = 0; j < length; ++j) {
-            if(matrix[i][j] > -1) {
-                printf("|\t%d\t",matrix[i][j]);        
+            if(matrix[i][j] == -1) {
+                printf("|\tN\t");        
             }
+            else if(matrix[i][j] == -2){
+				printf("|\tI\t"); 
+			}
             else{
                 printf("|\t%d\t", matrix[i][j]);        
             }

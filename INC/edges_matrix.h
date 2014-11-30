@@ -18,9 +18,9 @@ typedef int** Edges_matrix;
 Edges_matrix new_matrix(int length);
 
 /** Function to free the memory take by an edges matrix.
- * %param matrix : Matrix to free.
- * %param length : Number of lines/columns in the matrix.
- * %return : None.
+ *  %param matrix : Matrix to free.
+ *  %param length : Number of lines/columns in the matrix.
+ *  %return : None.
  */
 void free_matrix(Edges_matrix matrix, int length);
 
@@ -47,12 +47,11 @@ Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start
 
 /** Function to calculate the bound from a solution.
  *  %param sol : Solution we want to compute the final bound.
- *  %param matrix : Edges matrix from the graph at the origin of the solution.
  *  %param matrix_end : Edges matrix resulting of the bound calculation.
  *  %param length : Number of lines/columns in the matrix.
  *  %return : bound calculated.
  */
-int bound_solution(Solution sol, Edges_matrix matrix, Edges_matrix matrix_end, int length);
+int bound_solution(Solution sol, Edges_matrix matrix_end, int length);
 
 /** Function to draw an edges matrix.
  *  %param matrix : Edges matrix to draw.
