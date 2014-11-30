@@ -34,8 +34,7 @@ int main(int argc, char const *argv[]) {
     UNUSED(argv);
 	
 	struct timeval tv1,tv2;
-   	long long temps;
-	clock_t start;
+
 	Solution s=NULL;;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
@@ -52,56 +51,70 @@ if ( argc == 2 ) {
 		print_solution(s);
 		free_solution_bis(s);
 		//printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
-		temps=(tv2.tv_usec-tv1.tv_usec);
-   		printf("temps=%lld microsecondes\n",temps);
+   		
+		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
 		printf("Start Brute Force : \n");
-		start = clock();
+		gettimeofday(&tv1,NULL);
 		s = tsp_brute_force(tsp_graph);
+		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start));
+   		
+		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 				
 		printf("Start Random Approch : \n");
-		start = clock();
-		// Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle
+
+		gettimeofday(&tv1,NULL);
+		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
+
 		s = random_approch(tsp_graph);
+		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-	
+	   	
+		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+
 		printf("Start Greedy approch : \n");
-		start = clock();
+		gettimeofday(&tv1,NULL);
 		s = greedy_approch(tsp_graph);
+		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
+  		
+		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+
 
 		reset_coloration(tsp_graph);
 		printf("Start Branch and Bound approch: \n");
-		start = clock();
+		gettimeofday(&tv1,NULL);
 		s = branch_and_bound(tsp_graph);
+		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
+   		
+		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
 /*		!!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 		printf("Start Branch and Bound approch (removing edges version) : \n");
-		start = clock();
+		gettimeofday(&tv1,NULL);
 		s = branch_and_bound_rem(tsp_graph);
+		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-
+		
+		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+		
 		reset_coloration(tsp_graph);
 		printf("Start Genetic approch : \n");
-		start = clock();
+		gettimeofday(&tv1,NULL);
 		s = genetic_approch(tsp_graph);
+		gettimeofday(&tv2,NULL);
 		print_solution(s);
 		free_solution(s);
-		printf("\n\t\t Time taken %f m-seconds\n\n", (double) (clock() - start) );
-*/		
-	
+		
+		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+*/	
 		free_graph(tsp_graph);
 		exit(EXIT_SUCCESS);
 	}
