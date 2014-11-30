@@ -17,7 +17,7 @@
 
 Solution MST(Graph g) {
 	int total_node = 1, i , j, min = 0, index = -1, index2 = -1;
-	Solution s = new_solution(g->count_nodes );	
+	Solution s = new_solution(g->count_nodes);	
 	Solution optimal_solution = new_solution(g->count_nodes+1);					//Create solution
 	Graph minimal_spanning_tree = new_graph(g->count_nodes+1); 		//create minimal spanning tree
 	set_node(minimal_spanning_tree->nodes[0], 0, g->count_nodes);	//add root node in mst
@@ -58,9 +58,8 @@ Solution MST(Graph g) {
 
 	prefix_course(minimal_spanning_tree->nodes[0], optimal_solution);
 	add_node(optimal_solution,copy_node(minimal_spanning_tree->nodes[0]),0 );
-	for(i = 0; i < optimal_solution->count_nodes_s-1 ; i++) {
-		optimal_solution->cost += g->nodes[optimal_solution->list_node[i]->name]->cost[optimal_solution->list_node[i+1]->name];
-	}
+
+    cost_solution( g, optimal_solution);
 	/** free all alloc */
 	free_solution(s);
 	free_graph(minimal_spanning_tree);

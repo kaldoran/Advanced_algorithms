@@ -13,8 +13,8 @@
 #define ELITE_PARENT 		 10 
 #define ELITE_POURCENT		 10
 #define TOURNAMENT_POURCENT  10
-#define NUMBER_SOLUTION 	 10
-#define EVOLUTION_ITERATIONS 1
+#define NUMBER_SOLUTION 	 50
+#define EVOLUTION_ITERATIONS 100
 
 #define TOURNAMENT_SIZE     (( NUMBER_SOLUTION * TOURNAMENT_POURCENT) / 100)
 #define TOTAL_ELITE 		(( NUMBER_SOLUTION * ELITE_POURCENT) / 100)
@@ -98,7 +98,6 @@ Solution tournment(Solution *sorted) {
 
 	for ( i = 0; i < TOURNAMENT_SIZE; i++ ) {
 		tournment[i] = sorted[rand() % (NUMBER_SOLUTION - 1) ];
-		print_solution(tournment[i]);
 	}
 	i = best_solution_id(tournment, TOURNAMENT_SIZE );
 
@@ -108,34 +107,30 @@ Solution tournment(Solution *sorted) {
 	return best;
 }
 
-Solution *evolution(Solution *genetic) {
+Solution *evolution(const Graph g, Solution *genetic) {
 
-	int i = 0, j = 0, k = 0, bestCost = INT_MAX, node_left, bestNode = 0;
+	int i = 0, j = 0, k = 0, bestCost, node_left, bestNode = 0;
 	
 	Solution *sorted = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
-//	Solution *nextGeneration = (Solution*) calloc( NUMBER_SOLUTION, sizeof(Solution) );
 	node_left = NUMBER_SOLUTION;	
 
 	if ( sorted == NULL ) {
 		QUIT_MSG("Can't allocate memory for sorted");
 	}
 
-//	if ( nextGeneration == NULL ) {
-//		QUIT_MSG("Can't allocate memory for nextGeneration");
-//	}
-
 	/* Tri */
 	for( i = 0; i < NUMBER_SOLUTION; i++ ) {
+		bestCost = INT_MAX;
 		for( j = 0; j < NUMBER_SOLUTION; j++ ) {
-			if (genetic[i] != NULL ) {
+			if ( genetic[i] != NULL ) {
 				if ( genetic[i]->cost <= bestCost ) {
 					bestNode = i;
 					bestCost = genetic[i]->cost;
-				}	
-			}	
+				}
+			}
 		}
-		sorted[k] = genetic[bestNode]; /* Deplacement du pointeur */
-
+		sorted[k] = copy_solution(genetic[bestNode]); /* Deplacement du pointeur */
+		free_solution(genetic[bestNode]);
 		++k;
 	}
 
@@ -144,28 +139,26 @@ Solution *evolution(Solution *genetic) {
 	for ( i = 0; i < TOTAL_ELITE; i++ ) {
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = copy_solution(mutate(sorted[i]));
-			cost_solution(genetic[i]);
+			cost_solution(g, genetic[i]);
 		}
 		else {
 			genetic[i] = copy_solution(sorted[i]);
 		}
 	}
 
-	while( node_left >= 0 ) {
+	while( node_left > 0 ) {
 		Solution p1 = tournment(sorted);
 		Solution p2 = tournment(sorted);
 
 		Solution child = crossover(p1, p2);
-		free_solution(genetic[i]);
 		
 		if ( rand() % 100 < MUTATION_RATE ) {
 			genetic[i] = mutate(child);
-			cost_solution(genetic[i]);
 		} else { 
 			genetic[i] = child;
 		}
 
-		cost_solution(genetic[i]);
+		cost_solution(g, genetic[i]);
 		
 		++i;
 		--node_left;
@@ -197,7 +190,7 @@ Solution genetic_approch(Graph g) {
 	
 	printf("Starting Evolution");
 	for ( i = 0; i < EVOLUTION_ITERATIONS; i++ ) {
-		genetic = evolution(genetic);
+		genetic = evolution(g, genetic);
 	}
 
 	ref = best_solution_id(genetic, NUMBER_SOLUTION);

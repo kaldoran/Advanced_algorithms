@@ -42,7 +42,7 @@ Solution random_approch_compute(Graph g, int visiteColor) {
 	Node current;
 	int start, choix, total_node;
 	
-	s = new_solution(g->count_nodes + 1); /* 2 Time the first node */
+	s = new_solution(g->count_nodes); 
 	choix = 0;
 	total_node = 1;
 	do {
@@ -52,8 +52,6 @@ Solution random_approch_compute(Graph g, int visiteColor) {
 	current = g->nodes[start];
 	current->colored = END;
 	add_node(s, current, 0); /** Add starting node */
-
-	DEBUG_PRINTF("Noeud départ [%d]\n", current->name);
 
 	do {
 

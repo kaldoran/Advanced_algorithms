@@ -28,7 +28,7 @@ Solution crossover(const Solution s1, const Solution s2);
  *  %param genetic : Array which need to be evolved
  *  %return : the evolved array
  */
-Solution *evolution(Solution *genetic);
+Solution *evolution(const Graph g, Solution *genetic);
 
 /** Do the genetic approch by generate random solution and evolve them
  *  %param g : Needed graph for the algorithm

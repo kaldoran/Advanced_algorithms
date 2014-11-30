@@ -46,7 +46,7 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 					part->list_node[last]->subnodes[j]->colored = VISITED_BNB;
 					
 					i = 0;
-					Solution newPart = new_solution(tspGraph->count_nodes + 1 );
+					Solution newPart = new_solution(tspGraph->count_nodes);
 
 					for ( i = 0; i < part->count_nodes_s; i++) {
 						newPart->list_node[i] = part->list_node[i];
@@ -76,11 +76,9 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
 Solution branch_and_bound(Graph tspGraph) {
 	int start = 0;
 
-	Solution part = new_solution(tspGraph->count_nodes + 1);
+	Solution part = new_solution(tspGraph->count_nodes);
 	add_node(part,tspGraph->nodes[start],0);
 	Solution best;
-//	Solution best = new_solution(tspGraph->count_nodes + 1);
-//	add_node(best,tspGraph->nodes[start],0);
 
 	tspGraph->nodes[start]->colored = END;
 	

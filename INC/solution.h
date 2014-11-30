@@ -62,7 +62,7 @@ void print_solution(const Solution s);
 /** Calculate the cost of the solution s
  *  %param s : Solution which on you need to calculate the cost
  */
-void cost_solution(const Solution s);
+void cost_solution(const Graph g, const Solution s);
 
 /** Test is the solution S containe the node N
  *  %param s : Solution to test

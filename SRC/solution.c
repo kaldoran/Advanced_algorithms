@@ -24,7 +24,7 @@ Solution new_solution(const int count_nodes) {
         QUIT_MSG("Can't allocate memory for a solution");
     }
 
-    tsp_solution->list_node = (Node*) calloc(count_nodes, sizeof(*tsp_solution->list_node));
+    tsp_solution->list_node = (Node*) calloc(count_nodes + 1, sizeof(*tsp_solution->list_node));
    	if ( tsp_solution->list_node == NULL ) {
 		DEBUG_PRINTF("Empty Array Node Solution");
 		QUIT_MSG("Can't allocate memory for array of solution");
@@ -104,11 +104,12 @@ void print_solution(const Solution s) {
 	printf("\n\tCost : %d\n\tNode Count : %d\n", s->cost, s->count_nodes_s);
 }
 
-void cost_solution(const Solution s) {
+void cost_solution(const Graph g, const Solution s) {
 	int i = 0;
 	s->cost = 0;
-	for ( i = 0; ( i + 1 ) < s->count_nodes_s; i++) {
-		s->cost += s->list_node[i]->cost[s->list_node[i+1]->name];
+
+	for(i = 0; i < s->count_nodes_s - 1 ; i++) {
+		s->cost += g->nodes[s->list_node[i]->name]->cost[s->list_node[i+1]->name];
 	}
 }
 

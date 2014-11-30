@@ -20,7 +20,7 @@ Solution greedy_approch(Graph g) {
 	Node current;
 	int i, choix, total_node, current_mini, start;
 
-	s = new_solution(g->count_nodes + 1 ); /* 2 Time first node */
+	s = new_solution(g->count_nodes); 
 	choix = 0;
 	total_node = 1; /* Starting node */
 	current_mini = INT_MAX; 
