@@ -25,6 +25,7 @@ Edges_matrix branch_and_bound_rem_rec(Edges_matrix part, int part_bound, int par
 			
 			return new_part;
 		}
+		
 	}
 	else{
 		int* indexes = first_zero(part,best_length);
@@ -53,9 +54,14 @@ Edges_matrix branch_and_bound_rem_rec(Edges_matrix part, int part_bound, int par
 		right_part[index][next] = -1;
 		
 		right_bound += red_all(right_part, right_part, best_length);
-		
 		if(right_bound < best_bound){
 			right_part = branch_and_bound_rem_rec(right_part, right_bound, part_length+1, best, best_bound, best_length);
+		}
+		if(left_bound < best_bound){
+			best = copy_matrix(left_part,best_length);
+		}
+		else{
+			best = copy_matrix(right_part,best_length);
 		}
 	}
 	return best;
