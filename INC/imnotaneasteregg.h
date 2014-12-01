@@ -6,6 +6,6 @@
  *            -1 if cant fork
  *            0 else
  */
-pid_t spawn_aplay(void);
+pid_t spawn_aplay(char *file);
 
 #endif /* EE include */

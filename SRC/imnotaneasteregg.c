@@ -6,9 +6,9 @@
 #include <sys/types.h> /* for pid_t            */
 #include <sys/wait.h> 
 
-pid_t spawn_aplay(void) {
+pid_t spawn_aplay(char *file) {
     pid_t pid = fork();
-	char *cmd[] = { "aplay", "-D", "sysdefault", "-d", "0", "-c", "1", "-q", "sound.wav", NULL };
+	char *cmd[] = { "aplay", "-D", "sysdefault", "-d", "0", "-c", "1", "-q", file, NULL };
     if (pid == -1) {
         fprintf(stderr, "Fork problem");
         return -1;

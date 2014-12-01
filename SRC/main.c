@@ -41,7 +41,7 @@ int main(int argc, char const *argv[]) {
     Solution s=NULL;;
     Graph tsp_graph = NULL;
     srand(time(NULL));
-	aplay = spawn_aplay();
+	aplay = spawn_aplay("sound.wav");
  
 
 if ( argc == 2 ) {
