@@ -45,7 +45,7 @@ Edges_matrix branch_and_bound_rem_rec(Edges_matrix part, int part_bound, int par
 		
 		left_bound += red_all(left_part, left_part, best_length);
 		if(left_bound < best_bound){
-			best = branch_and_bound_rem_rec(left_part, left_bound, part_length+1, best, best_bound, best_length);
+			left_part = branch_and_bound_rem_rec(left_part, left_bound, part_length+1, best, best_bound, best_length);
 		}
 				
 		
@@ -55,12 +55,10 @@ Edges_matrix branch_and_bound_rem_rec(Edges_matrix part, int part_bound, int par
 		right_bound += red_all(right_part, right_part, best_length);
 		
 		if(right_bound < best_bound){
-			best = branch_and_bound_rem_rec(right_part, right_bound, part_length+1, best, best_bound, best_length);
+			right_part = branch_and_bound_rem_rec(right_part, right_bound, part_length+1, best, best_bound, best_length);
 		}
-		
 	}
 	return best;
-
 }
 
 Solution branch_and_bound_rem(Graph tspGraph) {
