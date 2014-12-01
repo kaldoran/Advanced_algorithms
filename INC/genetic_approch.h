@@ -1,10 +1,8 @@
 //----------------------------------------------------------
 // AUTEUR : REYNAUD Nicolas                                 |
-// FICHIER : error.h                                        |
+// FICHIER : genetic_approch.h                              |
 // DATE : 27/10/14                                          |
 //                                                          |
-// - Debug Maccro [C99 Convention]                          |
-// - Quit maccro                                            |
 //----------------------------------------------------------
 
 #ifndef GENETIC_APPROCH
@@ -20,7 +18,7 @@ Solution mutate(Solution s);
  *  %param s1 : Solution 1 ( parent 1 )
  *  %param s2 : Solution 2 ( parent 2 )
  *  %return : The crossover off 2 solution
- *  		  Or with a small probability one off the 2 parents.
+ *            Or with a small probability one off the 2 parents.
  */
 Solution crossover(const Solution s1, const Solution s2);
 
@@ -28,7 +26,7 @@ Solution crossover(const Solution s1, const Solution s2);
  *  %param genetic : Array which need to be evolved
  *  %return : the evolved array
  */
-Solution *evolution(Solution *genetic);
+Solution *evolution(const Graph g, Solution *genetic);
 
 /** Do the genetic approch by generate random solution and evolve them
  *  %param g : Needed graph for the algorithm

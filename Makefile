@@ -1,5 +1,5 @@
 # Release/Debug
-DEBUG=no
+DEBUG=yes
 
 # Directories
 SRC_DIR = SRC
@@ -29,24 +29,41 @@ all: clear dir $(BIN_DIR)/$(BIN)
 #
 
 $(BIN_DIR)/$(BIN): $(OBJ)
+ifeq ($(DEBUG), yes)
 	$(CC) $(OBJ) -o $@ -I $(INC_DIR) $(CFLAGS)
+else 
+	@$(CC) $(OBJ) -o $@ -I $(INC_DIR) $(CFLAGS)
+
+endif
 	@echo "./"$(BIN_DIR)"/"$(BIN)" well created !"
-        
+
 #
 # Object files creation.
 #
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+ifeq ($(DEBUG), yes) 
 	$(CC) -c $^ -o $@ -I $(INC_DIR) $(CFLAGS)
+else 
+	@$(CC) -c $^ -o $@ -I $(INC_DIR) $(CFLAGS)
+	@echo -e "Creating $@"
+endif
+
 
 #
 # Other usefull targets.
 #
 
 clean:
-	rm -f ./$(OBJ_DIR)/*.o ./$(BIN_DIR)/$(BIN);
+ifeq ($(DEBUG), yes) 
 	rm -rf ./$(OBJ_DIR);
 	rm -rf ./$(BIN_DIR);
+else
+	@rm -rf ./$(OBJ_DIR);
+	@echo -e "Remove object file and directory"
+	@rm -rf ./$(BIN_DIR);
+	@echo -e "Remove executable and executable directory"
+endif
 
 
 rebuild: clean all

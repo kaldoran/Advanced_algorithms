@@ -11,7 +11,7 @@
 #include "struct_graph.h"
 
 /** Create a new empty node
- * %return : a pointer on an empty node
+ *  %return : a pointer on an empty node
  */
 Node new_node();
 
@@ -23,7 +23,7 @@ Node new_node();
 void set_node(Node node, const int node_number, const int number_of_subnode);
 
 /** Copy a node n and return him after allocate and copy 
- *	%param n : Node to copy
+ *  %param n : Node to copy
  *  %return : Copy of the node n
  */
 Node copy_node(const Node n);
