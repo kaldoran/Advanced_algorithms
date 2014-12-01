@@ -8,13 +8,14 @@
 
 pid_t spawn_aplay(void) {
     pid_t pid = fork();
+	char *cmd[] = { "aplay", "-D", "sysdefault", "-d", "0", "-c", "1", "-q", "sound.wav", NULL };
     if (pid == -1) {
         fprintf(stderr, "Fork problem");
         return -1;
     }
     
 	if (pid == 0) {
-        execl("/bin/aplay", "aplay -q sound.wav", (char*)NULL);
+        execv("/bin/aplay", cmd );
         fprintf(stderr, "Can't start aplay");
 		return 0;
     } else {

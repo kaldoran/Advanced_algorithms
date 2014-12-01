@@ -56,7 +56,7 @@ if ( argc == 2 ) {
         free_solution_bis(s);
            
         printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
-/*
+
         printf("Start Brute Force : \n");
         gettimeofday(&tv1,NULL);
         s = tsp_brute_force(tsp_graph);
@@ -69,7 +69,7 @@ if ( argc == 2 ) {
         printf("Start Random Approch : \n");
 
         gettimeofday(&tv1,NULL);
-*/        /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
+		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
 
         s = random_approch(tsp_graph);
         gettimeofday(&tv2,NULL);
