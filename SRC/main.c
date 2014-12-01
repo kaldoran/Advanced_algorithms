@@ -35,10 +35,10 @@ int main(int argc, char const *argv[]) {
 	
 	struct timeval tv1,tv2;
 
-	Solution s=NULL;;
+	Solution s=NULL;
     Graph tsp_graph = NULL;
 	srand(time(NULL));
- //   system("aplay -D sysdefault -c 1 -q -t wav sound.wav &");
+    system("aplay -D sysdefault -c 1 -q -t wav sound.wav &");
 
 if ( argc == 2 ) {
 		tsp_graph = load(argv[1]);
@@ -54,12 +54,12 @@ if ( argc == 2 ) {
    		
 		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 
-		printf("Start Brute Force : \n");
+		/*printf("Start Brute Force : \n");
 		gettimeofday(&tv1,NULL);
 		s = tsp_brute_force(tsp_graph);
 		gettimeofday(&tv2,NULL);
 		print_solution(s);
-		free_solution(s);
+		free_solution(s);*/
    		
 		printf("temps=%lld microsecondes\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
 				
