@@ -8,7 +8,7 @@
 
 pid_t spawn_aplay(char *file) {
     pid_t pid = fork();
-	char *cmd[] = { "aplay", "-D", "surround71", "-q", file, NULL };
+	char *cmd[] = { "aplay", "-D", "sysdefault", "-N", "-q", file, NULL };
     if (pid == -1) {
         fprintf(stderr, "Fork problem");
         return -1;
