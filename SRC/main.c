@@ -62,7 +62,7 @@ int main(int argc, char const *argv[]) {
 if ( argc == 2 ) {
         tsp_graph = load(argv[1]);
         
-        print_graph(tsp_graph);
+        //print_graph(tsp_graph);
         printf("Start Minimal Spanning Tree : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
         s = MST(tsp_graph);
@@ -86,7 +86,7 @@ if ( argc == 2 ) {
 
         printf("Start Random Approch : \n");
 
-		/* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
+        /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
         clock_gettime( CLOCK_REALTIME, &begin );
         s = random_approch(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
@@ -114,7 +114,6 @@ if ( argc == 2 ) {
         
         print_time_taken(begin, end);
 
-
 //        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 /*        printf("Start Branch and Bound approch (removing edges version) : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
@@ -124,7 +123,6 @@ if ( argc == 2 ) {
         free_solution(s);
 
         print_time_taken(begin, end);
-
 */      
         reset_coloration(tsp_graph);
         printf("Start Genetic approch : \n");
@@ -135,7 +133,6 @@ if ( argc == 2 ) {
         free_solution(s);
 
         print_time_taken(begin, end);
-
 
         free_graph(tsp_graph);
 

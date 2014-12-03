@@ -30,7 +30,6 @@ Solution greedy_approch(Graph g) {
     current->colored = END;
     add_node(s, current, 0); /** Add starting node */
 
-    printf("Noeud départ [%d]\n", current->name);
     do {
     
         current_mini = INT_MAX;

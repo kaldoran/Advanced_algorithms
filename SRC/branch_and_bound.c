@@ -29,7 +29,6 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
             
             add_node(best, part->list_node[0],part->list_node[part->count_nodes_s - 1]->cost[0]);
         }
-		printf("cost part %d, cost best %d ",cost, best->cost);print_solution(part);
     }
     else if(part->cost > best->cost) {
 		return best;
