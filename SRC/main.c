@@ -24,11 +24,8 @@
 #include "branch_and_bound.h"
 #include "branch_and_bound_rem.h"
 #include "genetic_approch.h"
-
 #include "imnotaneasteregg.h"
-
 #include "tsp_mst.h"
-
 
 #define NANOS 1000000
 
