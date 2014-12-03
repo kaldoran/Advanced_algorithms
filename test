@@ -1,0 +1,1081 @@
+Graph 2
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 1 0 
+	Cost : 34
+	Node Count : 3
+temps = 6 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 1 
+	Cost : 0
+	Node Count : 2
+temps = 0 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 0 1 0 
+	Cost : 34
+	Node Count : 3
+temps = 34 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 0 
+	Cost : 34
+	Node Count : 3
+temps = 1 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 0 
+	Cost : 34
+	Node Count : 3
+temps = 2 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 1 0 1 
+	Cost : 34
+	Node Count : 3
+temps = 5811 microsecondes
+
+Graph 3
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 1 2 0 
+	Cost : 107
+	Node Count : 4
+temps = 5 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 2 1 0 
+	Cost : 107
+	Node Count : 4
+temps = 5 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 1 2 0 1 
+	Cost : 107
+	Node Count : 4
+temps = 60 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 2 0 
+	Cost : 107
+	Node Count : 4
+temps = 1 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 2 0 
+	Cost : 107
+	Node Count : 4
+temps = 3 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 2 1 0 2 
+	Cost : 107
+	Node Count : 4
+temps = 6049 microsecondes
+
+Graph 4
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 1 2 3 0 
+	Cost : 75
+	Node Count : 5
+temps = 7 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 3 2 1 0 
+	Cost : 75
+	Node Count : 5
+temps = 16 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 0 1 2 3 0 
+	Cost : 75
+	Node Count : 5
+temps = 63 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 2 3 0 
+	Cost : 75
+	Node Count : 5
+temps = 1 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 2 3 0 
+	Cost : 75
+	Node Count : 5
+temps = 4 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 3 0 1 2 3 
+	Cost : 75
+	Node Count : 5
+temps = 5483 microsecondes
+
+Graph 5
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 4 2 3 1 0 
+	Cost : 39
+	Node Count : 6
+temps = 12 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 4 2 3 1 0 
+	Cost : 39
+	Node Count : 6
+temps = 97 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 4 0 1 3 2 4 
+	Cost : 39
+	Node Count : 6
+temps = 105 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 4 2 3 1 0 
+	Cost : 39
+	Node Count : 6
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 4 2 3 1 0 
+	Cost : 39
+	Node Count : 6
+temps = 3 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 2 3 1 0 4 2 
+	Cost : 39
+	Node Count : 6
+temps = 9152 microsecondes
+
+Graph 6
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 3 1 5 2 4 0 
+	Cost : 74
+	Node Count : 7
+temps = 13 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 4 3 1 5 2 0 
+	Cost : 68
+	Node Count : 7
+temps = 486 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 4 5 2 1 3 0 4 
+	Cost : 71
+	Node Count : 7
+temps = 111 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 4 5 1 3 2 0 
+	Cost : 78
+	Node Count : 7
+temps = 1 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 5 1 3 4 0 
+	Cost : 68
+	Node Count : 7
+temps = 28 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 3 1 5 2 0 4 3 
+	Cost : 68
+	Node Count : 7
+temps = 8014 microsecondes
+
+Graph 7
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 4 5 1 2 6 3 0 
+	Cost : 120
+	Node Count : 8
+temps = 15 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 5 3 1 2 6 4 0 
+	Cost : 102
+	Node Count : 8
+temps = 3319 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 4 6 2 1 3 5 0 4 
+	Cost : 102
+	Node Count : 8
+temps = 128 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 5 1 2 6 4 3 0 
+	Cost : 115
+	Node Count : 8
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 3 5 1 2 6 4 0 
+	Cost : 102
+	Node Count : 8
+temps = 173 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 0 4 6 2 1 3 5 0 
+	Cost : 102
+	Node Count : 8
+temps = 7960 microsecondes
+
+Graph 8
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 1 3 2 7 4 5 6 0 
+	Cost : 123
+	Node Count : 9
+temps = 17 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 3 4 7 2 5 6 1 0 
+	Cost : 74
+	Node Count : 9
+temps = 20007 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 5 6 2 7 4 3 0 1 5 
+	Cost : 83
+	Node Count : 9
+temps = 91 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 4 3 2 7 5 6 0 
+	Cost : 102
+	Node Count : 9
+temps = 1 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 3 2 7 4 1 6 5 0 
+	Cost : 75
+	Node Count : 9
+temps = 85 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 7 2 5 6 1 0 3 4 7 
+	Cost : 74
+	Node Count : 9
+temps = 4194 microsecondes
+
+Graph 9
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 6 4 5 7 1 8 3 0 
+	Cost : 85
+	Node Count : 10
+temps = 78 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 5 4 6 2 7 1 8 3 0 
+	Cost : 65
+	Node Count : 10
+temps = 96908 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 5 0 1 3 4 6 2 7 8 5 
+	Cost : 143
+	Node Count : 10
+temps = 70 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 7 1 8 3 4 6 5 0 
+	Cost : 105
+	Node Count : 10
+temps = 1 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 7 1 8 3 6 4 5 0 
+	Cost : 69
+	Node Count : 10
+temps = 64 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 0 3 8 1 7 2 6 4 5 0 
+	Cost : 65
+	Node Count : 10
+temps = 3021 microsecondes
+
+Graph 10
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 5 4 8 3 9 1 7 6 0 
+	Cost : 65
+	Node Count : 11
+temps = 11 microsecondes
+
+Start Brute Force : 
+Solution:
+	List Vertex : 0 6 3 8 9 7 1 4 5 2 0 
+	Cost : 56
+	Node Count : 11
+temps = -178735 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 8 9 7 5 2 0 6 1 4 3 8 
+	Cost : 107
+	Node Count : 11
+temps = 73 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 5 4 1 7 9 8 3 6 0 
+	Cost : 56
+	Node Count : 11
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 5 4 1 7 9 8 3 6 0 
+	Cost : 56
+	Node Count : 11
+temps = 112 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 0 2 5 4 3 8 9 1 7 6 0 
+	Cost : 57
+	Node Count : 11
+temps = 3135 microsecondes
+
+Graph 11
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 5 3 4 1 9 10 6 7 8 0 
+	Cost : 205
+	Node Count : 12
+temps = 13 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 6 8 7 10 1 4 5 3 9 0 2 6 
+	Cost : 169
+	Node Count : 12
+temps = 89 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 5 4 1 10 7 6 9 3 8 0 
+	Cost : 159
+	Node Count : 12
+temps = 1 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 3 5 4 1 10 8 7 6 9 0 
+	Cost : 122
+	Node Count : 12
+temps = 9494 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 9 1 10 2 0 3 5 4 8 7 6 9 
+	Cost : 127
+	Node Count : 12
+temps = 3454 microsecondes
+
+Graph 12
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 3 5 9 1 4 11 10 6 7 8 0 
+	Cost : 186
+	Node Count : 13
+temps = 22 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 8 0 7 9 5 3 6 10 4 1 11 2 8 
+	Cost : 175
+	Node Count : 13
+temps = 129 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 7 9 3 5 11 10 6 2 8 1 4 0 
+	Cost : 128
+	Node Count : 13
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 7 9 4 11 10 6 2 3 5 1 8 0 
+	Cost : 91
+	Node Count : 13
+temps = 6419 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 9 3 5 7 0 8 2 6 10 11 4 1 9 
+	Cost : 107
+	Node Count : 13
+temps = 3648 microsecondes
+
+Graph 13
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 1 4 6 12 5 8 10 7 2 3 9 11 0 
+	Cost : 202
+	Node Count : 14
+temps = 18 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 5 10 8 1 9 2 7 3 4 0 6 11 12 5 
+	Cost : 193
+	Node Count : 14
+temps = 99 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 8 5 12 6 4 3 9 10 7 2 11 0 
+	Cost : 156
+	Node Count : 14
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 11 12 6 2 7 3 9 10 8 5 4 0 
+	Cost : 91
+	Node Count : 14
+temps = 17754 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 7 2 8 5 12 11 1 0 6 4 3 9 10 7 
+	Cost : 111
+	Node Count : 14
+temps = 3721 microsecondes
+
+Graph 14
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 7 9 2 8 3 13 4 1 5 12 6 11 10 0 
+	Cost : 146
+	Node Count : 15
+temps = 18 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 2 1 12 10 11 6 4 0 3 8 9 5 7 13 2 
+	Cost : 237
+	Node Count : 15
+temps = 105 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 7 13 4 6 11 10 3 8 9 2 1 5 12 0 
+	Cost : 141
+	Node Count : 15
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 10 11 6 4 5 1 12 3 8 9 2 13 7 0 
+	Cost : 117
+	Node Count : 15
+temps = 59351 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 5 12 3 13 7 4 6 8 9 2 11 10 0 1 5 
+	Cost : 155
+	Node Count : 15
+temps = 3630 microsecondes
+
+Graph 15
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 1 2 12 4 11 5 9 10 14 3 6 7 13 8 0 
+	Cost : 141
+	Node Count : 16
+temps = 19 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 11 3 14 7 4 8 13 5 2 6 0 9 12 10 1 11 
+	Cost : 242
+	Node Count : 16
+temps = 128 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 2 12 4 11 5 14 7 13 8 3 10 9 6 0 
+	Cost : 131
+	Node Count : 16
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 1 2 12 4 8 13 7 14 3 11 5 9 10 6 0 
+	Cost : 85
+	Node Count : 16
+temps = 10558 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 5 8 13 7 3 14 6 0 1 2 12 10 9 4 11 5 
+	Cost : 122
+	Node Count : 16
+temps = 4104 microsecondes
+
+Graph 16
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 15 5 4 1 10 14 6 13 7 3 11 8 9 12 0 
+	Cost : 183
+	Node Count : 17
+temps = 30 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 12 11 9 13 14 6 0 3 5 8 1 10 7 4 15 2 12 
+	Cost : 255
+	Node Count : 17
+temps = 172 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 5 4 1 10 7 13 6 11 8 15 2 12 14 9 3 0 
+	Cost : 140
+	Node Count : 17
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 5 4 6 13 7 3 10 14 1 8 15 9 11 12 2 0 
+	Cost : 95
+	Node Count : 17
+temps = 348772 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 9 13 7 12 4 5 0 2 15 10 3 6 11 8 14 1 9 
+	Cost : 147
+	Node Count : 17
+temps = 4099 microsecondes
+
+Graph 17
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 4 9 7 1 2 16 12 13 3 14 5 11 8 6 10 15 0 
+	Cost : 270
+	Node Count : 18
+temps = 24 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 7 1 4 14 0 10 8 6 9 12 13 11 16 3 2 15 5 7 
+	Cost : 287
+	Node Count : 18
+temps = 163 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 5 7 1 2 15 10 16 9 4 12 13 3 14 6 8 11 0 
+	Cost : 153
+	Node Count : 18
+temps = 3 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 4 3 14 12 13 8 6 2 1 7 9 16 10 15 11 5 0 
+	Cost : 108
+	Node Count : 18
+temps = 377893 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 13 12 14 3 10 16 9 7 5 2 1 15 4 0 11 6 8 13 
+	Cost : 167
+	Node Count : 18
+temps = 4441 microsecondes
+
+Graph 18
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 4 6 10 11 8 13 1 9 16 17 5 12 14 15 2 7 3 0 
+	Cost : 321
+	Node Count : 19
+temps = 28 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 5 1 10 15 7 6 9 0 14 4 11 8 13 12 16 17 2 3 5 
+	Cost : 256
+	Node Count : 19
+temps = 144 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 4 10 12 13 5 3 7 15 2 16 1 9 6 14 17 11 8 0 
+	Cost : 138
+	Node Count : 19
+temps = 2 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 5 13 12 10 4 11 8 3 7 15 2 16 17 14 6 1 9 0 
+	Cost : 88
+	Node Count : 19
+temps = -124731 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 14 6 2 15 7 8 0 11 16 17 12 10 4 9 1 13 5 3 14 
+	Cost : 179
+	Node Count : 19
+temps = 4844 microsecondes
+
+Graph 19
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 5 8 7 4 1 11 13 12 17 16 18 9 3 14 15 10 6 0 
+	Cost : 238
+	Node Count : 20
+temps = 49 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 17 10 6 11 9 14 5 0 16 2 1 7 15 13 12 18 8 3 4 17 
+	Cost : 303
+	Node Count : 20
+temps = 158 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 5 8 12 13 1 4 7 10 6 16 18 9 11 3 14 17 15 2 0 
+	Cost : 138
+	Node Count : 20
+temps = 3 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 12 13 15 18 9 11 1 4 7 10 6 16 3 14 17 8 5 0 
+	Cost : 89
+	Node Count : 20
+temps = -105642 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 3 9 11 0 2 1 16 6 10 13 12 18 14 5 8 17 15 7 4 3 
+	Cost : 188
+	Node Count : 20
+temps = 4882 microsecondes
+
+Graph 20
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 8 2 4 13 12 10 15 7 3 18 1 5 6 11 16 17 9 14 19 0 
+	Cost : 231
+	Node Count : 21
+temps = 76 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 16 17 7 6 15 9 1 18 4 3 10 2 12 11 5 19 14 8 0 13 16 
+	Cost : 362
+	Node Count : 21
+temps = 230 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 15 7 2 4 13 12 10 17 5 18 9 1 6 11 16 8 14 19 3 0 
+	Cost : 195
+	Node Count : 21
+temps = 4 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 8 4 13 12 10 17 9 18 5 6 11 16 14 19 2 1 3 7 15 0 
+	Cost : 124
+	Node Count : 21
+temps = -300001 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 18 14 19 10 3 7 15 6 2 12 16 5 17 9 8 4 13 0 11 1 18 
+	Cost : 246
+	Node Count : 21
+temps = 4776 microsecondes
+
+Graph 21
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 15 19 4 1 5 20 9 2 16 10 6 14 13 12 11 18 17 7 3 8 0 
+	Cost : 216
+	Node Count : 22
+temps = 60 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 19 18 3 15 12 0 9 20 1 5 17 11 14 6 16 2 7 13 10 4 8 19 
+	Cost : 343
+	Node Count : 22
+temps = 255 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 15 19 4 17 6 14 13 20 9 16 10 7 3 12 11 18 2 5 1 8 0 
+	Cost : 165
+	Node Count : 22
+temps = 4 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 15 19 8 14 13 20 5 1 4 17 6 10 16 9 2 7 3 18 11 12 0 
+	Cost : 79
+	Node Count : 22
+temps = -100440 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 13 7 11 18 2 19 4 9 16 10 6 17 15 0 1 5 20 3 12 8 14 13 
+	Cost : 203
+	Node Count : 22
+temps = 4960 microsecondes
+
+Graph 22
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 12 6 7 1 9 10 4 5 21 11 19 18 16 8 13 14 17 15 20 3 0 
+	Cost : 379
+	Node Count : 23
+temps = 54 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 11 12 2 14 6 3 20 15 7 16 0 13 19 18 17 10 4 21 1 5 9 8 11 
+	Cost : 383
+	Node Count : 23
+temps = 235 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 12 11 17 15 20 3 18 6 21 1 10 4 7 8 16 14 9 5 19 13 0 
+	Cost : 112
+	Node Count : 23
+temps = 4 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 8 9 14 16 17 15 20 3 18 19 6 21 1 7 5 10 4 11 12 13 0 
+	Cost : 85
+	Node Count : 23
+temps = -101550 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 13 1 8 2 0 4 10 5 15 6 21 7 20 14 16 17 11 9 12 19 18 3 13 
+	Cost : 202
+	Node Count : 23
+temps = 4936 microsecondes
+
+Graph 23
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 6 13 3 2 16 4 7 15 18 19 21 8 9 12 10 14 17 1 20 5 11 22 0 
+	Cost : 342
+	Node Count : 24
+temps = 98 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 14 17 16 20 18 15 13 7 19 3 4 5 10 21 0 6 9 12 2 11 1 22 8 14 
+	Cost : 400
+	Node Count : 24
+temps = 462 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 13 3 2 14 12 9 17 1 20 11 16 4 7 15 5 10 8 21 18 19 22 6 0 
+	Cost : 109
+	Node Count : 24
+temps = 15 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 6 22 18 19 8 21 9 17 1 11 20 5 15 7 16 4 3 2 14 10 12 13 0 
+	Cost : 97
+	Node Count : 24
+temps = 146736 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 12 9 21 0 20 1 17 19 11 16 8 22 18 10 14 6 13 3 2 7 15 5 4 12 
+	Cost : 236
+	Node Count : 24
+temps = 5414 microsecondes
+
+Graph 24
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 7 6 17 11 18 20 4 8 15 1 10 2 5 9 12 13 19 21 16 22 14 3 23 0 
+	Cost : 357
+	Node Count : 25
+temps = 43 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 21 1 13 6 18 4 17 22 2 14 23 15 11 0 5 12 3 19 7 10 9 20 16 8 21 
+	Cost : 440
+	Node Count : 25
+temps = 185 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 7 6 17 11 18 21 5 12 13 10 2 23 14 3 1 15 4 19 9 20 22 16 8 0 
+	Cost : 144
+	Node Count : 25
+temps = 4 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 19 4 20 9 13 12 5 21 18 11 15 1 10 3 14 23 2 22 17 16 7 6 8 0 
+	Cost : 116
+	Node Count : 25
+temps = -246876 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 12 5 16 8 1 13 9 20 15 21 18 11 6 17 22 3 10 2 14 23 7 0 19 4 12 
+	Cost : 241
+	Node Count : 25
+temps = 5244 microsecondes
+
+Graph 25
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 11 12 16 17 3 15 1 4 13 6 24 9 10 2 23 22 14 18 20 7 5 8 21 19 0 
+	Cost : 366
+	Node Count : 26
+temps = 51 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 4 18 16 19 13 7 8 24 10 0 3 20 23 11 6 14 9 1 5 12 17 15 2 22 21 4 
+	Cost : 462
+	Node Count : 26
+temps = 198 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 17 3 15 1 6 20 7 8 10 2 23 22 21 9 24 19 12 11 16 18 14 4 13 5 0 
+	Cost : 130
+	Node Count : 26
+temps = 5 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 5 7 8 4 13 3 15 1 6 20 24 10 2 22 23 16 11 12 19 21 9 14 18 17 0 
+	Cost : 86
+	Node Count : 26
+temps = 538702 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 8 10 20 6 1 4 13 18 9 24 15 12 11 23 22 2 16 14 19 21 0 17 3 5 7 8 
+	Cost : 160
+	Node Count : 26
+temps = 5721 microsecondes
+
+Graph 26
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 13 16 23 24 10 6 18 14 8 4 9 21 22 7 19 15 1 20 17 11 25 5 12 3 0 
+	Cost : 358
+	Node Count : 27
+temps = 54 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 0 11 17 9 23 5 15 3 4 21 12 18 25 6 8 19 1 10 14 22 13 7 2 24 20 16 0 
+	Cost : 374
+	Node Count : 27
+temps = 198 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 2 24 10 6 22 7 3 12 5 25 15 1 20 17 11 9 4 21 16 13 23 14 19 8 18 0 
+	Cost : 163
+	Node Count : 27
+temps = 4 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 20 1 15 7 22 4 9 25 5 12 3 24 2 8 19 14 10 6 18 11 17 21 23 13 16 0 
+	Cost : 84
+	Node Count : 27
+temps = -719157 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 5 3 7 22 19 20 2 8 17 9 4 11 0 15 25 24 10 6 14 1 21 18 16 13 23 12 5 
+	Cost : 212
+	Node Count : 27
+temps = 5656 microsecondes
+
+Graph 27
+-----------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 26 15 12 4 3 24 7 21 2 16 9 22 1 13 8 25 5 14 18 10 11 17 19 23 6 20 0 
+	Cost : 228
+	Node Count : 28
+temps = 58 microsecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 3 20 12 15 0 19 8 13 5 25 22 2 10 6 9 16 4 14 7 21 24 18 26 23 17 11 1 3 
+	Cost : 471
+	Node Count : 28
+temps = 211 microsecondes
+
+Start Greedy approch : 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 26 15 12 4 24 7 21 16 9 14 18 10 11 23 6 13 20 1 22 19 17 5 25 8 2 3 0 
+	Cost : 134
+	Node Count : 28
+temps = 4 microsecondes
+
+Start Branch and Bound approch: 
+Noeud départ [0]
+Solution:
+	List Vertex : 0 3 6 23 15 5 25 8 2 21 7 24 4 18 14 9 16 13 20 12 19 22 1 11 10 17 26 0 
+	Cost : 102
+	Node Count : 28
+temps = -28693 microsecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 16 24 17 10 5 25 3 1 11 7 9 14 12 19 22 4 18 26 15 13 20 21 6 0 2 8 23 16 
+	Cost : 252
+	Node Count : 28
+temps = 5988 microsecondes
+
+Graph 28
+-----------------------
+Graph 29
+-----------------------

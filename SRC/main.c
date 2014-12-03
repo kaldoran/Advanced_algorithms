@@ -36,7 +36,8 @@ int main(int argc, char const *argv[]) {
     UNUSED(argc);
     UNUSED(argv);
     pid_t aplay = NULL;
-    struct timeval tv1,tv2;
+    struct timeval tv1 = {0,0},tv2={0,0};
+
 
     Solution s=NULL;;
     Graph tsp_graph = NULL;
@@ -55,7 +56,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
            
-        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld secondes || %lld microsecondes\n\n",(long long) (tv2.tv_sec - tv1.tv_sec), (long long) (tv2.tv_usec - tv1.tv_usec) );
 
 		if ( tsp_graph->count_nodes <= 10 ) {
         	printf("Start Brute Force : \n");
@@ -65,7 +66,7 @@ if ( argc == 2 ) {
        		print_solution(s);
         	free_solution(s);
            
-        	printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        	printf("temps = %lld secondes || %lld microsecondes\n\n",(long long) (tv2.tv_sec - tv1.tv_sec), (long long) (tv2.tv_usec - tv1.tv_usec) );
         }
 
         printf("Start Random Approch : \n");
@@ -78,7 +79,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
            
-        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld secondes || %lld microsecondes\n\n",(long long) (tv2.tv_sec - tv1.tv_sec), (long long) (tv2.tv_usec - tv1.tv_usec) );
 
         printf("Start Greedy approch : \n");
         gettimeofday(&tv1,NULL);
@@ -87,7 +88,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
 
-        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld secondes || %lld microsecondes\n\n",(long long) (tv2.tv_sec - tv1.tv_sec), (long long) (tv2.tv_usec - tv1.tv_usec) );
 
         reset_coloration(tsp_graph);
         printf("Start Branch and Bound approch: \n");
@@ -97,7 +98,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
            
-        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld secondes || %lld microsecondes\n\n",(long long) (tv2.tv_sec - tv1.tv_sec), (long long) (tv2.tv_usec - tv1.tv_usec) );
 
 //        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 /*        printf("Start Branch and Bound approch (removing edges version) : \n");
@@ -117,7 +118,7 @@ if ( argc == 2 ) {
         print_solution(s);
         free_solution(s);
 
-        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        printf("temps = %lld secondes || %lld microsecondes\n\n",(long long) (tv2.tv_sec - tv1.tv_sec), (long long) (tv2.tv_usec - tv1.tv_usec) );
         free_graph(tsp_graph);
 
 		kill(aplay, SIGTERM);
