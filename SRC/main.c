@@ -52,6 +52,7 @@ int main(int argc, char const *argv[]) {
     pid_t aplay = NULL;
     struct timespec begin, end;
 
+
     Solution s = NULL;;
     Graph tsp_graph = NULL;
     srand(time(NULL));
@@ -60,7 +61,8 @@ int main(int argc, char const *argv[]) {
 
 if ( argc == 2 ) {
         tsp_graph = load(argv[1]);
-        //print_graph(tsp_graph);
+        
+        print_graph(tsp_graph);
         printf("Start Minimal Spanning Tree : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
         s = MST(tsp_graph);
@@ -69,6 +71,7 @@ if ( argc == 2 ) {
         free_solution(s);
 
         print_time_taken(begin, end);
+
 
 		if ( tsp_graph->count_nodes <= 10 ) {
         	printf("Start Brute Force : \n");
@@ -110,7 +113,7 @@ if ( argc == 2 ) {
         free_solution(s);
         
         print_time_taken(begin, end);
-        
+
 
 //        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 /*        printf("Start Branch and Bound approch (removing edges version) : \n");
@@ -132,6 +135,7 @@ if ( argc == 2 ) {
         free_solution(s);
 
         print_time_taken(begin, end);
+
 
         free_graph(tsp_graph);
 
