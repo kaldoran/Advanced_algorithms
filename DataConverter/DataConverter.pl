@@ -63,9 +63,9 @@ sub convert_XML_to_Data
 
 	my @vertices = $root->getElementsByTagName('vertex'); #collect all vertex in XML file
 	my $current_vertex=0;
-	my $data_file =$DATA_Repository.$current_data_File;#name of data file
+	my $data_file =$DATA_Repository.$node_number;#name of data file
 
-	print "Editing $XML_file-->data$current_data_File...";
+	print "Editing $XML_file-->data$node_number...";
 
 	open(FILE, ">$data_file") or die "ERROR $!\n"; #create data file
 	
