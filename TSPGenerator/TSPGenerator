@@ -118,6 +118,7 @@ if ( $help ) {
     }
     
 	open(OUTPUT, ">graph$number_node.graph" ) or die "[ FATAL ERROR ] : $!\n";
+	print (OUTPUT "_ Seed : $graine\n");
 	print (OUTPUT "\$$number_node\$\n");
 
     for ( my $i = 0; $i < $number_node ; $i++ ) {

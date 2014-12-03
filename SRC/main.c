@@ -47,25 +47,27 @@ int main(int argc, char const *argv[]) {
 if ( argc == 2 ) {
         tsp_graph = load(argv[1]);
         
-        print_graph(tsp_graph);
+        //print_graph(tsp_graph);
         printf("Start Minimal Spanning Tree : \n");
         gettimeofday(&tv1,NULL);
         s = MST(tsp_graph);
         gettimeofday(&tv2,NULL);
         print_solution(s);
-        free_solution_bis(s);
-           
-        printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
-
-        printf("Start Brute Force : \n");
-        gettimeofday(&tv1,NULL);
-        s = tsp_brute_force(tsp_graph);
-        gettimeofday(&tv2,NULL);
-        print_solution(s);
         free_solution(s);
            
         printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
-          
+
+		if ( tsp_graph->count_nodes <= 10 ) {
+        	printf("Start Brute Force : \n");
+        	gettimeofday(&tv1,NULL);
+        	s = tsp_brute_force(tsp_graph);
+        	gettimeofday(&tv2,NULL);
+       		print_solution(s);
+        	free_solution(s);
+           
+        	printf("temps = %lld microsecondes\n\n", (long long) (tv2.tv_usec - tv1.tv_usec) );
+        }
+
         printf("Start Random Approch : \n");
 
         gettimeofday(&tv1,NULL);
