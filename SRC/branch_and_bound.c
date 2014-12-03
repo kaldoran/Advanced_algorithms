@@ -17,8 +17,8 @@
 Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
     int cost = 0,i, j;
     if(part->count_nodes_s == best->count_nodes_s - 1) {
-    
         cost = part->cost + part->list_node[part->count_nodes_s - 1]->cost[0];
+		
         if(cost < best->cost) {
             for ( i = 0; i < part->count_nodes_s; i++) {
                 best->list_node[i] = part->list_node[i];
@@ -29,16 +29,21 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
             
             add_node(best, part->list_node[0],part->list_node[part->count_nodes_s - 1]->cost[0]);
         }
+		printf("cost part %d, cost best %d ",cost, best->cost);print_solution(part);
     }
+    else if(part->cost > best->cost) {
+		return best;
+	}
     else{
-        for(j=0; j < tspGraph->count_nodes; ++j) {
-            int last = part->count_nodes_s - 1;
+        for(j=0; j < tspGraph->count_nodes; ++j) {  
+			
+            int last = part->count_nodes_s - 1;          
             
             if( part->list_node[last]->subnodes[j] != NULL
              && part->list_node[last]->subnodes[j]->colored == UNVISITED) {
 
                 cost = part->cost + part->list_node[last]->cost[j];
-                
+
                 if(cost < best->cost) {
                 
                     add_node(part,part->list_node[last]->subnodes[j],part->list_node[last]->cost[j]);
@@ -63,9 +68,6 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
                     --part->count_nodes_s;
                     part->cost -= part->list_node[last]->cost[j];
                     part->list_node[last+1]=NULL;
-                }
-                else{
-                    return best;
                 }
             }
         }
