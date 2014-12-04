@@ -8,7 +8,7 @@
 // - Function to run the algorithm recursively              |
 //----------------------------------------------------------
 
-#include "graph.h"
+#include "struct_graph.h"
 #include "edges_matrix.h"
 
 

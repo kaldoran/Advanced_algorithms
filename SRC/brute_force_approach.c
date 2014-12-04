@@ -1,9 +1,10 @@
-//----------------------------------------------------------
-// AUTEUR : LAOUSSING Kévin                                 |
-// FICHIER : brute_force_approach.c                         |
-// DATE : 15/11/14                                          |
-//                                                          |
-//----------------------------------------------------------
+//--------------------------------------------------------------
+// AUTEUR : LAOUSSING Kévin                                     |
+// FICHIER : brute_force_approach.c                             |
+// DATE : 15/11/14                                              |
+//                                                              |
+// - Implementation of the prototypes in brute_force_approach.h |
+//--------------------------------------------------------------
 
 #include <stdio.h>
 #include <stdlib.h>

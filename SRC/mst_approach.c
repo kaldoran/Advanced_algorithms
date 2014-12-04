@@ -3,6 +3,7 @@
 // FICHIER : mst_approach.c                                 |
 // DATE : 21/11/14                                          |
 //                                                          |
+// - Implementation of the prototypes in mst_approach.h     |
 //----------------------------------------------------------
 
 #include <stdio.h>

@@ -3,10 +3,17 @@
 // FICHIER : genetic_approch.h                              |
 // DATE : 27/10/14                                          |
 //                                                          |
+// - Mutation of a solution                                 |
+// - Crossover of a solution                                |
+// - evolution of some solution                             |
+// - Implement methode of genetic approch                   |
 //----------------------------------------------------------
 
 #ifndef GENETIC_APPROCH
 #define GENETIC_APPROCH 
+
+#include "struct_solution.h"
+#include "struct_graph.h"
 
 /** Mutate a solution which consist in swap 2 nodes
  *  %param s : The solution which need to be mutate

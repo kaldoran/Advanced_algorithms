@@ -3,6 +3,7 @@
 // FICHIER : imnotanesteregg.h                              |
 // DATE : 02/11/14                                          |
 //                                                          |
+// - Function that's not an easter egg                      |
 //----------------------------------------------------------
 
 #ifndef EE

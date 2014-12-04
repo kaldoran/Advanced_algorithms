@@ -3,14 +3,13 @@
 // FICHIER : random_approach.h                              |
 // DATE : 27/10/14                                          |
 //                                                          |
-// - Debug Maccro [C99 Convention]                          |
+// - Implemente prototype of random approach                |
 //----------------------------------------------------------
 
 #ifndef GREEDY_APPROCH_H
 #define GREEDY_APPROCH_G
 
 #include "struct_graph.h"
-
 
 /** Execute random approach ITERATION time and give the best of all random solution
  *  %param g : graph where you need to execute the random approch
