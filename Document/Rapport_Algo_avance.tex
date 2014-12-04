@@ -262,7 +262,10 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 			
 	\subsection{Graphes en ligne}
 		\subsubsection{Tests temps d'exécution}
-			\includegraphics[scale=0.45]{./Ressource/temps_graphes_site.png}
+			\includegraphics[scale=0.45]{./Ressource/temps_graphes_site.png}			
+			On observe que l'algorithme de sélection et évaluation présente une durée d'exécution extrêmement supérieur aux autres algorithmes.
+			L'algorithme cupide est le plus rapide. de 14 à 29 nœuds l'approche par arbre couvrant est la 2ème plus rapide mais de 29 à 280 nœuds elle échange sa place avec la 3ème plus rapide qui est l'approche aléatoire.
+			L'algorithme génétique est le plus lent des approximatifs et présente une augmentation de la durée d'exécution bien plus importante que les autres pour les graphes de plus de 100 nœuds.
 		
 	
 	\subsubsection{Tests coût}
@@ -274,8 +277,16 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 			L'approche avec l'arbre couvrant de poids minimal et l'approche cupide sont des algorithmes approximations qui donnent des solutions relativement correctes et sont par conséquent plus intéressant pour résoudre des graphes de grandes tailles.
 			\end{flushleft}
 	\subsubsection{Conclusion}
+	L'algorithme de sélection et évaluation donne une solution optimale mais est extrêmement lent sur ces graphes, il est donc peu intéressant.\\
+	L'approche aléatoire est une des plus rapides mais aussi la moins précise, elle serait donc aussi à éviter.\\
+	L'algorithme génétique étant aussi peu précis que l'aléatoire mais aussi beaucoup plus lent il serait à éviter également.\\
+	Pour ce qui est des algorithmes cupide et d'arbre couvrant, leur précision est comparable et bien meilleurs que les 2 autres. Mais l'approche par l'arbre couvrant étant plus lente (même si 0.1 seconde pour 280 nœuds reste tout à fait honorable) la meilleure approche est donné par l'algorithme cupide.
 
 \section{Conclusion}
+La construction des graphes peut avoir un important impacte sur la qualité d'un algorithme. En effet un graphe respectant la règle de Pythagore, contrairement à un graphe aléatoire, permet à l'approche de l'arbre couvrant d'être plus précise mais oblige l'approche par sélection et évaluation à parcourir plus de solution et donc la condamne à être beaucoup plus lente.\\
+
+Donc pour des petits graphes aléatoire l'approche par sélection et évaluation permet d'obtenir rapidement une solution optimale. Pour des graphes respectant la règle de Pythagore l'approche par arbre couvrant est une solution rapide et précise.
+Cependant l'algorithme cupide fourni le meilleur ratio rapidité/fiabilité et est donc l'approche que nous avons codé à privilégier.
 \section{Annexes}
 
 	\subsection{DataConverter}
@@ -284,5 +295,10 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 	\end{flushleft}
 	
 	\subsection{TSPGenerateur}
+	Permet de générer des graphes aléatoires, pour en connaitre le fonctionnement voir.
+	\begin{verbatim}
+		./TSPGenerator -h
+	\end{verbatim}
+	Les fichiers de sortie sont dans le format défini par notre groupe.
 
 \end{document}
