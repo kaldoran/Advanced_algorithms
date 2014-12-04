@@ -14,13 +14,13 @@
 
 \fancyhead{}
 \fancyfoot{} 
-\lhead{ \hspace{0.1cm} M1WI 2014-2015  \hspace{0.4cm} \vline}
-\chead{Advanced Algorithms}
+\lhead{ \hspace{0.1cm} Promo 2014-2015  \hspace{0.4cm} \vline}
+\chead{Advanced Algorithm}
 \rhead{K.B - K.L - N.R}
 \rfoot{\thepage}
 
 \author{Kevin BASCOL, Kevin LAOUSSING, Nicolas REYNAUD}
-\title{Algorithmes avancés : \\Problème du voyageur de commerce}
+\title{Algorithme avancé : \\Problème du voyageur de commerce}
 
 \makeatletter
 \renewcommand{\thesection}{\@arabic\c@section}
@@ -91,7 +91,7 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	\subsection{Structure de donnée}
 	
 	\subsection{Algorithme donnant une solution optimale}
-		\subsubsection{Force brute}
+		\subsubsection{Brute force}
 		
 		\paragraph{Résumé de l'algorithme}
 		\begin{flushleft}
@@ -105,13 +105,11 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\end{flushleft}
 		\subsubsection{Séparation et évaluation}
 		
-		\paragraph{Résumé de l'algorithme\\}
+		\paragraph{Résumé de l'algorithme}
 		L'algorithme de séparation et évaluation consiste en un parcours de l'arbre de tous les chemins possible dans le graphe des villes. Mais si le chemin menant à un nœud possède un poids total supérieur à la meilleurs solution trouvée jusque là, alors il ne parcourra pas les sous-arbres de ce nœud.\\
-		La complexité de cet algorithme est donc, au pire, la même que celle de l'algorithme par force brute (O(n!)) mais est grandement améliorée grâce à l'élagage des branches trop lourdes.\\
 		
-		\paragraph{Commentaires sur l'implémentation\\}
-		Cet algorithme a été implémenté récursivement, méthode plus lourde mais aussi plus intuitive.
-		Lors de la programmation de cet algorithme j'ai malheureusement oublié de faire le retour permettant l'élagage des branches trop lourdes. Cette erreur m'a fait perdre beaucoup de temps à chercher des méthodes pour accélérer le programme alors qu'il ne manquait que 2 lignes de codes pour obtenir un programme extrêmement plus rapide.
+		\paragraph{Commentaires sur l'implémentation}
+		
 		
 		
 		\subsubsection{Séparation et évaluation avec retrait d'arêtes}		
@@ -119,29 +117,14 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\paragraph{Résumé de l'algorithme}
 		L'algorithme de séparation et évaluation avec retrait d'arêtes consiste en un parcours d'arbre. Celui-ci est un arbre binaire, chaque nœud est la matrice des arêtes du graphe, le fils gauche correspond à la matrice résultante du passage par une arête choisie, le fils droit représente la matrice résultante du retrait de cette arête. Le parcours s'arrête au moment où la fonction d'évaluation retourne une valeur supérieur à celle de la meilleure solution trouvée.\\
 		
-		\paragraph{Commentaires sur l'implémentation}
-		Je n'ai malheureusement pas réussi à implémenter un programme fonctionnel pour cet algorithme avant la fin du temps imparti. Ceci est en partie dû à la compréhension difficile de l'algorithme, mais aussi à la réalisation chronophage des autres projets universitaires.
-		J'ai tenté une version récursive mais me suis embourbé au milieu d'une double récursion.
+		\paragraph{Commentaires sur l'implémentation}		
 		
 		
 	\subsection{Algorithme donnant une solution approximative}
 	
-		\subsubsection{Approche cupide}
-		
-		\paragraph{Résumé de l'algorithme}
-		L'algorithme de l'approche cupide commence par se positionner sur un nœud du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en regardant l'arête avec le poids minimum. Et ainsi de suite jusqu'à avoir parcouru tout les nœuds du graphe.
-		
-		\paragraph{Commentaires sur l'implémentation}
-		Le code de ce programme étant assez simple, aucun soucis particulier n'est à notifier dans ce code.  
+		\subsubsection{Approche gloutonne}
 		
 		\subsubsection{Approche aléatoire}
-		
-		\paragraph{Résumé de l'algorithme}
-		L'approche aléatoire est très simple. L'algorithme se place sur un nœud aléatoire du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en choisissant une arête de manière aléatoire. Jusqu'à revenir à sont point de départ.
-		L'algorithme est lancé une première fois. Puis est lancé 100 fois en comparant les résultats entre eux. A chaque fois le chemin avec le coup le moins élevé est choisit.
-		
-		\paragraph{Commentaires sur l'implémentation}
-		Le code de ce programme étant assez simple, aucun soucis particulier n'est à notifier dans ce code. Cependant très rapidement j'ai fais le choix de séparer le code en deux méthodes, dont une avec un paramètre permettant de donner la coloration a utiliser pendant le parcours du graphe. Tout ceci dans le but de me resservir de la l'approche aléatoire dans la génération de la population dans l'approche génétique. 
 		
 		\subsubsection{Approche avec l'arbre couvrant de poids minimal}
 		\begin{flushleft}
@@ -151,48 +134,11 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		
 		\paragraph{Commentaires sur l'implémentation}
 		
+		\begin{flushleft}
+		Nous avons utilisé l'algorithme de Prim parce qu'il était plus simple à implémenter. En effet l'algorithme de Kruskal nécessitait d’énumérer toute les arêtes du graphe. Cette opération aurai été trop coûteuse avec la structure de donnée que nous nous sommes donnée.
+		\end{flushleft}
+		
 		\subsubsection{Approche génétique}
-		
-		\paragraph{Résumé de l'algorithme}
-		L'algorithme de l'approche génétique passe par plusieurs sous méthode. \\
-		Pour commencer une population N de solution est générée. \\
-		Cette population est alors modifiée, elle évolue. \\
-		l'évolution consiste à trier la population par ordre croissant, à partir de là, un pourcentage d'élite est gardé. Les élites peuvent, avec un faible pourcentage de chance muter. La mutation se traduit par l'inversion de 2 nœuds dans la solution élite. \\
-		Le reste de la population subit alors des croisements et des mutations. Les croisement se font sur deux parents. Les parents sont choisit, soit parmi les élites avec un faible pourcentage de chance. Soit parmi une sélection aléatoire de parent parmi les éléments triées. \\
-		Le tournois choisit simplement alors la meilleurs solution (Celle avec le cout le plus faible) parmi la sélection aléatoire. \\
-		
-		Le croisement peut alors commencer. Le croisement comporte alors 2 étapes :
-		\begin{itemize}
-			\item On commencer par copier une partie de la solution du parent numéro 1. Cette partie est choisit aléatoirement.
-			\item On complète ensuite la solution fils obtenu en complétant celle ci par les nœuds présent dans le second parent. En conservant l'ordre présent dans le parent 2.
-		\end{itemize}
-		Le fils ainsi obtenu à alors un faible chance de muter. \\
-		
-		L'évolution est ensuite répétée X fois. En prenant comme nouvelle entré la sortie de l'évolution précédente. \\
-		Pour finir l'algorithme choisit la meilleurs solution ( Celle avec le plus faible coût ) après évolution . \\
-		
-		\paragraph{Commentaires sur l'implémentation}
-		Ce code étant assez compliqué, il m'a fallut pas mal de temps pour bien comprendre sont fonctionnement. Qui plus est ayant directement cherché une méthode peut couteuse en mémoire ( notamment en réutilisant les tableaux au maximum ) de nombreuses erreurs ont été commise au début du code.
-		
-		Par la suite, le seule autre problème que j'ai pu avoir fut sur le paramétrage. Étant donné le "grand" nombre de paramètre il à été dur de les déterminer.
-	
-\section{Commentaire général sur le code}
-
-Les conventions on été respectée. \\
-Qui plus est, nous avons mis un point d'honneur à avoir un code des plus propre possible sur les allocations et libérations de mémoire. \\
-
-Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur un graphe à 5 nœuds. \\
-\begin{verbatim}
-==6610== HEAP SUMMARY:
-==6610==     in use at exit: 0 bytes in 0 blocks
-==6610==   total heap usage: 29,231 allocs, 29,231 frees, 1,168,096 bytes allocated
-==6610== 
-==6610== All heap blocks were freed -- no leaks are possible
-==6610== 
-==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-\end{verbatim}
-
 \newpage
 \section{Etudes d'efficacités des algorithmes}
 
@@ -222,10 +168,5 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 	\subsection{DataConverter}
 	
 	\subsection{TSPGenerateur}
-	
-	Permet de générer des graphes aléatoire, pour en voir le fonctionnement voir.
-	\begin{verbatim}	
-		./TSPGenerator -h
-	\end{verbatim}	
-	Les fichiers de sorties sont dans le format définie par notre groupe.
+
 \end{document}
