@@ -35,6 +35,7 @@ Solution brute_force_approach(Graph g) {
     if ( g->count_nodes == 2) {
         add_node(tsp_final_solution, g->nodes[0], 0);
         add_node(tsp_final_solution, g->nodes[1], 2 * g->nodes[0]->cost[1]);
+        add_node(tsp_final_solution, g->nodes[0], 0);
         return tsp_final_solution;
     }
 
