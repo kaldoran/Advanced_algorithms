@@ -149,6 +149,7 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		Nous avons utilisé l'algorithme de Prim parce qu'il était plus simple à implémenter. En effet l'algorithme de Kruskal nécessitait d’énumérer toute les arêtes du graphe. Cette opération aurait été trop coûteuse avec la structure de donnée que nous nous sommes donnés.
 		\end{flushleft}
 		
+	\subsubsection{Approche génétique}
 		\paragraph{Résumé de l'algorithme\\}
 		L'algorithme de l'approche génétique passe par plusieurs sous méthode. \\
 		Pour commencer une population N de solution est générée. \\
@@ -191,7 +192,9 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 
 \newpage
 \section{Etudes d'efficacités des algorithmes}
-
+	\begin{flushleft}
+	Cette section présente les résultats de nos tests des algorithmes que nous avons implémenté. Elle se présente en deux parties, car nous avons fait des tests sur des graphes générés aléatoirement par notre programme TSPGenerateur et des tests issue de la base de donnée du site mentionné dans le sujet.
+	\end{flushleft}
 	\subsection{Graphes générés aléatoirement}
 		\subsubsection{Tests temps d'exécution}
 			\includegraphics[scale=0.45]{./Ressource/temps_graphes_random.png}
@@ -232,6 +235,7 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 \section{Annexes}
 
 	\subsection{DataConverter}
+	Ce programme permet de générer de convertir les donnée XML du site mentionné dans le sujet dans un format que notre programme peut lire. Ce format est le même que celui générer par le TSPGenerateur.
 	
 	\subsection{TSPGenerateur}
 
