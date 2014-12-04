@@ -200,6 +200,14 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\paragraph{Commentaires sur l'implémentation\\}
 		Ce code étant assez compliqué, il m'a fallu pas mal de temps pour bien comprendre son fonctionnement. Qui plus est ayant directement cherché une méthode peu couteuse en mémoire ( notamment en réutilisant les tableaux au maximum ) de nombreuses erreurs ont été commises au début du code.
 		
+		Par la suite, le seule autre problème que j'ai pu avoir fut sur le paramétrage. 
+		Étant donné le "grand" nombre de paramètre il à été dur de les déterminer.
+		
+		A noter : Les paramètrages actuels sont idéaux pour avoir un temps de réponse rapide et juste pour des graphes de 2 à 10 nœuds.
+		Pour avoir de meilleurs résultat sur des graphes possédant un plus grand nombre de noeud, il faudrait augmenter le nombre de solution générées au départ 
+		et également le nombre d'évolution.
+		Par exemple, pour des graphes de 15 à 20 nœuds il faudrait environs triplé le nomre d'évolution.
+
 \newpage	
 
 \section{Commentaire général sur le code}
