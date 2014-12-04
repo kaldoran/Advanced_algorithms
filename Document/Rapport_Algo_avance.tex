@@ -14,13 +14,13 @@
 
 \fancyhead{}
 \fancyfoot{} 
-\lhead{ \hspace{0.1cm} Promo 2014-2015  \hspace{0.4cm} \vline}
-\chead{Advanced Algorithm}
+\lhead{ \hspace{0.1cm} M1WI 2014-2015  \hspace{0.4cm} \vline}
+\chead{Advanced Algorithms}
 \rhead{K.B - K.L - N.R}
 \rfoot{\thepage}
 
 \author{Kevin BASCOL, Kevin LAOUSSING, Nicolas REYNAUD}
-\title{Algorithme avancé : \\Problème du voyageur de commerce}
+\title{Algorithmes avancés : \\Problème du voyageur de commerce}
 
 \makeatletter
 \renewcommand{\thesection}{\@arabic\c@section}
@@ -91,15 +91,17 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	\subsection{Structure de donnée}
 	
 	\subsection{Algorithme donnant une solution optimale}
-		\subsubsection{Brute force}
+		\subsubsection{Force brute}
 		
 		\subsubsection{Séparation et évaluation}
 		
-		\paragraph{Résumé de l'algorithme}
+		\paragraph{Résumé de l'algorithme\\}
 		L'algorithme de séparation et évaluation consiste en un parcours de l'arbre de tous les chemins possible dans le graphe des villes. Mais si le chemin menant à un nœud possède un poids total supérieur à la meilleurs solution trouvée jusque là, alors il ne parcourra pas les sous-arbres de ce nœud.\\
+		La complexité de cet algorithme est donc, au pire, la même que celle de l'algorithme par force brute (O(n!)) mais est grandement améliorée grâce à l'élagage des branches trop lourdes.\\
 		
-		\paragraph{Commentaires sur l'implémentation}
-		
+		\paragraph{Commentaires sur l'implémentation\\}
+		Cet algorithme a été implémenté récursivement, méthode plus lourde mais aussi plus intuitive.
+		Lors de la programmation de cet algorithme j'ai malheureusement oublié de faire le retour permettant l'élagage des branches trop lourdes. Cette erreur m'a fait perdre beaucoup de temps à chercher des méthodes pour accélérer le programme alors qu'il ne manquait que 2 lignes de codes pour obtenir un programme extrêmement plus rapide.
 		
 		
 		\subsubsection{Séparation et évaluation avec retrait d'arêtes}		
@@ -107,12 +109,14 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\paragraph{Résumé de l'algorithme}
 		L'algorithme de séparation et évaluation avec retrait d'arêtes consiste en un parcours d'arbre. Celui-ci est un arbre binaire, chaque nœud est la matrice des arêtes du graphe, le fils gauche correspond à la matrice résultante du passage par une arête choisie, le fils droit représente la matrice résultante du retrait de cette arête. Le parcours s'arrête au moment où la fonction d'évaluation retourne une valeur supérieur à celle de la meilleure solution trouvée.\\
 		
-		\paragraph{Commentaires sur l'implémentation}		
+		\paragraph{Commentaires sur l'implémentation}
+		Je n'ai malheureusement pas réussi à implémenter un programme fonctionnel pour cet algorithme avant la fin du temps imparti. Ceci est en partie dû à la compréhension difficile de l'algorithme, mais aussi à la réalisation chronophage des autres projets universitaires.
+		J'ai tenté une version récursive mais me suis embourbé au milieu d'une double récursion.
 		
 		
 	\subsection{Algorithme donnant une solution approximative}
 	
-		\subsubsection{Approche gloutonne}
+		\subsubsection{Approche cupide}
 		
 		\subsubsection{Approche aléatoire}
 		
