@@ -68,7 +68,7 @@ if ( argc == 2 ) {
         s = MST(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
         print_solution(s);
-        free_solution(s);
+        free_solution_bis(s);
 
         print_time_taken(begin, end);
 

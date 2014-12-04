@@ -117,6 +117,8 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\paragraph{Résumé de l'algorithme}
 		L'algorithme de l'approche cupide commence par se positionner sur un nœud du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en regardant l'arête avec le poids minimum. Et ainsi de suite jusqu'à avoir parcouru tout les nœuds du graphe.
 		
+		\paragraph{Commentaires sur l'implémentation}
+		
 		\subsubsection{Approche aléatoire}
 		
 		\paragraph{Résumé de l'algorithme}
@@ -144,6 +146,27 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		
 		L'évolution est ensuite répétée X fois. En prenant comme nouvelle entré la sortie de l'évolution précédente. \\
 		Pour finir l'algorithme choisit la meilleurs solution ( Celle avec le plus faible coût ) après évolution . \\
+		
+		\paragraph{Commentaires sur l'implémentation}
+
+\newpage		
+\section{Commentaire général sur le code}
+
+Les conventions on été respectée. \\
+Qui plus est, nous avons mis un point d'honneur à avoir un code des plus propre possible sur les allocations et libérations de mémoire. \\
+
+Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur un graphe à 5 nœuds. \\
+\begin{verbatim}
+==6610== HEAP SUMMARY:
+==6610==     in use at exit: 0 bytes in 0 blocks
+==6610==   total heap usage: 29,231 allocs, 29,231 frees, 1,168,096 bytes allocated
+==6610== 
+==6610== All heap blocks were freed -- no leaks are possible
+==6610== 
+==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+\end{verbatim}
+
 \newpage
 \section{Etudes d'efficacités des algorithmes}
 
