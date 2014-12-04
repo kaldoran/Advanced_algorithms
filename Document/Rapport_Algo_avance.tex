@@ -31,17 +31,9 @@
 \makeatletter
 	\begin{titlepage}
 	
-	\begin{figure}
-		\begin{minipage}[c]{.46\linewidth}
-		\end{minipage} \hfill
-		\begin{minipage}[c]{.20\linewidth}
-
-		\end{minipage}
-	\vspace{1cm}
-	\end{figure}
-	
 	\centering
 		{
+		\vspace*{5cm}
 		\hrule height 2pt
 		\vspace{0.7cm}
 		\Huge \textbf{\@title}}\\
@@ -53,8 +45,8 @@
 		\@author\\
 		\end{titlepage}
 \makeatother
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
 \renewcommand{\contentsname}{Sommaire}
 \begingroup\makeatletter
 \def\@makeschapterhead#1{%
@@ -101,9 +93,22 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	\subsection{Algorithme donnant une solution optimale}
 		\subsubsection{Brute force}
 		
-		\subsubsection{Séparation et évaluation}	
+		\subsubsection{Séparation et évaluation}
 		
-		\subsubsection{Séparation et évaluation avec utilisation de matrice}	
+		\paragraph{Résumé de l'algorithme}
+		L'algorithme de séparation et évaluation consiste en un parcours de l'arbre de tous les chemins possible dans le graphe des villes. Mais si le chemin menant à un nœud possède un poids total supérieur à la meilleurs solution trouvée jusque là, alors il ne parcourra pas les sous-arbres de ce nœud.\\
+		
+		\paragraph{Commentaires sur l'implémentation}
+		
+		
+		
+		\subsubsection{Séparation et évaluation avec retrait d'arêtes}		
+		
+		\paragraph{Résumé de l'algorithme}
+		L'algorithme de séparation et évaluation avec retrait d'arêtes consiste en un parcours d'arbre. Celui-ci est un arbre binaire, chaque nœud est la matrice des arêtes du graphe, le fils gauche correspond à la matrice résultante du passage par une arête choisie, le fils droit représente la matrice résultante du retrait de cette arête. Le parcours s'arrête au moment où la fonction d'évaluation retourne une valeur supérieur à celle de la meilleure solution trouvée.\\
+		
+		\paragraph{Commentaires sur l'implémentation}		
+		
 		
 	\subsection{Algorithme donnant une solution approximative}
 	
