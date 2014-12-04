@@ -89,19 +89,19 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 \section{Algorithmes de résolution de problème du voyageur de commerce}
 
 	\subsection{Structure de donnée}
-	La structure de donnée du graphe est tres simple. Elle consiste a un acces direct à chaque nœud. Le nombre de nœud est également présent en accès direct.
-	Chaque nœuds est ensuite représenté par : 
+	La structure de donnée du graphe est très simple. Elle consiste en un accès direct à chaque nœud. Le nombre de nœud est également présent en accès direct.
+	Chaque nœud est ensuite représenté par : 
 	\begin{itemize}
 		\item Un nom N
-		\item Une coloration ( Indique si le noeud à été visité ou non )
-		\item Le nombre de sous Noeud
-		\item Un tableau contenant tout les freres du nœud avec le nœud d'indice i égale au i-eme nœud.
-		\item Un tableau contenant le cout du chemin entre le noued N courrant et le nœud présent en case i.
+		\item Une coloration ( Indique si le nœud à été visité ou non )
+		\item Le nombre de sous-nœud
+		\item Un tableau contenant tous les successeurs du nœud avec le nœud d'indice i égale au i-ème nœud.
+		\item Un tableau contenant le coût du chemin entre le nœud N courant et le nœud présent en case i.
 	\end{itemize}
 	
-	La structure de donnée de la solution à quand à elle évolué au file du temps.
+	La structure de donnée de la solution a, quant à elle, évolué au fil du temps.
 	Passant à la base d'une liste de nom de nœud à une liste de nœud.
-	Elle contient également le nombre de nœud présent dans la solution, et le cout du chemin présent dans la solution.
+	Elle contient également le nombre de nœuds présents dans la solution, et le coût du chemin présent dans la solution.
 	
 	\subsection{Algorithme donnant une solution optimale}
 		\subsubsection{Force brute}
