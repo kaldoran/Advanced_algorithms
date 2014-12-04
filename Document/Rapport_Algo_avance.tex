@@ -83,25 +83,14 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	
 	\subsection{Langage utilisé et outil de développement}
 	\begin{flushleft}
+	\begin{flushleft}
 	Nous avons choisi d'implémenter tous nos algorithmes en langage C  pour sa rapidité. En effet les graphes étant chargés en mémoire et le langage C permettant un accès rapide à celle-ci, ce qui rendrait le programme plus performant en terme de temps d'exécution.
+	\end{flushleft}
 	\end{flushleft}
 	
 \section{Algorithmes de résolution de problème du voyageur de commerce}
 
 	\subsection{Structure de donnée}
-	La structure de donnée du graphe est tres simple. Elle consiste a un acces direct à chaque nœud. Le nombre de nœud est également présent en accès direct.
-	Chaque nœuds est ensuite représenté par : 
-	\begin{itemize}
-		\item Un nom N
-		\item Une coloration ( Indique si le noeud à été visité ou non )
-		\item Le nombre de sous Noeud
-		\item Un tableau contenant tout les freres du nœud avec le nœud d'indice i égale au i-eme nœud.
-		\item Un tableau contenant le cout du chemin entre le noued N courrant et le nœud présent en case i.
-	\end{itemize}
-	
-	La structure de donnée de la solution à quand à elle évolué au file du temps.
-	Passant à la base d'une liste de nom de nœud à une liste de nœud.
-	Elle contient également le nombre de nœud présent dans la solution, et le cout du chemin présent dans la solution.
 	
 	\subsection{Algorithme donnant une solution optimale}
 		\subsubsection{Force brute}
@@ -119,7 +108,9 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\subsubsection{Séparation et évaluation}
 		
 		\paragraph{Résumé de l'algorithme}
+		\begin{flushleft}
 		L'algorithme de séparation et évaluation consiste en un parcours de l'arbre de tous les chemins possible dans le graphe des villes. Mais si le chemin menant à un nœud possède un poids total supérieur à la meilleurs solution trouvée jusque là, alors il ne parcourra pas les sous-arbres de ce nœud.\\
+		\end{flushleft}
 		
 		\paragraph{Commentaires sur l'implémentation}
 		
@@ -128,11 +119,15 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\subsubsection{Séparation et évaluation avec retrait d'arêtes}		
 		
 		\paragraph{Résumé de l'algorithme\\}
+		\begin{flushleft}
 		L'algorithme de séparation et évaluation avec retrait d'arêtes consiste en un parcours d'arbre. Celui-ci est un arbre binaire, chaque nœud est la matrice des arêtes du graphe, le fils gauche correspond à la matrice résultante du passage par une arête choisie, le fils droit représente la matrice résultante du retrait de cette arête. Le parcours s'arrête au moment où la fonction d'évaluation retourne une valeur supérieur à celle de la meilleure solution trouvée.\\
+		\end{flushleft}
 		
 		\paragraph{Commentaires sur l'implémentation\\}
+		\begin{flushleft}
 		Je n'ai malheureusement pas réussi à implémenter un programme fonctionnel pour cet algorithme avant la fin du temps imparti. Ceci est en partie dû à la compréhension difficile de l'algorithme, mais aussi à la réalisation chronophage des autres projets universitaires.
 		J'ai tenté une version récursive mais me suis embourbé au milieu d'une double récursion.
+		\end{flushleft}
 		
 		
 	\subsection{Algorithme donnant une solution approximative}
@@ -140,15 +135,19 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\subsubsection{Approche cupide}
 		
 		\paragraph{Résumé de l'algorithme\\}
+		\begin{flushleft}
 		L'algorithme de l'approche cupide commence par se positionner sur un nœud du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en regardant l'arête avec le poids minimum. Et ainsi de suite jusqu'à avoir parcouru tout les nœuds du graphe.
+		\end{flushleft}
 		
 		\paragraph{Commentaires sur l'implémentation\\}
 		
 		\subsubsection{Approche aléatoire}
 		
 		\paragraph{Résumé de l'algorithme\\}
+		\begin{flushleft}
 		L'approche aléatoire est très simple. L'algorithme se place sur un nœud aléatoire du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en choisissant une arête de manière aléatoire. Jusqu'à revenir à sont point de départ.
 		L'algorithme est lancé une première fois. Puis est lancé 100 fois en comparant les résultats entre eux. A chaque fois le chemin avec le coup le moins élevé est choisit.
+		\end{flushleft}
 
 		\subsubsection{Approche avec l'arbre couvrant de poids minimal}
 		\begin{flushleft}
@@ -164,6 +163,7 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		
 	\subsubsection{Approche génétique}
 		\paragraph{Résumé de l'algorithme\\}
+		\begin{flushleft}
 		L'algorithme de l'approche génétique passe par plusieurs sous méthode. \\
 		Pour commencer une population N de solution est générée. \\
 		Cette population est alors modifiée, elle évolue. \\
@@ -180,16 +180,19 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		
 		L'évolution est ensuite répétée X fois. En prenant comme nouvelle entré la sortie de l'évolution précédente. \\
 		Pour finir l'algorithme choisit la meilleurs solution ( Celle avec le plus faible coût ) après évolution . \\
+		\end{flushleft}
 		
 		\paragraph{Commentaires sur l'implémentation\\}
 
 \newpage		
 \section{Commentaire général sur le code}
 
+\begin{flushleft}
 Les conventions on été respectée. \\
 Qui plus est, nous avons mis un point d'honneur à avoir un code des plus propre possible sur les allocations et libérations de mémoire. \\
 
 Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur un graphe à 5 nœuds. \\
+\end{flushleft}
 \begin{verbatim}
 ==6610== HEAP SUMMARY:
 ==6610==     in use at exit: 0 bytes in 0 blocks
@@ -243,31 +246,19 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 	\subsection{Graphes en ligne}
 		\subsubsection{Tests temps d'exécution}
 			\includegraphics[scale=0.45]{./Ressource/temps_graphes_site.png}
-			
-			On observe que l'algorithme de sélection et évaluation présente une durée d'exécution extrêmement supérieur aux autres algorithmes.
-			L'algorithme cupide est le plus rapide. de 14 à 29 nœuds l'approche par arbre couvrant est la 2ème plus rapide mais de 29 à 280 nœuds elle échange sa place avec la 3ème plus rapide qui est l'approche aléatoire.
-			L'algorithme génétique est le plus lent des approximatifs et présente une augmentation de la durée d'exécution bien plus importante que les autres pour les graphes de plus de 100 nœuds.
 		
 	
 	\subsubsection{Tests coût}
 			\includegraphics[scale=0.45]{./Ressource/cout_graphes_site.png}
-			Les tests de coût avec les graphes de la base de donnée du site étant relativement long pour l'algorithme de séparation et d'évaluation, nous avons décidé de faire les tests de coût de celui-ci sur des graphes dont le nombre de nœuds sont inférieur à 20. Pour les graphes dont le nombre de noeuds sont supérieur à 20 nous testons uniquement les algorithmes donnant des solutions approximatives que nous comparons avec les solutions (optimales) données par le site.\\
+			\begin{flushleft}
+			Les tests de coût avec les graphes de la base de donnée du site étant relativement long pour l'algorithme de séparation et d'évaluation, nous avons décidé de faire les tests de coût de celui-ci sur des graphes dont le nombre de nœuds sont inférieur à 20. Pour les graphes dont le nombre de nœuds sont supérieur à 20 nous testons uniquement les algorithmes donnant des solutions approximatives que nous comparons avec les solutions (optimales) données par le site.\\
 			Sur les graphes de 14 à 17 nœuds, nous observons peu de variation entre les solutions des différents algorithmes. L'algorithme de séparation et évaluation donne des solutions optimales.\\
-			Sur les graphes de grandes tailles (nombre de nœuds supèrieur à 100) les variations entre les solutions sont plus marquées  : de manière générale, les algorithmes d'approche aléatoire et d'approche génétique donnent des solutions plus éloignées de la solution optimale. Cependant, nous savons que  l'approche génétique est "calibré" pour les graphes de taille inférieur à 10 nœuds ;  et pour obtenir des solutions plus proches de la solution optimale, il faudrait faire plus d'itération dans l'algorithme d'approche aléatoire.
+			Sur les graphes de grandes tailles (nombre de nœuds supérieur à 100) les variations entre les solutions sont plus marquées  : de manière générale, les algorithmes d'approche aléatoire et d'approche génétique donnent des solutions plus éloignées de la solution optimale. Cependant, nous savons que  l'approche génétique est "calibré" pour les graphes de taille inférieur à 10 nœuds ;  et pour obtenir des solutions plus proches de la solution optimale, il faudrait faire plus d'itération dans l'algorithme d'approche aléatoire.
 			L'approche avec l'arbre couvrant de poids minimal et l'approche cupide sont des algorithmes approximations qui donnent des solutions relativement correctes et sont par conséquent plus intéressant pour résoudre des graphes de grandes tailles.
+			\end{flushleft}
 	\subsubsection{Conclusion}
-	L'algorithme de sélection et évaluation donne une solution optimale mais est extrêmement lent sur ces graphes, il est donc peu intéressant.\\
-	L'approche aléatoire est une des plus rapides mais aussi la moins précise, elle serait donc aussi à éviter.\\
-	L'algorithme génétique étant aussi peu précis que l'aléatoire mais aussi beaucoup plus lent il serait à éviter également.\\
-	Pour ce qui est des algorithmes cupide et d'arbre couvrant, leur précision est comparable et bien meilleurs que les 2 autres. Mais l'approche par l'arbre couvrant étant plus lente (même si 0.1 seconde pour 280 nœuds reste tout à fait honorable) la meilleure approche est donné par l'algorithme cupide.
-	
-	
+
 \section{Conclusion}
-La construction des graphes peut avoir un important impacte sur la qualité d'un algorithme. En effet un graphe respectant la règle de Pythagore, contrairement à un graphe aléatoire, permet à l'approche de l'arbre couvrant d'être plus précise mais oblige l'approche par sélection et évaluation à parcourir plus de solution et donc la condamne à être beaucoup plus lente.\\
-
-Donc pour des petits graphes aléatoire l'approche par sélection et évaluation permet d'obtenir rapidement une solution optimale. Pour des graphes respectant la règle de Pythagore l'approche par arbre couvrant est une solution rapide et précise.
-Cependant l'algorithme cupide fourni le meilleur ratio rapidité/fiabilité et est donc l'approche que nous avons codé à privilégier.
-
 \section{Annexes}
 
 	\subsection{DataConverter}
@@ -276,10 +267,5 @@ Cependant l'algorithme cupide fourni le meilleur ratio rapidité/fiabilité et e
 	\end{flushleft}
 	
 	\subsection{TSPGenerateur}
-	Permet de générer des graphes aléatoires, pour en connaitre le fonctionnement voir.
-	\begin{verbatim}
-		./TSPGenerator -h
-	\end{verbatim}
-	Les fichiers de sortie sont dans le format défini par notre groupe.
-\end{document}
 
+\end{document}
