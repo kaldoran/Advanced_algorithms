@@ -123,14 +123,17 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\subsubsection{Séparation et évaluation}
 		
 		\paragraph{Résumé de l'algorithme}
-		\begin{flushleft}
+		\begin{flushleft}	
 		L'algorithme de séparation et évaluation consiste en un parcours de l'arbre de tous les chemins possible dans le graphe des villes. Mais si le chemin menant à un nœud possède un poids total supérieur à la meilleurs solution trouvée jusque là, alors il ne parcourra pas les sous-arbres de ce nœud.\\
+		La complexité de cet algorithme est donc, au pire, la même que celle de l'algorithme par force brute (O(n!)) mais est grandement améliorée grâce à l'élagage des branches trop lourdes.\\
 		\end{flushleft}
 		
-		\paragraph{Commentaires sur l'implémentation}
-		
-		
-		
+		\paragraph{Commentaires sur l'implémentation\\}
+		\begin{flushleft}
+	Cet algorithme a été implémenté récursivement, méthode plus lourde mais aussi plus intuitive.
+	Lors de la programmation de cet algorithme j'ai malheureusement oublié de faire le retour permettant l'élagage des branches trop lourdes. Cette erreur m'a fait perdre beaucoup de temps à chercher des méthodes pour accélérer le programme alors qu'il ne manquait que 2 lignes de codes pour obtenir un programme extrêmement plus rapide.
+		\end{flushleft}
+	
 		\subsubsection{Séparation et évaluation avec retrait d'arêtes}		
 		
 		\paragraph{Résumé de l'algorithme\\}
@@ -163,7 +166,12 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		L'approche aléatoire est très simple. L'algorithme se place sur un nœud aléatoire du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en choisissant une arête de manière aléatoire. Jusqu'à revenir à sont point de départ.
 		L'algorithme est lancé une première fois. Puis est lancé 100 fois en comparant les résultats entre eux. A chaque fois le chemin avec le coup le moins élevé est choisit.
 		\end{flushleft}
-
+		
+		\paragraph{Commentaires sur l'implémentation\\}
+		\begin{flushleft}
+		Le code de ce programme étant assez simple, aucun soucis particulier n'est à notifier dans ce code. Cependant très rapidement j'ai fais le choix de séparer le code en deux méthodes, dont une avec un paramètre permettant de donner la coloration a utiliser pendant le parcours du graphe. Tout ceci dans le but de me resservir de la l'approche aléatoire dans la génération de la population dans l'approche génétique.
+		\end{flushleft}
+		
 		\subsubsection{Approche avec l'arbre couvrant de poids minimal}
 		\begin{flushleft}
 		L'algorithme utilise l'algorithme de Prim ou de Kruskal (dans notre projet, nous avons utilisé l'algorithme de Prim) pour construire un arbre couvrant de poids minimal reliant tout les noeuds du graphe. Une fois que l'arbre couvrant est construite, la solution du problème est donnée par un parcours préfixe de l'arbre.
