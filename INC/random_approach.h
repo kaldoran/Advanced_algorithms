@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : REYNAUD Nicolas                                 |
 // FICHIER : random_approach.h                              |
-// DATE : 27/10/14                                          |
+// DATE : 28/10/14                                          |
 //                                                          |
 // - Implemente prototype of random approach                |
 //----------------------------------------------------------

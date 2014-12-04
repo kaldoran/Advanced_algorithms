@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin                                 |
 // FICHIER : brute_force_approach.h                         |
-// DATE : 27/10/14                                          |
+// DATE : 15/11/14                                          |
 //                                                          |
 //  - Functions that resolve TSP with brute-force approach  |
 //----------------------------------------------------------

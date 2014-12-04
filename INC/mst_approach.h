@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin                                 |
 // FICHIER : mst_approach.h                                 |
-// DATE : 27/10/14                                          |
+// DATE : 21/11/14                                          |
 //                                                          | 
 // Define prototypes functions of tsp_mst.c                 |
 // - function MST(Graph) to resolve TSP with MST approach.  |

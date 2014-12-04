@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : REYNAUD Nicolas                                 |
 // FICHIER : imnotanesteregg.h                              |
-// DATE : 02/11/14                                          |
+// DATE : 02/12/14                                          |
 //                                                          |
 // - Function that's not an easter egg                      |
 //----------------------------------------------------------

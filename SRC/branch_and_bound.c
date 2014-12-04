@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : BASCOL Kevin                                    |
 // FICHIER : branch_and_bound.c                             |
-// DATE : 28/10/14                                          |
+// DATE : 31/10/14                                          |
 //                                                          |
 // - Implementation of the prototypes in branch_and_bound.h |
 //----------------------------------------------------------

@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin, REYNAUD Nicolas                |
 // FICHIER : solution.c                                     |
-// DATE : 10/11/14                                          |
+// DATE : 05/11/14                                          |
 //                                                          |
 // - Implementation of the prototypes in solution.h         |
 //----------------------------------------------------------

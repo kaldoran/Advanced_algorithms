@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin                                 |
 // FICHIER : solution.h                                     |
-// DATE : 27/10/14                                          |
+// DATE : 05/11/14                                          |
 //                                                          | 
 // Define prototype function of solution.c                  |
 // - function to create a empty solution                    |

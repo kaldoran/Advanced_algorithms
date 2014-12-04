@@ -1,7 +1,9 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin, REYNAUD Nicolas                |
 // FICHIER : imnotaneasteregg.c                             |
-// DATE : 25/10/14                                          |
+// DATE : 02/12/14                                          |
+//                                                          |
+// - This is defenetly not an easter egg                    |
 //----------------------------------------------------------
 
 #include <stdlib.h>

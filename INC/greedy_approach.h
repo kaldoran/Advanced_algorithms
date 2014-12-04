@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : REYNAUD Nicolas                                 |
 // FICHIER : greedy_approach.h                              |
-// DATE : 27/10/14                                          |
+// DATE : 30/10/14                                          |
 //                                                          |
 // - Implemente the greedy approach                         |
 //----------------------------------------------------------
