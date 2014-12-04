@@ -106,10 +106,10 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		
 		\subsubsection{Séparation et évaluation avec retrait d'arêtes}		
 		
-		\paragraph{Résumé de l'algorithme}
+		\paragraph{Résumé de l'algorithme\\}
 		L'algorithme de séparation et évaluation avec retrait d'arêtes consiste en un parcours d'arbre. Celui-ci est un arbre binaire, chaque nœud est la matrice des arêtes du graphe, le fils gauche correspond à la matrice résultante du passage par une arête choisie, le fils droit représente la matrice résultante du retrait de cette arête. Le parcours s'arrête au moment où la fonction d'évaluation retourne une valeur supérieur à celle de la meilleure solution trouvée.\\
 		
-		\paragraph{Commentaires sur l'implémentation}
+		\paragraph{Commentaires sur l'implémentation\\}
 		Je n'ai malheureusement pas réussi à implémenter un programme fonctionnel pour cet algorithme avant la fin du temps imparti. Ceci est en partie dû à la compréhension difficile de l'algorithme, mais aussi à la réalisation chronophage des autres projets universitaires.
 		J'ai tenté une version récursive mais me suis embourbé au milieu d'une double récursion.
 		
@@ -118,14 +118,14 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	
 		\subsubsection{Approche cupide}
 		
-		\paragraph{Résumé de l'algorithme}
+		\paragraph{Résumé de l'algorithme\\}
 		L'algorithme de l'approche cupide commence par se positionner sur un nœud du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en regardant l'arête avec le poids minimum. Et ainsi de suite jusqu'à avoir parcouru tout les nœuds du graphe.
 		
-		\paragraph{Commentaires sur l'implémentation}
+		\paragraph{Commentaires sur l'implémentation\\}
 		
 		\subsubsection{Approche aléatoire}
 		
-		\paragraph{Résumé de l'algorithme}
+		\paragraph{Résumé de l'algorithme\\}
 		L'approche aléatoire est très simple. L'algorithme se place sur un nœud aléatoire du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en choisissant une arête de manière aléatoire. Jusqu'à revenir à sont point de départ.
 		L'algorithme est lancé une première fois. Puis est lancé 100 fois en comparant les résultats entre eux. A chaque fois le chemin avec le coup le moins élevé est choisit.
 		
@@ -133,7 +133,7 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		
 		\subsubsection{Approche génétique}
 		
-		\paragraph{Résumé de l'algorithme}
+		\paragraph{Résumé de l'algorithme\\}
 		L'algorithme de l'approche génétique passe par plusieurs sous méthode. \\
 		Pour commencer une population N de solution est générée. \\
 		Cette population est alors modifiée, elle évolue. \\
@@ -151,7 +151,7 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		L'évolution est ensuite répétée X fois. En prenant comme nouvelle entré la sortie de l'évolution précédente. \\
 		Pour finir l'algorithme choisit la meilleurs solution ( Celle avec le plus faible coût ) après évolution . \\
 		
-		\paragraph{Commentaires sur l'implémentation}
+		\paragraph{Commentaires sur l'implémentation\\}
 
 \newpage		
 \section{Commentaire général sur le code}
@@ -176,13 +176,29 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 
 	\subsection{Graphes générés aléatoirement}
 		\subsubsection{Tests temps d'exécution}
-			\includegraphics[scale=0.45]{./Ressource/temps_graphes_random.png}	
+			\includegraphics[scale=0.45]{./Ressource/temps_graphes_random.png}
+			
+			On peut observer qu'à partir de graphes de 8 nœuds, l'algorithme par force brute se termine bien après les autres algorithmes, ce qui est un résultat attendu puisqu'il a la complexité la plus grande.\\
+			L'algorithme de séparation et évaluation, quant à lui, devient le plus lent à partir de 11 nœuds. Sa courbe irrégulière est causé par l'élagage qui retire plus ou moins de possibilité selon le graphe.\\
+			Les autres algorithmes présentent, à partir de 11 nœuds, une durée plus modérée que les deux précédents et une augmentation de la durée d'exécution plus régulière.
 		
 		\subsubsection{Tests coût}
 			
 			\includegraphics[scale=0.40]{./Ressource/cout_graphes_random.png}
 			
+			Ici les algorithmes par force brute et de sélection et évaluation donnent toujours une solution avec un poids optimal, ils serviront de repère.\\
+			Cet histogramme nous apprend que jusqu'à 7 nœuds tous les algorithmes fournissent une solution quasi-optimale.\\
+			A partir de 8 nœuds l'algorithme aléatoire donnera le plus souvent la pire réponse des tests. L'algorithme de l'arbre couvrant donnera la plupart du temps une solution comparable à celle de l'approche aléatoire.\\
+			Jusqu'à 21 nœuds, les algorithmes cupide et génétique présentent des résultats comparable mais de plus en plus éloigné de la solution optimale. à partir de 22 nœuds, l'approche cupide est la plus proche de la solution optimale, alors que l'approche génétique s'en éloigne.
+					
 		\subsubsection{Conclusion}
+		Les algorithmes par force brute et de sélection et évaluation sont les seuls donnant toujours une solution optimale. Mais ils présentent aussi le coût en temps extrêmement plus important que les autres, en effet force brute devient inutilisable à environ 10 nœuds et sélection à environ 23 nœuds.
+		Parmi les autres algorithmes, l'approche aléatoire est clairement à éviter n'étant pas la plus rapide et étant la moins précise.\\
+		L'approche par arbre couvrant est plus rapide que l'approche aléatoire mais est toute aussi imprécise et serait donc à éviter aussi.\\
+		L'approche génétique est relativement précise jusqu'à 17 nœuds mais aussi l'une des plus lente et n'est donc pas la meilleure option.\\
+		L'approche cupide, quant à elle, est la plus rapide de toutes, mais aussi, la plupart du temps, la plus précise.\\
+		
+		Donc pour des graphes aléatoires de 2 à 19 nœuds on utiliserait l'algorithme de sélection et évaluation donnant une valeur optimale, et à partir de 20 nœuds on utiliserait l'algorithme cupide.
 			
 	\subsection{Graphes en ligne}
 		\subsubsection{Tests temps d'exécution}
