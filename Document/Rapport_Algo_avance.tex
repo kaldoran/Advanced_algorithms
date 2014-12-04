@@ -128,8 +128,22 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\subsubsection{Approche génétique}
 		
 		\paragraph{Résumé de l'algorithme}
-		a
+		L'algorithme de l'approche génétique passe par plusieurs sous méthode. \\
+		Pour commencer une population N de solution est générée. \\
+		Cette population est alors modifiée, elle évolue. \\
+		l'évolution consiste à trier la population par ordre croissant, à partir de là, un pourcentage d'élite est gardé. Les élites peuvent, avec un faible pourcentage de chance muter. La mutation se traduit par l'inversion de 2 nœuds dans la solution élite. \\
+		Le reste de la population subit alors des croisements et des mutations. Les croisement se font sur deux parents. Les parents sont choisit, soit parmi les élites avec un faible pourcentage de chance. Soit parmi une sélection aléatoire de parent parmi les éléments triées. \\
+		Le tournois choisit simplement alors la meilleurs solution (Celle avec le cout le plus faible) parmi la sélection aléatoire. \\
 		
+		Le croisement peut alors commencer. Le croisement comporte alors 2 étapes :
+		\begin{itemize}
+			\item On commencer par copier une partie de la solution du parent numéro 1. Cette partie est choisit aléatoirement.
+			\item On complète ensuite la solution fils obtenu en complétant celle ci par les nœuds présent dans le second parent. En conservant l'ordre présent dans le parent 2.
+		\end{itemize}
+		Le fils ainsi obtenu à alors un faible chance de muter. \\
+		
+		L'évolution est ensuite répétée X fois. En prenant comme nouvelle entré la sortie de l'évolution précédente. \\
+		Pour finir l'algorithme choisit la meilleurs solution ( Celle avec le plus faible coût ) après évolution . \\
 \newpage
 \section{Etudes d'efficacités des algorithmes}
 
