@@ -10,15 +10,15 @@
 #include "graph.h"
 #include "readfile.h"
 #include "struct_graph.h"
-#include "greedy_approch.h"
+#include "greedy_approach.h"
 #include "branch_and_bound.h"
 
 
 Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
-    int cost = 0,i, j;
+    int cost = 0, i, j;
     if(part->count_nodes_s == best->count_nodes_s - 1) {
         cost = part->cost + part->list_node[part->count_nodes_s - 1]->cost[0];
-		
+        
         if(cost < best->cost) {
             for ( i = 0; i < part->count_nodes_s; i++) {
                 best->list_node[i] = part->list_node[i];
@@ -31,11 +31,11 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph) {
         }
     }
     else if(part->cost > best->cost) {
-		return best;
-	}
+        return best;
+    }
     else{
-        for(j=0; j < tspGraph->count_nodes; ++j) {  
-			
+        for(j=0; j < tspGraph->count_nodes; j++) {  
+            
             int last = part->count_nodes_s - 1;          
             
             if( part->list_node[last]->subnodes[j] != NULL
@@ -84,7 +84,7 @@ Solution branch_and_bound(Graph tspGraph) {
     tspGraph->nodes[start]->colored = END;
 
     
-    best = greedy_approch(tspGraph);
+    best = greedy_approach(tspGraph);
     
     reset_coloration(tspGraph);
     tspGraph->nodes[start]->colored = END;

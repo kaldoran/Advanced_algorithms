@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h> /** For fork and kill */
+#include <unistd.h> // For fork and kill
 #include <time.h>
 #include <sys/time.h>
 #include <signal.h>
@@ -18,14 +18,14 @@
 #include "solution.h"
 #include "readfile.h"
 #include "struct_graph.h"
-#include "random_approch.h"
-#include "greedy_approch.h"
-#include "tsp_brute_force.h"
+#include "random_approach.h"
+#include "greedy_approach.h"
+#include "genetic_approach.h"
+#include "brute_force_approach.h"
 #include "branch_and_bound.h"
 #include "branch_and_bound_rem.h"
-#include "genetic_approch.h"
 #include "imnotaneasteregg.h"
-#include "tsp_mst.h"
+#include "mst_approach.h"
 
 #define NANOS 1000000
 
@@ -56,7 +56,7 @@ int main(int argc, char const *argv[]) {
     Solution s = NULL;;
     Graph tsp_graph = NULL;
     srand(time(NULL));
-	aplay = spawn_aplay("sound.wav");
+    aplay = spawn_aplay("sound.wav");
  
 
 if ( argc == 2 ) {
@@ -72,13 +72,13 @@ if ( argc == 2 ) {
 
         print_time_taken(begin, end);
 
-		if ( tsp_graph->count_nodes <= 10 ) {
-        	printf("Start Brute Force : \n");
-        	clock_gettime( CLOCK_MONOTONIC, &begin );
-        	s = tsp_brute_force(tsp_graph);
-        	clock_gettime(CLOCK_MONOTONIC, &end );
-       		print_solution(s);
-        	free_solution(s);
+        if ( tsp_graph->count_nodes <= 10 ) {
+            printf("Start Brute Force : \n");
+            clock_gettime( CLOCK_MONOTONIC, &begin );
+            s = brute_force_approach(tsp_graph);
+            clock_gettime(CLOCK_MONOTONIC, &end );
+               print_solution(s);
+            free_solution(s);
 
             print_time_taken(begin, end);
         }
@@ -87,7 +87,7 @@ if ( argc == 2 ) {
 
         /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
         clock_gettime( CLOCK_REALTIME, &begin );
-        s = random_approch(tsp_graph);
+        s = random_approach(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
         print_solution(s);
         free_solution(s);
@@ -96,13 +96,13 @@ if ( argc == 2 ) {
 
         printf("Start Greedy approch : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
-        s = greedy_approch(tsp_graph);
+        s = greedy_approach(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
         print_solution(s);
         free_solution(s);
 
         print_time_taken(begin, end);
-/*
+
         reset_coloration(tsp_graph);
         printf("Start Branch and Bound approch: \n");
         clock_gettime( CLOCK_REALTIME, &begin );
@@ -112,7 +112,7 @@ if ( argc == 2 ) {
         free_solution(s);
         
         print_time_taken(begin, end);
-*/
+
 //        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 /*        printf("Start Branch and Bound approch (removing edges version) : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
@@ -135,7 +135,7 @@ if ( argc == 2 ) {
 
         free_graph(tsp_graph);
 
-		kill(aplay, SIGTERM);
+        kill(aplay, SIGTERM);
         exit(EXIT_SUCCESS);
     }
     

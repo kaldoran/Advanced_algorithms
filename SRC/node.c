@@ -3,6 +3,7 @@
 // FICHIER : node.c                                         |
 // DATE : 27/10/14                                          |
 //                                                          |
+// - Implementation of the prototypes in node.h             |
 //----------------------------------------------------------
 
 #include <stdio.h>

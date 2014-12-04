@@ -1,10 +1,9 @@
 //----------------------------------------------------------
 // AUTEUR : REYNAUD Nicolas                                 |
 // FICHIER : random.c                                       |
-// DATE : 27/10/14                                          |
+// DATE : 28/10/14                                          |
 //                                                          |
-// - Debug Maccro [C99 Convention]                          |
-// - Quit maccro                                            |
+// - Implementation of the prototypes in random_approach.h  |
 //----------------------------------------------------------
 
 #include <stdio.h>
@@ -15,18 +14,18 @@
 #include "error.h"
 #include "solution.h"
 #include "graph.h"
-#include "random_approch.h"
+#include "random_approach.h"
 
 #define ITERATION 100
 
-Solution random_approch(Graph g) {
+Solution random_approach(Graph g) {
     int i;
     Solution tmp = NULL, best = NULL;
     
-    best = random_approch_compute(g, VISITED_RAND);
+    best = random_approach_compute(g, VISITED_RAND);
 
     for ( i = 1; i < ITERATION; i++ ) {
-        tmp = random_approch_compute(g, VISITED_RAND + i);
+        tmp = random_approach_compute(g, VISITED_RAND + i);
         if ( best->cost > tmp->cost ) {
             free_solution(best);
             best = tmp;
@@ -37,7 +36,7 @@ Solution random_approch(Graph g) {
     return best;
 }
 
-Solution random_approch_compute(Graph g, int visiteColor) {
+Solution random_approach_compute(Graph g, int visiteColor) {
     Solution s;
     Node current;
     int start, choix, total_node;

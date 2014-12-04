@@ -3,6 +3,10 @@
 // FICHIER : graph.c                                        |
 // DATE : 27/10/14                                          |
 //                                                          |
+// - Create a new graph                                     |
+// - Free a graph                                           |
+// - Reset is coloration                                    |
+// - free a graph                                           |
 //----------------------------------------------------------
 
 #include <stdio.h>
