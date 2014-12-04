@@ -11,9 +11,9 @@ Time : 0 secondes 0 millisecondes 5 microsecondes 819 nanosecondes
 
 Start Brute Force : 
 Solution:
-	List Vertex : 0 1 
-	Cost : 0
-	Node Count : 2
+	List Vertex : 0 1 0
+	Cost : 34
+	Node Count : 3
 
 Time nano : 652 nanosecondes
 Time : 0 secondes 0 millisecondes 0 microsecondes 652 nanosecondes
