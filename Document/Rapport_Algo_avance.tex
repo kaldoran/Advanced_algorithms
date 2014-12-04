@@ -193,26 +193,31 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 \newpage
 \section{Etudes d'efficacités des algorithmes}
 	\begin{flushleft}
-	Cette section présente les résultats de nos tests des algorithmes que nous avons implémenté. Elle se présente en deux parties, car nous avons fait des tests sur des graphes générés aléatoirement par notre programme TSPGenerateur et des tests issue de la base de donnée du site mentionné dans le sujet.
+	Cette section présente les résultats de nos tests des algorithmes que nous avons implémenté. Elle se présente en deux parties, car nous avons fait des tests sur des graphes générés aléatoirement par notre programme TSPGenerateur et des tests issues de la base de donnée du site mentionné dans le sujet. En effet les performances de nos algorithmes varient en fonction des graphes générés aléatoirement ou non.
 	\end{flushleft}
 	\subsection{Graphes générés aléatoirement}
 		\subsubsection{Tests temps d'exécution}
 			\includegraphics[scale=0.45]{./Ressource/temps_graphes_random.png}
 			
+			\begin{flushleft}
 			On peut observer qu'à partir de graphes de 8 nœuds, l'algorithme par force brute se termine bien après les autres algorithmes, ce qui est un résultat attendu puisqu'il a la complexité la plus grande.\\
 			L'algorithme de séparation et évaluation, quant à lui, devient le plus lent à partir de 11 nœuds. Sa courbe irrégulière est causé par l'élagage qui retire plus ou moins de possibilité selon le graphe.\\
 			Les autres algorithmes présentent, à partir de 11 nœuds, une durée plus modérée que les deux précédents et une augmentation de la durée d'exécution plus régulière.
+			\end{flushleft}
 		
 		\subsubsection{Tests coût}
 			
 			\includegraphics[scale=0.40]{./Ressource/cout_graphes_random.png}
 			
+			\begin{flushleft}
 			Ici les algorithmes par force brute et de sélection et évaluation donnent toujours une solution avec un poids optimal, ils serviront de repère.\\
 			Cet histogramme nous apprend que jusqu'à 7 nœuds tous les algorithmes fournissent une solution quasi-optimale.\\
 			A partir de 8 nœuds l'algorithme aléatoire donnera le plus souvent la pire réponse des tests. L'algorithme de l'arbre couvrant donnera la plupart du temps une solution comparable à celle de l'approche aléatoire.\\
 			Jusqu'à 21 nœuds, les algorithmes cupide et génétique présentent des résultats comparable mais de plus en plus éloigné de la solution optimale. à partir de 22 nœuds, l'approche cupide est la plus proche de la solution optimale, alors que l'approche génétique s'en éloigne.
+			\end{flushleft}
 					
 		\subsubsection{Conclusion}
+		\begin{flushleft}
 		Les algorithmes par force brute et de sélection et évaluation sont les seuls donnant toujours une solution optimale. Mais ils présentent aussi le coût en temps extrêmement plus important que les autres, en effet force brute devient inutilisable à environ 10 nœuds et sélection à environ 23 nœuds.
 		Parmi les autres algorithmes, l'approche aléatoire est clairement à éviter n'étant pas la plus rapide et étant la moins précise.\\
 		L'approche par arbre couvrant est plus rapide que l'approche aléatoire mais est toute aussi imprécise et serait donc à éviter aussi.\\
@@ -220,6 +225,7 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 		L'approche cupide, quant à elle, est la plus rapide de toutes, mais aussi, la plupart du temps, la plus précise.\\
 		
 		Donc pour des graphes aléatoires de 2 à 19 nœuds on utiliserait l'algorithme de sélection et évaluation donnant une valeur optimale, et à partir de 20 nœuds on utiliserait l'algorithme cupide.
+		\end{flushleft}
 			
 	\subsection{Graphes en ligne}
 		\subsubsection{Tests temps d'exécution}
@@ -228,14 +234,19 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 	
 	\subsubsection{Tests coût}
 			\includegraphics[scale=0.45]{./Ressource/cout_graphes_site.png}
-			
+			Les tests de coût avec les graphes de la base de donnée du site étant relativement long pour l'algorithme de séparation et d'évaluation, nous avons décidé de faire les tests de coût de celui-ci sur des graphes dont le nombre de nœuds sont inférieur à 20. Pour les graphes dont le nombre de noeuds sont supérieur à 20 nous testons uniquement les algorithmes donnant des solutions approximatives que nous comparons avec les solutions (optimales) données par le site.\\
+			Sur les graphes de 14 à 17 nœuds, nous observons peu de variation entre les solutions des différents algorithmes. L'algorithme de séparation et évaluation donne des solutions optimales.\\
+			Sur les graphes de grandes tailles (nombre de nœuds supèrieur à 100) les variations entre les solutions sont plus marquées  : de manière générale, les algorithmes d'approche aléatoire et d'approche génétique donnent des solutions plus éloignées de la solution optimale. Cependant, nous savons que  l'approche génétique est "calibré" pour les graphes de taille inférieur à 10 nœuds ;  et pour obtenir des solutions plus proches de la solution optimale, il faudrait faire plus d'itération dans l'algorithme d'approche aléatoire.
+			L'approche avec l'arbre couvrant de poids minimal et l'approche cupide sont des algorithmes approximations qui donnent des solutions relativement correctes et sont par conséquent plus intéressant pour résoudre des graphes de grandes tailles.
 	\subsubsection{Conclusion}
 
 \section{Conclusion}
 \section{Annexes}
 
 	\subsection{DataConverter}
+	\begin{flushleft}
 	Ce programme permet de générer de convertir les donnée XML du site mentionné dans le sujet dans un format que notre programme peut lire. Ce format est le même que celui générer par le TSPGenerateur.
+	\end{flushleft}
 	
 	\subsection{TSPGenerateur}
 
