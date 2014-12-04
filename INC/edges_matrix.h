@@ -1,8 +1,25 @@
-//----------------------------------------------------------
-// AUTEUR : BASCOL Kevin                                    |
-// FICHIER : edges_matrix.h                                 |
-// DATE : 29/11/14                                          |
-//----------------------------------------------------------
+//----------------------------------------------------------------------------------------
+// AUTEUR : BASCOL Kevin                                                                  |
+// FICHIER : edges_matrix.h                                                               |
+// DATE : 29/11/14                                                                        |
+//                                                                                        |
+// - Defines prototypes function of edges_matrix.c                                        |
+// - Function to create a new empty edges matrix.                                         |
+// - Function to free the memory take by an edges matrix.                                 |
+// - Function to copy an edges matrix.                                                    |
+// - Function to translate a graph to an edges matrix.                                    |
+// - Function to translate an edges matrix to a solution.                                 |
+// - Function to calculate the bound from a solution.                                     |
+// - Function to draw an edges matrix.                                                    |
+// - Function to find the column index of the minimal value on a line of an edges matrix. |
+// - Function to find the line index of the minimal value on a column of an edges matrix. |
+// - Function to find the indexes of the first 0 the a matrix.                            |
+// - Function to find the minimal value on a line of an edges matrix.                     |
+// - Function to find the minimal value on a column of an edges matrix.                   |
+// - Function to reduce the lines of an edges matrix.                                     |
+// - Function to reduce the columns of an edges matrix.                                   |
+// - Function to reduce the lines, then the columns of an edges matrix.                   |
+//----------------------------------------------------------------------------------------
 
 
 #include "struct_graph.h"
@@ -76,7 +93,11 @@ int index_min_line(Edges_matrix matrix, int length, int index);
  */
 int index_min_col(Edges_matrix matrix, int length, int index);
 
-
+/** Function to find the indexes of the first 0 the a matrix.
+ *  %param matrix : Edges matrix where search for the first 0.
+ *  %param length : Number of lines/columns in the matrix.
+ *  %return : Indexes of the first 0 in the matrix.
+ */
 int* first_zero(Edges_matrix matrix, int length);
 
 /** Function to find the minimal value on a line of an edges matrix.
