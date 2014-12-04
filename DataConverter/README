@@ -12,3 +12,4 @@ noeud_courant+1|noeud_voisin#cout,autre_noeud_voisin#cout,...
 Commande : ./DataConverter.pl 
 
 Remarque : 	/!\ vérifier que les fichiers XML sont présent dans le repertoire xml.
+		/!\ vérifier que vous etes bien dans le repertoire /projet_Advanced_algorithms/DataConverter avant de lancer la commande.
