@@ -1,7 +1,7 @@
 //----------------------------------------------------------
 // AUTEUR : BASCOL Kevin                                    |
 // FICHIER : branch_and_bound.h                             |
-// DATE : 31/10/14                                          |
+// DATE : 28/10/14                                          |
 //                                                          |
 // - Define prototypes function of branch_and_bound.c       |
 // - Function to initialise and call the algorithm          |
