@@ -3,7 +3,10 @@
 // FICHIER : mst_approach.h                                 |
 // DATE : 27/10/14                                          |
 //                                                          | 
-// - Define prototype function of tsp_mst.c                 |
+// Define prototypes functions of tsp_mst.c  	            |
+// - function MST(Graph) to resolve TSP with MST approach.  |
+// - function prefix_course(Node, Solution) to travel the   |
+//   minimal spanning tree with prefix course.              |
 //----------------------------------------------------------
 
 #ifndef TSP_MST_H
@@ -12,14 +15,19 @@
 #include "solution.h"
 #include "graph.h"
 
-/** Solve the TSP with minimal spanning tree approach.
- ** Build a mst with Prim's algorithm, and build the 
- ** solution with a prefix course of mst.
+/** Solves the TSP with minimal spanning tree approach.
+ ** Builds a mst with Prim's algorithm, and uses prefix-course
+ ** function to build the solution.
  *  %param g : complet graph
- *  return 
+ *  return  Solution found by MST approach
  */
 Solution MST(Graph g);
 
+/** Travels the minimal spanning tree with prefix-course.
+ ** Builds solution.
+ *	%param tree : root node of tree
+ *  %param s : the solution which the function fill in.
+ */
 int prefix_course(Node tree, Solution s);
 
 #endif
