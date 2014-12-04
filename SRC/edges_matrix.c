@@ -6,11 +6,12 @@
 // - Implementation of the prototypes in edges_matrix.h     |
 //----------------------------------------------------------
 
+#include <stdio.h>
 #include <limits.h>
 
 #include "error.h"
+#include "solution.h"
 #include "edges_matrix.h"
-
 
 Edges_matrix new_matrix(int length) {
     Edges_matrix matrix = (Edges_matrix)calloc(length,sizeof(int*));
@@ -75,7 +76,7 @@ Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start
 
     while(i < tspGraph->count_nodes ) {
         j = 0;
-            
+
         while(matrix[node][j] != -2){
             j++;
         }

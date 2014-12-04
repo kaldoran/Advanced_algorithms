@@ -3,6 +3,7 @@
 // FICHIER : solution.c                                     |
 // DATE : 10/11/14                                          |
 //                                                          |
+// - Implementation of the prototypes in solution.h         |
 //----------------------------------------------------------
 
 #include <stdio.h>

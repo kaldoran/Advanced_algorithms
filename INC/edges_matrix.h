@@ -21,9 +21,11 @@
 // - Function to reduce the lines, then the columns of an edges matrix.                   |
 //----------------------------------------------------------------------------------------
 
+#ifndef EDGE_MATRIX_H
+#define EDGE_MATRIX_H
 
 #include "struct_graph.h"
-#include "solution.h"
+#include "struct_solution.h"
 
 typedef int** Edges_matrix;
 
@@ -139,3 +141,5 @@ int red_col(Edges_matrix matrix, Edges_matrix matrix_red, int length);
  *  %return : Bound generate by the reduction.
  */
 int red_all(Edges_matrix matrix, Edges_matrix matrix_red, int length);
+
+#endif /* EDGE_MATRIX_H included */

@@ -8,7 +8,10 @@
 // - Function to run the algorithm recursively              |
 //----------------------------------------------------------
 
-#include "graph.h"
+#ifndef BRANCH_AND_BOUND_REM_H
+#define BRANCH_AND_BOUND_REM_H
+
+#include "struct_graph.h"
 #include "edges_matrix.h"
 
 
@@ -28,3 +31,5 @@ Edges_matrix branch_and_bound_rem_rec(Edges_matrix part, int part_bound, int par
  *  %return : optimal solution of the tsp problem.
  */
 Solution branch_and_bound_rem(Graph tspGraph);
+
+#endif /* BRANCH_AND_BOUND_REM_H included */

@@ -1,6 +1,6 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin                                 |
-// FICHIER : tsp_brute_force.h                              |
+// FICHIER : brute_force_approach.h                         |
 // DATE : 27/10/14                                          |
 //                                                          |
 //  - Functions that resolve TSP with brute-force approach  |
@@ -9,8 +9,8 @@
 #ifndef TSP_BRUTE_FORCE_H
 #define TSP_BRUTE_FORCE_H
 
-#include "solution.h"
-#include "graph.h"
+#include "struct_solution.h"
+#include "struct_graph.h"
 
 /** Execute and give the solution of brute-force approach on a graph
  *  %param g : graph where you need to execute the greedy approch

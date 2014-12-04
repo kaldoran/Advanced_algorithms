@@ -9,8 +9,6 @@
 #ifndef STRUCT_SOLUTION_H
 #define STRUCT_SOLUTION_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "struct_graph.h"
 
 typedef struct Struct_Solution {

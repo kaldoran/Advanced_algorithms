@@ -10,9 +10,6 @@
 #ifndef STRUCT_GRAPH_H
 #define STRUCT_GRAPH_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
 #define UNVISITED           (char) 0
 #define VISITED             (char) 1
 #define VISITED_BNB         (char) 2
@@ -43,4 +40,4 @@ typedef struct Struct_Graph {
 
 typedef Struct_Graph* Graph;
 
-#endif /** STRUCT_GRAPH_H included */
+#endif /* STRUCT_GRAPH_H included */
