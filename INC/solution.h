@@ -48,9 +48,14 @@ int best_solution_id( Solution* list_solution, int nb_solution);
 
 /** free all solution allocations
  * %param s : the solution which you will free
+ * return : none
  */
 void free_solution(Solution s);
 
+/**free all solution allocation in other way
+ * %param s : the solution which you will free
+ *  return : none
+ */
 void free_solution_bis(Solution s);
 
 /** Printing all contains of solution

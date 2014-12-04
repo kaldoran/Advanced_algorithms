@@ -14,7 +14,7 @@
 
 \fancyhead{}
 \fancyfoot{} 
-\lhead{ \hspace{0.1cm} M1WI 2014-2015  \hspace{0.4cm} \vline}
+\lhead{ \hspace{0.1cm} M1 WI 2014-2015  \hspace{0.4cm} \vline}
 \chead{Advanced Algorithms}
 \rhead{K.B - K.L - N.R}
 \rfoot{\thepage}
@@ -93,15 +93,23 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	\subsection{Algorithme donnant une solution optimale}
 		\subsubsection{Force brute}
 		
+		\paragraph{Résumé de l'algorithme}
+		\begin{flushleft}
+		L'algorithme de brute force consiste à explorer toutes les solutions du graphe : c'est-à-dire d'évaluer tous les cycles possibles d'un graphe et de retenir la solution optimale.
+		L'avantage est qu'il est simple à implémenter, et qu'il donne la solution optimale.
+		Mais son plus grand inconvénient est sa complexité en temps :  $O(n!) \approx O(\exp n)$.
+		\end{flushleft}
+		\paragraph{Commentaires sur l'implémentation}
+		\begin{flushleft}
+		L'algorithme a été implémenter en une fonction récursif.
+		\end{flushleft}
 		\subsubsection{Séparation et évaluation}
 		
-		\paragraph{Résumé de l'algorithme\\}
+		\paragraph{Résumé de l'algorithme}
 		L'algorithme de séparation et évaluation consiste en un parcours de l'arbre de tous les chemins possible dans le graphe des villes. Mais si le chemin menant à un nœud possède un poids total supérieur à la meilleurs solution trouvée jusque là, alors il ne parcourra pas les sous-arbres de ce nœud.\\
-		La complexité de cet algorithme est donc, au pire, la même que celle de l'algorithme par force brute (O(n!)) mais est grandement améliorée grâce à l'élagage des branches trop lourdes.\\
 		
-		\paragraph{Commentaires sur l'implémentation\\}
-		Cet algorithme a été implémenté récursivement, méthode plus lourde mais aussi plus intuitive.
-		Lors de la programmation de cet algorithme j'ai malheureusement oublié de faire le retour permettant l'élagage des branches trop lourdes. Cette erreur m'a fait perdre beaucoup de temps à chercher des méthodes pour accélérer le programme alors qu'il ne manquait que 2 lignes de codes pour obtenir un programme extrêmement plus rapide.
+		\paragraph{Commentaires sur l'implémentation}
+		
 		
 		
 		\subsubsection{Séparation et évaluation avec retrait d'arêtes}		
@@ -128,10 +136,18 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		\paragraph{Résumé de l'algorithme\\}
 		L'approche aléatoire est très simple. L'algorithme se place sur un nœud aléatoire du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en choisissant une arête de manière aléatoire. Jusqu'à revenir à sont point de départ.
 		L'algorithme est lancé une première fois. Puis est lancé 100 fois en comparant les résultats entre eux. A chaque fois le chemin avec le coup le moins élevé est choisit.
-		
+
 		\subsubsection{Approche avec l'arbre couvrant de poids minimal}
+		\begin{flushleft}
+		L'algorithme utilise l'algorithme de Prim ou de Kruskal (dans notre projet, nous avons utilisé l'algorithme de Prim) pour construire un arbre couvrant de poids minimal reliant tout les noeuds du graphe. Une fois que l'arbre couvrant est construite, la solution du problème est donnée par un parcours préfixe de l'arbre.
+		L'algorithme est efficace si le distance entre les noeuds respectent la règle de Pythagore. Nous verrons dans le section 4 que cette algorithme donne une solution approximative plus proche de la solution optimale lorsque nous utilisons des graphes du site donnée dans le sujet.
+		\end{flushleft}
+			
+		\paragraph{Commentaires sur l'implémentation}
 		
-		\subsubsection{Approche génétique}
+		\begin{flushleft}
+		Nous avons utilisé l'algorithme de Prim parce qu'il était plus simple à implémenter. En effet l'algorithme de Kruskal nécessitait d’énumérer toute les arêtes du graphe. Cette opération aurai été trop coûteuse avec la structure de donnée que nous nous sommes donnée.
+		\end{flushleft}
 		
 		\paragraph{Résumé de l'algorithme\\}
 		L'algorithme de l'approche génétique passe par plusieurs sous méthode. \\
@@ -170,6 +186,8 @@ Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur
 ==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 \end{verbatim}
+
+
 
 \newpage
 \section{Etudes d'efficacités des algorithmes}
