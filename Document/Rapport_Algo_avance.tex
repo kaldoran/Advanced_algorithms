@@ -83,14 +83,29 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	
 	\subsection{Langage utilisé et outil de développement}
 	\begin{flushleft}
-	\begin{flushleft}
 	Nous avons choisi d'implémenter tous nos algorithmes en langage C  pour sa rapidité. En effet les graphes étant chargés en mémoire et le langage C permettant un accès rapide à celle-ci, ce qui rendrait le programme plus performant en terme de temps d'exécution.
-	\end{flushleft}
+	Nous avons utilisé le logiciel git/github pour gérer le développement de nos codes du projet.
 	\end{flushleft}
 	
 \section{Algorithmes de résolution de problème du voyageur de commerce}
 
 	\subsection{Structure de donnée}
+	\begin{flushleft}
+	La structure de donnée du graphe est très simple. Elle consiste en un accès direct à chaque nœud. Le nombre de nœud est également présent en accès direct.
+	Chaque nœud est ensuite représenté par : 
+	\begin{itemize}
+		\item Un nom N
+		\item Une coloration ( Indique si le nœud à été visité ou non )
+		\item Le nombre de sous-nœud
+		\item Un tableau contenant tous les successeurs du nœud avec le nœud d'indice i égale au i-ème nœud.
+		\item Un tableau contenant le coût du chemin entre le nœud N courant et le nœud présent en case i.
+	\end{itemize}
+	
+	La structure de donnée de la solution a, quant à elle, évolué au fil du temps.
+	Passant à la base d'une liste de nom de nœud à une liste de nœud.
+	Elle contient également le nombre de nœuds présents dans la solution, et le coût du chemin présent dans la solution.
+
+	\end{flushleft}
 	
 	\subsection{Algorithme donnant une solution optimale}
 		\subsubsection{Force brute}
