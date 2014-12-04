@@ -122,12 +122,16 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		L'algorithme de l'approche cupide commence par se positionner sur un nœud du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en regardant l'arête avec le poids minimum. Et ainsi de suite jusqu'à avoir parcouru tout les nœuds du graphe.
 		
 		\paragraph{Commentaires sur l'implémentation}
+		Le code de ce programme étant assez simple, aucun soucis particulier n'est à notifier dans ce code.  
 		
 		\subsubsection{Approche aléatoire}
 		
 		\paragraph{Résumé de l'algorithme}
 		L'approche aléatoire est très simple. L'algorithme se place sur un nœud aléatoire du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en choisissant une arête de manière aléatoire. Jusqu'à revenir à sont point de départ.
 		L'algorithme est lancé une première fois. Puis est lancé 100 fois en comparant les résultats entre eux. A chaque fois le chemin avec le coup le moins élevé est choisit.
+		
+		\paragraph{Commentaires sur l'implémentation}
+		Le code de ce programme étant assez simple, aucun soucis particulier n'est à notifier dans ce code. Cependant très rapidement j'ai fais le choix de séparer le code en deux méthodes, dont une avec un paramètre permettant de donner la coloration a utiliser pendant le parcours du graphe. Tout ceci dans le but de me resservir de la l'approche aléatoire dans la génération de la population dans l'approche génétique. 
 		
 		\subsubsection{Approche avec l'arbre couvrant de poids minimal}
 		
@@ -152,8 +156,10 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 		Pour finir l'algorithme choisit la meilleurs solution ( Celle avec le plus faible coût ) après évolution . \\
 		
 		\paragraph{Commentaires sur l'implémentation}
-
-\newpage		
+		Ce code étant assez compliqué, il m'a fallut pas mal de temps pour bien comprendre sont fonctionnement. Qui plus est ayant directement cherché une méthode peut couteuse en mémoire ( notamment en réutilisant les tableaux au maximum ) de nombreuses erreurs ont été commise au début du code.
+		
+		Par la suite, le seule autre problème que j'ai pu avoir fut sur le paramétrage. Étant donné le "grand" nombre de paramètre il à été dur de les déterminer.
+	
 \section{Commentaire général sur le code}
 
 Les conventions on été respectée. \\
