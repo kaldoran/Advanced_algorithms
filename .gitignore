@@ -2,3 +2,7 @@ BIN/
 OBJ/
 *.swp
 *~
+*.aux
+*.log
+*.toc
+*.synctex.gz
