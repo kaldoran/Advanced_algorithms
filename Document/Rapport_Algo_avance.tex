@@ -89,6 +89,18 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 \section{Algorithmes de résolution de problème du voyageur de commerce}
 
 	\subsection{Structure de donnée}
+	La structure de donnée du graphe est tres simple. Elle consiste a un acces direct à chaque nœud. Le nombre de nœud est également présent en accès direct.
+	Chaque nœuds est ensuite représenté par : 
+	\begin{itemize}
+		\item Un nom N
+		\item Une coloration ( Indique si le noeud à été visité ou non )
+		\item Le nombre de sous Noeud
+		\item Un tableau contenant tout les freres du nœud avec le nœud d'indice i égale au i-eme nœud.
+		\item Un tableau contenant le cout du chemin entre le noued N courrant et le nœud présent en case i.
+	\end{itemize}
+	
+	La structure de donnée de la solution à quand à elle évolué au file du temps.
+	Passant à la base d'une liste de nom de nœud à une liste de nœud.
 	
 	\subsection{Algorithme donnant une solution optimale}
 		\subsubsection{Force brute}
