@@ -104,16 +104,16 @@ if ( argc == 2 ) {
 
         
         if ( tsp_graph->count_nodes < 20 ) {
-        	reset_coloration(tsp_graph);
-	        printf("Start Branch and Bound approach: \n");
-	        clock_gettime( CLOCK_REALTIME, &begin );
-	        s = branch_and_bound(tsp_graph);
-	        clock_gettime( CLOCK_REALTIME, &end );
-	        print_solution(s);
-	        free_solution(s);
+            reset_coloration(tsp_graph);
+            printf("Start Branch and Bound approach: \n");
+            clock_gettime( CLOCK_REALTIME, &begin );
+            s = branch_and_bound(tsp_graph);
+            clock_gettime( CLOCK_REALTIME, &end );
+            print_solution(s);
+            free_solution(s);
 
-	        print_time_taken(begin, end);
-	    }
+            print_time_taken(begin, end);
+        }
         
         
      
