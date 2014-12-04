@@ -113,17 +113,7 @@ if ( argc == 2 ) {
         free_solution(s);
         
         print_time_taken(begin, end);
-
-//        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
-/*        printf("Start Branch and Bound approch (removing edges version) : \n");
-        clock_gettime( CLOCK_REALTIME, &begin );
-        s = branch_and_bound_rem(tsp_graph);
-        clock_gettime( CLOCK_REALTIME, &end );
-        print_solution(s);
-        free_solution(s);
-
-        print_time_taken(begin, end);
-*/      
+     
         reset_coloration(tsp_graph);
         printf("Start Genetic approch : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
