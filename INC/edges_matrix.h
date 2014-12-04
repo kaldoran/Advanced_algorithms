@@ -6,7 +6,7 @@
 
 
 #include "struct_graph.h"
-#include "solution.h"
+#include "struct_solution.h"
 
 typedef int** Edges_matrix;
 

@@ -3,6 +3,9 @@
 // FICHIER : node.h                                         |
 // DATE : 27/10/14                                          |
 //                                                          |
+// - Create a new node                                      |
+// - Set value of a node                                    |
+// - Copy a node                                            |
 //----------------------------------------------------------
 
 #ifndef NODE_H

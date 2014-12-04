@@ -19,7 +19,6 @@
 #include "struct_solution.h"
 #include "struct_graph.h"
 
-
 /** Creating a empty solution and doing all necessary allocation
  *  %param : none
  *  %return : none

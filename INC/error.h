@@ -10,6 +10,8 @@
 #ifndef ERROR_H
 #define ERROR_H
 
+#include <stdio.h>
+#include <stdlib.h>
 
 /** If Debug Flag is on, create a maccro to print debug information
  *  %param MSG : String to print 

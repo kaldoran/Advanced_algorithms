@@ -13,8 +13,6 @@
 
 #include "solution.h"
 
-
-
 /** Recursive function of the algorithm.
  *  %param part : partial solution which is compute.
  *  %param best : best solution find so far.

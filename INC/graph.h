@@ -3,6 +3,10 @@
 // FICHIER : graph.h                                        |
 // DATE : 27/10/14                                          |
 //                                                          |
+// - Create a new graph                                     |
+// - Free graph                                             |
+// - Print a graph                                          |
+// - Reset the coloration of a graph                        |
 //----------------------------------------------------------
 
 #ifndef GRAPH_H

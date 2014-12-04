@@ -3,7 +3,6 @@
 // FICHIER : readfile.h                                     |
 // DATE : 25/10/14                                          |
 //                                                          |
-// - Prototypes of function of readfile.c                   |
 // - Function to read a file                                |
 //----------------------------------------------------------
 

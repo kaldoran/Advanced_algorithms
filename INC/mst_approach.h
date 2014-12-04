@@ -1,6 +1,6 @@
 //----------------------------------------------------------
 // AUTEUR : LAOUSSING Kévin                                 |
-// FICHIER : solution.h                                     |
+// FICHIER : mst_approach.h                                 |
 // DATE : 27/10/14                                          |
 //                                                          | 
 // - Define prototype function of tsp_mst.c                 |
