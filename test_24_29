@@ -1,0 +1,228 @@
+Graphe 24 :
+-------------------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 7 6 17 11 18 20 4 8 15 1 10 2 5 9 12 13 19 21 16 22 14 3 23 0 
+	Cost : 357
+	Node Count : 25
+
+Time nano : 94711 nanosecondes
+Time : 0 secondes 0 millisecondes 94 microsecondes 711 nanosecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 0 7 8 16 14 12 15 18 11 21 2 3 1 13 10 4 19 20 17 9 6 23 22 5 0 
+	Cost : 422
+	Node Count : 25
+
+Time nano : 390243 nanosecondes
+Time : 0 secondes 0 millisecondes 390 microsecondes 243 nanosecondes
+
+Start Greedy approch : 
+Solution:
+	List Vertex : 0 7 6 17 11 18 21 5 12 13 10 2 23 14 3 1 15 4 19 9 20 22 16 8 0 
+	Cost : 144
+	Node Count : 25
+
+Time nano : 6406 nanosecondes
+Time : 0 secondes 0 millisecondes 6 microsecondes 406 nanosecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 15 11 18 17 16 6 8 7 23 2 22 14 3 9 20 4 19 0 5 12 13 21 10 1 15 
+	Cost : 233
+	Node Count : 25
+
+Time nano : 11523511 nanosecondes
+Time : 0 secondes 11 millisecondes 523 microsecondes 511 nanosecondes
+
+Graphe 25 :
+-------------------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 11 12 16 17 3 15 1 4 13 6 24 9 10 2 23 22 14 18 20 7 5 8 21 19 0 
+	Cost : 366
+	Node Count : 26
+
+Time nano : 130408 nanosecondes
+Time : 0 secondes 0 millisecondes 130 microsecondes 408 nanosecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 10 8 23 22 24 2 12 19 9 21 18 3 15 14 16 17 13 11 1 5 4 0 6 7 20 10 
+	Cost : 440
+	Node Count : 26
+
+Time nano : 485905 nanosecondes
+Time : 0 secondes 0 millisecondes 485 microsecondes 905 nanosecondes
+
+Start Greedy approch : 
+Solution:
+	List Vertex : 0 17 3 15 1 6 20 7 8 10 2 23 22 21 9 24 19 12 11 16 18 14 4 13 5 0 
+	Cost : 130
+	Node Count : 26
+
+Time nano : 7785 nanosecondes
+Time : 0 secondes 0 millisecondes 7 microsecondes 785 nanosecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 14 18 16 11 23 2 9 22 13 21 10 12 19 3 17 0 5 7 15 1 6 20 24 8 4 14 
+	Cost : 248
+	Node Count : 26
+
+Time nano : 13050480 nanosecondes
+Time : 0 secondes 13 millisecondes 50 microsecondes 480 nanosecondes
+
+Graphe 26 :
+-------------------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 2 13 16 23 24 10 6 18 14 8 4 9 21 22 7 19 15 1 20 17 11 25 5 12 3 0 
+	Cost : 358
+	Node Count : 27
+
+Time nano : 145639 nanosecondes
+Time : 0 secondes 0 millisecondes 145 microsecondes 639 nanosecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 6 8 0 17 20 19 18 16 14 11 24 2 9 4 25 21 7 10 12 3 23 5 13 1 15 22 6 
+	Cost : 433
+	Node Count : 27
+
+Time nano : 507309 nanosecondes
+Time : 0 secondes 0 millisecondes 507 microsecondes 309 nanosecondes
+
+Start Greedy approch : 
+Solution:
+	List Vertex : 0 2 24 10 6 22 7 3 12 5 25 15 1 20 17 11 9 4 21 16 13 23 14 19 8 18 0 
+	Cost : 163
+	Node Count : 27
+
+Time nano : 7932 nanosecondes
+Time : 0 secondes 0 millisecondes 7 microsecondes 932 nanosecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 20 16 24 17 9 25 0 2 8 10 3 4 15 23 21 6 22 19 12 7 5 18 11 13 1 14 20 
+	Cost : 243
+	Node Count : 27
+
+Time nano : 16421609 nanosecondes
+Time : 0 secondes 16 millisecondes 421 microsecondes 609 nanosecondes
+
+Graphe 27 :
+-------------------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 26 15 12 4 3 24 7 21 2 16 9 22 1 13 8 25 5 14 18 10 11 17 19 23 6 20 0 
+	Cost : 228
+	Node Count : 28
+
+Time nano : 90195 nanosecondes
+Time : 0 secondes 0 millisecondes 90 microsecondes 195 nanosecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 18 9 7 24 21 17 5 8 20 13 10 1 23 25 6 22 15 12 19 0 26 11 14 4 2 16 3 18 
+	Cost : 457
+	Node Count : 28
+
+Time nano : 349516 nanosecondes
+Time : 0 secondes 0 millisecondes 349 microsecondes 516 nanosecondes
+
+Start Greedy approch : 
+Solution:
+	List Vertex : 0 26 15 12 4 24 7 21 16 9 14 18 10 11 23 6 13 20 1 22 19 17 5 25 8 2 3 0 
+	Cost : 134
+	Node Count : 28
+
+Time nano : 5497 nanosecondes
+Time : 0 secondes 0 millisecondes 5 microsecondes 497 nanosecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 9 16 21 7 24 2 13 20 18 10 19 15 5 25 8 23 6 3 0 12 14 17 26 1 11 4 22 9 
+	Cost : 226
+	Node Count : 28
+
+Time nano : 10813782 nanosecondes
+Time : 0 secondes 10 millisecondes 813 microsecondes 782 nanosecondes
+
+Graphe 28 :
+-------------------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 3 1 23 26 27 8 15 6 2 18 5 21 22 4 7 13 10 12 24 14 17 25 16 11 20 19 9 0 
+	Cost : 301
+	Node Count : 29
+
+Time nano : 91372 nanosecondes
+Time : 0 secondes 0 millisecondes 91 microsecondes 372 nanosecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 14 20 0 18 4 10 15 7 12 6 1 22 13 5 2 17 27 9 19 23 11 21 16 25 26 3 8 24 14 
+	Cost : 536
+	Node Count : 29
+
+Time nano : 320893 nanosecondes
+Time : 0 secondes 0 millisecondes 320 microsecondes 893 nanosecondes
+
+Start Greedy approch : 
+Solution:
+	List Vertex : 0 3 1 8 15 6 2 22 4 7 5 18 16 11 23 21 26 13 10 12 20 24 17 9 19 27 14 25 0 
+	Cost : 202
+	Node Count : 29
+
+Time nano : 5275 nanosecondes
+Time : 0 secondes 0 millisecondes 5 microsecondes 275 nanosecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 19 9 18 5 24 14 22 13 10 4 7 26 8 15 6 25 17 16 11 3 0 20 2 23 21 27 12 1 19 
+	Cost : 246
+	Node Count : 29
+
+Time nano : 9394958 nanosecondes
+Time : 0 secondes 9 millisecondes 394 microsecondes 958 nanosecondes
+
+Graphe 29 :
+-------------------------------
+Start Minimal Spanning Tree : 
+Solution:
+	List Vertex : 0 13 24 12 6 2 4 23 11 1 16 9 5 27 7 10 25 14 18 3 8 28 15 21 19 22 26 17 20 0 
+	Cost : 377
+	Node Count : 30
+
+Time nano : 138946 nanosecondes
+Time : 0 secondes 0 millisecondes 138 microsecondes 946 nanosecondes
+
+Start Random Approch : 
+Solution:
+	List Vertex : 9 6 5 28 11 7 8 21 14 16 18 0 24 26 17 10 3 2 27 4 13 25 19 22 1 12 15 23 20 9 
+	Cost : 582
+	Node Count : 30
+
+Time nano : 464910 nanosecondes
+Time : 0 secondes 0 millisecondes 464 microsecondes 910 nanosecondes
+
+Start Greedy approch : 
+Solution:
+	List Vertex : 0 24 12 11 1 16 9 5 27 19 21 28 8 18 3 26 25 10 20 17 2 4 13 6 23 14 22 15 7 0 
+	Cost : 216
+	Node Count : 30
+
+Time nano : 7769 nanosecondes
+Time : 0 secondes 0 millisecondes 7 microsecondes 769 nanosecondes
+
+Start Genetic approch : 
+Solution:
+	List Vertex : 1 24 12 25 10 5 9 7 3 23 26 20 17 15 0 13 6 22 28 16 14 21 19 27 11 2 4 8 18 1 
+	Cost : 287
+	Node Count : 30
+
+Time nano : 14228598 nanosecondes
+Time : 0 secondes 14 millisecondes 228 microsecondes 598 nanosecondes
+

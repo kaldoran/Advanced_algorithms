@@ -72,7 +72,6 @@ if ( argc == 2 ) {
 
         print_time_taken(begin, end);
 
-
 		if ( tsp_graph->count_nodes <= 10 ) {
         	printf("Start Brute Force : \n");
         	clock_gettime( CLOCK_MONOTONIC, &begin );
@@ -103,7 +102,7 @@ if ( argc == 2 ) {
         free_solution(s);
 
         print_time_taken(begin, end);
-
+/*
         reset_coloration(tsp_graph);
         printf("Start Branch and Bound approch: \n");
         clock_gettime( CLOCK_REALTIME, &begin );
@@ -113,7 +112,7 @@ if ( argc == 2 ) {
         free_solution(s);
         
         print_time_taken(begin, end);
-
+*/
 //        !!!! ATTENTION NE MARCHE PAS !!!! (c'est pas la peine de venir critiquer si décommenté !)
 /*        printf("Start Branch and Bound approch (removing edges version) : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
