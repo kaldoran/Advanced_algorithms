@@ -77,7 +77,7 @@ Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start
     while(i < tspGraph->count_nodes ) {
         j = 0;
 
-        while(matrix[node][j] != -2) {
+        while(matrix[node][j] != -2){
             j++;
         }
     
@@ -96,7 +96,6 @@ int bound_solution(Solution sol, Edges_matrix matrix_end, int length) {
         bound += red_all(matrix_end, matrix_end, length);
         
         for(j = 0; j < sol->count_nodes_s-1; ++j) {
-
             if(matrix_end[sol->list_node[i]->name][j] != -2){
                 matrix_end[sol->list_node[i]->name][j] = -1;
             }
@@ -107,7 +106,6 @@ int bound_solution(Solution sol, Edges_matrix matrix_end, int length) {
         if(matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] != -2){
             matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] = -1;
         }
-
         matrix_end[sol->list_node[i]->name][sol->list_node[i+1]->name] = -2;
     }
     bound += red_all(matrix_end, matrix_end, length);
