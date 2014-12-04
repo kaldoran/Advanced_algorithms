@@ -44,7 +44,7 @@ void add_node(Solution s, const Node n, const int cost) {
 Solution copy_solution( Solution src_s) {
 
     int i = 0;
-    /* On copie le chemin précédent et on ajoute une place pour le noeud suivant */
+    /* We copy the solution and add a place for the loop node */
     Solution dest_s = new_solution(src_s->count_nodes_s + 1 );
 
     for ( i = 0; i < src_s->count_nodes_s; i++) {
@@ -78,7 +78,7 @@ int best_solution_id( Solution* list_solution, int nb_solution) {
 
 void free_solution(Solution s) {
     if ( s != NULL ) {
-        /* On free pas les nodes car ils s'agit des pointeurs sur les nodes présent dans la structure graph*/
+        /* We don't free the nodes of list_node because these nodes is the same as in the graph */
         free(s->list_node);
         free(s);
     }

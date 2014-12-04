@@ -62,7 +62,7 @@ int main(int argc, char const *argv[]) {
 if ( argc == 2 ) {
         tsp_graph = load(argv[1]);
         
-        //print_graph(tsp_graph);
+        print_graph(tsp_graph);
         printf("Start Minimal Spanning Tree : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
         s = MST(tsp_graph);
@@ -85,7 +85,6 @@ if ( argc == 2 ) {
 
         printf("Start Random Approach : \n");
 
-        /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
         clock_gettime( CLOCK_REALTIME, &begin );
         s = random_approach(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );

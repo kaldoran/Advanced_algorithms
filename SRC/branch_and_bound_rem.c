@@ -86,35 +86,3 @@ Solution branch_and_bound_rem(Graph tspGraph) {
     
     return best;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
