@@ -3,7 +3,7 @@
 // FICHIER : branch_and_bound.h                             |
 // DATE : 28/10/14                                          |
 //                                                          |
-// - Define prototypes function of branch_and_bound.c       |
+// - Defines prototypes function of branch_and_bound.c       |
 // - Function to initialise and call the algorithm          |
 // - Function to run the algorithm recursively              |
 //----------------------------------------------------------

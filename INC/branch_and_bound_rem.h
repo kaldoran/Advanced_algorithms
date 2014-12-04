@@ -3,7 +3,7 @@
 // FICHIER : branch_and_bound_rem.h                         |
 // DATE : 25/11/14                                          |
 //                                                          |
-// - Define prototypes function of branch_and_bound_rem.c   |
+// - Defines prototypes function of branch_and_bound_rem.c   |
 // - Function to initialise and call the algorithm          |
 // - Function to run the algorithm recursively              |
 //----------------------------------------------------------
