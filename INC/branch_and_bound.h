@@ -8,6 +8,9 @@
 // - Function to run the algorithm recursively              |
 //----------------------------------------------------------
 
+#ifndef BRANCH_AND_BOUND_H
+#define BRANCH_AND_BOUND_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -27,3 +30,5 @@ Solution branch_and_bound_rec(Solution part, Solution best, Graph tspGraph);
  *  %return : optimal solution of the tsp problem.
  */
 Solution branch_and_bound(Graph tspGraph);
+
+#endif /* BRANCH_AND_BOUND_H */

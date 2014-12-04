@@ -40,4 +40,4 @@ typedef struct Struct_Graph {
 
 typedef Struct_Graph* Graph;
 
-#endif /** STRUCT_GRAPH_H included */
+#endif /* STRUCT_GRAPH_H included */

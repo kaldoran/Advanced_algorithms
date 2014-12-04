@@ -30,4 +30,4 @@ Solution MST(Graph g);
  */
 int prefix_course(Node tree, Solution s);
 
-#endif
+#endif /* TSP_MST_H included */

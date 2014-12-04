@@ -83,7 +83,7 @@ if ( argc == 2 ) {
             print_time_taken(begin, end);
         }
 
-        printf("Start Random Approch : \n");
+        printf("Start Random Approach : \n");
 
         /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
         clock_gettime( CLOCK_REALTIME, &begin );
@@ -94,7 +94,7 @@ if ( argc == 2 ) {
 
         print_time_taken(begin, end);
 
-        printf("Start Greedy approch : \n");
+        printf("Start Greedy approach : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
         s = greedy_approach(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
@@ -104,7 +104,7 @@ if ( argc == 2 ) {
         print_time_taken(begin, end);
 
         reset_coloration(tsp_graph);
-        printf("Start Branch and Bound approch: \n");
+        printf("Start Branch and Bound approach: \n");
         clock_gettime( CLOCK_REALTIME, &begin );
         s = branch_and_bound(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
@@ -114,7 +114,7 @@ if ( argc == 2 ) {
         print_time_taken(begin, end);
      
         reset_coloration(tsp_graph);
-        printf("Start Genetic approch : \n");
+        printf("Start Genetic approach : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
         s = genetic_approch(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
