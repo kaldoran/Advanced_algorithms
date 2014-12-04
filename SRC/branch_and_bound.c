@@ -89,7 +89,7 @@ Solution branch_and_bound(Graph tspGraph) {
     reset_coloration(tspGraph);
     tspGraph->nodes[start]->colored = END;
 
-    // Launch of the recursive algorithm.    
+    /* Launch of the recursive algorithm. */ 
     best= branch_and_bound_rec(part, best, tspGraph);
 
     free_solution(part);

@@ -210,7 +210,7 @@ if ( $help ) {
 sub help {
     system("clear");
     print "\tTSPGenerator - By Reynaud Nicolas\n\t=================================\n\n";
-    print "Usage : ./TSPGenerator -c --node 10 [--visual] [--quiet]\n";
+    print "Usage : ./TSPGenerator --node 10 [--visual] [--quiet]\n";
     print "Or : ./TSPGenerator --random [--visual]\n";
     print "\n--visual or -v : Toggle or not the edition of Graph\n";
     print "--node or -n : Number of node [ Max Value :".NUMBER_MAX_NODE.", Min Value :". NUMBER_MIN_NODE ." ] \n";
@@ -218,6 +218,6 @@ sub help {
 	print "--seed or -s : Seed to generate the graph\n";
     print "--random or -r : Toggle or not random graphs\n";
 	print "--Nocomplet or -c : disable complet graph\n\n";
-	print "--quit or -q : Toggle if the programme is quiet or not (i.e. if he is in verbose mode or not)";
+	print "--quiet or -q : Toggle if the programme is quiet or not (i.e. if he is in verbose mode or not)";
     print "NB : -h and -r and -c  got higher priority than others.\n\n";
 }

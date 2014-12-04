@@ -50,9 +50,9 @@ Solution greedy_approach(Graph g) {
         add_node(s, current, current_mini);
         current->colored = VISITED_GREEDY;
         
-    }while(g->count_nodes != total_node); /* Never append */
+    }while(g->count_nodes != total_node);
     g->nodes[start]->colored = VISITED_GREEDY;
-    add_node(s, g->nodes[start], current->cost[start]); /** Add at the end */
+    add_node(s, g->nodes[start], current->cost[start]); // Add the last node for the loop on solution
     
     return s;
 }
