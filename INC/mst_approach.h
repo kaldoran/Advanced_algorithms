@@ -3,7 +3,7 @@
 // FICHIER : mst_approach.h                                 |
 // DATE : 21/11/14                                          |
 //                                                          | 
-// Define prototypes functions of tsp_mst.c                 |
+// Define prototypes functions of mst_approach.c            |
 // - function MST(Graph) to resolve TSP with MST approach.  |
 // - function prefix_course(Node, Solution) to travel the   |
 //   minimal spanning tree with prefix course.              |
