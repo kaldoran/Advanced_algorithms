@@ -82,7 +82,7 @@ Solution brute_force(Solution s, Node n, int total_node, int last_cost) {
 
                 tab_solution = (Solution*) realloc(tab_solution, (dim_tab + 1) * sizeof(Solution));
                 if ( tab_solution == NULL) {
-                    free(tab_solution); /** Penser a free toutes les solution de tabsolution */
+                    free(tab_solution);
                     QUIT_MSG("Can't allocate more memory for tab_solution\n");
                 }
 

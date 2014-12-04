@@ -62,13 +62,13 @@ int main(int argc, char const *argv[]) {
 if ( argc == 2 ) {
         tsp_graph = load(argv[1]);
         
-        //print_graph(tsp_graph);
+        print_graph(tsp_graph);
         printf("Start Minimal Spanning Tree : \n");
         clock_gettime( CLOCK_REALTIME, &begin );
         s = MST(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
         print_solution(s);
-        free_solution(s);
+        free_solution_bis(s);
 
         print_time_taken(begin, end);
 
@@ -85,7 +85,6 @@ if ( argc == 2 ) {
 
         printf("Start Random Approach : \n");
 
-        /* Pemettra de faire plusieurs graphs random, sans avoir a réset la coloration entre chaque boucle */
         clock_gettime( CLOCK_REALTIME, &begin );
         s = random_approach(tsp_graph);
         clock_gettime( CLOCK_REALTIME, &end );
@@ -105,16 +104,16 @@ if ( argc == 2 ) {
 
         
         if ( tsp_graph->count_nodes < 20 ) {
-        	reset_coloration(tsp_graph);
-	        printf("Start Branch and Bound approach: \n");
-	        clock_gettime( CLOCK_REALTIME, &begin );
-	        s = branch_and_bound(tsp_graph);
-	        clock_gettime( CLOCK_REALTIME, &end );
-	        print_solution(s);
-	        free_solution(s);
+            reset_coloration(tsp_graph);
+            printf("Start Branch and Bound approach: \n");
+            clock_gettime( CLOCK_REALTIME, &begin );
+            s = branch_and_bound(tsp_graph);
+            clock_gettime( CLOCK_REALTIME, &end );
+            print_solution(s);
+            free_solution(s);
 
-	        print_time_taken(begin, end);
-	    }
+            print_time_taken(begin, end);
+        }
         
         
      

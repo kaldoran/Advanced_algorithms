@@ -118,11 +118,59 @@ L'objectif de notre projet est d'implémenter ces différentes approches, de pou
 	
 		\subsubsection{Approche cupide}
 		
+		\paragraph{Résumé de l'algorithme}
+		L'algorithme de l'approche cupide commence par se positionner sur un nœud du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en regardant l'arête avec le poids minimum. Et ainsi de suite jusqu'à avoir parcouru tout les nœuds du graphe.
+		
+		\paragraph{Commentaires sur l'implémentation}
+		
 		\subsubsection{Approche aléatoire}
+		
+		\paragraph{Résumé de l'algorithme}
+		L'approche aléatoire est très simple. L'algorithme se place sur un nœud aléatoire du graphe. A partir de là, l'algorithme passe au nœud suivant non visité en choisissant une arête de manière aléatoire. Jusqu'à revenir à sont point de départ.
+		L'algorithme est lancé une première fois. Puis est lancé 100 fois en comparant les résultats entre eux. A chaque fois le chemin avec le coup le moins élevé est choisit.
 		
 		\subsubsection{Approche avec l'arbre couvrant de poids minimal}
 		
 		\subsubsection{Approche génétique}
+		
+		\paragraph{Résumé de l'algorithme}
+		L'algorithme de l'approche génétique passe par plusieurs sous méthode. \\
+		Pour commencer une population N de solution est générée. \\
+		Cette population est alors modifiée, elle évolue. \\
+		l'évolution consiste à trier la population par ordre croissant, à partir de là, un pourcentage d'élite est gardé. Les élites peuvent, avec un faible pourcentage de chance muter. La mutation se traduit par l'inversion de 2 nœuds dans la solution élite. \\
+		Le reste de la population subit alors des croisements et des mutations. Les croisement se font sur deux parents. Les parents sont choisit, soit parmi les élites avec un faible pourcentage de chance. Soit parmi une sélection aléatoire de parent parmi les éléments triées. \\
+		Le tournois choisit simplement alors la meilleurs solution (Celle avec le cout le plus faible) parmi la sélection aléatoire. \\
+		
+		Le croisement peut alors commencer. Le croisement comporte alors 2 étapes :
+		\begin{itemize}
+			\item On commencer par copier une partie de la solution du parent numéro 1. Cette partie est choisit aléatoirement.
+			\item On complète ensuite la solution fils obtenu en complétant celle ci par les nœuds présent dans le second parent. En conservant l'ordre présent dans le parent 2.
+		\end{itemize}
+		Le fils ainsi obtenu à alors un faible chance de muter. \\
+		
+		L'évolution est ensuite répétée X fois. En prenant comme nouvelle entré la sortie de l'évolution précédente. \\
+		Pour finir l'algorithme choisit la meilleurs solution ( Celle avec le plus faible coût ) après évolution . \\
+		
+		\paragraph{Commentaires sur l'implémentation}
+
+\newpage		
+\section{Commentaire général sur le code}
+
+Les conventions on été respectée. \\
+Qui plus est, nous avons mis un point d'honneur à avoir un code des plus propre possible sur les allocations et libérations de mémoire. \\
+
+Voici le retour de valgrind lancé avec les options : "-v --leak-check=full" sur un graphe à 5 nœuds. \\
+\begin{verbatim}
+==6610== HEAP SUMMARY:
+==6610==     in use at exit: 0 bytes in 0 blocks
+==6610==   total heap usage: 29,231 allocs, 29,231 frees, 1,168,096 bytes allocated
+==6610== 
+==6610== All heap blocks were freed -- no leaks are possible
+==6610== 
+==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==6610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+\end{verbatim}
+
 \newpage
 \section{Etudes d'efficacités des algorithmes}
 

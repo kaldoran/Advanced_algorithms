@@ -117,7 +117,7 @@ Solution *evolution(const Graph g, Solution *genetic) {
         QUIT_MSG("Can't allocate memory for sorted");
     }
 
-    /* Tri */
+    /* Sort */
     for( i = 0; i < NUMBER_SOLUTION; i++ ) {
         bestCost = INT_MAX;
         for( j = 0; j < NUMBER_SOLUTION; j++ ) {
@@ -128,7 +128,7 @@ Solution *evolution(const Graph g, Solution *genetic) {
                 }
             }
         }
-        sorted[k] = copy_solution(genetic[bestNode]); // Deplacement du pointeur
+        sorted[k] = copy_solution(genetic[bestNode]); // Mooving pointer
         free_solution(genetic[bestNode]);
         ++k;
     }
