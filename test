@@ -970,7 +970,9 @@ Solution:
 	Node Count : 21
 
 Time nano : 4687544 nanosecondes
-Time : 0 secondes 4 millisecondes 687 microsecondes 544 nanosecondesGraphe 21 :
+Time : 0 secondes 4 millisecondes 687 microsecondes 544 nanosecondes
+
+Graphe 21 :
 -------------------------------
 Start Minimal Spanning Tree : 
 Solution:
@@ -1110,6 +1112,3 @@ Solution:
 
 Time nano : 5233147 nanosecondes
 Time : 0 secondes 5 millisecondes 233 microsecondes 147 nanosecondes
-
-Graphe 24 :
--------------------------------
