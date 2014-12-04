@@ -33,8 +33,8 @@ Edges_matrix copy_matrix(Edges_matrix matrix, int length) {
     Edges_matrix matrix_cpy = new_matrix(length);
     int i,j;
     
-    for(i = 0; i < length; ++i){
-        for(j = 0; j < length; ++j){
+    for(i = 0; i < length; ++i) {
+        for(j = 0; j < length; ++j) {
             matrix_cpy[i][j] = matrix[i][j];
         }
     }
@@ -75,8 +75,13 @@ Solution edges_matrix_to_solution(Edges_matrix matrix, Graph tspGraph, int start
 
     while(i < tspGraph->count_nodes ) {
         j = 0;
+<<<<<<< HEAD
             
         while(matrix[node][j] != -2){
+=======
+       	 
+        while(matrix[node][j] != -2) {
+>>>>>>> dc3615645ec63e616a8654c0d60f44a58f635ef3
             j++;
         }
     
@@ -95,6 +100,7 @@ int bound_solution(Solution sol, Edges_matrix matrix_end, int length) {
         bound += red_all(matrix_end, matrix_end, length);
         
         for(j = 0; j < sol->count_nodes_s-1; ++j) {
+<<<<<<< HEAD
             if(matrix_end[sol->list_node[i]->name][j] != -2){
                 matrix_end[sol->list_node[i]->name][j] = -1;
             }
@@ -105,6 +111,18 @@ int bound_solution(Solution sol, Edges_matrix matrix_end, int length) {
         if(matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] != -2){
             matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] = -1;
         }
+=======
+			if(matrix_end[sol->list_node[i]->name][j] != -2) {
+				matrix_end[sol->list_node[i]->name][j] = -1;
+			}
+			if(matrix_end[j][sol->list_node[i+1]->name] != -2) {
+				matrix_end[j][sol->list_node[i+1]->name] = -1;
+			}
+        }
+        if(matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] != -2) {
+			matrix_end[sol->list_node[i+1]->name][sol->list_node[i]->name] = -1;
+		}
+>>>>>>> dc3615645ec63e616a8654c0d60f44a58f635ef3
         matrix_end[sol->list_node[i]->name][sol->list_node[i+1]->name] = -2;
     }
     bound += red_all(matrix_end, matrix_end, length);
@@ -131,9 +149,15 @@ void print_edges_matrix(Edges_matrix matrix, int length) {
             if(matrix[i][j] == -1) {
                 printf("|\tN\t");        
             }
+<<<<<<< HEAD
             else if(matrix[i][j] == -2){
                 printf("|\tI\t"); 
             }
+=======
+            else if(matrix[i][j] == -2) {
+				printf("|\tI\t"); 
+			}
+>>>>>>> dc3615645ec63e616a8654c0d60f44a58f635ef3
             else{
                 printf("|\t%d\t", matrix[i][j]);        
             }
@@ -172,6 +196,7 @@ int index_min_col(Edges_matrix matrix, int length, int index) {
     return next;
 }
 
+<<<<<<< HEAD
 int* first_zero(Edges_matrix matrix, int length){
     int i,j;
     int* indexes = (int*)calloc(2,sizeof(int));
@@ -193,13 +218,36 @@ int* first_zero(Edges_matrix matrix, int length){
     indexes[0] = -1;
     indexes[1] = -1;
     return indexes;
+=======
+int* first_zero(Edges_matrix matrix, int length) {
+	int i,j;
+	int* indexes = (int*)calloc(2,sizeof(int));
+	
+	if(indexes == NULL) {
+        QUIT_MSG("Can't allocate edges matrix");
+    }
+
+	for(i = 0; i < length; ++i) {
+		for(j = 0; j < length; ++j) {
+			if(matrix[i][j] == 0) {
+				indexes[0] = i;
+				indexes[1] = j;
+				return indexes;
+			}
+		}
+	}
+	
+	indexes[0] = -1;
+	indexes[1] = -1;
+	return indexes;
+>>>>>>> dc3615645ec63e616a8654c0d60f44a58f635ef3
 }
 
 int min_line(Edges_matrix matrix, int length, int index) {
     int next = index_min_line(matrix, length, index);
     int min = 0;
     
-    if(next != -1){
+    if(next != -1) {
         min = matrix[index][next];
     }
     
@@ -210,7 +258,7 @@ int min_col(Edges_matrix matrix, int length, int index) {
     int next = index_min_col(matrix, length, index);
     int min = 0;
     
-    if(next != -1){
+    if(next != -1) {
         min = matrix[next][index];
     }
     

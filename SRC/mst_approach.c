@@ -34,7 +34,7 @@ Solution MST(Graph g) {
             for ( j = 0; j < s->list_node[i]->count_subnodes; j++) {
                 if (  s->list_node[i]->subnodes[j] != NULL                         //if subnode[j] exist
                   && s->list_node[i]->cost[j] < min                                //if cost of subnode[j] < min
-                  && !contains(s, s->list_node[i]->subnodes[j]) ){
+                  && !contains(s, s->list_node[i]->subnodes[j]) ) {
                     min = s->list_node[i]->cost[j];
                     index = j;
                     index2 = i;
