@@ -1,10 +1,6 @@
 Advanced_algorithms
 ===================
 
-TSP problem .... such a problem
-Create a TSP Generator
-Create different solver of TSP Problem
-
 1 - Description
 =============
 The objective of this project is to implement some algorithms for solving Traveling Salesman Problem
